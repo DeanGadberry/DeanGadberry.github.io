@@ -1,0 +1,151 @@
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Fira Code"; 
+    background: #000;
+    color: #ccc;
+    line-height: 1.6;
+    /* height matters when it comes to using smooth scroll */
+    height: 100vh;
+    /* removes scrollbars to be reenabled later */
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    /* CSS smoothscroll properties go here */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* mandatory snaps to sesction (don't forget section scroll-snapalign */
+    scroll-snap-type: y mandatory;
+}
+
+.navbar {
+    /* keeping the navbar at the top of the viewport all the time */
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 60px;
+    /* navbar white with some transparency */
+    background: 
+        linear-gradient(
+          to top,
+          hsla(0, 0%, 0%, 0) 0%,
+          hsla(0, 0%, 0%, 0.01) 8.1%,
+          hsla(0, 0%, 0%, 0.036) 15.5%,
+          hsla(0, 0%, 0%, 0.078) 22.5%,
+          hsla(0, 0%, 0%, 0.132) 29%,
+          hsla(0, 0%, 0%, 0.194) 35.3%,
+          hsla(0, 0%, 0%, 0.264) 41.2%,
+          hsla(0, 0%, 0%, 0.338) 47.1%,
+          hsla(0, 0%, 0%, 0.412) 52.9%,
+          hsla(0, 0%, 0%, 0.486) 58.8%,
+          hsla(0, 0%, 0%, 0.556) 64.7%,
+          hsla(0, 0%, 0%, 0.618) 71%,
+          hsla(0, 0%, 0%, 0.672) 77.5%,
+          hsla(0, 0%, 0%, 0.714) 84.5%,
+          hsla(0, 0%, 0%, 0.74) 91.9%,
+          hsla(0, 0%, 0%, 0.75) 100%
+        );
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 1rem;
+    padding: 1rem;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.navbar ul li a:hover {
+    color: #0bf;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+    color: #000
+    text-shadow: 1px 1px rgba(0,0,0,0.2);
+}
+
+.border-div {
+    max-width: 50%;
+    padding: 1rem;
+    color: white;
+    border-width: 6px;
+    border-style: solid;
+    border-color: black;
+    border-image: 
+        linear-gradient(
+            to bottom,
+            black,
+            rgba(0,0,0,0)
+        ) 1 100%;
+    border-bottom-style: hidden;
+    border-top-style: hidden;
+    background: 
+        linear-gradient(
+          to bottom,
+          hsla(0, 0%, 0%, 0.75) 0%,
+          hsla(0, 0%, 0%, 0.744) 8.1%,
+          hsla(0, 0%, 0%, 0.726) 15.5%,
+          hsla(0, 0%, 0%, 0.698) 22.5%,
+          hsla(0, 0%, 0%, 0.662) 29%,
+          hsla(0, 0%, 0%, 0.62) 35.3%,
+          hsla(0, 0%, 0%, 0.574) 41.2%,
+          hsla(0, 0%, 0%, 0.525) 47.1%,
+          hsla(0, 0%, 0%, 0.475) 52.9%,
+          hsla(0, 0%, 0%, 0.426) 58.8%,
+          hsla(0, 0%, 0%, 0.38) 64.7%,
+          hsla(0, 0%, 0%, 0.338) 71%,
+          hsla(0, 0%, 0%, 0.302) 77.5%,
+          hsla(0, 0%, 0%, 0.274) 84.5%,
+          hsla(0, 0%, 0%, 0.256) 91.9%,
+          hsla(0, 0%, 0%, 0.25) 100%
+        );
+}
+div h1 {
+    font-size: 4rem;
+}
+
+div p {
+    font-size: 1.5rem;
+}
+
+/* Section images */
+section#home {
+    background: url(/images/fisterra_handstand.JPG) no-repeat center center/cover;
+}
+section#about {
+    background: url(/images/adventure_collage.png) no-repeat center center/cover;
+}
+section#mission {
+    background: url(/images/professional_collage.png) no-repeat center center/cover;
+}
+section#contact {
+    background: url(/images/gorkha.JPG) no-repeat center center/cover;
+}
