@@ -81,9 +81,9 @@ body {
   background: #000;
   color: #ccc;
   line-height: 1.6;
-  /* height matters when it comes to using smooth scroll */
+  /* height is important to use smooth scroll */
   height: 100vh;
-  /* removes scrollbars to be reenabled later */
+  /* removes scrollbars */
   overflow: hidden;
 }
 

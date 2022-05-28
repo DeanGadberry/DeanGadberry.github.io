@@ -35,19 +35,6 @@ $contact_landscape: '../images/gorkha.jpg';
 @mixin for-big-desktop-up {
     @media (min-width: 1800px) { @content; }
 }
-
-@mixin section_background($portrait, $landscape) {
-    @include for-phone-only {
-        background: url($portrait) $background-center;
-    }
-    @include for-tablet-portrait-up {
-        background: url($portrait) $background-center;
-    }
-    @include for-tablet-landscape-up {
-        background: url($landscape) $background-center;
-    }
-}
-
 @mixin black-0-75-gradient-down {
     background: 
         linear-gradient(
@@ -68,7 +55,7 @@ $contact_landscape: '../images/gorkha.jpg';
           hsla(0, 0%, 0%, 0.714) 84.5%,
           hsla(0, 0%, 0%, 0.74) 91.9%,
           hsla(0, 0%, 0%, 0.75) 100%
-        );
+    );
 }
 @mixin black-0-75-gradient-up {
     background: 
@@ -90,13 +77,63 @@ $contact_landscape: '../images/gorkha.jpg';
           hsla(0, 0%, 0%, 0.714) 84.5%,
           hsla(0, 0%, 0%, 0.74) 91.9%,
           hsla(0, 0%, 0%, 0.75) 100%
-        );
+    );
 }
-
 @mixin black-75-25-gradient-down {
-
+    background: 
+        linear-gradient(
+          to bottom,
+          hsla(0, 0%, 0%, 0.75) 0%,
+          hsla(0, 0%, 0%, 0.744) 8.1%,
+          hsla(0, 0%, 0%, 0.726) 15.5%,
+          hsla(0, 0%, 0%, 0.698) 22.5%,
+          hsla(0, 0%, 0%, 0.662) 29%,
+          hsla(0, 0%, 0%, 0.62) 35.3%,
+          hsla(0, 0%, 0%, 0.574) 41.2%,
+          hsla(0, 0%, 0%, 0.525) 47.1%,
+          hsla(0, 0%, 0%, 0.475) 52.9%,
+          hsla(0, 0%, 0%, 0.426) 58.8%,
+          hsla(0, 0%, 0%, 0.38) 64.7%,
+          hsla(0, 0%, 0%, 0.338) 71%,
+          hsla(0, 0%, 0%, 0.302) 77.5%,
+          hsla(0, 0%, 0%, 0.274) 84.5%,
+          hsla(0, 0%, 0%, 0.256) 91.9%,
+          hsla(0, 0%, 0%, 0.25) 100%
+    );
 }
-
+@mixin black-75-25-gradient-up {
+    background: 
+        linear-gradient(
+          to top,
+          hsla(0, 0%, 0%, 0.75) 0%,
+          hsla(0, 0%, 0%, 0.744) 8.1%,
+          hsla(0, 0%, 0%, 0.726) 15.5%,
+          hsla(0, 0%, 0%, 0.698) 22.5%,
+          hsla(0, 0%, 0%, 0.662) 29%,
+          hsla(0, 0%, 0%, 0.62) 35.3%,
+          hsla(0, 0%, 0%, 0.574) 41.2%,
+          hsla(0, 0%, 0%, 0.525) 47.1%,
+          hsla(0, 0%, 0%, 0.475) 52.9%,
+          hsla(0, 0%, 0%, 0.426) 58.8%,
+          hsla(0, 0%, 0%, 0.38) 64.7%,
+          hsla(0, 0%, 0%, 0.338) 71%,
+          hsla(0, 0%, 0%, 0.302) 77.5%,
+          hsla(0, 0%, 0%, 0.274) 84.5%,
+          hsla(0, 0%, 0%, 0.256) 91.9%,
+          hsla(0, 0%, 0%, 0.25) 100%
+    );
+}
+@mixin section_background($portrait, $landscape) {
+    @include for-phone-only {
+        background: url($portrait) $background-center;
+    }
+    @include for-tablet-portrait-up {
+        background: url($portrait) $background-center;
+    }
+    @include for-tablet-landscape-up {
+        background: url($landscape) $background-center;
+    }
+}
 section#home {
     @include section_background($home_portrait, $home_landscape)
 }
@@ -120,9 +157,9 @@ body {
     background: #000;
     color: #ccc;
     line-height: 1.6;
-    /* height matters when it comes to using smooth scroll */
+    /* height is important to use smooth scroll */
     height: 100vh;
-    /* removes scrollbars to be reenabled later */
+    /* removes scrollbars */
     overflow: hidden;
 }
 
@@ -193,30 +230,11 @@ section {
         ) 1 100%;
     border-bottom-style: hidden;
     border-top-style: hidden;
-    background: 
-        linear-gradient(
-          to bottom,
-          hsla(0, 0%, 0%, 0.75) 0%,
-          hsla(0, 0%, 0%, 0.744) 8.1%,
-          hsla(0, 0%, 0%, 0.726) 15.5%,
-          hsla(0, 0%, 0%, 0.698) 22.5%,
-          hsla(0, 0%, 0%, 0.662) 29%,
-          hsla(0, 0%, 0%, 0.62) 35.3%,
-          hsla(0, 0%, 0%, 0.574) 41.2%,
-          hsla(0, 0%, 0%, 0.525) 47.1%,
-          hsla(0, 0%, 0%, 0.475) 52.9%,
-          hsla(0, 0%, 0%, 0.426) 58.8%,
-          hsla(0, 0%, 0%, 0.38) 64.7%,
-          hsla(0, 0%, 0%, 0.338) 71%,
-          hsla(0, 0%, 0%, 0.302) 77.5%,
-          hsla(0, 0%, 0%, 0.274) 84.5%,
-          hsla(0, 0%, 0%, 0.256) 91.9%,
-          hsla(0, 0%, 0%, 0.25) 100%
-        );
-        h1 {
-            font-size: 4rem;
-        }
-        p {
-            font-size: 1.5rem;
-        }
+    @include black-75-25-gradient-down; 
+    h1 {
+        font-size: 4rem;
+    }
+    p {
+        font-size: 1.5rem;
+    }
 }
