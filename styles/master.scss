@@ -1,15 +1,17 @@
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
 
 $background-color: #000;
+$hover-color: rgb(57, 196, 247);
+$text-color-primary: rgb(242, 242, 242);
 $background-center: no-repeat center center/cover; 
-$home_portrait: '../images/gorkha_alone.jpeg';
-$home_landscape: '../images/fisterra_handstand.jpg';
-$about_portrait: '../images/gorkha_group.jpg';
-$about_landscape: '../images/adventure_collage.png';
-$projects_portrait: '../images/pokhara_friend.jpeg';
-$projects_landscape: '../images/professional_collage.png';
-$contact_portrait: '../images/spain_dog.jpg';
-$contact_landscape: '../images/gorkha.jpg';
+$home_portrait: '../assets/gorkha_alone.jpeg';
+$home_landscape: '../assets/fisterra_handstand.jpg';
+$about_portrait: '../assets/gorkha_group.jpg';
+$about_landscape: '../assets/adventure_collage.png';
+$projects_portrait: '../assets/pokhara_friend.jpeg';
+$projects_landscape: '../assets/professional_collage.png';
+$contact_portrait: '../assets/spain_dog.jpg';
+$contact_landscape: '../assets/gorkha.jpg';
 
 @mixin for-phone-only {
     @media (max-width: 599px) { @content; }
@@ -154,8 +156,8 @@ section#contact {
 
 body {
     font-family: "Fira Code"; 
-    background: #000;
-    color: #ccc;
+    background: $background-color;
+    color: $text-color-primary;
     line-height: 1.6;
     /* height is important to use smooth scroll */
     height: 100vh;
@@ -173,15 +175,16 @@ body {
     scroll-snap-type: y mandatory;
 }
 
+$positions: top, bottom;
 .navbar {
-    /* keeping the navbar at the top of the viewport all the time */
-    position: fixed;
     top: 0;
+    @include black-0-75-gradient-up;
+    
+    position: fixed;
     z-index: 1;
     display: flex;
     width: 100%;
-    height: 60px;
-    @include black-0-75-gradient-up;
+    height: 50px;
     ul {
         display: flex;
         list-style: none;
@@ -193,9 +196,9 @@ body {
             a {
                 text-decoration: none;
                 text-transform: uppercase;
-                color: #fff;
+                color: $text-color-primary;
                 &:hover {
-                    color: #0bf;
+                    color: $hover-color;
                 }
             }
         }
@@ -211,22 +214,22 @@ section {
     width: 100%;
     height: 100vh;
     scroll-snap-align: center;
-    color: #000;
-    text-shadow: 1px 1px rgba(0,0,0,0.2);
 }
 
 .border-div {
     max-width: 50%;
+
     padding: 1rem;
-    color: white;
+    color: $text-color-primary;
+    text-shadow: 1px 1px rgba(0,0,0,0.2);
     border-width: 6px;
     border-style: solid;
     border-color: black;
     border-image: 
-        linear-gradient(
-            to bottom,
-            black,
-            rgba(0,0,0,0)
+    linear-gradient(
+        to bottom,
+        black,
+        rgba(0,0,0,0)
         ) 1 100%;
     border-bottom-style: hidden;
     border-top-style: hidden;
