@@ -1,0 +1,257 @@
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css);
+
+$background-color: #000;
+$hover-color: rgb(57, 196, 247);
+$text-color-primary: rgb(242, 242, 242);
+$background-center: no-repeat center center/cover; 
+$home_portrait: '../assets/gorkha_alone.jpeg';
+$home_landscape: '../assets/fisterra_handstand.jpg';
+$about_portrait: '../assets/spain_dog.jpg';
+$about_landscape: '../assets/studious_collage.png';
+$adventures_portrait: '../assets/kathmandu_kids.jpg';
+$adventures_landscape: '../assets/adventure_collage.png';
+$contact_portrait: '../assets/pokhara_friend.jpeg';
+$contact_landscape: '../assets/gorkha.jpg';
+
+@mixin for-phone-only {
+    @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-portait-only {
+    @media (min-width: 600px) and (max-width: 899px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+}
+@mixin for-tablet-landscape-only {
+    @media (min-width: 900px) and (max-width: 1199px) { @content; }
+}
+@mixin for-desktop-up {
+    @media (min-width: 1200px) { @content; }
+}
+@mixin for-desktop-only {
+    @media (min-width: 1200px) and (max-width: 1799px) { @content; }
+}
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) { @content; }
+}
+@mixin black-0-75-gradient-down {
+    background: 
+        linear-gradient(
+          to bottom,
+          hsla(0, 0%, 0%, 0) 0%,
+          hsla(0, 0%, 0%, 0.01) 8.1%,
+          hsla(0, 0%, 0%, 0.036) 15.5%,
+          hsla(0, 0%, 0%, 0.078) 22.5%,
+          hsla(0, 0%, 0%, 0.132) 29%,
+          hsla(0, 0%, 0%, 0.194) 35.3%,
+          hsla(0, 0%, 0%, 0.264) 41.2%,
+          hsla(0, 0%, 0%, 0.338) 47.1%,
+          hsla(0, 0%, 0%, 0.412) 52.9%,
+          hsla(0, 0%, 0%, 0.486) 58.8%,
+          hsla(0, 0%, 0%, 0.556) 64.7%,
+          hsla(0, 0%, 0%, 0.618) 71%,
+          hsla(0, 0%, 0%, 0.672) 77.5%,
+          hsla(0, 0%, 0%, 0.714) 84.5%,
+          hsla(0, 0%, 0%, 0.74) 91.9%,
+          hsla(0, 0%, 0%, 0.75) 100%
+    );
+}
+@mixin black-0-75-gradient-up {
+    background: 
+        linear-gradient(
+          to top,
+          hsla(0, 0%, 0%, 0) 0%,
+          hsla(0, 0%, 0%, 0.01) 8.1%,
+          hsla(0, 0%, 0%, 0.036) 15.5%,
+          hsla(0, 0%, 0%, 0.078) 22.5%,
+          hsla(0, 0%, 0%, 0.132) 29%,
+          hsla(0, 0%, 0%, 0.194) 35.3%,
+          hsla(0, 0%, 0%, 0.264) 41.2%,
+          hsla(0, 0%, 0%, 0.338) 47.1%,
+          hsla(0, 0%, 0%, 0.412) 52.9%,
+          hsla(0, 0%, 0%, 0.486) 58.8%,
+          hsla(0, 0%, 0%, 0.556) 64.7%,
+          hsla(0, 0%, 0%, 0.618) 71%,
+          hsla(0, 0%, 0%, 0.672) 77.5%,
+          hsla(0, 0%, 0%, 0.714) 84.5%,
+          hsla(0, 0%, 0%, 0.74) 91.9%,
+          hsla(0, 0%, 0%, 0.75) 100%
+    );
+}
+@mixin black-5-25-gradient-down {
+    background: 
+        linear-gradient(
+          to bottom,
+          hsla(0, 0%, 0%, 0.5) 0%,
+          hsla(0, 0%, 0%, 0.497) 8.1%,
+          hsla(0, 0%, 0%, 0.488) 15.5%,
+          hsla(0, 0%, 0%, 0.474) 22.5%,
+          hsla(0, 0%, 0%, 0.456) 29%,
+          hsla(0, 0%, 0%, 0.435) 35.3%,
+          hsla(0, 0%, 0%, 0.412) 41.2%,
+          hsla(0, 0%, 0%, 0.387) 47.1%,
+          hsla(0, 0%, 0%, 0.363) 52.9%,
+          hsla(0, 0%, 0%, 0.338) 58.8%,
+          hsla(0, 0%, 0%, 0.315) 64.7%,
+          hsla(0, 0%, 0%, 0.294) 71%,
+          hsla(0, 0%, 0%, 0.276) 77.5%,
+          hsla(0, 0%, 0%, 0.262) 84.5%,
+          hsla(0, 0%, 0%, 0.253) 91.9%,
+          hsla(0, 0%, 0%, 0.25) 100%
+        );
+}
+@mixin black-75-25-gradient-up {
+    background: 
+        linear-gradient(
+          to top,
+          hsla(0, 0%, 0%, 0.75) 0%,
+          hsla(0, 0%, 0%, 0.744) 8.1%,
+          hsla(0, 0%, 0%, 0.726) 15.5%,
+          hsla(0, 0%, 0%, 0.698) 22.5%,
+          hsla(0, 0%, 0%, 0.662) 29%,
+          hsla(0, 0%, 0%, 0.62) 35.3%,
+          hsla(0, 0%, 0%, 0.574) 41.2%,
+          hsla(0, 0%, 0%, 0.525) 47.1%,
+          hsla(0, 0%, 0%, 0.475) 52.9%,
+          hsla(0, 0%, 0%, 0.426) 58.8%,
+          hsla(0, 0%, 0%, 0.38) 64.7%,
+          hsla(0, 0%, 0%, 0.338) 71%,
+          hsla(0, 0%, 0%, 0.302) 77.5%,
+          hsla(0, 0%, 0%, 0.274) 84.5%,
+          hsla(0, 0%, 0%, 0.256) 91.9%,
+          hsla(0, 0%, 0%, 0.25) 100%
+    );
+}
+@mixin section_background($portrait, $landscape) {
+    @include for-phone-only {
+        background: url($portrait) $background-center;
+    }
+    @include for-tablet-portrait-up {
+        background: url($portrait) $background-center;
+    }
+    @include for-tablet-landscape-up {
+        background: url($landscape) $background-center;
+    }
+}
+section#home {
+    @include section_background($home_portrait, $home_landscape)
+}
+section#about {
+    @include section_background($about_portrait, $about_landscape)
+}
+section#adventures {
+    @include section_background($adventures_portrait, $adventures_landscape)
+}
+section#contact {
+    @include section_background($contact_portrait, $contact_landscape)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Fira Code"; 
+    background: $background-color;
+    color: $text-color-primary;
+    line-height: 1.6;
+    /* height is important to use smooth scroll */
+    height: 100vh;
+    /* removes scrollbars */
+    overflow: hidden;
+}
+a {
+    color: $text-color-primary;
+    text-decoration: none;
+    &:hover {
+        color: $hover-color;
+    }
+}
+.container {
+    width: 100%;
+    height: 100%;
+    /* CSS smoothscroll properties go here */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    /* mandatory snaps to sesction (don't forget section scroll-snapalign */
+    scroll-snap-type: y mandatory;
+}
+
+.navbar {
+    @include for-phone-only {
+        visibility: hidden;
+    }
+    @include black-0-75-gradient-up;
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    ul {
+        display: flex;
+        list-style: none;
+        width: 100%;
+        justify-content: center;
+        li {
+            margin: 0 1rem;
+            padding: 1rem;
+            a {
+                text-decoration: none;
+                text-transform: uppercase;
+                color: $text-color-primary;
+                &:hover {
+                    color: $hover-color;
+                }
+            }
+        }
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+}
+
+.border-div {
+    @include for-phone-only{
+        max-width: 87%;
+        h1 {font-size: 1.6rem;}
+        p {font-size: 1rem;}
+    }
+    @include for-tablet-portrait-up {
+        max-width: 75%;
+        h1 {font-size: 1.6rem;}
+        p {font-size: 1rem;}
+    }
+    @include for-tablet-landscape-up {
+        max-width: 50%;
+        h1 {font-size: 4rem;}
+        p {font-size: 1.5rem;}
+    }
+    padding: 1rem;
+    color: $text-color-primary;
+    text-shadow: 1px 1px rgba(0,0,0,0.2);
+    border-width: 6px;
+    border-style: solid;
+    border-color: black;
+    border-image: 
+    linear-gradient(
+        to bottom,
+        black,
+        rgba(0,0,0,0)
+        ) 1 100%;
+    border-bottom-style: hidden;
+    border-top-style: hidden;
+    @include black-5-25-gradient-down; 
+}
