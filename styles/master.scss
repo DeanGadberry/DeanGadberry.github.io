@@ -12,6 +12,14 @@ $adventures_portrait: '../assets/kathmandu_kids.jpg';
 $adventures_landscape: '../assets/adventure_collage.png';
 $contact_portrait: '../assets/pokhara_friend.jpeg';
 $contact_landscape: '../assets/gorkha.jpg';
+$event_home_portrait: '../assets/pelican.jpeg';
+$event_home_landscape: '../assets/pool.jpeg';
+$event_info_portrait: '../assets/pool.jpeg';
+$event_info_landscape: '../assets/plants.jpeg';
+$event_contact_portrait: '../assets/plants.jpeg';
+$event_contact_landscape: '../assets/pelican.jpeg';
+$whos_dean_portait: '../assets/roadster-cropped.png';
+$whos_dean_landscape: '../assets/roadster.jpeg';
 
 @mixin for-phone-only {
     @media (max-width: 599px) { @content; }
@@ -147,6 +155,18 @@ section#adventures {
 }
 section#contact {
     @include section_background($contact_portrait, $contact_landscape)
+}
+section#event-home {
+    @include section_background($event_home_portrait, $event_home_landscape)
+}
+section#event-info {
+    @include section_background($event_info_portrait, $event_info_landscape)
+}
+section#event-contact {
+    @include section_background($event_contact_portrait, $event_contact_landscape)
+}
+section#whos-dean {
+    @include section_background($whos_dean_portrait, $whos_dean_landscape)
 }
 
 * {
