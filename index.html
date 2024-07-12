@@ -4,76 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="Not a Professional Stuntman" />
-    <meta property="og:image" content="https://www.deangadberry.com/assets/fallingInIceBoomerang.gif" />
+    <meta property="og:title" content="Dean Gadberry Contact" />
+    <meta property="og:image" content="https://www.deangadberry.com/assets/cornhole-sinker-boomerang.gif" />
     <title>Dean Gadberry</title>
-    <link rel="stylesheet" href="styles/master.css">
     <link rel="icon" href="assets/favicon.ico">
+<style>
+     @font-face { font-family: glacial-indifference; src: url('static/GlacialIndifference-Regular.otf'); } 
+      h1 {
+         font-family: glacial-indifference
+      }
+     @font-face { font-family: montserrat; src: url('static/Montserrat-Regular.ttf'); } 
+      h1 {
+         font-family: montserrat
+      }
+    @media (max-width: 599px) {
+      .divvy-div-div {
+        max-width: 87%;
+      }
+      .divvy-div-div h1 {
+        font-size: 1.6rem;
+      }
+      .divvy-div-div img {
+        max-width: 75%;
+      }
+      .divvy-div-div p {
+        font-size: 1rem;
+      }
+    }
+    @media (min-width: 600px) {
+      .divvy-div-div {
+        max-width: 75%;
+      }
+      .divvy-div-div h1 {
+        font-size: 1.6rem;
+      }
+      .divvy-div-div img {
+        max-width: 75%;
+      }
+      .divvy-div-div p {
+        font-size: 1rem;
+      }
+    }
+    @media (min-width: 900px) {
+      .divvy-div-div {
+        max-width: 50%;
+      }
+      .divvy-div-div h1 {
+        font-size: 4rem;
+      }
+      .divvy-div-div p {
+        font-size: 1.5rem;
+      }
+    }
+    p {
+      font-family: glacial-indifference;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #8C8CF7;
+    }
+</style>
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <ul>
-                <a href="#home"><li>HOME</li></a>
-                <a href="#about"><li>ABOUT</li></a>
-                <a href="#adventures"><li>ADVENTURES</li></a>
-                <a href="#contact"><li>CONTACT</li></a>
-                <a href="https://blog.deangadberry.com"><li>BLOG</li></a>
-            </ul>
-        </nav>
-
-        <a href="#about"> <!-- This makes the entire front page clickable -->
-        <section id="home">
-            <div class="border-div">
-               <h1>Welcome</h1>
-               <p>...every blessing.</p>
-            </div> 
-        </section>
-        </a>
-
-        <section id="about">
-            <div class="border-div">
-                <h1>About</h1>
-                <p>I am an adventurous follower of Jesus, passionate about people, music and software. </p>
-
-                <!--
-                My dream is to live in the <a href="https://joshuaproject.net/resources/articles/10_40_window">10/40 window</a> and explore the world.</p>
-                    maybe add an interactive map someday:
-                    https://leafletjs.com/
-                -->
-                <br>
-                <p>I am currently studying for a degree in computer science, and working with <a href="https://garverusa.com/about">Garver USA</a> in DFW.</p>
-            </div>
-        </section>
-
-        <section id="adventures">
-            <div class="border-div">
-                <h1>Adventures</h1>
-                <p>
-                    I live in the USA, yet, I have spent time in Spain, Australia, Nepal, Dubai, and Lebanon. 
-                    I have met many wonderful people, and frequently ask them to get on my shoulders. 
-                    </p><br><p>
-                    I have had amazing adventures, meeting people from places I never expected.
-                    <!--
-                        I have had opportunities to meet people from many different cultures and walks of life. 
-                    -->
-                    The Creator has blessed me and taught me to love others as he loves me.
-                </p>
-            </div> 
-        </section>
-
-        <section id="contact">
-            <div class="border-div">
-                <h1>Contact</h1>
-                <p><a href="https://github.com/DeanGadberry" target="_blank" rel="noreferer noopener">GitHub.com/DeanGadberry</a></p>
-                <p><a href="mailto:dean@deangadberry.com" target="_blank" rel="noreferer noopener">Dean@DeanGadberry.com</a></p>
-                <p><a href="tel:+14694200771" target="_blank" rel="noreferer noopener">(469)420-0771</a></p>
-                <p><a href="cv.pdf" target="_blank" rel="noreferer noopener">Curriculum Vitae</a></p>
-                <p><a href="https://blog.deangadberry.com" target="_blank" rel="noreferer noopener">Blog</a></p>
-            </div> 
-        </section>
-
+    <div style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+    ">
+        <div class="divvy-div-div">
+        <img 
+            src="assets/dg-large-initials.png" 
+            alt="Dean Gadberry Logo" />
+        <p><a href="mailto:dean@deangadberry.com" target="_blank" rel="noreferer noopener">Dean@DeanGadberry.com</a></p>
+        <p><a href="tel:+14694200771" target="_blank" rel="noreferer noopener">469-420-0771</a></p>
+        <p><a href="https://github.com/DeanGadberry" target="_blank" rel="noreferer noopener">GitHub.com/DeanGadberry</a></p>
+        <p><a href="resume.pdf" target="_blank" rel="noreferer noopener">Resume</a></p>
+        <!--<p><a href="https://blog.deangadberry.com" target="_blank" rel="noreferer noopener">Blog</a></p>
+        -->
+    </div>
     </div>
 </body>
 </html>
