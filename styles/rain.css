@@ -1,0 +1,67 @@
+/* Shared "falling" background effect used on the homepage (photos) and
+   the books page (cover cards). See static/rain.js for the element setup
+   and the hover interaction (pause + zoom + push neighbors aside). */
+
+.rain {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.drop {
+    position: absolute;
+    top: 0;
+    left: var(--left);
+    width: var(--size);
+    animation: fall var(--dur) linear var(--delay) infinite;
+    will-change: transform;
+    pointer-events: auto;
+}
+
+.drop-push {
+    transition: transform 0.5s ease;
+}
+
+.drop-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 10px 24px -10px rgba(28, 36, 32, 0.45);
+    opacity: 0.8;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+    transform: scale(1) rotate(var(--rot));
+}
+
+.drop.hovered {
+    z-index: 5;
+    animation-play-state: paused;
+}
+
+.drop.hovered .drop-img {
+    transform: scale(1.7) rotate(0deg);
+    box-shadow: 0 24px 48px -16px rgba(28, 36, 32, 0.55);
+    opacity: 1;
+}
+
+.drop.pushed {
+    animation-play-state: paused;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-20vh);
+    }
+    to {
+        transform: translateY(120vh);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drop {
+        animation: none;
+        top: 8vh;
+    }
+}

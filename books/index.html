@@ -7,60 +7,98 @@
     <meta property="og:title" content="Dean's List of Books" />
     <title>Books</title>
     <link rel="icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="../styles/rain.css">
 <style>
-     @font-face { 
-        font-family: glacial-indifference; 
-        src: url('../static/GlacialIndifference-Regular.otf'); 
-     } 
-     @font-face { 
-        font-family: montserrat; 
-        src: url('../static/Montserrat-Regular.ttf'); 
-     } 
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Regular.ttf') format('truetype');
+        font-weight: 400;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Bold.ttf') format('truetype');
+        font-weight: 700;
+     }
+
+     :root {
+        --ink: #1c2420;
+        --bg: #f6f3ec;
+     }
 
      html, body {
          margin: 0;
          padding: 0;
          width: 100%;
          min-height: 100%;
-         background-color: #ffffff;
+         background-color: var(--bg);
+         color: var(--ink);
      }
 
-     /* This centers the container vertically and horizontally */
      body {
          display: flex;
          align-items: center;
          justify-content: center;
          box-sizing: border-box;
-         padding: 30px 15px; /* Gives top/bottom safety padding on small screens */
+         padding: 30px 15px;
      }
 
-     .container {
+     .page {
+         position: relative;
+         z-index: 1;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         pointer-events: none;
+     }
+
+     .card {
+         pointer-events: auto;
          width: 100%;
          max-width: 600px;
          text-align: left;
-         font-family: glacial-indifference, sans-serif;
+         font-family: 'EB Garamond', Georgia, serif;
+         background: rgba(253, 251, 247, 0.22);
+         backdrop-filter: blur(12px) saturate(140%);
+         -webkit-backdrop-filter: blur(12px) saturate(140%);
+         border: 1px solid rgba(255, 255, 255, 0.6);
+         border-radius: 28px;
+         box-shadow: 0 40px 80px -30px rgba(28, 36, 32, 0.35), 0 2px 10px rgba(28, 36, 32, 0.08);
+         padding: 40px 44px;
+         box-sizing: border-box;
+     }
+
+     .back-link {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.95rem;
      }
 
      .logo {
          display: block;
          margin: 0 auto 15px auto;
-         max-width: 75px; /* Clean, small logo footprint */
+         width: 75px;
          height: auto;
      }
 
      h3 {
-         font-family: montserrat, sans-serif;
-         font-weight: 600;
+         font-family: 'EB Garamond', Georgia, serif;
+         font-weight: 700;
+         color: var(--ink);
          font-size: 1.3rem;
          margin: 20px 0 8px 0;
-         border-bottom: 1px solid #ddd;
+         border-bottom: 1px solid rgba(28, 36, 32, 0.2);
          padding-bottom: 3px;
      }
 
      .sales-list {
          margin: 0;
          padding-left: 24px;
-         font-size: 1.1rem; /* Clear, readable desktop size */
+         font-size: 1.1rem;
          line-height: 1.45;
      }
 
@@ -69,26 +107,29 @@
      }
 
      a {
-         color: black;
+         color: var(--ink);
          text-decoration: none;
+         font-weight: 600;
      }
 
      a:hover {
          color: #8C8CF7;
      }
 
-     /* Fix specifically for 360x780 and smaller mobile viewports */
      @media (max-width: 400px) {
          body {
-             align-items: flex-start; /* Prevents content launching off the top if it overflows */
+             align-items: flex-start;
              padding: 20px 15px;
+         }
+         .card {
+            padding: 28px 24px;
          }
          h3 {
              font-size: 1.15rem;
              margin: 15px 0 6px 0;
          }
          .sales-list {
-             font-size: 0.95rem; /* Scales perfectly to fit the 780px viewport height */
+             font-size: 0.95rem;
              line-height: 1.35;
          }
          .sales-list li {
@@ -98,10 +139,14 @@
 </style>
 </head>
 <body>
+    <div class="rain" id="rain" aria-hidden="true"></div>
 
-    <div class="container">
+    <div class="page">
+    <div class="card">
 
-        <img src="../assets/dg-large-initials.png" alt="Dean Gadberry Logo" class="logo" />
+        <a class="back-link" href="../">&larr; Back</a>
+
+        <img class="logo" src="../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
 
         <h3>Books</h3>
         <ol class="sales-list">
@@ -172,6 +217,29 @@
         </ol>
 
     </div>
+    </div>
 
+    <script src="../static/rain.js"></script>
+    <script>
+        initRain({
+            containerId: 'rain',
+            images: [
+                '../assets/rain/cover-1.jpg',
+                '../assets/rain/cover-2.jpg',
+                '../assets/rain/cover-3.jpg',
+                '../assets/rain/cover-4.jpg',
+                '../assets/rain/cover-5.jpg',
+                '../assets/rain/cover-6.jpg',
+                '../assets/rain/cover-7.jpg',
+                '../assets/rain/cover-8.jpg',
+                '../assets/rain/cover-9.jpg'
+            ],
+            count: 9,
+            minSize: 60,
+            maxSize: 100,
+            minDur: 65,
+            maxDur: 120
+        });
+    </script>
 </body>
 </html>
