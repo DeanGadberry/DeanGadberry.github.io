@@ -21,8 +21,26 @@
             return min + Math.random() * (max - min);
         }
 
+        function shuffled(arr) {
+            var a = arr.slice();
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+            }
+            return a;
+        }
+
+        // Draw without repeats until the whole set has been used once,
+        // then reshuffle - so with count <= images.length every photo
+        // gets used, and duplicates only appear once the pool is spent.
+        var pool = [];
+        function nextImage() {
+            if (pool.length === 0) pool = shuffled(images);
+            return pool.pop();
+        }
+
         for (var i = 0; i < count; i++) {
-            var src = images[i % images.length];
+            var src = nextImage();
             var drop = document.createElement('div');
             drop.className = 'drop';
             var size = rand(minSize, maxSize);
