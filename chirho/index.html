@@ -52,22 +52,15 @@
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 52px 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 52px 44px;
             margin-bottom: 40px;
-        }
-        .book-group figcaption {
-            margin-top: 16px;
-            font-size: 0.95rem;
-        }
-        .tile-row {
-            display: flex;
-            gap: 18px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .card-flip {
             perspective: 1400px;
-            flex: 1 1 0;
-            min-width: 0;
         }
         .card-flip-inner {
             position: relative;
@@ -223,74 +216,42 @@
     <p class="hint">Click a card to zoom in for a closer look.</p>
 
     <div class="gallery">
-        <div class="book-group">
-            <div class="tile-row">
-                <div class="card-flip" tabindex="0" aria-label="Psalm 1, front and back">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/back/psalm_1.webp" alt="Psalm 1 card back" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/front/psalm_1.webp" alt="Psalm 1 card front" loading="lazy"></div>
-                    </div>
-                </div>
-                <div class="card-flip" tabindex="0" aria-label="Psalm 1, two example cards">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/front/psalm_1.webp" alt="Psalm 1 card 1" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/card2/psalm_1.webp" alt="Psalm 1 card 2" loading="lazy"></div>
-                    </div>
+        <figure>
+            <div class="card-flip" tabindex="0" aria-label="Psalm 1, two example cards">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/front/psalm_1.webp" alt="Psalm 1 card 1" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/card2/psalm_1.webp" alt="Psalm 1 card 2" loading="lazy"></div>
                 </div>
             </div>
             <figcaption>PSALM 1</figcaption>
-        </div>
-        <div class="book-group">
-            <div class="tile-row">
-                <div class="card-flip" tabindex="0" aria-label="1 John, front and back">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="lazy"></div>
-                    </div>
-                </div>
-                <div class="card-flip" tabindex="0" aria-label="1 John, two example cards">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/front/1_john.webp" alt="1 John card 1" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/card2/1_john.webp" alt="1 John card 2" loading="lazy"></div>
-                    </div>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0" aria-label="1 John, front and back">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="lazy"></div>
                 </div>
             </div>
             <figcaption>1 JOHN</figcaption>
-        </div>
-        <div class="book-group">
-            <div class="tile-row">
-                <div class="card-flip" tabindex="0" aria-label="Colossians, front and back">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/back/colossians.webp" alt="Colossians card back" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/front/colossians.webp" alt="Colossians card front" loading="lazy"></div>
-                    </div>
-                </div>
-                <div class="card-flip" tabindex="0" aria-label="Colossians, two example cards">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/front/colossians.webp" alt="Colossians card 1" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/card2/colossians.webp" alt="Colossians card 2" loading="lazy"></div>
-                    </div>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0" aria-label="Colossians, two example cards">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/pair/colossians_a.webp" alt="Colossians card 12" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/pair/colossians_b.webp" alt="Colossians card 13" loading="lazy"></div>
                 </div>
             </div>
             <figcaption>COLOSSIANS</figcaption>
-        </div>
-        <div class="book-group">
-            <div class="tile-row">
-                <div class="card-flip" tabindex="0" aria-label="Hebrews 11, front and back">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="lazy"></div>
-                    </div>
-                </div>
-                <div class="card-flip" tabindex="0" aria-label="Hebrews 11, two example cards">
-                    <div class="card-flip-inner">
-                        <div class="card-face card-back"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card 1" loading="lazy"></div>
-                        <div class="card-face card-front"><img src="images/card2/hebrews_11.webp" alt="Hebrews 11 card 2" loading="lazy"></div>
-                    </div>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0" aria-label="Hebrews 11, front and back">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="lazy"></div>
                 </div>
             </div>
             <figcaption>HEBREWS 11</figcaption>
-        </div>
+        </figure>
     </div>
 
     <p class="note">
