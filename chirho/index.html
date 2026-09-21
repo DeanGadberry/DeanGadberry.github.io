@@ -365,15 +365,33 @@
         var ANG = { TR: 39.29, TL: -39.29, BR: -39.29, BL: 39.29 };
         var UNIT = 550;
         var DOWN_DIST = 2.8; // click-down distance (30% less than the original 4)
-        var UP_DIST = 2;     // rubber-band overshoot past center (unchanged)
         var HOLD = 350;      // ms to hang at the flat horizontal starting pose before rotating in
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
         function clamp01(t) { return Math.max(0, Math.min(1, t)); }
-        function bounceOffset(t) {
-            if (t <= 0.4) return DOWN_DIST * easeOutCubic(t / 0.4);
-            if (t <= 0.7) return DOWN_DIST + easeOutCubic((t - 0.4) / 0.3) * (-UP_DIST - DOWN_DIST);
-            return -UP_DIST + easeOutCubic((t - 0.7) / 0.3) * UP_DIST;
+
+        // Click, not bounce: a quick decisive press down, then a real
+        // damped-spring release back to rest -- one small overshoot, not a
+        // rubber-band oscillation. Same damped-harmonic-oscillator model
+        // iOS springs / Framer Motion / Material's spring token use, tuned
+        // high-damping for a crisp settle.
+        var PRESS_MS = 130;
+        var SPRING_OMEGA0 = 14.4;
+        var SPRING_ZETA = 0.8;
+        function springDecay(tSec) {
+            if (SPRING_ZETA < 1) {
+                var wd = SPRING_OMEGA0 * Math.sqrt(1 - SPRING_ZETA * SPRING_ZETA);
+                return Math.exp(-SPRING_ZETA * SPRING_OMEGA0 * tSec) *
+                    (Math.cos(wd * tSec) + (SPRING_ZETA * SPRING_OMEGA0 / wd) * Math.sin(wd * tSec));
+            }
+            return (1 + SPRING_OMEGA0 * tSec) * Math.exp(-SPRING_OMEGA0 * tSec);
+        }
+        function bounceOffsetMs(tMsIntoPhase) {
+            if (tMsIntoPhase <= PRESS_MS) {
+                return DOWN_DIST * easeOutQuad(tMsIntoPhase / PRESS_MS);
+            }
+            return DOWN_DIST * springDecay((tMsIntoPhase - PRESS_MS) / 1000);
         }
 
         var rhoGroup = document.getElementById('logoRhoGroup');
@@ -410,14 +428,13 @@
         function render(tMsRaw) {
             var tMs = Math.max(0, tMsRaw - HOLD);
             var p1 = clamp01(tMs / UNIT);
-            var p2 = clamp01((tMs - UNIT) / UNIT);
             var p3 = clamp01((tMs - 2 * UNIT) / UNIT);
 
             var rotProgress = easeOutCubic(p1);
             var dashOffset = loopLen * (1 - rotProgress);
             loopPath.style.strokeDashoffset = dashOffset;
 
-            var yOffset = tMs >= UNIT ? bounceOffset(p2) : 0;
+            var yOffset = tMs >= UNIT ? bounceOffsetMs(tMs - UNIT) : 0;
             var stemAngle = -90 * (1 - rotProgress);
             rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ') rotate(' + stemAngle + ')');
 
