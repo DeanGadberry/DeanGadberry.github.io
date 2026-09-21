@@ -282,17 +282,27 @@
             tile.addEventListener('mouseleave', function () { tile.dataset.flipped = 'false'; });
 
             tile.addEventListener('click', function () {
+                var backImg = tile.querySelector('.card-back img');
+                var frontImg = tile.querySelector('.card-front img');
+                if (!backImg || !frontImg) return;
+                lightbox.dataset.backSrc = backImg.src;
+                lightbox.dataset.backAlt = backImg.alt;
+                lightbox.dataset.frontSrc = frontImg.src;
+                lightbox.dataset.frontAlt = frontImg.alt;
                 var showFront = tile.dataset.flipped === 'true';
-                var face = showFront
-                    ? tile.querySelector('.card-front img')
-                    : tile.querySelector('.card-back img');
-                if (!face) return;
-                lightboxImg.src = face.src;
-                lightboxImg.alt = face.alt;
-                lightboxCaption.textContent = face.alt;
+                showLightboxFace(showFront ? 'front' : 'back');
                 lightbox.classList.add('active');
             });
         });
+
+        function showLightboxFace(which) {
+            var src = which === 'front' ? lightbox.dataset.frontSrc : lightbox.dataset.backSrc;
+            var alt = which === 'front' ? lightbox.dataset.frontAlt : lightbox.dataset.backAlt;
+            lightbox.dataset.showing = which;
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightboxCaption.textContent = alt + ' — click to flip';
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
@@ -300,7 +310,12 @@
 
         closeBtn.addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', function (e) {
-            if (!lightboxFrame.contains(e.target)) closeLightbox();
+            if (!lightboxFrame.contains(e.target)) {
+                closeLightbox();
+                return;
+            }
+            var other = lightbox.dataset.showing === 'front' ? 'back' : 'front';
+            showLightboxFace(other);
         });
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeLightbox();
