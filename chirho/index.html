@@ -189,7 +189,9 @@
 <div class="wrap">
     <header>
         <svg class="logo" viewBox="82 284 47 26" xmlns="http://www.w3.org/2000/svg">
-            <text x="98.625" y="300" text-anchor="end">CHI</text>
+            <clipPath id="logoClipCHI"><rect id="logoClipCHIRect" x="103.5" y="288" width="0" height="16"/></clipPath>
+            <clipPath id="logoClipRHO"><rect id="logoClipRHORect" x="103.5" y="288" width="0" height="16"/></clipPath>
+            <text id="logoTextCHI" x="98.625" y="300" text-anchor="end" clip-path="url(#logoClipCHI)">CHI</text>
             <g transform="translate(103.5,297.56) scale(0.325)" fill="none">
                 <g id="logoRhoGroup">
                     <line x1="0" y1="-32" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
@@ -223,7 +225,7 @@
                     </g></g>
                 </g></g>
             </g>
-            <text x="108.375" y="300" text-anchor="start">RHO</text>
+            <text id="logoTextRHO" x="108.375" y="300" text-anchor="start" clip-path="url(#logoClipRHO)">RHO</text>
         </svg>
         <h1>CHI-RHO CARDS</h1>
     </header>
@@ -355,17 +357,23 @@
     (function () {
         // Logo build-on animation: the P stem rotates up and draws in its
         // loop, clicks down and rubber-bands back to center, then the X's
-        // four legs fan out from the stem with their tick marks growing in.
+        // four legs fan out from the stem -- foot tick and CHI/RHO growing
+        // in together with them, not at the bounce. CHI/RHO unroll outward
+        // from the stem's own center line (where the collapsed chi legs
+        // also start), at a straight constant-rate pull, not eased like the
+        // leg rotation -- like drawing out a tape measure.
         var ANG = { TR: 39.29, TL: -39.29, BR: -39.29, BL: 39.29 };
         var UNIT = 550;
-        var PULL_DIST = 4;
+        var DOWN_DIST = 2.8; // click-down distance (30% less than the original 4)
+        var UP_DIST = 2;     // rubber-band overshoot past center (unchanged)
+        var HOLD = 350;      // ms to hang at the flat horizontal starting pose before rotating in
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
         function clamp01(t) { return Math.max(0, Math.min(1, t)); }
-        function bounceCurve(t) {
-            if (t <= 0.4) return easeOutCubic(t / 0.4);
-            if (t <= 0.7) return 1 + easeOutCubic((t - 0.4) / 0.3) * (-1.5);
-            return -0.5 + easeOutCubic((t - 0.7) / 0.3) * 0.5;
+        function bounceOffset(t) {
+            if (t <= 0.4) return DOWN_DIST * easeOutCubic(t / 0.4);
+            if (t <= 0.7) return DOWN_DIST + easeOutCubic((t - 0.4) / 0.3) * (-UP_DIST - DOWN_DIST);
+            return -UP_DIST + easeOutCubic((t - 0.7) / 0.3) * UP_DIST;
         }
 
         var rhoGroup = document.getElementById('logoRhoGroup');
@@ -387,7 +395,20 @@
             BR: document.getElementById('logoLegBR-tickscale'), BL: document.getElementById('logoLegBL-tickscale'),
         };
 
-        function render(tMs) {
+        var chiBBox = document.getElementById('logoTextCHI').getBBox();
+        var rhoBBox = document.getElementById('logoTextRHO').getBBox();
+        var clipCHIRect = document.getElementById('logoClipCHIRect');
+        var clipRHORect = document.getElementById('logoClipRHORect');
+        clipCHIRect.setAttribute('y', chiBBox.y - 1);
+        clipCHIRect.setAttribute('height', chiBBox.height + 2);
+        clipRHORect.setAttribute('y', rhoBBox.y - 1);
+        clipRHORect.setAttribute('height', rhoBBox.height + 2);
+        var CENTER_X = 103.5;
+        var CHI_REACH = CENTER_X - chiBBox.x;
+        var RHO_REACH = (rhoBBox.x + rhoBBox.width) - CENTER_X;
+
+        function render(tMsRaw) {
+            var tMs = Math.max(0, tMsRaw - HOLD);
             var p1 = clamp01(tMs / UNIT);
             var p2 = clamp01((tMs - UNIT) / UNIT);
             var p3 = clamp01((tMs - 2 * UNIT) / UNIT);
@@ -395,28 +416,35 @@
             var rotProgress = easeOutCubic(p1);
             var dashOffset = loopLen * (1 - rotProgress);
             loopPath.style.strokeDashoffset = dashOffset;
-            var footPop = clamp01((p1 - 0.85) / 0.15);
-            footScale.setAttribute('transform', 'scale(' + footPop + ')');
 
-            var yOffset = tMs >= UNIT ? PULL_DIST * bounceCurve(p2) : 0;
+            var yOffset = tMs >= UNIT ? bounceOffset(p2) : 0;
             var stemAngle = -90 * (1 - rotProgress);
             rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ') rotate(' + stemAngle + ')');
 
             var legsVisible = tMs >= 2 * UNIT;
             var legProgress = easeOutCubic(p3);
+            footScale.setAttribute('transform', 'scale(' + legProgress + ')');
             ['TR', 'TL', 'BR', 'BL'].forEach(function (key) {
                 legOuter[key].style.opacity = legsVisible ? 1 : 0;
                 legRot[key].setAttribute('transform', 'rotate(' + (ANG[key] * legProgress) + ')');
                 legTickScale[key].setAttribute('transform', 'scale(' + legProgress + ')');
             });
+
+            var textProgress = p3;
+            var chiW = CHI_REACH * textProgress;
+            clipCHIRect.setAttribute('x', CENTER_X - chiW);
+            clipCHIRect.setAttribute('width', chiW);
+            var rhoW = RHO_REACH * textProgress;
+            clipRHORect.setAttribute('x', CENTER_X);
+            clipRHORect.setAttribute('width', rhoW);
         }
 
-        var TOTAL = 3 * UNIT + 200;
+        var TOTAL = HOLD + 3 * UNIT + 200;
         var startTime = null;
         function tick(now) {
             if (startTime === null) startTime = now;
             var elapsed = now - startTime;
-            render(Math.min(elapsed, 3 * UNIT));
+            render(Math.min(elapsed, HOLD + 3 * UNIT));
             if (elapsed < TOTAL) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
