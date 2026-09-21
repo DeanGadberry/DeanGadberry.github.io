@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Chi-Rho Cards" />
     <meta property="og:description" content="Pocket-sized scripture memory cards." />
-    <meta property="og:image" content="https://deangadberry.github.io/chirho/images/chi-rho-logo.png" />
+    <meta property="og:image" content="https://deangadberry.github.io/chirho/images/front/psalm_1.webp" />
     <title>Chi-Rho Cards</title>
     <link rel="icon" href="../assets/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +24,11 @@
             flex-direction: column;
             align-items: center;
         }
-        .wrap { max-width: 900px; width: 100%; text-align: center; }
+        .wrap { max-width: 1040px; width: 100%; text-align: center; }
         header { padding-top: 56px; }
-        .logo { width: 220px; height: auto; margin: 0 auto 12px; display: block; }
+        .logo { width: 260px; height: auto; margin: 0 auto 16px; display: block; }
+        .logo text { font: 600 6.5px 'EB Garamond', serif; letter-spacing: .8px; fill: #4C6A7D; }
+        .logo path, .logo line { stroke: #4C6A7D; }
         h1 {
             font-size: 1.4rem;
             letter-spacing: 2px;
@@ -38,29 +40,66 @@
             font-size: 1.15rem;
             line-height: 1.7;
             max-width: 620px;
-            margin: 0 auto 56px;
+            margin: 0 auto 20px;
             color: #333;
+        }
+        .hint {
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            color: #999;
+            font-style: italic;
+            margin: 0 0 48px;
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 34px;
             margin-bottom: 40px;
         }
-        figure { margin: 0; }
-        figure img {
+        .card-flip {
+            perspective: 1400px;
+        }
+        .card-flip-inner {
+            position: relative;
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 2px 14px rgba(0,0,0,0.12);
+            aspect-ratio: 1200 / 1680;
+            transform-style: preserve-3d;
+            transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+        .card-flip:hover .card-flip-inner,
+        .card-flip:focus-within .card-flip-inner {
+            transform: translateY(-10px) scale(1.045) rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+            transition: box-shadow 0.7s ease;
+        }
+        .card-flip:hover .card-face,
+        .card-flip:focus-within .card-face {
+            box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+        }
+        .card-face img {
+            width: 100%;
+            height: 100%;
             display: block;
+            object-fit: cover;
+        }
+        .card-front {
+            transform: rotateY(180deg);
         }
         figcaption {
-            margin-top: 10px;
+            margin-top: 14px;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             color: #666;
         }
+        figure { margin: 0; }
         .note {
             font-size: 0.9rem;
             color: #888;
@@ -75,7 +114,21 @@
 <body>
 <div class="wrap">
     <header>
-        <img class="logo" src="images/chi-rho-logo.png" alt="Chi-Rho Cards logo">
+        <svg class="logo" viewBox="82 284 47 26" xmlns="http://www.w3.org/2000/svg">
+            <text x="98.625" y="300" text-anchor="end">CHI</text>
+            <g transform="translate(103.5,297.56) scale(0.325)" fill="none">
+                <line x1="-18" y1="-22" x2="18" y2="22" stroke-width="2" stroke-linecap="round" />
+                <line x1="-18" y1="22" x2="18" y2="-22" stroke-width="2" stroke-linecap="round" />
+                <line x1="-21" y1="-20" x2="-15" y2="-24" stroke-width="1.6" stroke-linecap="round" />
+                <line x1="15" y1="24" x2="21" y2="20" stroke-width="1.6" stroke-linecap="round" />
+                <line x1="-21" y1="20" x2="-15" y2="24" stroke-width="1.6" stroke-linecap="round" />
+                <line x1="15" y1="-24" x2="21" y2="-20" stroke-width="1.6" stroke-linecap="round" />
+                <line x1="0" y1="-32" x2="0" y2="28" stroke-width="2" stroke-linecap="round" />
+                <line x1="-5" y1="28" x2="5" y2="28" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M 0,-32 C 14,-32 14,-10 0,-10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <text x="108.375" y="300" text-anchor="start">RHO</text>
+        </svg>
         <h1>CHI-RHO CARDS</h1>
     </header>
 
@@ -86,16 +139,81 @@
         an early preview of the design; more books, translations, and formats
         are on the way.
     </p>
+    <p class="hint">Hover a card to see the front.</p>
 
     <div class="gallery">
-        <figure><img src="images/1_peter.png" alt="1 Peter card preview"><figcaption>1 PETER</figcaption></figure>
-        <figure><img src="images/james.png" alt="James card preview"><figcaption>JAMES</figcaption></figure>
-        <figure><img src="images/colossians.png" alt="Colossians card preview"><figcaption>COLOSSIANS</figcaption></figure>
-        <figure><img src="images/1_john.png" alt="1 John card preview"><figcaption>1 JOHN</figcaption></figure>
-        <figure><img src="images/sermon_on_the_mount.png" alt="Sermon on the Mount card preview"><figcaption>SERMON ON THE MOUNT</figcaption></figure>
-        <figure><img src="images/psalm_1.png" alt="Psalm 1 card preview"><figcaption>PSALM 1</figcaption></figure>
-        <figure><img src="images/hebrews_11.png" alt="Hebrews 11 card preview"><figcaption>HEBREWS 11</figcaption></figure>
-        <figure><img src="images/exodus_20.png" alt="Exodus 20 card preview"><figcaption>EXODUS 20</figcaption></figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/1_peter.webp" alt="1 Peter card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/1_peter.webp" alt="1 Peter card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>1 PETER</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/james.webp" alt="James card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/james.webp" alt="James card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>JAMES</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/colossians.webp" alt="Colossians card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/colossians.webp" alt="Colossians card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>COLOSSIANS</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>1 JOHN</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/sermon_on_the_mount.webp" alt="Sermon on the Mount card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/sermon_on_the_mount.webp" alt="Sermon on the Mount card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>SERMON ON THE MOUNT</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/psalm_1.webp" alt="Psalm 1 card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/psalm_1.webp" alt="Psalm 1 card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>PSALM 1</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>HEBREWS 11</figcaption>
+        </figure>
+        <figure>
+            <div class="card-flip" tabindex="0">
+                <div class="card-flip-inner">
+                    <div class="card-face card-back"><img src="images/back/exodus_20.webp" alt="Exodus 20 card back" loading="lazy"></div>
+                    <div class="card-face card-front"><img src="images/front/exodus_20.webp" alt="Exodus 20 card front" loading="lazy"></div>
+                </div>
+            </div>
+            <figcaption>EXODUS 20</figcaption>
+        </figure>
     </div>
 
     <p class="note">
