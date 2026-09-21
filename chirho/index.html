@@ -402,7 +402,7 @@
             var stemAngle = -90 * (1 - rotProgress);
             rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ') rotate(' + stemAngle + ')');
 
-            var legsVisible = tMs >= UNIT;
+            var legsVisible = tMs >= 2 * UNIT;
             var legProgress = easeOutCubic(p3);
             ['TR', 'TL', 'BR', 'BL'].forEach(function (key) {
                 legOuter[key].style.opacity = legsVisible ? 1 : 0;
