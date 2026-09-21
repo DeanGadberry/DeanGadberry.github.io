@@ -191,15 +191,37 @@
         <svg class="logo" viewBox="82 284 47 26" xmlns="http://www.w3.org/2000/svg">
             <text x="98.625" y="300" text-anchor="end">CHI</text>
             <g transform="translate(103.5,297.56) scale(0.325)" fill="none">
-                <line x1="-18" y1="-22" x2="18" y2="22" stroke-width="2" stroke-linecap="round" />
-                <line x1="-18" y1="22" x2="18" y2="-22" stroke-width="2" stroke-linecap="round" />
-                <line x1="-16.097" y1="-25.043" x2="-21.360" y2="-20.737" stroke-width="2" stroke-linecap="round" />
-                <line x1="16.097" y1="25.043" x2="21.360" y2="20.737" stroke-width="2" stroke-linecap="round" />
-                <line x1="-21.360" y1="20.737" x2="-16.097" y2="25.043" stroke-width="2" stroke-linecap="round" />
-                <line x1="21.360" y1="-20.737" x2="16.097" y2="-25.043" stroke-width="2" stroke-linecap="round" />
-                <line x1="0" y1="-32" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
-                <line x1="-3.4" y1="29.575" x2="3.4" y2="29.575" stroke-width="2" stroke-linecap="round" />
-                <path d="M 0,-32 C 14,-32 14,-13.05 0,-13.05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <g id="logoRhoGroup">
+                    <line x1="0" y1="-32" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
+                    <g id="logoFootTickWrap" transform="translate(0,29.575)"><g id="logoFootTickScale">
+                        <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
+                    </g></g>
+                    <path id="logoLoop" d="M 0,-32 C 14,-32 14,-13.05 0,-13.05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <g id="logoLegTR"><g id="logoLegTR-rot">
+                    <line x1="0" y1="0" x2="0" y2="-28.425" stroke-width="2" stroke-linecap="round" />
+                    <g transform="translate(0,-29.575)"><g id="logoLegTR-tickscale">
+                        <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
+                    </g></g>
+                </g></g>
+                <g id="logoLegTL"><g id="logoLegTL-rot">
+                    <line x1="0" y1="0" x2="0" y2="-28.425" stroke-width="2" stroke-linecap="round" />
+                    <g transform="translate(0,-29.575)"><g id="logoLegTL-tickscale">
+                        <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
+                    </g></g>
+                </g></g>
+                <g id="logoLegBR"><g id="logoLegBR-rot">
+                    <line x1="0" y1="0" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
+                    <g transform="translate(0,29.575)"><g id="logoLegBR-tickscale">
+                        <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
+                    </g></g>
+                </g></g>
+                <g id="logoLegBL"><g id="logoLegBL-rot">
+                    <line x1="0" y1="0" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
+                    <g transform="translate(0,29.575)"><g id="logoLegBL-tickscale">
+                        <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
+                    </g></g>
+                </g></g>
             </g>
             <text x="108.375" y="300" text-anchor="start">RHO</text>
         </svg>
@@ -327,6 +349,77 @@
             var y = ((e.clientY - rect.top) / rect.height) * 100;
             lightboxImg.style.transformOrigin = x + '% ' + y + '%';
         });
+    })();
+</script>
+<script>
+    (function () {
+        // Logo build-on animation: the P stem rotates up and draws in its
+        // loop, clicks down and rubber-bands back to center, then the X's
+        // four legs fan out from the stem with their tick marks growing in.
+        var ANG = { TR: 39.29, TL: -39.29, BR: -39.29, BL: 39.29 };
+        var UNIT = 550;
+        var PULL_DIST = 4;
+
+        function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+        function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+        function bounceCurve(t) {
+            if (t <= 0.4) return easeOutCubic(t / 0.4);
+            if (t <= 0.7) return 1 + easeOutCubic((t - 0.4) / 0.3) * (-1.5);
+            return -0.5 + easeOutCubic((t - 0.7) / 0.3) * 0.5;
+        }
+
+        var rhoGroup = document.getElementById('logoRhoGroup');
+        var footScale = document.getElementById('logoFootTickScale');
+        var loopPath = document.getElementById('logoLoop');
+        var loopLen = loopPath.getTotalLength();
+        loopPath.style.strokeDasharray = loopLen;
+
+        var legOuter = {
+            TR: document.getElementById('logoLegTR'), TL: document.getElementById('logoLegTL'),
+            BR: document.getElementById('logoLegBR'), BL: document.getElementById('logoLegBL'),
+        };
+        var legRot = {
+            TR: document.getElementById('logoLegTR-rot'), TL: document.getElementById('logoLegTL-rot'),
+            BR: document.getElementById('logoLegBR-rot'), BL: document.getElementById('logoLegBL-rot'),
+        };
+        var legTickScale = {
+            TR: document.getElementById('logoLegTR-tickscale'), TL: document.getElementById('logoLegTL-tickscale'),
+            BR: document.getElementById('logoLegBR-tickscale'), BL: document.getElementById('logoLegBL-tickscale'),
+        };
+
+        function render(tMs) {
+            var p1 = clamp01(tMs / UNIT);
+            var p2 = clamp01((tMs - UNIT) / UNIT);
+            var p3 = clamp01((tMs - 2 * UNIT) / UNIT);
+
+            var rotProgress = easeOutCubic(p1);
+            var dashOffset = loopLen * (1 - rotProgress);
+            loopPath.style.strokeDashoffset = dashOffset;
+            var footPop = clamp01((p1 - 0.85) / 0.15);
+            footScale.setAttribute('transform', 'scale(' + footPop + ')');
+
+            var yOffset = tMs >= UNIT ? PULL_DIST * bounceCurve(p2) : 0;
+            var stemAngle = -90 * (1 - rotProgress);
+            rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ') rotate(' + stemAngle + ')');
+
+            var legsVisible = tMs >= UNIT;
+            var legProgress = easeOutCubic(p3);
+            ['TR', 'TL', 'BR', 'BL'].forEach(function (key) {
+                legOuter[key].style.opacity = legsVisible ? 1 : 0;
+                legRot[key].setAttribute('transform', 'rotate(' + (ANG[key] * legProgress) + ')');
+                legTickScale[key].setAttribute('transform', 'scale(' + legProgress + ')');
+            });
+        }
+
+        var TOTAL = 3 * UNIT + 200;
+        var startTime = null;
+        function tick(now) {
+            if (startTime === null) startTime = now;
+            var elapsed = now - startTime;
+            render(Math.min(elapsed, 3 * UNIT));
+            if (elapsed < TOTAL) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
     })();
 </script>
 </body>
