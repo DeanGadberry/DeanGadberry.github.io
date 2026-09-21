@@ -15,18 +15,35 @@
         href="assets/favicon.ico">
 <style>
     @font-face {
-        font-family: glacial-indifference;
-        src: url('static/GlacialIndifference-Regular.otf');
+        font-family: 'Playfair Display';
+        src: url('static/PlayfairDisplay-Black.ttf') format('truetype');
+        font-weight: 900;
     }
     @font-face {
-        font-family: montserrat;
-        src: url('static/Montserrat-Regular.ttf');
+        font-family: Inter;
+        src: url('static/Inter-Regular.ttf') format('truetype');
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: Inter;
+        src: url('static/Inter-Medium.ttf') format('truetype');
+        font-weight: 500;
     }
     h1 {
-        font-family: glacial-indifference, montserrat, sans-serif;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 900;
+        letter-spacing: 0.01em;
     }
     p {
-        font-family: glacial-indifference, montserrat, sans-serif;
+        font-family: Inter, sans-serif;
+    }
+    .tagline {
+        font-weight: 500;
+        color: #555;
+        margin-top: -0.5rem;
+    }
+    .logo {
+        color: #000;
     }
     @media (max-width: 599px) {
       .divvy-div-div {
@@ -35,7 +52,7 @@
       .divvy-div-div h1 {
         font-size: 1.5rem;
       }
-      .divvy-div-div img {
+      .divvy-div-div .logo {
         max-width: 75%;
       }
       .divvy-div-div p {
@@ -49,7 +66,7 @@
       .divvy-div-div h1 {
         font-size: 1.5rem;
       }
-      .divvy-div-div img {
+      .divvy-div-div .logo {
         max-width: 75%;
       }
       .divvy-div-div p {
@@ -89,21 +106,36 @@
     scroll-snap-align: center;
     ">
         <div class="divvy-div-div">
-        <img
-            src="assets/dg-large-initials.png"
-            alt="Dean Gadberry Logo" />
+        <svg class="logo" viewBox="-12.0 -762.0 1402.9 816.0" role="img" aria-label="Dean Gadberry monogram" style="width: 40%; height: auto;">
+            <title>Dean Gadberry</title>
+            <path d="M424 -722Q494 -722 539.0 -703.0Q584 -684 618 -657Q629 -648 638 -648Q657 -648 663 -708H686Q684 -668 683.0 -610.5Q682 -553 682 -458H659Q652 -530 634.5 -578.5Q617 -627 567 -661Q546 -675 518.0 -683.0Q490 -691 464 -691Q406 -691 368.0 -659.5Q330 -628 307.5 -577.5Q285 -527 275.5 -467.5Q266 -408 266 -352Q266 -172 310.0 -89.0Q354 -6 427 -6Q443 -6 455.0 -9.0Q467 -12 476 -18Q487 -26 492.0 -38.0Q497 -50 497 -68V-168Q497 -217 489.5 -241.0Q482 -265 460.0 -274.0Q438 -283 396 -284V-304Q419 -303 452.0 -302.5Q485 -302 521.0 -301.5Q557 -301 587 -301Q635 -301 675.5 -302.0Q716 -303 741 -304V-284Q724 -283 715.0 -277.0Q706 -271 703.0 -253.0Q700 -235 700 -198V0H680Q679 -17 672.0 -37.0Q665 -57 649 -57Q641 -57 626.5 -53.0Q612 -49 581 -34Q542 -15 498.5 -0.5Q455 14 412 14Q287 14 203.0 -29.0Q119 -72 77.5 -153.0Q36 -234 36 -348Q36 -460 85.5 -544.0Q135 -628 222.5 -675.0Q310 -722 424 -722Z" fill="currentColor" transform="translate(609.9,0) translate(36,0) scale(1.0) translate(-36,0)"/>
+            <path d="M361 -708Q571 -708 672.5 -618.5Q774 -529 774 -362Q774 -253 724.0 -171.5Q674 -90 579.5 -45.0Q485 0 352 0Q336 0 309.5 -1.0Q283 -2 254.0 -2.5Q225 -3 202 -3Q152 -3 104.5 -2.5Q57 -2 28 0V-20Q59 -22 74.0 -28.0Q89 -34 94.0 -52.0Q99 -70 99 -106V-602Q99 -639 94.0 -656.5Q89 -674 73.5 -680.5Q58 -687 28 -688V-708Q57 -707 104.5 -705.5Q152 -704 200 -705Q237 -706 283.5 -707.0Q330 -708 361 -708ZM376 -690Q330 -690 316.0 -673.0Q302 -656 302 -604V-104Q302 -52 316.5 -35.0Q331 -18 377 -18Q445 -18 486.0 -57.5Q527 -97 545.5 -173.0Q564 -249 564 -358Q564 -470 544.5 -543.5Q525 -617 483.5 -653.5Q442 -690 376 -690Z" fill="currentColor"/>
+        </svg>
         <h1>Dean Gadberry</h1>
+        <p class="tagline">Sales leader with a builder's mindset — and a passport full of stories.</p>
         <p><a
             href="mailto:dean@deangadberry.com"
             target="_blank"
             rel="noreferrer noopener" >
             dean@deangadberry.com
         </a></p>
-         <p><a
+        <p><a
+            href="resume"
+            target="_blank"
+            rel="noreferrer noopener" >
+            Résumé
+        </a></p>
+        <p><a
             href="https://linkedin.com/in/DeanGadberry"
             target="_blank"
             rel="noreferrer noopener" >
             LinkedIn.com/in/DeanGadberry
+        </a></p>
+        <p><a
+            href="https://github.com/DeanGadberry"
+            target="_blank"
+            rel="noreferrer noopener" >
+            GitHub.com/DeanGadberry
         </a></p>
         <p><a
             href="books"
@@ -116,6 +148,12 @@
             target="_blank"
             rel="noreferrer noopener" >
             Chi-Rho Cards
+        </a></p>
+        <p><a
+            href="https://blog.deangadberry.com"
+            target="_blank"
+            rel="noreferrer noopener" >
+            Blog
         </a></p>
     </div>
     </div>
