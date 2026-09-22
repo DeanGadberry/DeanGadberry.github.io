@@ -103,6 +103,21 @@
         .card-flip:focus-within .card-face {
             box-shadow: 0 18px 36px rgba(0,0,0,0.22);
         }
+        .card-static {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1200 / 1680;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+        .card-static:hover,
+        .card-static:focus-within {
+            transform: translateY(-6px);
+        }
+        .card-static:hover .card-face,
+        .card-static:focus-within .card-face {
+            box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+        }
         .card-face img {
             width: 100%;
             height: 100%;
@@ -194,20 +209,13 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 30px 80px rgba(0,0,0,0.55);
-            cursor: zoom-in;
+            cursor: pointer;
         }
         .lightbox-frame img {
             width: 100%;
             height: 100%;
             display: block;
             object-fit: cover;
-            transform-origin: 50% 50%;
-            transform: scale(1);
-            transition: transform 0.25s ease;
-        }
-        .lightbox-frame:hover img {
-            transform: scale(2.4);
-            cursor: zoom-in;
         }
         .lightbox-close {
             position: absolute;
@@ -300,32 +308,14 @@
 
     <div class="gallery">
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="Psalm 1, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/psalm_1.webp" alt="Psalm 1 card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/psalm_1.webp" alt="Psalm 1 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="Psalm 1, front">
+                <div class="card-face card-only"><img src="images/front/psalm_1.webp" alt="Psalm 1 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
             </div>
             <figcaption>PSALM 1</figcaption>
         </figure>
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="1 John, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="1 John, back">
+                <div class="card-face card-only"><img src="images/back/1_john.webp" alt="1 John card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
             </div>
             <figcaption>1 JOHN</figcaption>
         </figure>
@@ -345,32 +335,14 @@
             <figcaption>COLOSSIANS</figcaption>
         </figure>
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="Hebrews 11, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="Hebrews 11, front">
+                <div class="card-face card-only"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
             </div>
             <figcaption>HEBREWS 11</figcaption>
         </figure>
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="Psalm 117, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/psalm_117.webp" alt="Psalm 117 card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/psalm_117.webp" alt="Psalm 117 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="Psalm 117, back">
+                <div class="card-face card-only"><img src="images/back/psalm_117.webp" alt="Psalm 117 card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
             </div>
             <figcaption>PSALM 117</figcaption>
         </figure>
@@ -390,32 +362,14 @@
             <figcaption>1 PETER</figcaption>
         </figure>
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="James, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/james.webp" alt="James card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/james.webp" alt="James card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="James, front">
+                <div class="card-face card-only"><img src="images/front/james.webp" alt="James card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
             </div>
             <figcaption>JAMES</figcaption>
         </figure>
         <figure>
-            <div class="card-flip" tabindex="0" aria-label="Sermon on the Mount, front and back">
-                <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/sermon_on_the_mount.webp" alt="Sermon on the Mount card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
-                    <div class="card-face card-front"><img src="images/front/sermon_on_the_mount.webp" alt="Sermon on the Mount card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
-                </div>
-                <button class="flip-btn" type="button" aria-label="Flip card">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 12a8 8 0 0 1 8-8c2.5 0 4.7 1.2 6.1 3"/>
-                        <polyline points="18 3 18.3 7.3 14 7"/>
-                    </svg>
-                </button>
+            <div class="card-static" tabindex="0" aria-label="Sermon on the Mount, back">
+                <div class="card-face card-only"><img src="images/back/sermon_on_the_mount.webp" alt="Sermon on the Mount card back" loading="eager" decoding="sync"><span class="card-badge">BACK</span></div>
             </div>
             <figcaption>SERMON ON THE MOUNT</figcaption>
         </figure>
@@ -482,6 +436,7 @@
                 var backImg = tile.querySelector('.card-back img');
                 var frontImg = tile.querySelector('.card-front img');
                 if (!backImg || !frontImg) return;
+                lightbox.dataset.singleFace = 'false';
                 lightbox.dataset.backSrc = backImg.src;
                 lightbox.dataset.backAlt = backImg.alt;
                 lightbox.dataset.frontSrc = frontImg.src;
@@ -492,13 +447,29 @@
             });
         });
 
+        // Single-face tiles (no flip button/hover, since there's nothing on
+        // the other side to show) just open the lightbox on that one image.
+        document.querySelectorAll('.card-static').forEach(function (tile) {
+            tile.addEventListener('click', function () {
+                var img = tile.querySelector('.card-only img');
+                if (!img) return;
+                lightbox.dataset.singleFace = 'true';
+                lightbox.dataset.backSrc = img.src;
+                lightbox.dataset.backAlt = img.alt;
+                lightbox.dataset.frontSrc = img.src;
+                lightbox.dataset.frontAlt = img.alt;
+                showLightboxFace('back');
+                lightbox.classList.add('active');
+            });
+        });
+
         function showLightboxFace(which) {
             var src = which === 'front' ? lightbox.dataset.frontSrc : lightbox.dataset.backSrc;
             var alt = which === 'front' ? lightbox.dataset.frontAlt : lightbox.dataset.backAlt;
             lightbox.dataset.showing = which;
             lightboxImg.src = src;
             lightboxImg.alt = alt;
-            lightboxCaption.textContent = alt + ' — click to flip';
+            lightboxCaption.textContent = lightbox.dataset.singleFace === 'true' ? alt : alt + ' — click to flip';
         }
 
         function closeLightbox() {
@@ -511,18 +482,12 @@
                 closeLightbox();
                 return;
             }
+            if (lightbox.dataset.singleFace === 'true') return;
             var other = lightbox.dataset.showing === 'front' ? 'back' : 'front';
             showLightboxFace(other);
         });
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeLightbox();
-        });
-
-        lightboxFrame.addEventListener('mousemove', function (e) {
-            var rect = lightboxFrame.getBoundingClientRect();
-            var x = ((e.clientX - rect.left) / rect.width) * 100;
-            var y = ((e.clientY - rect.top) / rect.height) * 100;
-            lightboxImg.style.transformOrigin = x + '% ' + y + '%';
         });
     })();
 </script>
