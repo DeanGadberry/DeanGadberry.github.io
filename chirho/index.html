@@ -539,6 +539,7 @@
         var UNIT = 550;
         var DOWN_DIST = 2.8; // click-down distance (30% less than the original 4)
         var HOLD = 350;      // ms to hang at the flat horizontal starting pose before rotating in
+        var TEXT_MIN_OPACITY = 0.15; // CHI/RHO start near-invisible and fade in as they slide out
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
         function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
@@ -643,12 +644,16 @@
             });
 
             // text slide is a straight, constant-rate pull (like drawing out a
-            // tape measure), not eased like the leg rotation.
+            // tape measure), not eased like the leg rotation. Opacity fades in
+            // alongside it, from a low starting value up to fully opaque.
             var textProgress = p3;
+            var textOpacity = TEXT_MIN_OPACITY + (1 - TEXT_MIN_OPACITY) * textProgress;
             var txCHI = CHI_REACH * (1 - textProgress);
             textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
+            textCHIEl.style.opacity = textOpacity;
             var txRHO = -RHO_REACH * (1 - textProgress);
             textRHOEl.setAttribute('transform', 'translate(' + txRHO + ',0)');
+            textRHOEl.style.opacity = textOpacity;
         }
 
         var TOTAL = HOLD + 3 * UNIT + 200;
