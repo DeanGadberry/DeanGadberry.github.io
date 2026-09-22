@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi-Rho Cards &mdash; The 66 Books</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0 20px 60px;
+            background: #FDFBF7;
+            color: #1A1A1A;
+            font-family: 'EB Garamond', Georgia, serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .wrap { max-width: 1400px; width: 100%; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 20px 0 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: #8A8578;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #4C6A7D; }
+        header { text-align: center; padding-top: 20px; margin-bottom: 8px; }
+        h1 { margin: 0 0 8px; font-size: 2rem; letter-spacing: 0.5px; }
+        .sub {
+            font-size: 1.02rem;
+            line-height: 1.6;
+            max-width: 640px;
+            margin: 0 auto;
+            color: #444;
+        }
+        .draft-note {
+            max-width: 640px;
+            margin: 14px auto 0;
+            font-family: system-ui, sans-serif;
+            font-size: 0.78rem;
+            color: #8A8578;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* sticky info panel */
+        .info-panel {
+            --accent: #4C6A7D;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            margin: 28px auto 8px;
+            max-width: 640px;
+            background: #FBF8F1;
+            border: 1px solid #E4DFD3;
+            border-left: 5px solid var(--accent);
+            border-radius: 12px;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .info-name { font-size: 1.3rem; font-weight: 700; color: var(--accent); margin: 0; min-width: 160px; }
+        .info-section { font-family: system-ui, sans-serif; font-size: 0.72rem; letter-spacing: 0.8px; text-transform: uppercase; color: #8A8578; }
+        .info-stats { font-family: system-ui, sans-serif; font-size: 0.85rem; color: #444; text-align: right; line-height: 1.5; }
+        .info-stats b { color: #1A1A1A; }
+
+        .sections { margin-top: 30px; }
+        .section-block { margin-bottom: 34px; }
+        .section-title {
+            font-family: system-ui, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #8A8578;
+            margin: 0 0 16px 4px;
+        }
+        .fan {
+            display: flex;
+            align-items: flex-end;
+            padding: 30px 10px 16px 4px;
+            overflow-x: auto;
+            overflow-y: visible;
+        }
+        .card {
+            --accent: #4C6A7D;
+            position: relative;
+            flex: 0 0 auto;
+            width: 84px;
+            aspect-ratio: 2.5 / 3.5;
+            margin-left: -52px;
+            cursor: pointer;
+            perspective: 900px;
+            transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+        .card:first-child { margin-left: 0; }
+        .card:hover, .card.pinned {
+            transform: translateY(-16px) scale(1.55);
+            z-index: 80;
+        }
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
+            border-radius: 7px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.22);
+        }
+        .card.flipped .card-inner { transform: rotateY(180deg); }
+        .face {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 7px;
+            backface-visibility: hidden;
+            background: #FDFBF7;
+        }
+        .face.back { transform: rotateY(180deg); }
+        .card-label {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            white-space: nowrap;
+            background: var(--accent);
+            color: #FDFBF7;
+            font-family: system-ui, sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 4px 9px;
+            border-radius: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+        }
+        .card:hover .card-label, .card.pinned .card-label {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-family: system-ui, sans-serif;
+            font-size: 0.8rem;
+            color: #8A8578;
+            text-align: center;
+            max-width: 560px;
+        }
+
+        @media (max-width: 640px) {
+            .info-panel { flex-direction: column; align-items: flex-start; text-align: left; }
+            .info-stats { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <a class="back-link" href="index.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        gallery
+    </a>
+    <header>
+        <h1>The 66 Books</h1>
+        <p class="sub">
+            One card per book of the Bible &mdash; the Chi-Rho mark and the book's
+            name on the front, the branded tessellation on the back, each in its
+            own place on a color sweep across the canon. Hover a card to enlarge
+            and label it, click to flip it over.
+        </p>
+        <p class="draft-note">Draft palette &mdash; colors not yet finalized.</p>
+    </header>
+
+    <div class="info-panel" id="infoPanel">
+        <div>
+            <p class="info-name" id="infoName">Hover or tap a card</p>
+            <div class="info-section" id="infoSection">&mdash;</div>
+        </div>
+        <div class="info-stats" id="infoStats"></div>
+    </div>
+
+    <div class="sections" id="sections"></div>
+
+    <footer>
+        Word counts are from the King James Version (public domain). "Cards to
+        memorize the whole book" only shows once that book's full deck has
+        been generated &mdash; right now that's Colossians, James, 1 Peter and 1 John.
+    </footer>
+</div>
+
+<script>
+const BOOKS = [{"name": "Genesis", "slug": "genesis", "section": "Law", "accent": "#36677F", "deck_key": null, "whole_book_colored": false, "word_count": 38556, "cards_generated": null}, {"name": "Exodus", "slug": "exodus", "section": "Law", "accent": "#2C4F66", "deck_key": null, "whole_book_colored": false, "word_count": 32872, "cards_generated": null}, {"name": "Leviticus", "slug": "leviticus", "section": "Law", "accent": "#365E7F", "deck_key": null, "whole_book_colored": false, "word_count": 24734, "cards_generated": null}, {"name": "Numbers", "slug": "numbers", "section": "Law", "accent": "#2C4866", "deck_key": null, "whole_book_colored": false, "word_count": 33259, "cards_generated": null}, {"name": "Deuteronomy", "slug": "deuteronomy", "section": "Law", "accent": "#36557F", "deck_key": null, "whole_book_colored": false, "word_count": 28624, "cards_generated": null}, {"name": "Joshua", "slug": "joshua", "section": "Historical", "accent": "#2C4066", "deck_key": null, "whole_book_colored": false, "word_count": 19055, "cards_generated": null}, {"name": "Judges", "slug": "judges", "section": "Historical", "accent": "#364C7F", "deck_key": null, "whole_book_colored": false, "word_count": 19051, "cards_generated": null}, {"name": "Ruth", "slug": "ruth", "section": "Historical", "accent": "#2C3966", "deck_key": null, "whole_book_colored": false, "word_count": 2588, "cards_generated": null}, {"name": "1 Samuel", "slug": "1_samuel", "section": "Historical", "accent": "#36437F", "deck_key": null, "whole_book_colored": false, "word_count": 25144, "cards_generated": null}, {"name": "2 Samuel", "slug": "2_samuel", "section": "Historical", "accent": "#2C3266", "deck_key": null, "whole_book_colored": false, "word_count": 20725, "cards_generated": null}, {"name": "1 Kings", "slug": "1_kings", "section": "Historical", "accent": "#363A7F", "deck_key": null, "whole_book_colored": false, "word_count": 24654, "cards_generated": null}, {"name": "2 Kings", "slug": "2_kings", "section": "Historical", "accent": "#2C2C66", "deck_key": null, "whole_book_colored": false, "word_count": 23629, "cards_generated": null}, {"name": "1 Chronicles", "slug": "1_chronicles", "section": "Historical", "accent": "#3C367F", "deck_key": null, "whole_book_colored": false, "word_count": 20642, "cards_generated": null}, {"name": "2 Chronicles", "slug": "2_chronicles", "section": "Historical", "accent": "#332C66", "deck_key": null, "whole_book_colored": false, "word_count": 26189, "cards_generated": null}, {"name": "Ezra", "slug": "ezra", "section": "Historical", "accent": "#44367F", "deck_key": null, "whole_book_colored": false, "word_count": 7508, "cards_generated": null}, {"name": "Nehemiah", "slug": "nehemiah", "section": "Historical", "accent": "#3B2C66", "deck_key": null, "whole_book_colored": false, "word_count": 10585, "cards_generated": null}, {"name": "Esther", "slug": "esther", "section": "Historical", "accent": "#4D367F", "deck_key": null, "whole_book_colored": false, "word_count": 5670, "cards_generated": null}, {"name": "Job", "slug": "job", "section": "Wisdom & Poetry", "accent": "#422C66", "deck_key": null, "whole_book_colored": false, "word_count": 18428, "cards_generated": null}, {"name": "Psalms", "slug": "psalms", "section": "Wisdom & Poetry", "accent": "#56367F", "deck_key": null, "whole_book_colored": false, "word_count": 42685, "cards_generated": null}, {"name": "Proverbs", "slug": "proverbs", "section": "Wisdom & Poetry", "accent": "#492C66", "deck_key": null, "whole_book_colored": false, "word_count": 15164, "cards_generated": null}, {"name": "Ecclesiastes", "slug": "ecclesiastes", "section": "Wisdom & Poetry", "accent": "#5F367F", "deck_key": null, "whole_book_colored": false, "word_count": 5626, "cards_generated": null}, {"name": "Song of Solomon", "slug": "song_of_solomon", "section": "Wisdom & Poetry", "accent": "#502C66", "deck_key": null, "whole_book_colored": false, "word_count": 2671, "cards_generated": null}, {"name": "Isaiah", "slug": "isaiah", "section": "Major Prophets", "accent": "#68367F", "deck_key": null, "whole_book_colored": false, "word_count": 37265, "cards_generated": null}, {"name": "Jeremiah", "slug": "jeremiah", "section": "Major Prophets", "accent": "#572C66", "deck_key": null, "whole_book_colored": false, "word_count": 42943, "cards_generated": null}, {"name": "Lamentations", "slug": "lamentations", "section": "Major Prophets", "accent": "#71367F", "deck_key": null, "whole_book_colored": false, "word_count": 3426, "cards_generated": null}, {"name": "Ezekiel", "slug": "ezekiel", "section": "Major Prophets", "accent": "#5E2C66", "deck_key": null, "whole_book_colored": false, "word_count": 39629, "cards_generated": null}, {"name": "Daniel", "slug": "daniel", "section": "Major Prophets", "accent": "#7A367F", "deck_key": null, "whole_book_colored": false, "word_count": 11654, "cards_generated": null}, {"name": "Hosea", "slug": "hosea", "section": "Minor Prophets", "accent": "#652C66", "deck_key": null, "whole_book_colored": false, "word_count": 5186, "cards_generated": null}, {"name": "Joel", "slug": "joel", "section": "Minor Prophets", "accent": "#7F367B", "deck_key": null, "whole_book_colored": false, "word_count": 2048, "cards_generated": null}, {"name": "Amos", "slug": "amos", "section": "Minor Prophets", "accent": "#662C5F", "deck_key": null, "whole_book_colored": false, "word_count": 4258, "cards_generated": null}, {"name": "Obadiah", "slug": "obadiah", "section": "Minor Prophets", "accent": "#7F3672", "deck_key": null, "whole_book_colored": false, "word_count": 674, "cards_generated": null}, {"name": "Jonah", "slug": "jonah", "section": "Minor Prophets", "accent": "#662C58", "deck_key": null, "whole_book_colored": false, "word_count": 1326, "cards_generated": null}, {"name": "Micah", "slug": "micah", "section": "Minor Prophets", "accent": "#7F3669", "deck_key": null, "whole_book_colored": false, "word_count": 3164, "cards_generated": null}, {"name": "Nahum", "slug": "nahum", "section": "Minor Prophets", "accent": "#662C51", "deck_key": null, "whole_book_colored": false, "word_count": 1289, "cards_generated": null}, {"name": "Habakkuk", "slug": "habakkuk", "section": "Minor Prophets", "accent": "#7F3660", "deck_key": null, "whole_book_colored": false, "word_count": 1489, "cards_generated": null}, {"name": "Zephaniah", "slug": "zephaniah", "section": "Minor Prophets", "accent": "#662C49", "deck_key": null, "whole_book_colored": false, "word_count": 1621, "cards_generated": null}, {"name": "Haggai", "slug": "haggai", "section": "Minor Prophets", "accent": "#7F3657", "deck_key": null, "whole_book_colored": false, "word_count": 1144, "cards_generated": null}, {"name": "Zechariah", "slug": "zechariah", "section": "Minor Prophets", "accent": "#662C42", "deck_key": null, "whole_book_colored": false, "word_count": 6483, "cards_generated": null}, {"name": "Malachi", "slug": "malachi", "section": "Minor Prophets", "accent": "#7F364E", "deck_key": null, "whole_book_colored": false, "word_count": 1789, "cards_generated": null}, {"name": "Matthew", "slug": "matthew", "section": "Gospels", "accent": "#662C3B", "deck_key": null, "whole_book_colored": false, "word_count": 23953, "cards_generated": null}, {"name": "Mark", "slug": "mark", "section": "Gospels", "accent": "#7F3645", "deck_key": null, "whole_book_colored": false, "word_count": 15312, "cards_generated": null}, {"name": "Luke", "slug": "luke", "section": "Gospels", "accent": "#662C34", "deck_key": null, "whole_book_colored": false, "word_count": 26206, "cards_generated": null}, {"name": "John", "slug": "john", "section": "Gospels", "accent": "#7F363C", "deck_key": null, "whole_book_colored": false, "word_count": 19251, "cards_generated": null}, {"name": "Acts", "slug": "acts", "section": "Acts", "accent": "#662C2D", "deck_key": null, "whole_book_colored": false, "word_count": 24471, "cards_generated": null}, {"name": "Romans", "slug": "romans", "section": "Pauline Epistles", "accent": "#7F3936", "deck_key": null, "whole_book_colored": false, "word_count": 9556, "cards_generated": null}, {"name": "1 Corinthians", "slug": "1_corinthians", "section": "Pauline Epistles", "accent": "#66322C", "deck_key": null, "whole_book_colored": false, "word_count": 9568, "cards_generated": null}, {"name": "2 Corinthians", "slug": "2_corinthians", "section": "Pauline Epistles", "accent": "#7F4236", "deck_key": null, "whole_book_colored": false, "word_count": 6134, "cards_generated": null}, {"name": "Galatians", "slug": "galatians", "section": "Pauline Epistles", "accent": "#66392C", "deck_key": null, "whole_book_colored": false, "word_count": 3114, "cards_generated": null}, {"name": "Ephesians", "slug": "ephesians", "section": "Pauline Epistles", "accent": "#7F4B36", "deck_key": null, "whole_book_colored": false, "word_count": 3102, "cards_generated": null}, {"name": "Philippians", "slug": "philippians", "section": "Pauline Epistles", "accent": "#66402C", "deck_key": null, "whole_book_colored": false, "word_count": 2213, "cards_generated": null}, {"name": "Colossians", "slug": "colossians", "section": "Pauline Epistles", "accent": "#556B2F", "deck_key": "colossians", "whole_book_colored": true, "word_count": 1980, "cards_generated": 12}, {"name": "1 Thessalonians", "slug": "1_thessalonians", "section": "Pauline Epistles", "accent": "#66472C", "deck_key": null, "whole_book_colored": false, "word_count": 1864, "cards_generated": null}, {"name": "2 Thessalonians", "slug": "2_thessalonians", "section": "Pauline Epistles", "accent": "#7F5D36", "deck_key": null, "whole_book_colored": false, "word_count": 1042, "cards_generated": null}, {"name": "1 Timothy", "slug": "1_timothy", "section": "Pauline Epistles", "accent": "#664E2C", "deck_key": null, "whole_book_colored": false, "word_count": 2275, "cards_generated": null}, {"name": "2 Timothy", "slug": "2_timothy", "section": "Pauline Epistles", "accent": "#7F6636", "deck_key": null, "whole_book_colored": false, "word_count": 1690, "cards_generated": null}, {"name": "Titus", "slug": "titus", "section": "Pauline Epistles", "accent": "#66552C", "deck_key": null, "whole_book_colored": false, "word_count": 916, "cards_generated": null}, {"name": "Philemon", "slug": "philemon", "section": "Pauline Epistles", "accent": "#7F6F36", "deck_key": null, "whole_book_colored": false, "word_count": 442, "cards_generated": null}, {"name": "Hebrews", "slug": "hebrews", "section": "General Epistles", "accent": "#665D2C", "deck_key": null, "whole_book_colored": false, "word_count": 6990, "cards_generated": null}, {"name": "James", "slug": "james", "section": "General Epistles", "accent": "#7A2E2E", "deck_key": "james", "whole_book_colored": true, "word_count": 2330, "cards_generated": 13}, {"name": "1 Peter", "slug": "1_peter", "section": "General Epistles", "accent": "#003399", "deck_key": "1peter", "whole_book_colored": true, "word_count": 2518, "cards_generated": 14}, {"name": "2 Peter", "slug": "2_peter", "section": "General Epistles", "accent": "#7D7F36", "deck_key": null, "whole_book_colored": false, "word_count": 1579, "cards_generated": null}, {"name": "1 John", "slug": "1_john", "section": "General Epistles", "accent": "#8B5E34", "deck_key": "1john", "whole_book_colored": true, "word_count": 2525, "cards_generated": 13}, {"name": "2 John", "slug": "2_john", "section": "General Epistles", "accent": "#747F36", "deck_key": null, "whole_book_colored": false, "word_count": 300, "cards_generated": null}, {"name": "3 John", "slug": "3_john", "section": "General Epistles", "accent": "#5A662C", "deck_key": null, "whole_book_colored": false, "word_count": 297, "cards_generated": null}, {"name": "Jude", "slug": "jude", "section": "General Epistles", "accent": "#6B7F36", "deck_key": null, "whole_book_colored": false, "word_count": 615, "cards_generated": null}, {"name": "Revelation", "slug": "revelation", "section": "Apocalyptic", "accent": "#52662C", "deck_key": null, "whole_book_colored": false, "word_count": 12064, "cards_generated": null}];
+
+const SECTION_ORDER = ["Law", "Historical", "Wisdom & Poetry", "Major Prophets", "Minor Prophets",
+    "Gospels", "Acts", "Pauline Epistles", "General Epistles", "Apocalyptic"];
+
+const sectionsEl = document.getElementById('sections');
+const infoName = document.getElementById('infoName');
+const infoSection = document.getElementById('infoSection');
+const infoStats = document.getElementById('infoStats');
+const infoPanel = document.getElementById('infoPanel');
+
+function showInfo(entry) {
+    infoName.textContent = entry.name;
+    infoSection.textContent = entry.section;
+    var words = entry.word_count.toLocaleString() + ' words';
+    var cards = entry.cards_generated
+        ? '<b>' + entry.cards_generated + ' cards</b> to memorize the whole book'
+        : 'no deck generated yet';
+    infoStats.innerHTML = words + ' &nbsp;&middot;&nbsp; ' + cards;
+    infoPanel.style.setProperty('--accent', entry.accent);
+}
+
+var pinnedCard = null;
+
+SECTION_ORDER.forEach(function (sectionName) {
+    var books = BOOKS.filter(function (b) { return b.section === sectionName; });
+    if (!books.length) return;
+
+    var block = document.createElement('div');
+    block.className = 'section-block';
+
+    var title = document.createElement('div');
+    title.className = 'section-title';
+    title.textContent = sectionName;
+    block.appendChild(title);
+
+    var fan = document.createElement('div');
+    fan.className = 'fan';
+
+    books.forEach(function (entry) {
+        var card = document.createElement('div');
+        card.className = 'card';
+        card.style.setProperty('--accent', entry.accent);
+
+        var inner = document.createElement('div');
+        inner.className = 'card-inner';
+
+        var front = document.createElement('img');
+        front.className = 'face front';
+        front.loading = 'lazy';
+        front.src = 'images/books/' + entry.slug + '_front.webp';
+        front.alt = entry.name + ' front';
+
+        var back = document.createElement('img');
+        back.className = 'face back';
+        back.loading = 'lazy';
+        back.src = 'images/books/' + entry.slug + '_back.webp';
+        back.alt = entry.name + ' back';
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        card.appendChild(inner);
+
+        var label = document.createElement('span');
+        label.className = 'card-label';
+        label.textContent = entry.name;
+        card.appendChild(label);
+
+        card.addEventListener('mouseenter', function () { showInfo(entry); });
+        card.addEventListener('click', function () {
+            card.classList.toggle('flipped');
+            if (pinnedCard && pinnedCard !== card) pinnedCard.classList.remove('pinned');
+            pinnedCard = card;
+            card.classList.add('pinned');
+            showInfo(entry);
+        });
+
+        fan.appendChild(card);
+    });
+
+    block.appendChild(fan);
+    sectionsEl.appendChild(block);
+});
+</script>
+</body>
+</html>
