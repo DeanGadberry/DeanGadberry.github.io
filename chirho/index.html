@@ -73,6 +73,7 @@
             aspect-ratio: 1200 / 1680;
             transform-style: preserve-3d;
             transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+            will-change: transform;
         }
         .card-flip:hover .card-flip-inner,
         .card-flip:focus-within .card-flip-inner {
@@ -253,8 +254,8 @@
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Psalm 1, two example cards">
                 <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/front/psalm_1.webp" alt="Psalm 1 card 1" loading="lazy"></div>
-                    <div class="card-face card-front"><img src="images/card2/psalm_1.webp" alt="Psalm 1 card 2" loading="lazy"></div>
+                    <div class="card-face card-back"><img src="images/front/psalm_1.webp" alt="Psalm 1 card 1" loading="eager" decoding="sync"></div>
+                    <div class="card-face card-front"><img src="images/card2/psalm_1.webp" alt="Psalm 1 card 2" loading="eager" decoding="sync"></div>
                 </div>
             </div>
             <figcaption>PSALM 1</figcaption>
@@ -262,8 +263,8 @@
         <figure>
             <div class="card-flip" tabindex="0" aria-label="1 John, front and back">
                 <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="lazy"></div>
-                    <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="lazy"></div>
+                    <div class="card-face card-back"><img src="images/back/1_john.webp" alt="1 John card back" loading="eager" decoding="sync"></div>
+                    <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="eager" decoding="sync"></div>
                 </div>
             </div>
             <figcaption>1 JOHN</figcaption>
@@ -271,8 +272,8 @@
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Colossians, two example cards">
                 <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/pair/colossians_a.webp" alt="Colossians card 12" loading="lazy"></div>
-                    <div class="card-face card-front"><img src="images/pair/colossians_b.webp" alt="Colossians card 13" loading="lazy"></div>
+                    <div class="card-face card-back"><img src="images/pair/colossians_a.webp" alt="Colossians card 12" loading="eager" decoding="sync"></div>
+                    <div class="card-face card-front"><img src="images/pair/colossians_b.webp" alt="Colossians card 13" loading="eager" decoding="sync"></div>
                 </div>
             </div>
             <figcaption>COLOSSIANS</figcaption>
@@ -280,8 +281,8 @@
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Hebrews 11, front and back">
                 <div class="card-flip-inner">
-                    <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="lazy"></div>
-                    <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="lazy"></div>
+                    <div class="card-face card-back"><img src="images/back/hebrews_11.webp" alt="Hebrews 11 card back" loading="eager" decoding="sync"></div>
+                    <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="eager" decoding="sync"></div>
                 </div>
             </div>
             <figcaption>HEBREWS 11</figcaption>
