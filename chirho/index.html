@@ -253,7 +253,9 @@
                     <g id="logoFootTickWrap" transform="translate(0,29.575)"><g id="logoFootTickScale">
                         <line x1="-3.4" y1="0" x2="3.4" y2="0" stroke-width="2" stroke-linecap="round" />
                     </g></g>
-                    <path id="logoLoop" d="M 0,-32 C 14,-32 14,-13.05 0,-13.05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <g id="logoLoopScale">
+                        <path id="logoLoop" d="M 0,-32 C 14,-32 14,-13.05 0,-13.05" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
                 </g>
                 <g id="logoLegTR"><g id="logoLegTR-rot">
                     <line x1="0" y1="0" x2="0" y2="-28.425" stroke-width="2" stroke-linecap="round" />
@@ -444,22 +446,23 @@
 </script>
 <script>
     (function () {
-        // Logo build-on animation: the P stem rotates up and draws in its
-        // loop, clicks down and rubber-bands back to center, then the X's
-        // four legs fan out from the stem -- foot tick and CHI/RHO growing
-        // in together with them, not at the bounce. CHI/RHO unroll outward
-        // from the stem's own center line (where the collapsed chi legs
-        // also start), at a straight constant-rate pull, not eased like the
-        // leg rotation -- like drawing out a tape measure.
+        // Logo build-on animation: CHI/RHO slide out from behind the P's
+        // vertical stem through a static clip window while fading in, THEN
+        // the loop inflates -- scaled horizontally from zero with both its
+        // stem attachment points held fixed, so it reads as ballooning out
+        // rather than sliding into place -- and finally the click/spring
+        // settle and the X's four legs fanning out happen together.
         var ANG = { TR: 39.29, TL: -39.29, BR: -39.29, BL: 39.29 };
         var UNIT = 550;
-        var DOWN_DIST = 2.8; // click-down distance (30% less than the original 4)
-        var HOLD = 350;      // ms to hang at the flat horizontal starting pose before rotating in
+        var DOWN_DIST = 2.8; // click-down distance
         var TEXT_MIN_OPACITY = 0.15; // CHI/RHO start near-invisible and fade in as they slide out
-        var TEXT_DELAY_MS = 150; // CHI/RHO wait a beat after the chi legs start fanning out before they begin revealing
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
         function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
+        function easeOutBack(t) {
+            var c1 = 1.70158, c3 = c1 + 1;
+            return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+        }
         function clamp01(t) { return Math.max(0, Math.min(1, t)); }
 
         // Click, not bounce: a quick decisive press down, then a real
@@ -487,9 +490,8 @@
 
         var rhoGroup = document.getElementById('logoRhoGroup');
         var footScale = document.getElementById('logoFootTickScale');
+        var loopScale = document.getElementById('logoLoopScale');
         var loopPath = document.getElementById('logoLoop');
-        var loopLen = loopPath.getTotalLength();
-        loopPath.style.strokeDasharray = loopLen;
 
         var legOuter = {
             TR: document.getElementById('logoLegTR'), TL: document.getElementById('logoLegTL'),
@@ -511,13 +513,7 @@
         // that also carries the animated transform moves the clip WITH the
         // text, since userSpaceOnUse coordinates are resolved in that
         // element's own local space; the fix is to keep the clip on an
-        // unanimated parent and only transform the child). Since the clip
-        // boundary doesn't move but the text does, the letter nearest that
-        // boundary in the text's own local coordinates -- the leading edge in
-        // the direction of travel -- clears it first: for CHI (sliding left)
-        // that's the far/left letter "C", so C shows first, then H, then I
-        // (closest to the glyph) settles in last. RHO mirrors it sliding
-        // right: O first, then H, then R settles in last.
+        // unanimated parent and only transform the child).
         var textCHIEl = document.getElementById('logoTextCHI');
         var textRHOEl = document.getElementById('logoTextRHO');
         var chiBBox = textCHIEl.getBBox();
@@ -538,18 +534,36 @@
         clipRHORect.setAttribute('width', (rhoBBox.x + rhoBBox.width + 1) - CENTER_X);
         clipRHORect.setAttribute('height', rhoBBox.height + 2);
 
-        function render(tMsRaw) {
-            var tMs = Math.max(0, tMsRaw - HOLD);
+        function render(tMs) {
             var p1 = clamp01(tMs / UNIT);
+            var p2 = clamp01((tMs - UNIT) / UNIT);
             var p3 = clamp01((tMs - 2 * UNIT) / UNIT);
 
-            var rotProgress = easeOutCubic(p1);
-            var dashOffset = loopLen * (1 - rotProgress);
-            loopPath.style.strokeDashoffset = dashOffset;
+            // Phase 1: CHI/RHO slide out from behind the P's vertical stem
+            // through the static clip window while fading in, at a straight
+            // constant rate (not eased) so it reads as being drawn out
+            // rather than accelerating/decelerating.
+            var textOpacity = TEXT_MIN_OPACITY + (1 - TEXT_MIN_OPACITY) * p1;
+            var txCHI = CHI_REACH * (1 - p1);
+            textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
+            textCHIEl.style.opacity = textOpacity;
+            var txRHO = -RHO_REACH * (1 - p1);
+            textRHOEl.setAttribute('transform', 'translate(' + txRHO + ',0)');
+            textRHOEl.style.opacity = textOpacity;
 
-            var yOffset = tMs >= UNIT ? bounceOffsetMs(tMs - UNIT) : 0;
-            var stemAngle = -90 * (1 - rotProgress);
-            rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ') rotate(' + stemAngle + ')');
+            // Phase 2: the loop inflates in. Scale x-only with no translate --
+            // the path's own endpoints already sit at x=0 on the stem, so this
+            // keeps both the top AND bottom attachment points fixed in place
+            // throughout, growing only the outward belly bulge. A touch of
+            // overshoot so it reads as elastic/inflating rather than a flat
+            // linear grow.
+            var loopProgress = tMs >= UNIT ? easeOutBack(p2) : 0;
+            loopScale.setAttribute('transform', 'scale(' + loopProgress + ',1)');
+            loopPath.style.opacity = tMs >= UNIT ? 1 : 0;
+
+            // Phase 3: click/spring settle and the X legs fanning out, together.
+            var yOffset = tMs >= 2 * UNIT ? bounceOffsetMs(tMs - 2 * UNIT) : 0;
+            rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ')');
 
             var legsVisible = tMs >= 2 * UNIT;
             var legProgress = easeOutCubic(p3);
@@ -559,34 +573,27 @@
                 legRot[key].setAttribute('transform', 'rotate(' + (ANG[key] * legProgress) + ')');
                 legTickScale[key].setAttribute('transform', 'scale(' + legProgress + ')');
             });
-
-            // text slide is a straight, constant-rate pull (like drawing out a
-            // tape measure), not eased like the leg rotation. Opacity fades in
-            // alongside it, from a low starting value up to fully opaque. It
-            // waits a short beat after the legs start fanning out before it
-            // begins, then catches up to finish at the same time they settle.
-            var textProgress = clamp01((tMs - 2 * UNIT - TEXT_DELAY_MS) / (UNIT - TEXT_DELAY_MS));
-            var textOpacity = TEXT_MIN_OPACITY + (1 - TEXT_MIN_OPACITY) * textProgress;
-            var txCHI = CHI_REACH * (1 - textProgress);
-            textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
-            textCHIEl.style.opacity = textOpacity;
-            var txRHO = -RHO_REACH * (1 - textProgress);
-            textRHOEl.setAttribute('transform', 'translate(' + txRHO + ',0)');
-            textRHOEl.style.opacity = textOpacity;
         }
 
-        var TOTAL = HOLD + 3 * UNIT + 200;
+        var TOTAL = 3 * UNIT + 200;
         var startTime = null;
+        var testMode = false;
         function tick(now) {
+            if (testMode) return;
             if (startTime === null) startTime = now;
             var elapsed = now - startTime;
-            render(Math.min(elapsed, HOLD + 3 * UNIT));
+            render(Math.min(elapsed, 3 * UNIT));
             if (elapsed < TOTAL) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
 
-        // Click the logo: fade it out, snap back to the flat horizontal
-        // starting pose while invisible, fade back in, then replay.
+        // Exposed so a screenshot/GIF-rendering script can seek to an exact
+        // frame instead of racing the real-time autoplay loop.
+        window.__render = function (t) { testMode = true; render(t); };
+        window.__DURATION = 3 * UNIT;
+
+        // Click the logo: fade it out, snap back to the starting pose while
+        // invisible, fade back in, then replay.
         var logoSvg = document.querySelector('svg.logo');
         var replaying = false;
         function replay() {
