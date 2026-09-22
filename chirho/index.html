@@ -25,17 +25,22 @@
             align-items: center;
         }
         .wrap { max-width: 1560px; width: 100%; text-align: center; }
-        header { padding-top: 56px; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 20px 0 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: #8A8578;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #4C6A7D; }
+        .back-row { text-align: left; }
+        header { padding-top: 32px; }
         .logo { width: 260px; height: auto; margin: 0 auto 16px; display: block; }
         .logo text { font: 600 6.5px 'EB Garamond', serif; letter-spacing: .8px; fill: #4C6A7D; }
         .logo path, .logo line { stroke: #4C6A7D; }
-        h1 {
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin: 0 0 28px;
-            color: #4C6A7D;
-        }
         .mission {
             font-size: 1.15rem;
             line-height: 1.7;
@@ -187,11 +192,17 @@
 </head>
 <body>
 <div class="wrap">
+    <div class="back-row">
+        <a class="back-link" href="https://deangadberry.com">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            deangadberry.com
+        </a>
+    </div>
     <header>
         <svg class="logo" viewBox="82 284 47 26" xmlns="http://www.w3.org/2000/svg">
             <clipPath id="logoClipCHI"><rect id="logoClipCHIRect" x="103.5" y="288" width="0" height="16"/></clipPath>
             <clipPath id="logoClipRHO"><rect id="logoClipRHORect" x="103.5" y="288" width="0" height="16"/></clipPath>
-            <text id="logoTextCHI" x="98.625" y="300" text-anchor="end" clip-path="url(#logoClipCHI)">CHI</text>
+            <g clip-path="url(#logoClipCHI)"><text id="logoTextCHI" x="98.625" y="300" text-anchor="end">CHI</text></g>
             <g transform="translate(103.5,297.56) scale(0.325)" fill="none">
                 <g id="logoRhoGroup">
                     <line x1="0" y1="-32" x2="0" y2="28.425" stroke-width="2" stroke-linecap="round" />
@@ -225,9 +236,8 @@
                     </g></g>
                 </g></g>
             </g>
-            <text id="logoTextRHO" x="108.375" y="300" text-anchor="start" clip-path="url(#logoClipRHO)">RHO</text>
+            <g clip-path="url(#logoClipRHO)"><text id="logoTextRHO" x="108.375" y="300" text-anchor="start">RHO</text></g>
         </svg>
-        <h1>CHI-RHO CARDS</h1>
     </header>
 
     <p class="mission">
@@ -413,17 +423,39 @@
             BR: document.getElementById('logoLegBR-tickscale'), BL: document.getElementById('logoLegBL-tickscale'),
         };
 
-        var chiBBox = document.getElementById('logoTextCHI').getBBox();
-        var rhoBBox = document.getElementById('logoTextRHO').getBBox();
+        // CHI/RHO reveal like a tape measure blade sliding out from behind the
+        // P: each word starts shifted fully behind the glyph (hidden) and
+        // *translates* to its resting spot, through a clip window on a static
+        // wrapper <g> (NOT on the text itself -- clip-path on the same element
+        // that also carries the animated transform moves the clip WITH the
+        // text, since userSpaceOnUse coordinates are resolved in that
+        // element's own local space; the fix is to keep the clip on an
+        // unanimated parent and only transform the child). Since the clip
+        // boundary doesn't move but the text does, the letter nearest that
+        // boundary in the text's own local coordinates -- the leading edge in
+        // the direction of travel -- clears it first: for CHI (sliding left)
+        // that's the far/left letter "C", so C shows first, then H, then I
+        // (closest to the glyph) settles in last. RHO mirrors it sliding
+        // right: O first, then H, then R settles in last.
+        var textCHIEl = document.getElementById('logoTextCHI');
+        var textRHOEl = document.getElementById('logoTextRHO');
+        var chiBBox = textCHIEl.getBBox();
+        var rhoBBox = textRHOEl.getBBox();
         var clipCHIRect = document.getElementById('logoClipCHIRect');
         var clipRHORect = document.getElementById('logoClipRHORect');
-        clipCHIRect.setAttribute('y', chiBBox.y - 1);
-        clipCHIRect.setAttribute('height', chiBBox.height + 2);
-        clipRHORect.setAttribute('y', rhoBBox.y - 1);
-        clipRHORect.setAttribute('height', rhoBBox.height + 2);
         var CENTER_X = 103.5;
         var CHI_REACH = CENTER_X - chiBBox.x;
         var RHO_REACH = (rhoBBox.x + rhoBBox.width) - CENTER_X;
+
+        // clip windows are static -- set once, never animated.
+        clipCHIRect.setAttribute('x', chiBBox.x - 1);
+        clipCHIRect.setAttribute('y', chiBBox.y - 1);
+        clipCHIRect.setAttribute('width', CENTER_X - (chiBBox.x - 1));
+        clipCHIRect.setAttribute('height', chiBBox.height + 2);
+        clipRHORect.setAttribute('x', CENTER_X);
+        clipRHORect.setAttribute('y', rhoBBox.y - 1);
+        clipRHORect.setAttribute('width', (rhoBBox.x + rhoBBox.width + 1) - CENTER_X);
+        clipRHORect.setAttribute('height', rhoBBox.height + 2);
 
         function render(tMsRaw) {
             var tMs = Math.max(0, tMsRaw - HOLD);
@@ -447,13 +479,13 @@
                 legTickScale[key].setAttribute('transform', 'scale(' + legProgress + ')');
             });
 
+            // text slide is a straight, constant-rate pull (like drawing out a
+            // tape measure), not eased like the leg rotation.
             var textProgress = p3;
-            var chiW = CHI_REACH * textProgress;
-            clipCHIRect.setAttribute('x', CENTER_X - chiW);
-            clipCHIRect.setAttribute('width', chiW);
-            var rhoW = RHO_REACH * textProgress;
-            clipRHORect.setAttribute('x', CENTER_X);
-            clipRHORect.setAttribute('width', rhoW);
+            var txCHI = CHI_REACH * (1 - textProgress);
+            textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
+            var txRHO = -RHO_REACH * (1 - textProgress);
+            textRHOEl.setAttribute('transform', 'translate(' + txRHO + ',0)');
         }
 
         var TOTAL = HOLD + 3 * UNIT + 200;
@@ -465,6 +497,26 @@
             if (elapsed < TOTAL) requestAnimationFrame(tick);
         }
         requestAnimationFrame(tick);
+
+        // Click the logo: fade it out, snap back to the flat horizontal
+        // starting pose while invisible, fade back in, then replay.
+        var logoSvg = document.querySelector('svg.logo');
+        var replaying = false;
+        function replay() {
+            if (replaying) return;
+            replaying = true;
+            logoSvg.style.transition = 'opacity 0.25s ease';
+            logoSvg.style.opacity = '0';
+            setTimeout(function () {
+                render(0);
+                logoSvg.style.opacity = '1';
+                startTime = null;
+                requestAnimationFrame(tick);
+                replaying = false;
+            }, 260);
+        }
+        logoSvg.style.cursor = 'pointer';
+        logoSvg.addEventListener('click', replay);
     })();
 </script>
 </body>
