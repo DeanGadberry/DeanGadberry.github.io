@@ -447,11 +447,13 @@
 <script>
     (function () {
         // Logo build-on animation: CHI/RHO slide out from behind the P's
-        // vertical stem through a static clip window while fading in, THEN
-        // the loop inflates -- scaled horizontally from zero with both its
-        // stem attachment points held fixed, so it reads as ballooning out
-        // rather than sliding into place -- and finally the click/spring
-        // settle and the X's four legs fanning out happen together.
+        // vertical stem through a static clip window while fading in,
+        // TOGETHER WITH the loop inflating -- scaled horizontally from
+        // zero with both its stem attachment points held fixed, so it
+        // reads as ballooning out rather than sliding into place -- so the
+        // whole P and the wordmark arrive in the same first beat. Then the
+        // completed P clicks down and spring-settles back on its own, and
+        // finally the X's four legs fan out from the stem, last.
         var ANG = { TR: 39.29, TL: -39.29, BR: -39.29, BL: 39.29 };
         var UNIT = 550;
         var DOWN_DIST = 2.8; // click-down distance
@@ -542,7 +544,9 @@
             // Phase 1: CHI/RHO slide out from behind the P's vertical stem
             // through the static clip window while fading in, at a straight
             // constant rate (not eased) so it reads as being drawn out
-            // rather than accelerating/decelerating.
+            // rather than accelerating/decelerating -- together with the
+            // loop inflating in alongside them, so the whole P (stem, loop)
+            // and the wordmark all arrive in the same first beat.
             var textOpacity = TEXT_MIN_OPACITY + (1 - TEXT_MIN_OPACITY) * p1;
             var txCHI = CHI_REACH * (1 - p1);
             textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
@@ -551,20 +555,21 @@
             textRHOEl.setAttribute('transform', 'translate(' + txRHO + ',0)');
             textRHOEl.style.opacity = textOpacity;
 
-            // Phase 2: the loop inflates in. Scale x-only with no translate --
-            // the path's own endpoints already sit at x=0 on the stem, so this
-            // keeps both the top AND bottom attachment points fixed in place
-            // throughout, growing only the outward belly bulge. A touch of
-            // overshoot so it reads as elastic/inflating rather than a flat
-            // linear grow.
-            var loopProgress = tMs >= UNIT ? easeOutBack(p2) : 0;
+            // The loop inflates in. Scale x-only with no translate -- the
+            // path's own endpoints already sit at x=0 on the stem, so this
+            // keeps both the top AND bottom attachment points fixed in
+            // place throughout, growing only the outward belly bulge. A
+            // touch of overshoot so it reads as elastic/inflating rather
+            // than a flat linear grow.
+            var loopProgress = easeOutBack(p1);
             loopScale.setAttribute('transform', 'scale(' + loopProgress + ',1)');
-            loopPath.style.opacity = tMs >= UNIT ? 1 : 0;
 
-            // Phase 3: click/spring settle and the X legs fanning out, together.
-            var yOffset = tMs >= 2 * UNIT ? bounceOffsetMs(tMs - 2 * UNIT) : 0;
+            // Phase 2: the completed P clicks down and spring-settles back,
+            // on its own -- the X hasn't appeared yet.
+            var yOffset = tMs >= UNIT ? bounceOffsetMs(tMs - UNIT) : 0;
             rhoGroup.setAttribute('transform', 'translate(0,' + yOffset + ')');
 
+            // Phase 3: the X's four legs fan out from the stem, last.
             var legsVisible = tMs >= 2 * UNIT;
             var legProgress = easeOutCubic(p3);
             footScale.setAttribute('transform', 'scale(' + legProgress + ')');
