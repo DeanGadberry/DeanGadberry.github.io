@@ -39,6 +39,15 @@
             return pool.pop();
         }
 
+        // Give every drop its own horizontal lane instead of a fully
+        // random left position, so they can't land on top of each
+        // other and cluster. Lanes are shuffled so creation order
+        // (which correlates with nothing visual) doesn't line drops
+        // up left-to-right, and each drop still jitters within its
+        // lane so the rows don't look mechanical.
+        var laneWidth = 100 / count;
+        var lanes = shuffled(Array.from({ length: count }, function (_, i) { return i; }));
+
         for (var i = 0; i < count; i++) {
             var src = nextImage();
             var drop = document.createElement('div');
@@ -47,7 +56,8 @@
             var dur = rand(minDur, maxDur);
             var delay = -rand(0, dur);
             var rot = rand(-10, 10);
-            var left = rand(-2, 96);
+            var laneStart = lanes[i] * laneWidth;
+            var left = laneStart + rand(laneWidth * 0.1, laneWidth * 0.9) - (size / 14);
             drop.style.setProperty('--left', left + '%');
             drop.style.setProperty('--size', size + 'px');
             drop.style.setProperty('--dur', dur + 's');
