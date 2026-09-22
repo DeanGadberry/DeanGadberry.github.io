@@ -109,7 +109,7 @@
             display: block;
             object-fit: cover;
         }
-        .card-front {
+        .card-back {
             transform: rotateY(-180deg);
         }
         .card-badge {
@@ -125,12 +125,6 @@
             font-weight: 600;
             letter-spacing: 0.6px;
             z-index: 2;
-        }
-        figcaption {
-            margin-top: 14px;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            color: #666;
         }
         figure { margin: 0; }
         .note {
@@ -275,7 +269,6 @@
                     <div class="card-face card-front"><img src="images/front/psalm_1.webp" alt="Psalm 1 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>PSALM 1</figcaption>
         </figure>
         <figure>
             <div class="card-flip" tabindex="0" aria-label="1 John, front and back">
@@ -284,7 +277,6 @@
                     <div class="card-face card-front"><img src="images/front/1_john.webp" alt="1 John card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>1 JOHN</figcaption>
         </figure>
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Hebrews 11, front and back">
@@ -293,7 +285,6 @@
                     <div class="card-face card-front"><img src="images/front/hebrews_11.webp" alt="Hebrews 11 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>HEBREWS 11</figcaption>
         </figure>
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Psalm 117, front and back">
@@ -302,7 +293,6 @@
                     <div class="card-face card-front"><img src="images/front/psalm_117.webp" alt="Psalm 117 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>PSALM 117</figcaption>
         </figure>
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Sermon on the Mount, front and back">
@@ -311,7 +301,6 @@
                     <div class="card-face card-front"><img src="images/front/sermon_on_the_mount.webp" alt="Sermon on the Mount card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>SERMON ON THE MOUNT</figcaption>
         </figure>
         <figure>
             <div class="card-flip" tabindex="0" aria-label="Exodus 20, front and back">
@@ -320,7 +309,6 @@
                     <div class="card-face card-front"><img src="images/front/exodus_20.webp" alt="Exodus 20 card front" loading="eager" decoding="sync"><span class="card-badge">FRONT</span></div>
                 </div>
             </div>
-            <figcaption>EXODUS 20</figcaption>
         </figure>
     </div>
 
@@ -372,7 +360,7 @@
                     lightbox.dataset.backAlt = backImg.alt;
                     lightbox.dataset.frontSrc = frontImg.src;
                     lightbox.dataset.frontAlt = frontImg.alt;
-                    var showFront = tile.dataset.flipped === 'true';
+                    var showFront = tile.dataset.flipped !== 'true';
                     showLightboxFace(showFront ? 'front' : 'back');
                     lightbox.classList.add('active');
                 });
