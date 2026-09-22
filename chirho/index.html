@@ -505,6 +505,7 @@
         var DOWN_DIST = 2.8; // click-down distance (30% less than the original 4)
         var HOLD = 350;      // ms to hang at the flat horizontal starting pose before rotating in
         var TEXT_MIN_OPACITY = 0.15; // CHI/RHO start near-invisible and fade in as they slide out
+        var TEXT_DELAY_MS = 150; // CHI/RHO wait a beat after the chi legs start fanning out before they begin revealing
 
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
         function easeOutQuad(t) { return 1 - (1 - t) * (1 - t); }
@@ -610,8 +611,10 @@
 
             // text slide is a straight, constant-rate pull (like drawing out a
             // tape measure), not eased like the leg rotation. Opacity fades in
-            // alongside it, from a low starting value up to fully opaque.
-            var textProgress = p3;
+            // alongside it, from a low starting value up to fully opaque. It
+            // waits a short beat after the legs start fanning out before it
+            // begins, then catches up to finish at the same time they settle.
+            var textProgress = clamp01((tMs - 2 * UNIT - TEXT_DELAY_MS) / (UNIT - TEXT_DELAY_MS));
             var textOpacity = TEXT_MIN_OPACITY + (1 - TEXT_MIN_OPACITY) * textProgress;
             var txCHI = CHI_REACH * (1 - textProgress);
             textCHIEl.setAttribute('transform', 'translate(' + txCHI + ',0)');
