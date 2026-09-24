@@ -169,69 +169,7 @@
         }
         .cta-button:hover { background: #8C8CF7; color: #FDFBF7; }
 
-        .card-flip { cursor: zoom-in; -webkit-tap-highlight-color: transparent; }
-
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(20, 18, 16, 0.86);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s ease;
-        }
-        .lightbox.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .lightbox-frame {
-            position: relative;
-            max-width: 88vw;
-            max-height: 88vh;
-            aspect-ratio: 1200 / 1680;
-            height: 88vh;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.55);
-            cursor: pointer;
-        }
-        .lightbox-frame img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: 22px;
-            right: 28px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255,255,255,0.12);
-            color: #FDFBF7;
-            font-size: 1.4rem;
-            line-height: 1;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        .lightbox-close:hover { background: rgba(255,255,255,0.24); }
-        .lightbox-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 10px 14px;
-            font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            color: #FDFBF7;
-            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-            pointer-events: none;
-        }
+        .card-flip { cursor: pointer; -webkit-tap-highlight-color: transparent; }
     </style>
 </head>
 <body>
@@ -293,7 +231,7 @@
         an early preview of the design; more books, translations, and formats
         are on the way.
     </p>
-    <p class="hint">Click a card to zoom in for a closer look.</p>
+    <p class="hint">Click or tap a card to flip it.</p>
 
     <div class="gallery">
         <figure>
@@ -364,83 +302,19 @@
     </div>
 </div>
 
-<div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-    <div class="lightbox-frame">
-        <img id="lightboxImg" src="" alt="">
-        <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-</div>
-
 <script>
     (function () {
-        var lightbox = document.getElementById('lightbox');
-        var lightboxImg = document.getElementById('lightboxImg');
-        var lightboxCaption = document.getElementById('lightboxCaption');
-        var lightboxFrame = lightbox.querySelector('.lightbox-frame');
-        var closeBtn = document.getElementById('lightboxClose');
-
-        // Desktop has real hover, so flipping previews on hover and a click
-        // (a separate, deliberate gesture from hover) opens the lightbox.
-        // Touch devices have no hover at all, so a tap is the only gesture
-        // available -- it flips the card in place, matching "all flip on
-        // tap," with no separate button. That claims tap for flipping, so
-        // the lightbox isn't reachable by tapping a tile on touch devices.
-        var supportsHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-
+        // Every card just flips on click/tap, every time -- same gesture,
+        // same result, on every device. No separate lightbox/zoom view and
+        // no hover-only branch, so there's no device where the first tap
+        // does something other than flip the card.
         document.querySelectorAll('.card-flip').forEach(function (tile) {
             tile.dataset.flipped = 'false';
-            function setFlipped(v) {
-                tile.dataset.flipped = v ? 'true' : 'false';
-                tile.classList.toggle('is-flipped', v);
-            }
-
-            if (supportsHover) {
-                tile.addEventListener('mouseenter', function () { setFlipped(true); });
-                tile.addEventListener('mouseleave', function () { setFlipped(false); });
-                tile.addEventListener('click', function () {
-                    var backImg = tile.querySelector('.card-back img');
-                    var frontImg = tile.querySelector('.card-front img');
-                    if (!backImg || !frontImg) return;
-                    lightbox.dataset.backSrc = backImg.src;
-                    lightbox.dataset.backAlt = backImg.alt;
-                    lightbox.dataset.frontSrc = frontImg.src;
-                    lightbox.dataset.frontAlt = frontImg.alt;
-                    var showFront = tile.dataset.flipped !== 'true';
-                    showLightboxFace(showFront ? 'front' : 'back');
-                    lightbox.classList.add('active');
-                });
-            } else {
-                tile.addEventListener('click', function () {
-                    setFlipped(tile.dataset.flipped !== 'true');
-                });
-            }
-        });
-
-        function showLightboxFace(which) {
-            var src = which === 'front' ? lightbox.dataset.frontSrc : lightbox.dataset.backSrc;
-            var alt = which === 'front' ? lightbox.dataset.frontAlt : lightbox.dataset.backAlt;
-            lightbox.dataset.showing = which;
-            lightboxImg.src = src;
-            lightboxImg.alt = alt;
-            lightboxCaption.textContent = alt + ' — click to flip';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-        }
-
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function (e) {
-            if (!lightboxFrame.contains(e.target)) {
-                closeLightbox();
-                return;
-            }
-            var other = lightbox.dataset.showing === 'front' ? 'back' : 'front';
-            showLightboxFace(other);
-        });
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeLightbox();
+            tile.addEventListener('click', function () {
+                var flipped = tile.dataset.flipped !== 'true';
+                tile.dataset.flipped = flipped ? 'true' : 'false';
+                tile.classList.toggle('is-flipped', flipped);
+            });
         });
     })();
 </script>
