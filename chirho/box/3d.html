@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Chi Rho Cards Box in 3D</title>
+<link rel="icon" href="../../assets/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #FDFBF7; --ink: #1A1A1A; --accent: #4C6A7D; --rule: #D9DEE2; --ground: #E9EDF0; }
+  html, body { height: 100%; }
+  body { margin: 0; background: radial-gradient(ellipse at 50% 40%, var(--paper) 0%, var(--ground) 100%); background-color: var(--ground);
+         color: var(--ink); font: 400 1.05rem/1.5 "EB Garamond", Georgia, serif; }
+  main { box-sizing: border-box; min-height: 100%; max-width: 900px; margin: 0 auto; padding: 28px 16px 40px;
+         display: flex; flex-direction: column; gap: 12px; }
+  .bar { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+  h1 { margin: 0; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: 1.1rem; color: var(--accent); }
+  .bar a { color: var(--accent); }
+  label { font-size: .95rem; color: #555; }
+  select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 2px 6px; }
+  .spec { margin: 0; color: #555; font-size: .98rem; font-variant-numeric: tabular-nums; }
+  .stage { position: relative; width: 100%; height: min(68vh, 640px); min-height: 360px; touch-action: none; cursor: grab; }
+  .stage:active { cursor: grabbing; }
+  canvas { display: block; width: 100%; height: 100%; }
+  .hint { position: absolute; left: 0; right: 0; bottom: 6px; margin: 0; text-align: center; font-size: .9rem; color: #666; pointer-events: none; }
+  .views { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .views button { font: 600 .8rem/1 "EB Garamond", Georgia, serif; letter-spacing: .12em; text-transform: uppercase; color: var(--accent);
+                  background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+  .views button[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="bar">
+    <h1>Chi Rho Cards &middot; Tuck Box in 3D</h1>
+    <a href="./">All renditions</a>
+  </div>
+  <div class="bar">
+    <label for="pick">Rendition <select id="pick"></select></label>
+    <p class="spec" id="spec"></p>
+  </div>
+  <div class="stage" id="stage" aria-label="3D model of the tuck box. Drag to turn it.">
+    <p class="hint" id="hint">Drag to turn the box</p>
+  </div>
+  <div class="views" role="group" aria-label="Views">
+    <button type="button" data-view="three" aria-pressed="true">Three-quarter</button>
+    <button type="button" data-view="front" aria-pressed="false">Front</button>
+    <button type="button" data-view="back" aria-pressed="false">Back</button>
+    <button type="button" data-view="left" aria-pressed="false">Left side</button>
+    <button type="button" data-view="right" aria-pressed="false">Right side</button>
+    <button type="button" data-view="top" aria-pressed="false">Top</button>
+    <button type="button" data-view="bottom" aria-pressed="false">Bottom</button>
+    <button type="button" data-view="spin" aria-pressed="false">Spin</button>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  const NAMES = ["v97", "v96", "v95", "v94", "v93", "v92", "v91", "v90", "v89", "v88", "v87", "v86", "v85", "v84", "v83", "v82", "v81", "v80", "v79", "v78", "v77", "v76", "v75", "v74", "v73", "v72", "v71", "v70", "v69", "v68", "v67", "v66", "v64", "v63", "v62", "v61", "v60", "v59", "v58", "v57", "v56", "v55", "v54", "v53", "v52", "v51", "v50", "v49", "v48", "v47", "v46", "v45", "v44", "v43", "v42", "v41", "v40", "v39", "v38", "v37", "v36", "v35", "v34", "v33", "v32", "v31", "v30", "v29", "v28", "v27", "v26", "v25", "v24", "v23", "v22", "v17", "v16", "v14", "v13", "v12", "v11", "v10", "v9", "v8", "v7", "v6", "v5", "v4", "v3", "v2", "v1"];
+  const FACES = ["right", "left", "top", "bottom", "front", "back"];  // BoxGeometry order: +x -x +y -y +z -z
+  const pick = document.getElementById("pick");
+  NAMES.forEach(n => pick.add(new Option(n, n)));
+
+  const stage = document.getElementById("stage");
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  stage.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xc4ccd2, 0.72));
+  const key = new THREE.DirectionalLight(0xffffff, 0.62);
+  key.position.set(-3, 5, 6);
+  key.castShadow = true;
+  key.shadow.mapSize.set(1024, 1024);
+  Object.assign(key.shadow.camera, { left: -3, right: 3, top: 3, bottom: -3, near: 0.5, far: 20 });
+  scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.22);
+  fill.position.set(4, 1, 3);
+  scene.add(fill);
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), new THREE.ShadowMaterial({ opacity: 0.18 }));
+  floor.rotation.x = -Math.PI / 2;
+  floor.receiveShadow = true;
+  scene.add(floor);
+  const pivot = new THREE.Group();
+  scene.add(pivot);
+
+  const loader = new THREE.TextureLoader();
+  const aniso = renderer.capabilities.getMaxAnisotropy();
+  let box = null, dirty = true, loadId = 0;
+
+  function load(name) {
+    const id = ++loadId;
+    fetch(`renditions/${name}/faces/box.json`).then(r => r.json()).then(dim => {
+      if (id !== loadId) return;
+      const W = dim.w / 100, H = dim.h / 100, D = dim.d / 100;
+      const mats = FACES.map(f => {
+        const t = loader.load(`renditions/${name}/faces/${f}.webp`, () => { dirty = true; });
+        t.encoding = THREE.sRGBEncoding;
+        t.anisotropy = aniso;
+        return new THREE.MeshStandardMaterial({ map: t, roughness: 0.62, metalness: 0 });
+      });
+      if (box) { pivot.remove(box); box.geometry.dispose(); box.material.forEach(m => { m.map.dispose(); m.dispose(); }); }
+      box = new THREE.Mesh(new THREE.BoxGeometry(W, H, D), mats);
+      box.castShadow = true;
+      pivot.add(box);
+      floor.position.y = -H / 2 - 0.35;
+      const mm = pt => (pt / 72 * 25.4).toFixed(1);
+      document.getElementById("spec").textContent =
+        `${mm(dim.w)} × ${mm(dim.h)} × ${mm(dim.d)} mm`;
+      dirty = true;
+    });
+  }
+
+  function current() {
+    const n = decodeURIComponent(location.hash.slice(1));
+    return NAMES.includes(n) ? n : NAMES[0];
+  }
+  function show() { const n = current(); pick.value = n; load(n); }
+  pick.addEventListener("change", () => { location.hash = pick.value; });
+  window.addEventListener("hashchange", show);
+  show();
+
+  const VIEWS = {
+    three: { yaw: 0.7, pitch: 0.22 }, front: { yaw: 0, pitch: 0 }, back: { yaw: Math.PI, pitch: 0 },
+    left: { yaw: Math.PI / 2, pitch: 0 }, right: { yaw: -Math.PI / 2, pitch: 0 },
+    top: { yaw: 0, pitch: Math.PI / 2 }, bottom: { yaw: 0, pitch: -Math.PI / 2 },
+  };
+  let yaw = VIEWS.three.yaw, pitch = VIEWS.three.pitch, target = null, spinning = false;
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    const t = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
+    camera.position.set(0, 0, Math.max(3.6 / t, 3.0 / t / camera.aspect));
+    camera.lookAt(0, 0, 0);
+    camera.updateProjectionMatrix();
+    dirty = true;
+  }
+  new ResizeObserver(resize).observe(stage);
+  resize();
+
+  function setPressed(name) {
+    document.querySelectorAll(".views button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === name)));
+  }
+  document.querySelectorAll(".views button").forEach(b => b.addEventListener("click", () => {
+    const v = b.dataset.view;
+    if (v === "spin") {
+      spinning = !spinning; target = null; setPressed(spinning ? "spin" : "");
+    } else {
+      spinning = false; setPressed(v);
+      let dy = VIEWS[v].yaw - yaw;
+      dy = Math.atan2(Math.sin(dy), Math.cos(dy));  // the short way round
+      target = { yaw: yaw + dy, pitch: VIEWS[v].pitch };
+      if (reduceMotion) { yaw = target.yaw; pitch = target.pitch; target = null; }
+    }
+    dirty = true;
+  }));
+
+  let drag = null;
+  stage.addEventListener("pointerdown", e => {
+    drag = { x: e.clientX, y: e.clientY, yaw, pitch };
+    stage.setPointerCapture(e.pointerId);
+    target = null; spinning = false; setPressed("");
+    document.getElementById("hint").hidden = true;
+  });
+  stage.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const s = 3.2 / Math.max(stage.clientWidth, 1);
+    yaw = drag.yaw + (e.clientX - drag.x) * s;
+    pitch = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, drag.pitch + (e.clientY - drag.y) * s));
+    dirty = true;
+  });
+  const end = () => { drag = null; };
+  stage.addEventListener("pointerup", end);
+  stage.addEventListener("pointercancel", end);
+
+  (function frame() {
+    if (spinning) { yaw += 0.008; dirty = true; }
+    if (target) {
+      yaw += (target.yaw - yaw) * 0.14;
+      pitch += (target.pitch - pitch) * 0.14;
+      if (Math.abs(target.yaw - yaw) < 1e-3 && Math.abs(target.pitch - pitch) < 1e-3) {
+        yaw = target.yaw; pitch = target.pitch; target = null;
+      }
+      dirty = true;
+    }
+    if (dirty) { pivot.rotation.set(pitch, yaw, 0, "XYZ"); renderer.render(scene, camera); dirty = false; }
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>
