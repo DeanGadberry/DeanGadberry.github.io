@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Chi Rho Business Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* One reading column like a card's text block; every iteration is an article, newest first. */
+  :root {
+    --paper: #FDFBF7; --panel: #F3F0E9; --ink: #1A1A1A; --muted: #5C6670; --rule: #D9D4C8;
+    --slate: #4C6A7D; --slate-soft: #E3EAEE; --bar: #4C6A7D; --bar-dim: #A9B9C3;
+    --body: "EB Garamond", Garamond, Georgia, serif;
+    --utility: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #171B1F; --panel: #20262B; --ink: #ECE8DF; --muted: #A3ADB5; --rule: #343C43;
+      --slate: #9DB8CA; --slate-soft: #24323B; --bar: #9DB8CA; --bar-dim: #4E606B; color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1.14rem/1.5 var(--body);
+    padding-inline: 16px; padding-block: 0 72px; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .col, .lede, .wrap > header p { max-width: 44rem; }
+  img { max-width: 100%; height: auto; display: block; }
+  header.site { border-top: 22px solid var(--slate);
+    border-image: linear-gradient(90deg, var(--slate) 0 42%, transparent 100%) 1; padding-block: 26px 4px; }
+  .eyebrow { font: 600 0.78rem/1 var(--utility); letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate); margin: 0 0 10px; }
+  h1 { font: 600 clamp(2rem, 5vw, 2.7rem)/1.08 var(--body); margin: 0 0 12px; text-wrap: balance; }
+  h2 { font: 600 1.85rem/1.15 var(--body); margin: 6px 0 10px; text-wrap: balance; }
+  h3 { font: 600 1.45rem/1.2 var(--body); margin: 40px 0 10px; text-wrap: balance; }
+  h4 { font: 600 1.2rem/1.25 var(--body); margin: 0 0 4px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--slate); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--slate); outline-offset: 2px; }
+  nav.iters { font: 400 0.95rem/1.6 var(--utility); display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; }
+  nav.iters a { color: var(--muted); }
+  article.iter { border-top: 1px solid var(--rule); margin-top: 48px; padding-top: 22px; }
+  .iter-meta { font: 600 0.78rem/1 var(--utility); letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin: 0 0 8px; }
+  .summary { font-size: 1.2rem; color: var(--muted); max-width: 44rem; }
+  .lede { font-size: 1.22rem; line-height: 1.45; }
+  .answer { display: grid; grid-template-columns: auto 1fr; gap: 6px 22px; align-items: center;
+    background: var(--panel); border-left: 4px solid var(--slate); padding: 16px 20px; margin: 18px 0; max-width: 48rem; }
+  .answer .big { font: 600 3.4rem/1 var(--body); color: var(--slate); margin: 0; }
+  .answer p { margin: 0; }
+  figure { margin: 22px 0; min-width: 0; }
+  figure.pair.portrait { max-width: 560px; }
+  figcaption { font: 400 0.92rem/1.45 var(--utility); color: var(--muted); margin-top: 6px; max-width: 44rem; }
+  .figs { display: grid; gap: 8px 28px; grid-template-columns: 1fr; }
+  .chartwrap { overflow-x: auto; margin: 10px 0; }
+  .sweep { width: 100%; max-width: 680px; min-width: 420px; height: auto; display: block; }
+  .sweep .grid { stroke: var(--rule); stroke-width: 1; }
+  .sweep .three { stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 5 4; opacity: .6; }
+  .sweep .tick { font: 400 12px var(--utility); fill: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 400 0.9rem/1.4 var(--utility); color: var(--muted); margin: 8px 0 0; }
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 8px; vertical-align: -1px; }
+  /* iteration 001 */
+  .verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 22px 0 8px; }
+  .verdict div { background: var(--panel); padding: 14px 16px; min-width: 0; }
+  .verdict dt { font: 600 0.72rem/1.2 var(--utility); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .verdict dd { margin: 0; font-size: 1.05rem; line-height: 1.35; }
+  .options { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 28px; margin-top: 24px; }
+  .opt { grid-column: 1 / -1; margin: 0; }
+  .opt.portrait { grid-column: auto; }
+  .opt figcaption { font: inherit; color: inherit; padding: 4px 4px 0; }
+  .key { font: 700 0.85rem/1 var(--utility); color: var(--paper); background: var(--slate); width: 1.7rem; height: 1.7rem;
+    display: inline-grid; place-items: center; border-radius: 50%; transform: translateY(-2px); }
+  .tag { font: 600 0.72rem/1 var(--utility); letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate);
+    border: 1px solid var(--slate); border-radius: 999px; padding: 4px 9px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 4px 16px; font: 400 0.9rem/1.4 var(--utility); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .stats b { color: var(--ink); font-weight: 600; }
+  .chart-grid { display: grid; grid-template-columns: minmax(150px, 15rem) 1fr 4.2rem; gap: 12px; }
+  .chart-grid > .area { position: relative; }
+  .bar { display: grid; grid-template-columns: minmax(150px, 15rem) 1fr 4.2rem; align-items: center; gap: 12px; font: 400 0.92rem/1.2 var(--utility); padding-block: 4px; }
+  .bl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+  .bl i { font-style: normal; font-weight: 400; color: var(--muted); }
+  .track { position: relative; height: 14px; }
+  .fill { position: absolute; inset: 0 auto 0 0; background: var(--bar-dim); }
+  .bar.hi .fill { background: var(--bar); }
+  .bv { text-align: right; font-variant-numeric: tabular-nums; }
+  .refline { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1.5px dashed var(--ink); opacity: 0.55; }
+  .reflabel { font: 400 0.8rem/1.3 var(--utility); color: var(--muted); margin-top: 6px; }
+  .chart { position: relative; }
+  .tables2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 32px; }
+  ol.ideas { padding-left: 1.4rem; display: grid; gap: 8px; }
+  /* shared */
+  .tablewrap { overflow-x: auto; margin: 14px 0 10px; border-top: 1px solid var(--rule); }
+  table { border-collapse: collapse; width: 100%; font: 400 0.95rem/1.4 var(--utility); font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+  th { font-weight: 600; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  td.n, th.n { text-align: right; }
+  tr.rec td { background: var(--slate-soft); font-weight: 600; }
+  .note { font: 400 0.92rem/1.5 var(--utility); color: var(--muted); border-left: 3px solid var(--rule); padding-left: 12px; max-width: 44rem; }
+  @media (max-width: 640px) {
+    .options { grid-template-columns: 1fr; }
+    .opt.portrait { grid-column: 1 / -1; }
+    .bar, .chart-grid { grid-template-columns: 7.5rem 1fr 3.4rem; }
+    .bl i { display: none; }
+    .answer { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <p class="eyebrow">Chi Rho Cards &middot; Business-card format</p>
+    <h1>Design iterations</h1>
+    <p>Every round of the business-card design, newest first. Nothing here is replaced; each change is added as a new iteration on top.</p>
+    <nav class="iters" aria-label="Iterations"><a href="#i002">002 &middot; The playing-card design at business size, and how large the text can be</a><a href="#i001">001 &middot; Thirteen business-card layouts, printing, waterproofing and boxing</a></nav>
+  </header>
+
+  <article class="iter" id="i002">
+    <p class="iter-meta">Iteration 002 &middot; 2 October 2026</p>
+    <h2>The playing-card design at business size, and how large the text can be</h2>
+    <p class="summary">Card generation reworked to the playing cards&#x27; own design and pagination, scaled to business size. With the whole KJV paginated at every size, three verses a side holds up to 9 pt on a portrait card with the top band, slightly larger than the playing cards&#x27; 8.8 pt.</p>
+    
+<p class="lede">Card generation is reworked to the playing cards' own design, now drawn in points and scaled from the body size, so the type can grow without re-tuning every offset. The cards use the playing cards' pagination too: whole verses, two or more a side, the fewest sides per book, and then the most even split.</p>
+<div class="answer">
+  <p class="big">9 pt</p>
+  <p>is the largest text that still averages three verses a side, on a <b>portrait</b> card (2 &times; 3.5 in) with the band on top. That is slightly larger than the playing cards' 8.8 pt. Across the whole KJV it gives <b>3.09 verses a side</b>. Sides are filled to <b>83% &plusmn; 10%</b>, and the Bible comes to <b>5,039 cards</b>.</p>
+</div>
+<p>Just above 9 pt, Esther 8:9, the longest verse in the KJV, no longer fits on one side, so whole-verse pagination breaks. Getting 9 pt took one change: the side margins go from 11 to 10 pt, still outside the 1/8 in safe line. At 9 pt, 130 of 10,077 sides (1.3%) hold a single verse because it is too long to share. Every other side keeps the playing cards' two-verse minimum.</p>
+<p>Three verses per physical card, meaning 1.5 a side, isn't possible. The longest verses stop fitting long before the text is large enough for that.</p>
+<figure class="pair "><img src="002/scale.webp" alt="Same scale: the playing card (Romans 1:6–9, 8.8 pt) and the business card (Romans 1:5–8, 9 pt). The business card is the playing card&#x27;s height, 1/2 in narrower." loading="lazy"><figcaption>Same scale: the playing card (Romans 1:6–9, 8.8 pt) and the business card (Romans 1:5–8, 9 pt). The business card is the playing card&#x27;s height, 1/2 in narrower.</figcaption></figure>
+<h3>Recommended: portrait, top band, 9 pt</h3>
+<figure class="pair portrait"><img src="002/PT.webp" alt="Card Romans 7:24–8:2 / Romans 8:3–5, front and back, from Romans paginated whole (61 cards)" loading="lazy"><figcaption>Card Romans 7:24–8:2 / Romans 8:3–5, front and back, from Romans paginated whole (61 cards)</figcaption></figure>
+<h3>The size study</h3>
+<p>The whole KJV, paginated book by book in each design at every size from 7.5 pt up in steps of 0.05 pt. Each line ends at the size where a verse no longer fits on a side. In the playing-card design, portrait beats landscape: the header and footer take too much of a landscape card's short height.</p>
+<p class="legend"><span><span class="sw" style="background:#1C5D99"></span>Portrait, top band</span><span><span class="sw" style="background:#8FA9C2"></span>Portrait, side stripe</span><span><span class="sw" style="background:#B85C00"></span>Landscape, top band</span><span><span class="sw" style="background:#E0B07F"></span>Landscape, side stripe</span><span>Average verses a side; dashed line at 3</span></p><div class="chartwrap"><svg viewBox="0 0 640 300" class="sweep" role="img" aria-label="Verses per side against type size for the four designs"><line x1="44" x2="624" y1="262.0" y2="262.0" class="grid"/><text x="36" y="266.0" text-anchor="end" class="tick">2.5</text><line x1="44" x2="624" y1="212.0" y2="212.0" class="grid"/><text x="36" y="216.0" text-anchor="end" class="tick">3</text><line x1="44" x2="624" y1="162.0" y2="162.0" class="grid"/><text x="36" y="166.0" text-anchor="end" class="tick">3.5</text><line x1="44" x2="624" y1="112.0" y2="112.0" class="grid"/><text x="36" y="116.0" text-anchor="end" class="tick">4</text><line x1="44" x2="624" y1="62.0" y2="62.0" class="grid"/><text x="36" y="66.0" text-anchor="end" class="tick">4.5</text><line x1="44" x2="624" y1="12.0" y2="12.0" class="grid"/><text x="36" y="16.0" text-anchor="end" class="tick">5</text><text x="44.0" y="280" text-anchor="middle" class="tick">7.5 pt</text><text x="237.3" y="280" text-anchor="middle" class="tick">8 pt</text><text x="430.7" y="280" text-anchor="middle" class="tick">8.5 pt</text><text x="624.0" y="280" text-anchor="middle" class="tick">9 pt</text><line x1="44" x2="624" y1="212.0" y2="212.0" class="three"/><polyline points="44.0,38.5 63.3,45.7 82.7,56.6 102.0,67.4 121.3,72.5 140.7,77.1 160.0,81.9 179.3,87.3 198.7,90.7 218.0,99.0 237.3,110.6 256.7,118.6 276.0,121.0 295.3,124.4 314.7,128.1 334.0,133.0 353.3,139.7 372.7,150.4 392.0,152.8 411.3,162.6 430.7,165.6 450.0,167.9 469.3,170.9 488.7,174.7 508.0,179.5 527.3,181.4 546.7,190.3 566.0,201.4 585.3,205.5 604.7,207.8" fill="none" stroke="#1C5D99" stroke-width="2.2"/><circle cx="604.7" cy="207.8" r="3.6" fill="#1C5D99"/><polyline points="44.0,70.4 63.3,75.5 82.7,81.1 102.0,89.9 121.3,100.6 140.7,106.5 160.0,109.9 179.3,114.8 198.7,119.8 218.0,127.2 237.3,138.2 256.7,146.4 276.0,149.8 295.3,152.4 314.7,155.2 334.0,159.6 353.3,164.9 372.7,167.3 392.0,176.4 411.3,186.4 430.7,190.0" fill="none" stroke="#8FA9C2" stroke-width="2.2"/><circle cx="430.7" cy="190.0" r="3.6" fill="#8FA9C2"/><polyline points="44.0,154.7 63.3,156.9 82.7,159.0 102.0,178.0 121.3,179.5 140.7,198.2 160.0,200.0 179.3,203.9 198.7,206.5 218.0,208.3 237.3,210.1 256.7,212.2 276.0,213.9 295.3,216.2 314.7,217.8 334.0,221.5 353.3,223.4 372.7,225.1 392.0,237.6 411.3,239.2 430.7,240.7 450.0,261.9" fill="none" stroke="#B85C00" stroke-width="2.2"/><circle cx="450.0" cy="261.9" r="3.6" fill="#B85C00"/><polyline points="44.0,122.8 63.3,128.6 82.7,140.7 102.0,142.7 121.3,161.5 140.7,163.0 160.0,178.0 179.3,180.3 198.7,182.5 218.0,185.6 237.3,187.7 256.7,189.3 276.0,191.8 295.3,193.5 314.7,196.1 334.0,197.8 353.3,203.5 372.7,205.4 392.0,207.2 411.3,218.7 430.7,220.1 450.0,240.8 469.3,242.2 488.7,243.6 508.0,250.7 527.3,252.5" fill="none" stroke="#E0B07F" stroke-width="2.2"/><circle cx="527.3" cy="252.5" r="3.6" fill="#E0B07F"/></svg></div>
+<div class="tablewrap"><table>
+<thead><tr><th>Design (11 pt margins)</th><th class="n">3 verses a side up to</th><th class="n">Every verse fits up to</th><th class="n">Verses a side</th><th class="n">Bible, cards</th></tr></thead>
+<tbody><tr><td><span class="sw" style="background:#1C5D99"></span>Portrait, top band</td><td class="n">8.95 pt</td><td class="n">8.95 pt</td><td class="n">3.04</td><td class="n">5,112</td></tr><tr><td><span class="sw" style="background:#8FA9C2"></span>Portrait, side stripe</td><td class="n">8.5 pt</td><td class="n">8.5 pt</td><td class="n">3.22</td><td class="n">4,830</td></tr><tr><td><span class="sw" style="background:#B85C00"></span>Landscape, top band</td><td class="n">8 pt</td><td class="n">8.55 pt</td><td class="n">3.02</td><td class="n">5,151</td></tr><tr><td><span class="sw" style="background:#E0B07F"></span>Landscape, side stripe</td><td class="n">8.4 pt</td><td class="n">8.75 pt</td><td class="n">3.05</td><td class="n">5,102</td></tr></tbody></table></div>
+<p class="note">The table uses 11 pt side margins throughout. With 10 pt margins, the recommended portrait card reaches 9 pt: 3.09 verses a side and 5,039 cards.</p>
+<h3>The other three designs at their three-verse sizes</h3>
+<div class="figs">
+<figure class="pair portrait"><img src="002/PS.webp" alt="Portrait, side stripe (the playing cards&#x27; stripe), 8.5 pt. The stripe changes sides front to back, as on the playing cards." loading="lazy"><figcaption>Portrait, side stripe (the playing cards&#x27; stripe), 8.5 pt. The stripe changes sides front to back, as on the playing cards.</figcaption></figure>
+<figure class="pair "><img src="002/LT.webp" alt="Landscape, top band, 8.0 pt" loading="lazy"><figcaption>Landscape, top band, 8.0 pt</figcaption></figure>
+<figure class="pair "><img src="002/LS.webp" alt="Landscape, side stripe, 8.4 pt" loading="lazy"><figcaption>Landscape, side stripe, 8.4 pt</figcaption></figure>
+</div>
+<h3>The hardest case</h3>
+<figure class="pair portrait"><img src="002/esther.webp" alt="Esther 8:9, the longest verse in the KJV (90 words), alone on its side at 9 pt. This verse sets the ceiling." loading="lazy"><figcaption>Esther 8:9, the longest verse in the KJV (90 words), alone on its side at 9 pt. This verse sets the ceiling.</figcaption></figure>
+
+  </article>
+
+  <article class="iter" id="i001">
+    <p class="iter-meta">Iteration 001 &middot; 2 October 2026</p>
+    <h2>Thirteen business-card layouts, printing, waterproofing and boxing</h2>
+    <p class="summary">The first round after the pivot from playing cards: 13 double-sided layouts with the gradient band moved to the top, capacity measured over the whole KJV, and research into printers that print unique cards per deck, waterproof finishes and boxes.</p>
+    <div>
+    
+    
+    <div class="col">
+      <p class="lede">The playing cards are paused and archived. Every option below is rendered with real KJV text and printed on both sides, using EB Garamond measured line by line. The capacity figures come from paginating the whole Bible in each layout.</p>
+    </div>
+    <dl class="verdict">
+      <div><dt>Format</dt><dd>US business size, 3.5 × 2 in, landscape, 1/8 in rounded corners</dd></div>
+      <div><dt>Layout</dt><dd>Option A: the gradient band carries the reference, KJV, Chi Rho and card number. No footer.</dd></div>
+      <div><dt>Type</dt><dd>EB Garamond 8.5 pt on 10.2 pt. About 88 words and 3.5 verses a side</dd></div>
+      <div><dt>Printer</dt><dd>A game-card printer (MakePlayingCards or The Game Crafter). Every card in a deck can differ at no extra cost.</dd></div>
+      <div><dt>Waterproof</dt><dd>Price MPC's 100% plastic business deck first. Keep sealed-edge lamination for keepsake singles.</dd></div>
+      <div><dt>Box</dt><dd>MPC custom business-size tuck box ($0.90–$11.35); 60-card rigid box for a premium edition</dd></div>
+    </dl>
+    
+  </div>
+
+  <section id="options">
+    <h3>Design options</h3>
+    <div class="col"><p>Each option shows the front and the back of the same card, trimmed. Book colour follows the deck palette (Epistles blue, Gospels red, Wisdom orange, and so on). Each side keeps whole verses, except D, which runs a verse on to the back.</p></div>
+    <div class="options">
+<figure class="opt" id="opt-A">
+  <img src="001/img/A.webp" alt="Option A, Banner meta: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">A</span>Banner meta<span class="tag">Recommended</span></h4>
+    <p>Landscape. The gradient band carries the reference on its solid end and KJV, the Chi Rho and the card number on its faded end, so the whole card below it is scripture. No footer.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>88</b> words a side</span><span><b>4,499</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-B">
+  <img src="001/img/B.webp" alt="Option B, Chi Rho banner: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">B</span>Chi Rho banner</h4>
+    <p>Option A with the band filled by a faint tessellation of the Chi Rho that fades out with the colour.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>88</b> words a side</span><span><b>4,499</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-C">
+  <img src="001/img/C.webp" alt="Option C, Banner and footer: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">C</span>Banner and footer</h4>
+    <p>Closest to the playing cards: a thin band across the top edge, the reference under it with a hairline rule, and the KJV, CHI ☧ RHO, card-number footer at the bottom.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>79</b> words a side</span><span><b>5,007</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-D">
+  <img src="001/img/D.webp" alt="Option D, Run-in pocket text: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">D</span>Run-in pocket text<span class="tag">Most scripture</span></h4>
+    <p>Option A with the verse numbers run into the text like a pocket Testament, and verses run on from front to back. About 30% more scripture per card than a numbered column.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>123</b> words a side</span><span><b>3,221</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt portrait" id="opt-E">
+  <img src="001/img/E.webp" alt="Option E, Portrait banner: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">E</span>Portrait banner<span class="tag">Portrait pick</span></h4>
+    <p>Portrait 2 × 3.5 in with option A&#x27;s band. Reads like a small page; shorter lines suit poetry and Proverbs.</p>
+    <p class="stats"><span><b>2 × 3.5 in</b> portrait</span><span><b>8.5 pt</b> text</span><span><b>98</b> words a side</span><span><b>4,035</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt portrait" id="opt-F">
+  <img src="001/img/F.webp" alt="Option F, Portrait classic: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">F</span>Portrait classic</h4>
+    <p>The current playing card scaled down: band on top instead of the side, reference and rule, footer lockup at the bottom.</p>
+    <p class="stats"><span><b>2 × 3.5 in</b> portrait</span><span><b>8.5 pt</b> text</span><span><b>93</b> words a side</span><span><b>4,272</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-G">
+  <img src="001/img/G.webp" alt="Option G, Side band: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">G</span>Side band</h4>
+    <p>The playing cards&#x27; vertical stripe kept on the left edge, for comparison. It costs about a sixth of the line length.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>78</b> words a side</span><span><b>5,074</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-H">
+  <img src="001/img/H.webp" alt="Option H, Wallet card (CR80): front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">H</span>Wallet card (CR80)</h4>
+    <p>Credit-card size, 3.375 × 2.125 in with 1/8 in rounded corners, so it sits in a wallet&#x27;s card slot. Option A&#x27;s layout.</p>
+    <p class="stats"><span><b>3.375 × 2.125 in</b> landscape, rounded</span><span><b>8.5 pt</b> text</span><span><b>90</b> words a side</span><span><b>4,400</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt portrait" id="opt-I">
+  <img src="001/img/I.webp" alt="Option I, Relic frame: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">I</span>Relic frame</h4>
+    <p>A holy-card treatment: double-rule frame with diamond marks, centered reference, footer lockup inside the frame. Pairs with sealed-edge lamination.</p>
+    <p class="stats"><span><b>2 × 3.5 in</b> portrait, rounded</span><span><b>8.3 pt</b> text</span><span><b>84</b> words a side</span><span><b>4,733</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-J">
+  <img src="001/img/J.webp" alt="Option J, Large print: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">J</span>Large print</h4>
+    <p>Option A set at 10 pt with 12.5 pt leading for older eyes. Roughly 70% of option A&#x27;s scripture per card.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>10 pt</b> text</span><span><b>59</b> words a side</span><span><b>6,684</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-K">
+  <img src="001/img/K.webp" alt="Option K, Solid band with fade lip: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">K</span>Solid band with fade lip</h4>
+    <p>A solid colour band with the reference and the meta reversed out of it, softened by a short gradient lip below.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>90</b> words a side</span><span><b>4,399</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-L">
+  <img src="001/img/L.webp" alt="Option L, Soft wash: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">L</span>Soft wash</h4>
+    <p>No hard band: a pale wash fades down from the top edge, with the reference in the book colour. The quietest option.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>8.5 pt</b> text</span><span><b>88</b> words a side</span><span><b>4,499</b> cards, whole Bible</span></p>
+  </figcaption>
+</figure>
+<figure class="opt" id="opt-M">
+  <img src="001/img/M.webp" alt="Option M, Memory card: front and back of a sample card" loading="lazy">
+  <figcaption>
+    <h4><span class="key">M</span>Memory card</h4>
+    <p>One verse per card for memorising. The front shows only the first letter of each word as a prompt; say the verse, then turn the card over to check it.</p>
+    <p class="stats"><span><b>3.5 × 2 in</b> landscape</span><span><b>11 pt</b> text</span></p>
+  </figcaption>
+</figure>
+    </div>
+  </section>
+
+  <section id="capacity">
+    <h3>How much fits</h3>
+    <div class="col"><p>Cards needed for the whole KJV in each layout at its set type size. The dashed line is the playing cards' total, about 4,500. Option A at 8.5 pt lands on it, so the existing deck plan carries over almost unchanged.</p></div>
+    <div class="chart" role="img" aria-label="Bar chart of whole-Bible card counts per option, from 3,221 for option D to 6,684 for option J">
+      <div class="chart-grid" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none">
+        <span></span><span class="area"><span class="refline" style="left:64.3%"></span></span><span></span>
+      </div>
+<div class="bar hi"><span class="bl">A <i>Banner meta</i></span><span class="track"><span class="fill" style="width:64.3%"></span></span><span class="bv">4,499</span></div>
+<div class="bar"><span class="bl">B <i>Chi Rho banner</i></span><span class="track"><span class="fill" style="width:64.3%"></span></span><span class="bv">4,499</span></div>
+<div class="bar"><span class="bl">C <i>Banner and footer</i></span><span class="track"><span class="fill" style="width:71.5%"></span></span><span class="bv">5,007</span></div>
+<div class="bar hi"><span class="bl">D <i>Run-in pocket text</i></span><span class="track"><span class="fill" style="width:46.0%"></span></span><span class="bv">3,221</span></div>
+<div class="bar hi"><span class="bl">E <i>Portrait banner</i></span><span class="track"><span class="fill" style="width:57.6%"></span></span><span class="bv">4,035</span></div>
+<div class="bar"><span class="bl">F <i>Portrait classic</i></span><span class="track"><span class="fill" style="width:61.0%"></span></span><span class="bv">4,272</span></div>
+<div class="bar"><span class="bl">G <i>Side band</i></span><span class="track"><span class="fill" style="width:72.5%"></span></span><span class="bv">5,074</span></div>
+<div class="bar"><span class="bl">H <i>Wallet card (CR80)</i></span><span class="track"><span class="fill" style="width:62.9%"></span></span><span class="bv">4,400</span></div>
+<div class="bar"><span class="bl">I <i>Relic frame</i></span><span class="track"><span class="fill" style="width:67.6%"></span></span><span class="bv">4,733</span></div>
+<div class="bar"><span class="bl">J <i>Large print</i></span><span class="track"><span class="fill" style="width:95.5%"></span></span><span class="bv">6,684</span></div>
+<div class="bar"><span class="bl">K <i>Solid band with fade lip</i></span><span class="track"><span class="fill" style="width:62.8%"></span></span><span class="bv">4,399</span></div>
+<div class="bar"><span class="bl">L <i>Soft wash</i></span><span class="track"><span class="fill" style="width:64.3%"></span></span><span class="bv">4,499</span></div>
+    </div>
+    <p class="reflabel">Scale 0–7,000 cards. Dashed line: playing cards, about 4,500.</p>
+
+    <div class="tables2">
+      <div>
+        <h4>Option A by type size</h4>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Size</th><th class="n">Words a side</th><th class="n">Verses a side</th><th class="n">Bible, cards</th><th class="n">Romans</th></tr></thead>
+          <tbody><tr><td>7.5 pt</td><td class="n">113</td><td class="n">4.4</td><td class="n">3,522</td><td class="n">43</td></tr><tr><td>8 pt</td><td class="n">96</td><td class="n">3.8</td><td class="n">4,133</td><td class="n">50</td></tr><tr class="rec"><td>8.5 pt</td><td class="n">88</td><td class="n">3.5</td><td class="n">4,499</td><td class="n">56</td></tr><tr><td>9 pt</td><td class="n">75</td><td class="n">3.0</td><td class="n">5,255</td><td class="n">64</td></tr><tr><td>10 pt</td><td class="n">59</td><td class="n">2.3</td><td class="n">6,680</td><td class="n">80</td></tr></tbody>
+        </table></div>
+      </div>
+      <div>
+        <h4>Option D (run-in) by type size</h4>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Size</th><th class="n">Words a side</th><th class="n">Verses a side</th><th class="n">Bible, cards</th><th class="n">Romans</th></tr></thead>
+          <tbody><tr><td>7.5 pt</td><td class="n">168</td><td class="n">6.6</td><td class="n">2,363</td><td class="n">29</td></tr><tr><td>8 pt</td><td class="n">144</td><td class="n">5.7</td><td class="n">2,754</td><td class="n">34</td></tr><tr><td>8.5 pt</td><td class="n">123</td><td class="n">4.9</td><td class="n">3,221</td><td class="n">39</td></tr><tr><td>9 pt</td><td class="n">116</td><td class="n">4.6</td><td class="n">3,411</td><td class="n">42</td></tr><tr><td>10 pt</td><td class="n">94</td><td class="n">3.7</td><td class="n">4,218</td><td class="n">51</td></tr></tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="col">
+      <p>Business-card guidance puts body text at 8 pt or more, treats 7 pt as a fine-print floor, and suggests 9–10 pt for older readers. EB Garamond's x-height is small (0.40 em), so 8.5 pt reads like about 7.5 pt of a typical sans. That is why <b>8.5 pt is the smallest size I'd ship</b>, and why the 10 pt large-print edition (J) is a real option rather than a novelty.</p>
+      <p>At 8.5 pt, 38 of the 66 books fit a single 55-card deck in option A, and 42 in option D. The rest need the larger volume decks, as with the playing cards.</p>
+      <p><b>Landscape or portrait?</b> Landscape gives about 60-character lines, comfortable for the Gospels, the Epistles and narrative. Portrait gives about 32-character lines, which suit Psalms and Proverbs. Portrait (E) measured about 10% more efficient, partly because the band is a smaller share of a taller card and partly because of slightly narrower margins. <b>Rounded corners</b> are the better choice for a card that lives in a wallet: square corners dog-ear.</p>
+      <p><b>Wallet fit:</b> a 3.5 × 2 in card is 1/8 in longer than a credit card. It fits a bill compartment and many card slots, but not all. The CR80 size (H) fits every slot.</p>
+    </div>
+  </section>
+
+  <section id="printing">
+    <h3>Printing and price</h3>
+    <div class="col"><p>The deciding constraint is that every card in a deck is different and each deck is printed many times. Game-card printers price exactly that. Business-card printers charge per design, so 55 unique cards would mean 55 separate orders.</p></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Route</th><th>Unique cards</th><th>Price found</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr class="rec"><td><a href="https://www.makeplayingcards.com/design/custom-business-card-deck.html">MakePlayingCards, business deck</a></td><td>Yes</td><td>About $10.25 per deck at 1–5, about $2.35 at 500–999, about $1.00 at 5,000+</td><td>2 × 3.5 in, rounded. Stocks include linen and P10 100% plastic. Gold, silver and holographic print offered.</td></tr>
+        <tr><td><a href="https://news.thegamecrafter.com/post/813706975245434880/business-deck">The Game Crafter, Business Deck</a></td><td>Yes</td><td>$0.09 a card ($1.89 per 21-card sheet). $1.08 per sheet at 100+ games</td><td>12 pt / 320 gsm. A 55-card deck is 3 sheets, about $5.67, or $3.24 in bulk. That leaves 8 spare slots for title and bonus cards.</td></tr>
+        <tr><td><a href="https://www.moo.com/us/about/printfinity">MOO Printfinity</a></td><td>Back only</td><td>50 cards from $23</td><td>Up to 50 different backs, but every front must match, so one side would be wasted. Paper only.</td></tr>
+        <tr><td><a href="https://www.spaceflyers.com/premium-20pt-plastic-cards/">Plastic business-card printers</a></td><td>No</td><td>$85–$236 per 100 of one design</td><td>Waterproof 20 mil PVC, but one design per order</td></tr>
+        <tr><td><a href="https://www.allstarcardsystems.com/variable-data-printing-on-a-pvc-plastic-card-cr80-1-color">CR80 plastic-card makers</a></td><td>Quote</td><td>From $0.09 a card for one-colour variable data</td><td>Full-colour unique faces need a custom quote. Best for wallet singles.</td></tr>
+        <tr><td><a href="https://lifelonglearning.ncsu.edu/wp-content/uploads/sites/18/2025/07/priceList_mctc-pint-svcs-2025-26-2.pdf">Local digital print shop</a></td><td>Yes</td><td>Example: $1.54 per double-sided 12 × 18 sheet, so about $4.60 a deck printed</td><td>About 21 cards per sheet. Cutting and corner rounding cost extra. Can run synthetic waterproof stock.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">MPC's and TGC's own sites can't be reached from my sandbox, so their figures come from search-indexed price tables. Confirm them in each configurator before ordering, especially MPC's card-count range for business decks and its plastic price per deck.</p>
+  </section>
+
+  <section id="waterproof">
+    <h3>Waterproofing and the premium finish</h3>
+    <div class="col"><p>Holy cards and relic cards are waterproof because of a <b>sealed clear border</b>: the card is laminated in a pouch slightly larger than itself. Prayer-card makers warn that standard film lamination is not sealed-edge lamination and will not waterproof a card.</p></div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Finish</th><th>Waterproof</th><th>Size and thickness</th><th>Cost</th><th>For decks?</th></tr></thead>
+      <tbody>
+        <tr class="rec"><td>100% plastic stock (MPC P10)</td><td>Yes</td><td>Same as a paper card</td><td>MPC's top stock tier</td><td>Best fit: no labour, standard boxes, wallet-friendly</td></tr>
+        <tr><td><a href="https://www.aladdinprint.com/products/product-yupo-business-card/">Synthetic paper (Yupo)</a></td><td>Yes, tear-proof</td><td>Like paper</td><td>$35 per 250 of one design. Unique cards need a local or variable-data printer.</td><td>Good through a local shop</td></tr>
+        <tr><td><a href="https://www.laminator.com/10-mil-business-card-laminating-pouches.html">Sealed-edge pouch lamination</a></td><td>Yes</td><td>2.25 × 3.75 in outside. About 0.6 mm (5 mil) or 0.85 mm (10 mil) per card</td><td>Pouches $6–$40 per 100, plus labour. Full-service prayer cards $0.95–$2.06 each</td><td>Singles only. 55 cards would stack 32–47 mm deep.</td></tr>
+        <tr><td>Press lamination or soft-touch</td><td>No, edges open</td><td>Like paper</td><td>Low</td><td>Adds feel, not protection</td></tr>
+      </tbody>
+    </table></div>
+    <div class="col"><p>The relic look suits a keepsake single: the relic frame (I) or the memory card (M), sealed in a pouch and given or sold beside the decks. For whole decks, plastic stock does the same job without changing the card's size.</p></div>
+  </section>
+
+  <section id="boxing">
+    <h3>Boxing</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Box</th><th>Holds</th><th>Price per box</th></tr></thead>
+      <tbody>
+        <tr class="rec"><td><a href="https://www.makeplayingcards.com/design/custom-tuck-box-for-business-sized-cards.html">MPC custom tuck box, business size</a></td><td>One business deck</td><td>$11.35 (1–5), $7.00 (6–29), $4.85 (30–49), $3.25 (50–99), $1.85 (100–249), $1.50, $1.10, $0.90 (1,000+)</td></tr>
+        <tr><td><a href="https://www.makeplayingcards.com/design/custom-rigid-box-for-60-business-size-cards.html">MPC custom rigid box, 60 cards</a></td><td>55 plus title and bonus cards</td><td>$16.70 down to $1.40</td></tr>
+        <tr><td><a href="https://www.makeplayingcards.com/design/custom-rigid-box-for-100-business-size-cards.html">MPC custom rigid box, 100 cards</a></td><td>Volume decks</td><td>$18.40 down to $1.50</td></tr>
+        <tr><td><a href="https://www.makeplayingcards.com/design/plain-rigid-box-for-250-business-size-cards.html">MPC plain rigid box, 250 cards</a></td><td>Laminated cards, or a multi-deck set</td><td>$18.30 down to $1.75</td></tr>
+        <tr><td><a href="https://www.makeplayingcards.com/design/custom-hinged-tin-box-for-game-cards.html">MPC hinged tin</a></td><td>Sized for poker and bridge cards: 1/4–1/2 in too wide, needs an insert</td><td>$13.50 down to $1.95</td></tr>
+        <tr><td><a href="https://customprintedpaper.com/tuck-boxes/">Custom packaging houses</a></td><td>Any size</td><td>About $0.20–$0.70 a box, minimums of 25–100</td></tr>
+      </tbody>
+    </table></div>
+    <div class="col"><p>No custom box maker is needed. MPC makes a business-size tuck box, and the poker box's whole design system (band, tapered rules, glyph, ΤΑΥΤΑ ΜΕΛΕΤΑ ribbon) can be rebuilt on its template, the same way the 18.8 mm box was. A custom maker only comes in if the cards are laminated.</p></div>
+  </section>
+
+  <section id="ideas">
+    <h3>More ideas</h3>
+    <ol class="ideas col">
+      <li><b>A gilt edge for free.</b> The band bleeds off the top, so a stacked deck shows a stripe of the book colour along its top edge.</li>
+      <li><b>Progress mark.</b> A small tick in the band steps from left to right through the book. Fan the deck and it draws a diagonal, so you can see where you are.</li>
+      <li><b>Memory deck.</b> Option M as its own product, such as 100 key verses, or as the bonus card in every deck.</li>
+      <li><b>Relic keepsake.</b> Option I sealed in a pouch, as a gift or promo single.</li>
+      <li><b>Large-print edition</b> at 10 pt (J).</li>
+      <li><b>Pocket Testament edition</b> with run-in verses (D): 28% fewer cards and fewer decks per book.</li>
+      <li><b>Foil.</b> MPC prints gold and silver: a foil Chi Rho in the band on title cards.</li>
+      <li><b>Chapter openers.</b> A large chapter numeral set into the band where a chapter begins.</li>
+      <li><b>Turn cue.</b> A small ▸ at the foot of the front when the passage continues on the back.</li>
+      <li><b>Box motto.</b> ΤΑΥΤΑ ΜΕΛΕΤΑ carried over to the business-size box.</li>
+      <li><b>Wallet singles.</b> CR80 plastic cards (H) of single passages, from a plastic-card maker, as promotional cards.</li>
+    </ol>
+  </section>
+
+  <section id="next">
+    <h3>Next steps</h3>
+    <ol class="ideas col">
+      <li>Choose a layout and a type size. My recommendation is A at 8.5 pt, with D and E as the alternatives.</li>
+      <li>Check MPC's configurator for the business-deck card-count range, the linen and P10 plastic prices per deck, and whether the business tuck box holds 57 cards.</li>
+      <li>Order one proof deck in linen and one in plastic, to feel the size, the 8.5 pt text and the finish in hand.</li>
+      <li>Build the business-size tuck box from MPC's template as the next box rendition series.</li>
+      <li>Optional: take a 3-sheet PDF on synthetic stock to a local shop for a comparison quote.</li>
+    </ol>
+  </section>
+
+  </article>
+</div>
+</body>
+</html>
