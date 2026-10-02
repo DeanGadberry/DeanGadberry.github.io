@@ -1,0 +1,894 @@
+{
+ "sizes": [
+  {
+   "key": "us",
+   "label": "US 3.5 × 2 in",
+   "w_mm": 50.8,
+   "h_mm": 88.9
+  },
+  {
+   "key": "eu",
+   "label": "Europe 85 × 55 mm",
+   "w_mm": 55.0,
+   "h_mm": 85.0
+  }
+ ],
+ "samples": [
+  {
+   "key": "ro",
+   "label": "Romans 8"
+  },
+  {
+   "key": "ps",
+   "label": "Psalm 23"
+  },
+  {
+   "key": "jn",
+   "label": "John 3"
+  },
+  {
+   "key": "gn",
+   "label": "Genesis 1"
+  }
+ ],
+ "options": [
+  {
+   "key": "P",
+   "name": "Playing-card footer: KJV, CHI ☧ RHO, number",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/P-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/P-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/P-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/P-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/P-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/P-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/P-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/P-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/P-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/P-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/P-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/P-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/P-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/P-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/P-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/P-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "A",
+   "name": "KJV after the reference; glyph centred at the foot; number bottom right",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/A-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/A-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/A-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/A-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/A-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/A-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/A-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/A-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/A-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/A-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/A-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/A-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/A-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/A-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/A-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/A-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "B",
+   "name": "KJV after the reference; glyph centred at the foot; number bottom left",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/B-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/B-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/B-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/B-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/B-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/B-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/B-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/B-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/B-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/B-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/B-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/B-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/B-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/B-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/B-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/B-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "C",
+   "name": "KJV at the right of the header line; glyph centred at the foot; number bottom left",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/C-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/C-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/C-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/C-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/C-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/C-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/C-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/C-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/C-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/C-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/C-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/C-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/C-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/C-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/C-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/C-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "D",
+   "name": "KJV after the reference; glyph bottom left; number bottom right",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/D-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/D-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/D-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/D-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/D-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/D-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/D-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/D-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/D-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/D-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/D-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/D-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/D-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/D-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/D-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/D-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "E",
+   "name": "KJV after the reference; glyph bottom right; number bottom left",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/E-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/E-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/E-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/E-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/E-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/E-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/E-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/E-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/E-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/E-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/E-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/E-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/E-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/E-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/E-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/E-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "F",
+   "name": "KJV after the reference; glyph centred at the foot; number at the right of the header line",
+   "size_pt": 8.6,
+   "verses": 3.26,
+   "cards": 4764,
+   "ceiling_pt": 8.6,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/F-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "us/F-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/F-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/F-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/F-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/F-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/F-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/F-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/F-ro-front.webp",
+      "front_ref": "Romans 7:19–23",
+      "back": "eu/F-ro-back.webp",
+      "back_ref": "Romans 7:24–8:2",
+      "card": "25/58",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/F-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/F-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "33/253",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/F-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/F-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/113",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/F-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/F-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/225",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "G",
+   "name": "KJV after the reference; glyph closing the header line; number in the band. No footer",
+   "size_pt": 9.15,
+   "verses": 3.02,
+   "cards": 5155,
+   "ceiling_pt": 9.15,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/G-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "us/G-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/G-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/G-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/G-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "us/G-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "us/G-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "us/G-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/G-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "eu/G-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/G-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/G-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/G-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "eu/G-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "eu/G-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "eu/G-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "H",
+   "name": "KJV at the right of the header line; glyph in the band's solid end; number centred at the foot",
+   "size_pt": 8.8,
+   "verses": 3.18,
+   "cards": 4896,
+   "ceiling_pt": 8.8,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/H-ro-front.webp",
+      "front_ref": "Romans 7:24–8:2",
+      "back": "us/H-ro-back.webp",
+      "back_ref": "Romans 8:3–5",
+      "card": "26/59",
+      "start": "front"
+     },
+     "ps": {
+      "front": "us/H-ps-front.webp",
+      "front_ref": "Psalm 22:28–31",
+      "back": "us/H-ps-back.webp",
+      "back_ref": "Psalm 23:1–5",
+      "card": "34/261",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/H-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "us/H-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/115",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/H-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/H-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/231",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/H-ro-front.webp",
+      "front_ref": "Romans 7:24–8:2",
+      "back": "eu/H-ro-back.webp",
+      "back_ref": "Romans 8:3–5",
+      "card": "26/59",
+      "start": "front"
+     },
+     "ps": {
+      "front": "eu/H-ps-front.webp",
+      "front_ref": "Psalm 22:28–31",
+      "back": "eu/H-ps-back.webp",
+      "back_ref": "Psalm 23:1–5",
+      "card": "34/261",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/H-jn-front.webp",
+      "front_ref": "John 3:13–16",
+      "back": "eu/H-jn-back.webp",
+      "back_ref": "John 3:17–19",
+      "card": "12/115",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/H-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/H-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/231",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "I",
+   "name": "KJV after the reference; glyph and number both in the band. No footer",
+   "size_pt": 9.15,
+   "verses": 3.02,
+   "cards": 5155,
+   "ceiling_pt": 9.15,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/I-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "us/I-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/I-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/I-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/I-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "us/I-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "us/I-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "us/I-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/I-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "eu/I-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/I-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/I-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/I-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "eu/I-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "eu/I-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "eu/I-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "J",
+   "name": "KJV after the reference; glyph in the band's faded end; number at the right of the header line. No footer",
+   "size_pt": 9.15,
+   "verses": 3.02,
+   "cards": 5155,
+   "ceiling_pt": 9.15,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/J-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "us/J-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/J-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "us/J-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/J-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "us/J-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "us/J-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "us/J-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/J-ro-front.webp",
+      "front_ref": "Romans 7:20–24",
+      "back": "eu/J-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/J-ps-front.webp",
+      "front_ref": "Psalm 22:26–29",
+      "back": "eu/J-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "35/272",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/J-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "eu/J-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "eu/J-gn-front.webp",
+      "front_ref": "Genesis 1:1–5",
+      "back": "eu/J-gn-back.webp",
+      "back_ref": "Genesis 1:6–8",
+      "card": "1/244",
+      "start": "front"
+     }
+    }
+   }
+  }
+ ]
+}
