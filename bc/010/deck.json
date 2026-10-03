@@ -1,0 +1,400 @@
+{
+ "sizes": [
+  {
+   "key": "us",
+   "label": "US 3.5 × 2 in",
+   "w_mm": 88.9,
+   "h_mm": 50.8
+  },
+  {
+   "key": "eu",
+   "label": "Europe 85 × 55 mm",
+   "w_mm": 85.0,
+   "h_mm": 55.0
+  }
+ ],
+ "samples": [
+  {
+   "key": "ru",
+   "label": "Ruth 1"
+  },
+  {
+   "key": "is",
+   "label": "Isaiah 53"
+  },
+  {
+   "key": "mi",
+   "label": "Micah 6"
+  },
+  {
+   "key": "mt",
+   "label": "Matthew 5"
+  },
+  {
+   "key": "ac",
+   "label": "Acts 2"
+  },
+  {
+   "key": "co",
+   "label": "1 Corinthians 13"
+  },
+  {
+   "key": "ja",
+   "label": "James 1"
+  },
+  {
+   "key": "re",
+   "label": "Revelation 21"
+  }
+ ],
+ "options": [
+  {
+   "key": "63",
+   "name": "LB sized for about 63 words a side",
+   "size_pt": 8.6,
+   "words": 63.1,
+   "verses": 2.49,
+   "cards": 6257,
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/63-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "front_words": 66,
+      "back": "us/63-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "back_words": 47,
+      "card": "4/21",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/63-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "front_words": 56,
+      "back": "us/63-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "back_words": 72,
+      "card": "234/289",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/63-mi-front.webp",
+      "front_ref": "Micah 6:8–10",
+      "front_words": 77,
+      "back": "us/63-mi-back.webp",
+      "back_ref": "Micah 6:11–13",
+      "back_words": 58,
+      "card": "18/23",
+      "start": "front"
+     },
+     "mt": {
+      "front": "us/63-mt-front.webp",
+      "front_ref": "Matthew 5:1–5",
+      "front_words": 62,
+      "back": "us/63-mt-back.webp",
+      "back_ref": "Matthew 5:6–9",
+      "back_words": 48,
+      "card": "18/187",
+      "start": "front"
+     },
+     "ac": {
+      "front": "us/63-ac-front.webp",
+      "front_ref": "Acts 1:26–2:2",
+      "front_words": 62,
+      "back": "us/63-ac-back.webp",
+      "back_ref": "Acts 2:3–5",
+      "back_words": 55,
+      "card": "6/199",
+      "start": "front"
+     },
+     "co": {
+      "front": "us/63-co-front.webp",
+      "front_ref": "1 Corinthians 13:2–3",
+      "front_words": 62,
+      "back": "us/63-co-back.webp",
+      "back_ref": "1 Corinthians 13:4–7",
+      "back_words": 54,
+      "card": "52/73",
+      "start": "back"
+     },
+     "ja": {
+      "front": "us/63-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "front_words": 58,
+      "back": "us/63-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "back_words": 66,
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/63-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "front_words": 67,
+      "back": "us/63-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "back_words": 51,
+      "card": "82/92",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/63-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "front_words": 66,
+      "back": "eu/63-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "back_words": 47,
+      "card": "4/21",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/63-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "front_words": 56,
+      "back": "eu/63-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "back_words": 72,
+      "card": "234/289",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/63-mi-front.webp",
+      "front_ref": "Micah 6:8–10",
+      "front_words": 77,
+      "back": "eu/63-mi-back.webp",
+      "back_ref": "Micah 6:11–13",
+      "back_words": 58,
+      "card": "18/23",
+      "start": "front"
+     },
+     "mt": {
+      "front": "eu/63-mt-front.webp",
+      "front_ref": "Matthew 5:1–5",
+      "front_words": 62,
+      "back": "eu/63-mt-back.webp",
+      "back_ref": "Matthew 5:6–9",
+      "back_words": 48,
+      "card": "18/187",
+      "start": "front"
+     },
+     "ac": {
+      "front": "eu/63-ac-front.webp",
+      "front_ref": "Acts 1:26–2:2",
+      "front_words": 62,
+      "back": "eu/63-ac-back.webp",
+      "back_ref": "Acts 2:3–5",
+      "back_words": 55,
+      "card": "6/199",
+      "start": "front"
+     },
+     "co": {
+      "front": "eu/63-co-front.webp",
+      "front_ref": "1 Corinthians 13:2–3",
+      "front_words": 62,
+      "back": "eu/63-co-back.webp",
+      "back_ref": "1 Corinthians 13:4–7",
+      "back_words": 54,
+      "card": "52/73",
+      "start": "back"
+     },
+     "ja": {
+      "front": "eu/63-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "front_words": 58,
+      "back": "eu/63-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "back_words": 66,
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/63-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "front_words": 67,
+      "back": "eu/63-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "back_words": 51,
+      "card": "82/92",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "72",
+   "name": "LB sized for about 72 words a side",
+   "size_pt": 8.4,
+   "words": 71.0,
+   "verses": 2.8,
+   "cards": 5563,
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/72-ru-front.webp",
+      "front_ref": "Ruth 1:16–18",
+      "front_words": 88,
+      "back": "us/72-ru-back.webp",
+      "back_ref": "Ruth 1:19–21",
+      "back_words": 87,
+      "card": "4/17",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/72-is-front.webp",
+      "front_ref": "Isaiah 53:4–6",
+      "front_words": 77,
+      "back": "us/72-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "back_words": 72,
+      "card": "203/250",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/72-mi-front.webp",
+      "front_ref": "Micah 6:8–10",
+      "front_words": 77,
+      "back": "us/72-mi-back.webp",
+      "back_ref": "Micah 6:11–13",
+      "back_words": 58,
+      "card": "16/21",
+      "start": "front"
+     },
+     "mt": {
+      "front": "us/72-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "front_words": 68,
+      "back": "us/72-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "back_words": 62,
+      "card": "16/175",
+      "start": "back"
+     },
+     "ac": {
+      "front": "us/72-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "front_words": 59,
+      "back": "us/72-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "back_words": 62,
+      "card": "5/175",
+      "start": "back"
+     },
+     "co": {
+      "front": "us/72-co-front.webp",
+      "front_ref": "1 Corinthians 13:3–5",
+      "front_words": 61,
+      "back": "us/72-co-back.webp",
+      "back_ref": "1 Corinthians 13:6–9",
+      "back_words": 57,
+      "card": "48/67",
+      "start": "front"
+     },
+     "ja": {
+      "front": "us/72-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "front_words": 58,
+      "back": "us/72-ja-back.webp",
+      "back_ref": "James 1:5–6",
+      "back_words": 51,
+      "card": "1/17",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/72-re-front.webp",
+      "front_ref": "Revelation 20:12–13",
+      "front_words": 79,
+      "back": "us/72-re-back.webp",
+      "back_ref": "Revelation 20:14–21:1",
+      "back_words": 61,
+      "card": "72/81",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/72-ru-front.webp",
+      "front_ref": "Ruth 1:16–18",
+      "front_words": 88,
+      "back": "eu/72-ru-back.webp",
+      "back_ref": "Ruth 1:19–21",
+      "back_words": 87,
+      "card": "4/17",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/72-is-front.webp",
+      "front_ref": "Isaiah 53:4–6",
+      "front_words": 77,
+      "back": "eu/72-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "back_words": 72,
+      "card": "203/250",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/72-mi-front.webp",
+      "front_ref": "Micah 6:8–10",
+      "front_words": 77,
+      "back": "eu/72-mi-back.webp",
+      "back_ref": "Micah 6:11–13",
+      "back_words": 58,
+      "card": "16/21",
+      "start": "front"
+     },
+     "mt": {
+      "front": "eu/72-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "front_words": 68,
+      "back": "eu/72-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "back_words": 62,
+      "card": "16/175",
+      "start": "back"
+     },
+     "ac": {
+      "front": "eu/72-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "front_words": 59,
+      "back": "eu/72-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "back_words": 62,
+      "card": "5/175",
+      "start": "back"
+     },
+     "co": {
+      "front": "eu/72-co-front.webp",
+      "front_ref": "1 Corinthians 13:3–5",
+      "front_words": 61,
+      "back": "eu/72-co-back.webp",
+      "back_ref": "1 Corinthians 13:6–9",
+      "back_words": 57,
+      "card": "48/67",
+      "start": "front"
+     },
+     "ja": {
+      "front": "eu/72-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "front_words": 58,
+      "back": "eu/72-ja-back.webp",
+      "back_ref": "James 1:5–6",
+      "back_words": 51,
+      "card": "1/17",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/72-re-front.webp",
+      "front_ref": "Revelation 20:12–13",
+      "front_words": 79,
+      "back": "eu/72-re-back.webp",
+      "back_ref": "Revelation 20:14–21:1",
+      "back_words": 61,
+      "card": "72/81",
+      "start": "back"
+     }
+    }
+   }
+  }
+ ]
+}
