@@ -1,0 +1,270 @@
+{
+ "sizes": [
+  {
+   "key": "us",
+   "label": "US 3.5 × 2 in",
+   "w_mm": 88.9,
+   "h_mm": 50.8
+  },
+  {
+   "key": "eu",
+   "label": "Europe 85 × 55 mm",
+   "w_mm": 85.0,
+   "h_mm": 55.0
+  }
+ ],
+ "samples": [
+  {
+   "key": "ro",
+   "label": "Romans 8"
+  },
+  {
+   "key": "ps",
+   "label": "Psalm 23"
+  },
+  {
+   "key": "jn",
+   "label": "John 3"
+  },
+  {
+   "key": "gn",
+   "label": "Genesis 1"
+  }
+ ],
+ "options": [
+  {
+   "key": "LB",
+   "name": "The playing cards' side stripe (iteration 001's G): left edge on the front, right edge on the back",
+   "size_pt": 8.25,
+   "verses": 3.0,
+   "cards": 5178,
+   "ceiling_pt": 8.5,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/LB-ro-front.webp",
+      "front_ref": "Romans 7:24–8:2",
+      "back": "us/LB-ro-back.webp",
+      "back_ref": "Romans 8:3–6",
+      "card": "28/63",
+      "start": "front"
+     },
+     "ps": {
+      "front": "us/LB-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "us/LB-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "38/296",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/LB-jn-front.webp",
+      "front_ref": "John 3:10–13",
+      "back": "us/LB-jn-back.webp",
+      "back_ref": "John 3:14–17",
+      "card": "12/123",
+      "start": "back"
+     },
+     "gn": {
+      "front": "us/LB-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/LB-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/245",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/LB-ro-front.webp",
+      "front_ref": "Romans 7:24–8:2",
+      "back": "eu/LB-ro-back.webp",
+      "back_ref": "Romans 8:3–6",
+      "card": "28/63",
+      "start": "front"
+     },
+     "ps": {
+      "front": "eu/LB-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "eu/LB-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:3",
+      "card": "38/296",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/LB-jn-front.webp",
+      "front_ref": "John 3:10–13",
+      "back": "eu/LB-jn-back.webp",
+      "back_ref": "John 3:14–17",
+      "card": "12/123",
+      "start": "back"
+     },
+     "gn": {
+      "front": "eu/LB-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/LB-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/245",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "LA",
+   "name": "Top band, reference and rule beneath it. The band's solid end changes sides front to back, so it stays on one edge of the card",
+   "size_pt": 7.85,
+   "verses": 3.16,
+   "cards": 4917,
+   "ceiling_pt": 8.2,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/LA-ro-front.webp",
+      "front_ref": "Romans 7:21–24",
+      "back": "us/LA-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "us/LA-ps-front.webp",
+      "front_ref": "Psalms 22:29–23:1",
+      "back": "us/LA-ps-back.webp",
+      "back_ref": "Psalm 23:2–4",
+      "card": "39/298",
+      "start": "front"
+     },
+     "jn": {
+      "front": "us/LA-jn-front.webp",
+      "front_ref": "John 3:15–17",
+      "back": "us/LA-jn-back.webp",
+      "back_ref": "John 3:18–20",
+      "card": "13/123",
+      "start": "front"
+     },
+     "gn": {
+      "front": "us/LA-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/LA-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/236",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/LA-ro-front.webp",
+      "front_ref": "Romans 7:21–24",
+      "back": "eu/LA-ro-back.webp",
+      "back_ref": "Romans 7:25–8:2",
+      "card": "27/62",
+      "start": "back"
+     },
+     "ps": {
+      "front": "eu/LA-ps-front.webp",
+      "front_ref": "Psalms 22:29–23:1",
+      "back": "eu/LA-ps-back.webp",
+      "back_ref": "Psalm 23:2–4",
+      "card": "39/298",
+      "start": "front"
+     },
+     "jn": {
+      "front": "eu/LA-jn-front.webp",
+      "front_ref": "John 3:15–17",
+      "back": "eu/LA-jn-back.webp",
+      "back_ref": "John 3:18–20",
+      "card": "13/123",
+      "start": "front"
+     },
+     "gn": {
+      "front": "eu/LA-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/LA-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/236",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "LC",
+   "name": "Reference set in a deeper top band, no header line",
+   "size_pt": 8.5,
+   "verses": 3.06,
+   "cards": 5084,
+   "ceiling_pt": 8.95,
+   "img": {
+    "us": {
+     "ro": {
+      "front": "us/LC-ro-front.webp",
+      "front_ref": "Romans 8:1–4",
+      "back": "us/LC-ro-back.webp",
+      "back_ref": "Romans 8:5–8",
+      "card": "28/63",
+      "start": "front"
+     },
+     "ps": {
+      "front": "us/LC-ps-front.webp",
+      "front_ref": "Psalm 22:25–28",
+      "back": "us/LC-ps-back.webp",
+      "back_ref": "Psalms 22:29–23:1",
+      "card": "38/306",
+      "start": "back"
+     },
+     "jn": {
+      "front": "us/LC-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "us/LC-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "us/LC-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "us/LC-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/239",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "eu/LC-ro-front.webp",
+      "front_ref": "Romans 8:1–4",
+      "back": "eu/LC-ro-back.webp",
+      "back_ref": "Romans 8:5–8",
+      "card": "28/63",
+      "start": "front"
+     },
+     "ps": {
+      "front": "eu/LC-ps-front.webp",
+      "front_ref": "Psalm 22:25–28",
+      "back": "eu/LC-ps-back.webp",
+      "back_ref": "Psalms 22:29–23:1",
+      "card": "38/306",
+      "start": "back"
+     },
+     "jn": {
+      "front": "eu/LC-jn-front.webp",
+      "front_ref": "John 3:12–15",
+      "back": "eu/LC-jn-back.webp",
+      "back_ref": "John 3:16–18",
+      "card": "12/120",
+      "start": "back"
+     },
+     "gn": {
+      "front": "eu/LC-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "eu/LC-gn-back.webp",
+      "back_ref": "Genesis 1:5–8",
+      "card": "1/239",
+      "start": "front"
+     }
+    }
+   }
+  }
+ ]
+}

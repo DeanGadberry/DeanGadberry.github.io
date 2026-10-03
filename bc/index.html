@@ -152,8 +152,26 @@
     <p class="eyebrow">Chi Rho Cards &middot; Business-card format</p>
     <h1>Design iterations</h1>
     <p>Every round of the business-card design, newest first. Nothing here is replaced; each change is added as a new iteration on top.</p>
-    <nav class="iters" aria-label="Iterations"><a href="#i005">005 &middot; One layout for every business-card printer, in a flip-through viewer</a><a href="#i004">004 &middot; Credit-card size: unique cards, both sides, and lamination</a><a href="#i003">003 &middot; KJV beside the reference, the glyph on its own, the number on the move</a><a href="#i002">002 &middot; The playing-card design at business size, and how large the text can be</a><a href="#i001">001 &middot; Thirteen business-card layouts, printing, waterproofing and boxing</a></nav>
+    <nav class="iters" aria-label="Iterations"><a href="#i006">006 &middot; Landscape cards with the playing-card footer</a><a href="#i005">005 &middot; One layout for every business-card printer, in a flip-through viewer</a><a href="#i004">004 &middot; Credit-card size: unique cards, both sides, and lamination</a><a href="#i003">003 &middot; KJV beside the reference, the glyph on its own, the number on the move</a><a href="#i002">002 &middot; The playing-card design at business size, and how large the text can be</a><a href="#i001">001 &middot; Thirteen business-card layouts, printing, waterproofing and boxing</a></nav>
   </header>
+
+  <article class="iter" id="i006">
+    <p class="iter-meta">Iteration 006 &middot; 3 October 2026</p>
+    <h2>Landscape cards with the playing-card footer</h2>
+    <p class="summary">The universal block turned sideways, 85 mm × 2 in, for landscape US and European cards. Every design keeps the playing cards&#x27; footer (KJV, CHI ☧ RHO, card number) and varies where the book colour and the reference sit.</p>
+    
+<p class="lede">Landscape versions with the playing cards' footer: KJV on the left, CHI &#9767; RHO in the middle, the card number on the right. The text block is the universal one turned sideways, 85 mm &times; 2 in, so the same deck prints on a landscape US card or a European one.</p>
+<div class="flipdeck" data-src="006/deck.json">
+  <img src="006/us/LB-ro-front.webp" alt="Design LB, front of the card holding Romans 8:1" class="fd-fallback">
+</div>
+<h3>How much fits</h3>
+<p class="col">On a landscape card the header and footer share 2 in of height, so they cost more than on a portrait card. Three verses a side comes at 7.85–8.5 pt here. Setting the reference inside a deeper band (<b>LC</b>) saves the header line and gives the text the most room: 8.5 pt. Each design is set at the largest size that still averages three verses a side across the whole KJV, with every verse fitting whole.</p>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>Design</th><th class="n">Size</th><th class="n">Verses a side</th><th class="n">Bible, cards</th></tr></thead>
+<tbody><tr><td><b>LB</b></td><td>The playing cards' side stripe (iteration 001's G): left edge on the front, right edge on the back</td><td class="n">8.25 pt</td><td class="n">3.00</td><td class="n">5,178</td></tr><tr><td><b>LA</b></td><td>Top band, reference and rule beneath it. The band's solid end changes sides front to back, so it stays on one edge of the card</td><td class="n">7.85 pt</td><td class="n">3.16</td><td class="n">4,917</td></tr><tr><td><b>LC</b></td><td>Reference set in a deeper top band, no header line</td><td class="n">8.5 pt</td><td class="n">3.06</td><td class="n">5,084</td></tr></tbody></table></div>
+<p class="note">For comparison, the portrait card with the same footer reaches 8.6 pt in the universal block (iteration 005, design P).</p>
+
+  </article>
 
   <article class="iter" id="i005">
     <p class="iter-meta">Iteration 005 &middot; 2 October 2026</p>
@@ -524,7 +542,9 @@
    options:[{key,name,size_pt,verses,cards,img:{size:{sample:{front,back,front_ref,back_ref,card}}}}]}
    Image paths are relative to deck.json. */
 (function () {
-  const PX_PER_MM = () => Math.min(5.2, (window.innerWidth - 48) / 58);
+  // One scale for every size in a deck (so their true relative sizes show),
+  // small enough that the widest card fits the screen.
+  const PX_PER_MM = (deck) => Math.min(5.2, (window.innerWidth - 48) / (Math.max(...deck.sizes.map(z => z.w_mm)) + 3));
   document.querySelectorAll(".flipdeck").forEach(async (host) => {
     const url = new URL(host.dataset.src, location.href);
     let deck;
@@ -554,7 +574,7 @@
     const fd = $(".fd"), inner = $(".fd-inner"), front = $(".fd-front"), back = $(".fd-back"), card = $(".fd-card");
     function render() {
       const o = deck.options[st.o], size = deck.sizes.find(s => s.key === st.size), im = o.img[st.size][st.sample];
-      const px = PX_PER_MM();
+      const px = PX_PER_MM(deck);
       card.style.width = (size.w_mm * px) + "px";
       inner.style.width = (size.w_mm * px) + "px";
       inner.style.height = (size.h_mm * px) + "px";
