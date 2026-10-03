@@ -1,0 +1,722 @@
+{
+ "sizes": [
+  {
+   "key": "us",
+   "label": "US 3.5 × 2 in",
+   "w_mm": 88.9,
+   "h_mm": 50.8
+  },
+  {
+   "key": "eu",
+   "label": "Europe 85 × 55 mm",
+   "w_mm": 85.0,
+   "h_mm": 55.0
+  }
+ ],
+ "samples": [
+  {
+   "key": "ro",
+   "label": "Romans 8"
+  },
+  {
+   "key": "ps",
+   "label": "Psalm 23"
+  },
+  {
+   "key": "jn",
+   "label": "John 3"
+  },
+  {
+   "key": "gn",
+   "label": "Genesis 1"
+  },
+  {
+   "key": "hb",
+   "label": "Hebrews 11"
+  },
+  {
+   "key": "la",
+   "label": "Lamentations 3"
+  }
+ ],
+ "options": [
+  {
+   "key": "LB",
+   "name": "Side stripe (iteration 001's G)",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LB-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/us/LB-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/us/LB-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/us/LB-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/us/LB-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/us/LB-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LB-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LB-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LB-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/us/LB-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LB-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/us/LB-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LB-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/eu/LB-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/eu/LB-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/eu/LB-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/eu/LB-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/eu/LB-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LB-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LB-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LB-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/eu/LB-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LB-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/eu/LB-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "LBX",
+   "name": "Side stripe (iteration 001's G), with the Chi Rho tessellation reversed out of the colour",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LBX-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/us/LBX-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/us/LBX-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/us/LBX-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/us/LBX-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/us/LBX-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LBX-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LBX-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LBX-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/us/LBX-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LBX-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/us/LBX-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LBX-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/eu/LBX-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/eu/LBX-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/eu/LBX-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/eu/LBX-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/eu/LBX-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LBX-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LBX-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LBX-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/eu/LBX-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LBX-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/eu/LBX-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "LBL",
+   "name": "Side stripe (iteration 001's G), solid with a fade lip",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LBL-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/us/LBL-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/us/LBL-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/us/LBL-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/us/LBL-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/us/LBL-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LBL-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LBL-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LBL-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/us/LBL-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LBL-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/us/LBL-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LBL-ro-front.webp",
+      "front_ref": "Romans 8:1–3",
+      "back": "landscape/eu/LBL-ro-back.webp",
+      "back_ref": "Romans 8:4–6",
+      "card": "32/74",
+      "start": "front"
+     },
+     "ps": {
+      "front": "landscape/eu/LBL-ps-front.webp",
+      "front_ref": "Psalms 22:31–23:3",
+      "back": "landscape/eu/LBL-ps-back.webp",
+      "back_ref": "Psalm 23:4–6",
+      "card": "45/349",
+      "start": "front"
+     },
+     "jn": {
+      "front": "landscape/eu/LBL-jn-front.webp",
+      "front_ref": "John 3:11–13",
+      "back": "landscape/eu/LBL-jn-back.webp",
+      "back_ref": "John 3:14–16",
+      "card": "15/148",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LBL-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LBL-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/299",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LBL-hb-front.webp",
+      "front_ref": "Hebrews 10:39–11:3",
+      "back": "landscape/eu/LBL-hb-back.webp",
+      "back_ref": "Hebrews 11:4–5",
+      "card": "40/57",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LBL-la-front.webp",
+      "front_ref": "Lamentations 3:16–19",
+      "back": "landscape/eu/LBL-la-back.webp",
+      "back_ref": "Lamentations 3:20–23",
+      "card": "16/29",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "LA",
+   "name": "Top band",
+   "size_pt": 8.65,
+   "words": 65.3,
+   "verses": 2.57,
+   "cards": 6043,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LA-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/us/LA-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/us/LA-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/us/LA-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/us/LA-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/us/LA-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LA-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LA-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LA-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/us/LA-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LA-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/us/LA-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LA-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/eu/LA-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/eu/LA-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/eu/LA-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/eu/LA-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/eu/LA-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LA-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LA-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LA-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/eu/LA-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LA-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/eu/LA-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "LAX",
+   "name": "Top band, with the Chi Rho tessellation reversed out of the colour",
+   "size_pt": 8.65,
+   "words": 65.3,
+   "verses": 2.57,
+   "cards": 6043,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LAX-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/us/LAX-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/us/LAX-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/us/LAX-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/us/LAX-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/us/LAX-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LAX-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LAX-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LAX-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/us/LAX-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LAX-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/us/LAX-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LAX-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/eu/LAX-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/eu/LAX-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/eu/LAX-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/eu/LAX-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/eu/LAX-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LAX-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LAX-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LAX-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/eu/LAX-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LAX-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/eu/LAX-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    }
+   }
+  },
+  {
+   "key": "LAL",
+   "name": "Top band, solid with a fade lip",
+   "size_pt": 8.65,
+   "words": 65.3,
+   "verses": 2.57,
+   "cards": 6043,
+   "split": [
+    "Esther 8:9"
+   ],
+   "img": {
+    "us": {
+     "ro": {
+      "front": "landscape/us/LAL-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/us/LAL-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/us/LAL-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/us/LAL-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/us/LAL-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/us/LAL-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/us/LAL-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/us/LAL-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/us/LAL-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/us/LAL-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/us/LAL-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/us/LAL-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ro": {
+      "front": "landscape/eu/LAL-ro-front.webp",
+      "front_ref": "Romans 7:21–23",
+      "back": "landscape/eu/LAL-ro-back.webp",
+      "back_ref": "Romans 7:24–8:1",
+      "card": "32/75",
+      "start": "back"
+     },
+     "ps": {
+      "front": "landscape/eu/LAL-ps-front.webp",
+      "front_ref": "Psalm 22:27–29",
+      "back": "landscape/eu/LAL-ps-back.webp",
+      "back_ref": "Psalms 22:30–23:2",
+      "card": "48/379",
+      "start": "back"
+     },
+     "jn": {
+      "front": "landscape/eu/LAL-jn-front.webp",
+      "front_ref": "John 3:12–14",
+      "back": "landscape/eu/LAL-jn-back.webp",
+      "back_ref": "John 3:15–17",
+      "card": "15/146",
+      "start": "back"
+     },
+     "gn": {
+      "front": "landscape/eu/LAL-gn-front.webp",
+      "front_ref": "Genesis 1:1–4",
+      "back": "landscape/eu/LAL-gn-back.webp",
+      "back_ref": "Genesis 1:5–7",
+      "card": "1/285",
+      "start": "front"
+     },
+     "hb": {
+      "front": "landscape/eu/LAL-hb-front.webp",
+      "front_ref": "Hebrews 10:38–11:1",
+      "back": "landscape/eu/LAL-hb-back.webp",
+      "back_ref": "Hebrews 11:2–4",
+      "card": "38/54",
+      "start": "front"
+     },
+     "la": {
+      "front": "landscape/eu/LAL-la-front.webp",
+      "front_ref": "Lamentations 3:22–25",
+      "back": "landscape/eu/LAL-la-back.webp",
+      "back_ref": "Lamentations 3:26–29",
+      "card": "16/28",
+      "start": "front"
+     }
+    }
+   }
+  }
+ ]
+}
