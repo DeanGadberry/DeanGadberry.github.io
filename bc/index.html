@@ -152,8 +152,21 @@
     <p class="eyebrow">Chi Rho Cards &middot; Business-card format</p>
     <h1>Design iterations</h1>
     <p>Every round of the business-card design, newest first. Nothing here is replaced; each change is added as a new iteration on top.</p>
-    <nav class="iters" aria-label="Iterations"><a href="#i007">007 &middot; Sized for 63 words a side</a><a href="#i006">006 &middot; Landscape cards with the playing-card footer</a><a href="#i005">005 &middot; One layout for every business-card printer, in a flip-through viewer</a><a href="#i004">004 &middot; Credit-card size: unique cards, both sides, and lamination</a><a href="#i003">003 &middot; KJV beside the reference, the glyph on its own, the number on the move</a><a href="#i002">002 &middot; The playing-card design at business size, and how large the text can be</a><a href="#i001">001 &middot; Thirteen business-card layouts, printing, waterproofing and boxing</a></nav>
+    <nav class="iters" aria-label="Iterations"><a href="#i008">008 &middot; LB, with title cards and a new sample set</a><a href="#i007">007 &middot; Sized for 63 words a side</a><a href="#i006">006 &middot; Landscape cards with the playing-card footer</a><a href="#i005">005 &middot; One layout for every business-card printer, in a flip-through viewer</a><a href="#i004">004 &middot; Credit-card size: unique cards, both sides, and lamination</a><a href="#i003">003 &middot; KJV beside the reference, the glyph on its own, the number on the move</a><a href="#i002">002 &middot; The playing-card design at business size, and how large the text can be</a><a href="#i001">001 &middot; Thirteen business-card layouts, printing, waterproofing and boxing</a></nav>
   </header>
+
+  <article class="iter" id="i008">
+    <p class="iter-meta">Iteration 008 &middot; 3 October 2026</p>
+    <h2>LB, with title cards and a new sample set</h2>
+    <p class="summary">The landscape side stripe (LB) as the preferred design, now starting on the right of the first card&#x27;s front, with a title card for each book: the Chi Rho and the book&#x27;s name, with the branded back in the book&#x27;s category colour.</p>
+    
+<p class="lede"><b>LB</b>, the landscape side stripe with the playing-card footer, is the preferred design. It is set at <b>8.85 pt</b>, with 62 words and 2.45 verses a side on average, which comes to 6,335 cards for the Bible. The stripe now starts on the <b>right</b> edge of the first card's front, so it sits on the left of every back: the same physical edge, turned over.</p>
+<p class="col">Each book now opens with a <b>title card</b>, following the playing cards' title cards. The front has the Chi Rho and the book's name in the book's colour. The back is the branded back, the same tessellation as the card backs and the box, in the book's category colour. It is the last design in the viewer, after the three band treatments. The samples are a new set that spans the book groups: History, the Major and Minor Prophets, the Gospels, Acts, the Pauline and General Epistles, and Revelation.</p>
+<div class="flipdeck" data-src="008/deck.json">
+  <img src="008/us/LB-ru-front.webp" alt="Design LB, front of the card holding Ruth 1:16" class="fd-fallback">
+</div>
+
+  </article>
 
   <article class="iter" id="i007">
     <p class="iter-meta">Iteration 007 &middot; 3 October 2026</p>
@@ -611,7 +624,7 @@
       front.alt = `Design ${o.key}, front: ${im.front_ref}`; back.alt = `Design ${o.key}, back: ${im.back_ref || im.front_ref}`;
       inner.classList.toggle("flipped", st.flipped);
       $(".fd-title").innerHTML = `<span><span class="key">${o.key}</span>${o.name}</span>`;
-      $(".fd-stats").innerHTML = `<b>${o.size_pt} pt</b> &middot; ${o.words ? Math.round(o.words) + " words, " : ""}${o.verses.toFixed(2)} verses a side &middot; ${o.cards.toLocaleString()} cards for the Bible<br>` +
+      $(".fd-stats").innerHTML = o.note ? `${o.note}<br>${st.flipped ? "Back" : "Front"} &middot; ${size.label}` : `<b>${o.size_pt} pt</b> &middot; ${o.words ? Math.round(o.words) + " words, " : ""}${o.verses.toFixed(2)} verses a side &middot; ${o.cards.toLocaleString()} cards for the Bible<br>` +
         `Card ${im.card}, ${st.flipped ? "back" : "front"}: ${st.flipped ? (im.back_ref || im.front_ref) : im.front_ref} &middot; ${size.label}`;
       host.querySelectorAll("[data-sample]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.sample === st.sample)));
       host.querySelectorAll("[data-size]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.size === st.size)));

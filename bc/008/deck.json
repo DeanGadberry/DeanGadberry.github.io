@@ -1,0 +1,617 @@
+{
+ "sizes": [
+  {
+   "key": "us",
+   "label": "US 3.5 × 2 in",
+   "w_mm": 88.9,
+   "h_mm": 50.8
+  },
+  {
+   "key": "eu",
+   "label": "Europe 85 × 55 mm",
+   "w_mm": 85.0,
+   "h_mm": 55.0
+  }
+ ],
+ "samples": [
+  {
+   "key": "ru",
+   "label": "Ruth 1"
+  },
+  {
+   "key": "is",
+   "label": "Isaiah 53"
+  },
+  {
+   "key": "mi",
+   "label": "Micah 6"
+  },
+  {
+   "key": "mt",
+   "label": "Matthew 5"
+  },
+  {
+   "key": "ac",
+   "label": "Acts 2"
+  },
+  {
+   "key": "co",
+   "label": "1 Corinthians 13"
+  },
+  {
+   "key": "ja",
+   "label": "James 1"
+  },
+  {
+   "key": "re",
+   "label": "Revelation 21"
+  }
+ ],
+ "options": [
+  {
+   "key": "LB",
+   "name": "Side stripe, gradient",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/LB-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "us/LB-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/LB-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "us/LB-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/LB-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "us/LB-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "us/LB-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "us/LB-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "us/LB-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "us/LB-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "us/LB-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "us/LB-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "us/LB-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "us/LB-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/LB-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "us/LB-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/LB-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "eu/LB-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/LB-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "eu/LB-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/LB-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "eu/LB-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "eu/LB-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "eu/LB-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "eu/LB-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "eu/LB-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "eu/LB-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "eu/LB-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "eu/LB-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "eu/LB-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/LB-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "eu/LB-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "LBX",
+   "name": "Side stripe with the Chi Rho tessellation reversed out of the colour",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/LBX-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "us/LBX-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/LBX-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "us/LBX-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/LBX-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "us/LBX-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "us/LBX-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "us/LBX-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "us/LBX-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "us/LBX-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "us/LBX-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "us/LBX-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "us/LBX-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "us/LBX-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/LBX-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "us/LBX-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/LBX-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "eu/LBX-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/LBX-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "eu/LBX-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/LBX-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "eu/LBX-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "eu/LBX-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "eu/LBX-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "eu/LBX-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "eu/LBX-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "eu/LBX-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "eu/LBX-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "eu/LBX-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "eu/LBX-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/LBX-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "eu/LBX-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "LBL",
+   "name": "Side stripe, solid with a fade lip",
+   "size_pt": 8.85,
+   "words": 62.3,
+   "verses": 2.45,
+   "cards": 6335,
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/LBL-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "us/LBL-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/LBL-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "us/LBL-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/LBL-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "us/LBL-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "us/LBL-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "us/LBL-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "us/LBL-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "us/LBL-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "us/LBL-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "us/LBL-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "us/LBL-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "us/LBL-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/LBL-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "us/LBL-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/LBL-ru-front.webp",
+      "front_ref": "Ruth 1:15–16",
+      "back": "eu/LBL-ru-back.webp",
+      "back_ref": "Ruth 1:17–18",
+      "card": "4/22",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/LBL-is-front.webp",
+      "front_ref": "Isaiah 53:5–6",
+      "back": "eu/LBL-is-back.webp",
+      "back_ref": "Isaiah 53:7–8",
+      "card": "238/294",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/LBL-mi-front.webp",
+      "front_ref": "Micah 6:6–7",
+      "back": "eu/LBL-mi-back.webp",
+      "back_ref": "Micah 6:8–10",
+      "card": "18/24",
+      "start": "back"
+     },
+     "mt": {
+      "front": "eu/LBL-mt-front.webp",
+      "front_ref": "Matthew 4:24–25",
+      "back": "eu/LBL-mt-back.webp",
+      "back_ref": "Matthew 5:1–5",
+      "card": "18/191",
+      "start": "back"
+     },
+     "ac": {
+      "front": "eu/LBL-ac-front.webp",
+      "front_ref": "Acts 1:23–25",
+      "back": "eu/LBL-ac-back.webp",
+      "back_ref": "Acts 1:26–2:2",
+      "card": "6/203",
+      "start": "back"
+     },
+     "co": {
+      "front": "eu/LBL-co-front.webp",
+      "front_ref": "1 Corinthians 13:4–7",
+      "back": "eu/LBL-co-back.webp",
+      "back_ref": "1 Corinthians 13:8–10",
+      "card": "54/75",
+      "start": "front"
+     },
+     "ja": {
+      "front": "eu/LBL-ja-front.webp",
+      "front_ref": "James 1:1–4",
+      "back": "eu/LBL-ja-back.webp",
+      "back_ref": "James 1:5–7",
+      "card": "1/18",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/LBL-re-front.webp",
+      "front_ref": "Revelation 20:13–15",
+      "back": "eu/LBL-re-back.webp",
+      "back_ref": "Revelation 21:1–2",
+      "card": "84/94",
+      "start": "back"
+     }
+    }
+   }
+  },
+  {
+   "key": "T",
+   "name": "Title card: the Chi Rho and the book's name, branded back in the book's colour",
+   "note": "Title card, ahead of the book's first card (unnumbered)",
+   "img": {
+    "us": {
+     "ru": {
+      "front": "us/T-ru-front.webp",
+      "front_ref": "Ruth title card",
+      "back": "us/T-ru-back.webp",
+      "back_ref": "Ruth title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "is": {
+      "front": "us/T-is-front.webp",
+      "front_ref": "Isaiah title card",
+      "back": "us/T-is-back.webp",
+      "back_ref": "Isaiah title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "mi": {
+      "front": "us/T-mi-front.webp",
+      "front_ref": "Micah title card",
+      "back": "us/T-mi-back.webp",
+      "back_ref": "Micah title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "mt": {
+      "front": "us/T-mt-front.webp",
+      "front_ref": "Matthew title card",
+      "back": "us/T-mt-back.webp",
+      "back_ref": "Matthew title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "ac": {
+      "front": "us/T-ac-front.webp",
+      "front_ref": "Acts title card",
+      "back": "us/T-ac-back.webp",
+      "back_ref": "Acts title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "co": {
+      "front": "us/T-co-front.webp",
+      "front_ref": "1 Corinthians title card",
+      "back": "us/T-co-back.webp",
+      "back_ref": "1 Corinthians title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "ja": {
+      "front": "us/T-ja-front.webp",
+      "front_ref": "James title card",
+      "back": "us/T-ja-back.webp",
+      "back_ref": "James title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "re": {
+      "front": "us/T-re-front.webp",
+      "front_ref": "Revelation title card",
+      "back": "us/T-re-back.webp",
+      "back_ref": "Revelation title card, branded back",
+      "card": "title",
+      "start": "front"
+     }
+    },
+    "eu": {
+     "ru": {
+      "front": "eu/T-ru-front.webp",
+      "front_ref": "Ruth title card",
+      "back": "eu/T-ru-back.webp",
+      "back_ref": "Ruth title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "is": {
+      "front": "eu/T-is-front.webp",
+      "front_ref": "Isaiah title card",
+      "back": "eu/T-is-back.webp",
+      "back_ref": "Isaiah title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "mi": {
+      "front": "eu/T-mi-front.webp",
+      "front_ref": "Micah title card",
+      "back": "eu/T-mi-back.webp",
+      "back_ref": "Micah title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "mt": {
+      "front": "eu/T-mt-front.webp",
+      "front_ref": "Matthew title card",
+      "back": "eu/T-mt-back.webp",
+      "back_ref": "Matthew title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "ac": {
+      "front": "eu/T-ac-front.webp",
+      "front_ref": "Acts title card",
+      "back": "eu/T-ac-back.webp",
+      "back_ref": "Acts title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "co": {
+      "front": "eu/T-co-front.webp",
+      "front_ref": "1 Corinthians title card",
+      "back": "eu/T-co-back.webp",
+      "back_ref": "1 Corinthians title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "ja": {
+      "front": "eu/T-ja-front.webp",
+      "front_ref": "James title card",
+      "back": "eu/T-ja-back.webp",
+      "back_ref": "James title card, branded back",
+      "card": "title",
+      "start": "front"
+     },
+     "re": {
+      "front": "eu/T-re-front.webp",
+      "front_ref": "Revelation title card",
+      "back": "eu/T-re-back.webp",
+      "back_ref": "Revelation title card, branded back",
+      "card": "title",
+      "start": "front"
+     }
+    }
+   }
+  }
+ ]
+}
