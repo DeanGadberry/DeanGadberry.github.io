@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trumpet Net · Version 07</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: field-map sheet. Schematic map left, "nearest to you" panel right, channel card below. */
+:root{
+  --bg:#eef0ea; --paper:#fafbf7; --ink:#1d272a; --muted:#5b686a; --line:#d3d8cd;
+  --road:#c7b596; --water:#7ea6c0; --ham:#bf4f1d; --gmrs:#2a6a8a; --you:#1d272a; --star:#b8860b;
+  --ring:rgba(191,79,29,.10); --ringline:rgba(191,79,29,.35);
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12181a; --paper:#192124; --ink:#e3e7e1; --muted:#98a4a3; --line:#2b3639;
+  --road:#5d523f; --water:#3b6680; --ham:#f07a43; --gmrs:#5fb0d4; --you:#e3e7e1; --star:#e0b13c;
+  --ring:rgba(240,122,67,.10); --ringline:rgba(240,122,67,.40); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#12181a; --paper:#192124; --ink:#e3e7e1; --muted:#98a4a3; --line:#2b3639;
+  --road:#5d523f; --water:#3b6680; --ham:#f07a43; --gmrs:#5fb0d4; --you:#e3e7e1; --star:#e0b13c;
+  --ring:rgba(240,122,67,.10); --ringline:rgba(240,122,67,.40); color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+header h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,4vw,40px);letter-spacing:.01em;margin:0;text-wrap:balance;line-height:1.05}
+header p{margin:6px 0 0;color:var(--muted);max-width:70ch}
+.main{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+.mapbox{position:relative;padding:10px}
+.mapbox svg{display:block;width:100%;height:auto;cursor:crosshair;touch-action:manipulation}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px 0}
+.chip{font:600 13px var(--f-body);letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 10px;border-radius:4px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible,select:focus-visible{outline:2px solid var(--ham);outline-offset:2px}
+label.sel{display:flex;gap:6px;align-items:center;margin-left:auto;font-size:13px;color:var(--muted)}
+select{font:500 14px var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:5px 8px}
+.hint{font-size:12.5px;color:var(--muted);padding:0 12px 10px}
+.panel{padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.panel h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0;letter-spacing:.02em}
+.where{font-size:13px;color:var(--muted)}
+.best{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;padding:12px;border:1.5px solid var(--ham);border-radius:6px}
+.best .big{grid-row:span 3;font-family:var(--f-display);font-weight:700;font-size:58px;line-height:.9;color:var(--ham);font-variant-numeric:tabular-nums}
+.best .lbl{font:600 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.best .nm{font-family:var(--f-mono);font-weight:600;font-size:16px}
+.best .meta{font-size:13px;color:var(--muted)}
+ol.near{list-style:none;margin:0;padding:0;display:grid}
+ol.near li{display:grid;grid-template-columns:3.2em minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:7px 0;border-top:1px solid var(--line)}
+.ch{font-family:var(--f-display);font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ch.g{color:var(--gmrs)} .ch.h{color:var(--ham)}
+.nm2{font-family:var(--f-mono);font-size:13.5px;font-weight:500}
+.sub{display:block;font-family:var(--f-body);font-size:12.5px;color:var(--muted);font-weight:400}
+.dist{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.star{color:var(--star)}
+.bands{padding:16px}
+.bands h2,.table h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0 0 4px}
+.bands p{margin:0 0 12px;color:var(--muted);max-width:75ch}
+.bandgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.band{border:1px solid var(--line);border-radius:4px;padding:8px 10px;display:grid;gap:2px}
+.band b{font-family:var(--f-display);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.band span{font-size:13px;color:var(--muted)}
+.band.hm b{color:var(--ham)} .band.gm b{color:var(--gmrs)}
+.table{padding:16px}
+.tscroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:900px}
+.src a{color:inherit;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}.src{font-size:12.5px}.best .src{grid-column:1/-1}
+th{font:600 11px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 8px;border-bottom:1.5px solid var(--ink)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.rg td{font-family:var(--f-display);font-weight:600;font-size:17px;letter-spacing:.03em;padding-top:16px;border-bottom:1px solid var(--ink)}
+td.chc{font-family:var(--f-display);font-weight:700;font-size:18px;font-variant-numeric:tabular-nums}
+.foot{font-size:12.5px;color:var(--muted);max-width:90ch}
+.foot p{margin:4px 0}
+.pace{padding:16px;display:grid;gap:12px;border-color:var(--ink)}
+.pace-head h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0}
+.pace-head p,.pace-check{margin:4px 0 0;color:var(--muted);max-width:80ch}
+.pace-check b{color:var(--ink)}
+.pace-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.pc{display:grid;gap:2px;padding:10px 12px;border:1px solid var(--line);border-radius:4px}
+.pc .pl{font:600 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pc b{font-family:var(--f-display);font-weight:700;font-size:34px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.pc .pn{font-family:var(--f-mono);font-size:12.5px}
+.pc .pw{font-size:13px;color:var(--muted)}
+.band.as b{color:var(--ink)}
+/* svg */
+.svg-road{fill:none;stroke:var(--road);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.svg-roadlbl{font:600 11px var(--f-body);fill:var(--road)}
+.svg-river{fill:none;stroke:var(--water);stroke-width:2;stroke-dasharray:6 4}
+.svg-riverlbl{font:italic 500 12px var(--f-body);fill:var(--water)}
+.svg-ring{fill:var(--ring);stroke:var(--ringline);stroke-width:1;stroke-dasharray:3 3}
+.svg-site{stroke:var(--paper);stroke-width:2}
+.svg-site.h{fill:var(--ham)} .svg-site.g{fill:var(--gmrs)}
+.svg-count{font:700 11px var(--f-mono);fill:var(--paper);text-anchor:middle;pointer-events:none}
+.svg-city{font:600 13px var(--f-display);fill:var(--ink);letter-spacing:.02em;pointer-events:none}
+.svg-chs{font:500 10.5px var(--f-mono);fill:var(--muted);pointer-events:none}
+.svg-you{fill:none;stroke:var(--you);stroke-width:2.5}
+.svg-youdot{fill:var(--you)}
+.svg-grid{stroke:var(--line);stroke-width:1}
+.svg-gridlbl{font:400 10px var(--f-mono);fill:var(--muted)}
+.svg-bar{fill:var(--ink)}
+.halo{paint-order:stroke;stroke:var(--paper);stroke-width:3.5px;stroke-linejoin:round}
+@media (prefers-reduced-motion:no-preference){.svg-you{transition:transform .2s ease}}
+
+html,body{margin:0}
+.hero{padding:8px 4px 0}
+.ht{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hero h1{font-family:var(--f-display);font-weight:700;font-size:clamp(40px,8vw,64px);line-height:.95;margin:0}
+.hv{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.verse{font-style:italic;color:var(--muted);max-width:62ch;margin:10px 0}
+.verse span{font-style:normal;white-space:nowrap}
+.lede{max-width:70ch;margin:0;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{padding:16px;display:flex;flex-direction:column;gap:8px}
+.card h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0}
+.card p{margin:0}
+.card .how{font-size:14px;color:var(--muted)}
+.card ol.how{margin:0;padding-left:1.2em;line-height:1.55}
+.card a:not(.btn){color:var(--ham)}
+.btn{margin-top:auto;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:6px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600}
+.btn small{font-family:var(--f-mono);font-weight:400;font-size:12px;opacity:.8}
+.btn:hover{opacity:.9}
+.mono{font-family:var(--f-mono)}
+.sec h2{font-family:var(--f-display);font-weight:600;font-size:28px;margin:8px 0 2px}.sec p{margin:0;color:var(--muted);max-width:75ch}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="hero">
+    <div class="ht"><h1>Trumpet Net</h1><span class="hv">Version 07</span></div>
+    <p class="verse">In what place therefore ye hear the sound of the trumpet, resort ye thither unto us: our God shall fight for us. <span>Nehemiah 4:20</span></p>
+    <p class="lede">Trumpet Net is our group's emergency radio plan. Every radio we program carries the same channel list, so a channel number means the same thing on every radio. This page has the handout, the channel file for programming radios, and a map of the repeaters on the list.</p>
+  </header>
+
+  <section class="cards" aria-label="Get started">
+    <div class="sheet card">
+      <h2>The handout</h2>
+      <p>A two-sided, letter-size trifold that goes with every radio: how to talk on the air, the phonetic alphabet, a page to plan each operation, and every channel on the list.</p>
+      <p class="how">Print both sides (flip on the long edge), then fold in thirds so the title is on the front.</p>
+      <a class="btn" href="Trumpet_Net_Trifold_v07.0.pdf" download>Download the trifold <small>PDF · version 07.0</small></a>
+    </div>
+    <div class="sheet card">
+      <h2>Program a radio</h2>
+      <p>The full channel list as a file for <a href="https://chirpmyradio.com">CHIRP</a>, the free radio programming program.</p>
+      <ol class="how">
+        <li>Plug the radio into your computer with a programming cable and turn it on.</li>
+        <li>In CHIRP, choose <b>Radio → Download from radio</b>.</li>
+        <li>Choose <b>File → Import</b> and pick this file.</li>
+        <li>Choose <b>Radio → Upload to radio</b>.</li>
+      </ol>
+      <a class="btn" href="Trumpet_Net_Channels_v07_ALL-TX.csv" download>Download the channel list <small>CSV · version 07</small></a>
+    </div>
+    <div class="sheet card">
+      <h2>Check your radio</h2>
+      <p>Turn to <b>channel 0</b>. It should read <b class="mono">VER 07</b>. If your radio has no channel 0, use <b>channel 108</b>. A different number means the radio has an older list and should be reprogrammed.</p>
+      <p class="how"><b>How versions work:</b> the whole number changes only when channels change, so it always matches your radio. The decimal on the handout (07.0, 07.1…) changes when only the paper is revised.</p>
+      <p class="how"><b>Licenses:</b> the file lets every channel transmit. Ham channels need an amateur license and GMRS channels a GMRS license. FRS channels 1–22 need none. Anyone may use any channel when a life is in danger.</p>
+    </div>
+  </section>
+
+  <section class="sheet pace" aria-label="Trumpet Net radio plan">
+    <div class="pace-head"><h2>Trumpet Net channels</h2><p>Channels 34–39 are the group's channels. There is no fixed PACE plan: build one for each operation using the steps on the trifold, choosing the shortest-reach channel that covers everyone.</p></div>
+    <div class="pace-grid">
+      <div class="pc"><span class="pl">Team channels</span><b>34–37</b><span class="pn">Team 1–4 · FRS/GMRS 4–7 + tone 107.2</span><span class="pw">One per team at a local operation. Not private: anyone on the frequency hears you.</span></div>
+      <div class="pc"><span class="pl">Ham repeater</span><b>38</b><span class="pn">TPT RP · 146.760 K5FTW</span><span class="pw">Ham license. About 30 miles across the metro.</span></div>
+      <div class="pc"><span class="pl">GMRS repeater</span><b>39</b><span class="pn">TPT GR · Haltom 725</span><span class="pw">GMRS license. About 7 miles from Camp Bowie and Bryce.</span></div>
+    </div>
+  </section>
+
+  <div class="sec"><h2>Repeater map</h2><p>Tap anywhere on the map, or pick a town, to see the closest repeaters and the channel to turn to. Each repeater links to its RepeaterBook entry and license record so you can check it yourself.</p></div>
+  <div class="main">
+    <section class="sheet" aria-label="Map">
+      <div class="controls">
+        <button class="chip" id="f-all" aria-pressed="true" type="button">All</button>
+        <button class="chip" id="f-ham" aria-pressed="false" type="button">Ham</button>
+        <button class="chip" id="f-gmrs" aria-pressed="false" type="button">GMRS</button>
+        <label class="sel" for="town">I'm near
+          <select id="town"></select>
+        </label>
+      </div>
+      <div class="mapbox"><svg id="map" viewBox="0 0 960 975" role="img" aria-label="Schematic map of North Texas repeater sites"></svg></div>
+      <p class="hint">Orange = ham repeater sites, blue = GMRS. The number on a dot is how many repeaters share that site. Dashed rings show published coverage where the owner lists one. Map is schematic: sites are placed at the town, not the exact tower.</p>
+    </section>
+
+    <aside class="sheet panel" aria-live="polite">
+      <div>
+        <h2>Turn to</h2>
+        <div class="where" id="where"></div>
+      </div>
+      <div class="best" id="best"></div>
+      <div>
+        <div class="where" style="margin-bottom:4px">Next closest</div>
+        <ol class="near" id="near"></ol>
+      </div>
+    </aside>
+  </div>
+
+  <section class="sheet bands">
+    <h2>How the channels are numbered</h2>
+    <p>The tens digit tells you the region. Every region's main emergency repeater ends in 0, and its talkaround ends in 9. Start on the channel ending in 0, then try the other ★ county primaries in that block. Simplex and GMRS channels work with no repeater at all.</p>
+    <div class="bandgrid" id="bands"></div>
+  </section>
+
+  <section class="sheet table">
+    <h2>Every repeater by region</h2>
+    <div class="tscroll"><table id="tbl"><thead><tr><th>Ch</th><th>Name</th><th>Output</th><th>Offset</th><th>Tone</th><th>Call</th><th>Site</th><th>Notes</th><th>Sources</th></tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <div class="foot">
+    <p>Repeater data from RepeaterBook, county ARES sites and club pages. Each repeater links to its sources; RepeaterBook entries were matched by frequency, callsign and county on October 17, 2026, and every tone and offset agreed. Entries marked "verify" are not listed on RepeaterBook (82, 83, 126) or are GMRS repeaters checked only against other listings. Ham channels need an amateur license to transmit; GMRS needs a GMRS license and a GMRS-certified radio. W5FC 146.880 switches its tone to 114.8 during RACES and Skywarn nets, which is why it appears twice.</p>
+  </div>
+</div>
+
+<script>
+const P={FTW:["Fort Worth",32.7555,-97.3308],BEN:["North Benbrook",32.6849,-97.457],ARL:["Arlington",32.7357,-97.1081],HAL:["Haltom City",32.7996,-97.2692],
+DAL:["Dallas",32.7767,-96.797],WRL:["White Rock Lake",32.8268,-96.723],MCK:["McKinney",33.1972,-96.6398],DEN:["Denton",33.2148,-97.1331],
+DNG:["Denton (TWU)",33.2263,-97.1150],CCN:["Copper Canyon",33.0951,-97.0967],DEC:["Decatur",33.2343,-97.5861],ROS:["Rosston",33.4637,-97.4417],
+GAI:["Gainesville",33.6259,-97.1334],SHR:["Sherman",33.6357,-96.6089],DNS:["Denison",33.7557,-96.5367],WTH:["Weatherford",32.7593,-97.7972],
+MW:["Mineral Wells",32.8085,-98.1128],BRZ:["Brazos",32.66,-98.12],CLB:["Cleburne",32.3476,-97.3867],GRN:["Granbury",32.4421,-97.7942],
+HIL:["Hillsboro",32.011,-97.13],WAC:["Waco",31.5493,-97.1467],BEL:["Belton",31.056,-97.4645],WF:["Wichita Falls",33.9137,-98.4934],ABL:["Abilene",32.4487,-99.7331],
+DLG:["Dallas (GMRS)",32.79,-96.84]};
+// ch, name, out, offset, tone, call, site, note, primary, radiusMi, verify
+const R=[
+[40,"FW 940",146.940,"−0.6","110.9","K5FTW","FTW","Tarrant RACES/ARES/Skywarn primary",1,40,0],
+[41,"FW 760",146.760,"−0.6","110.9","K5FTW","FTW","Fort Worth secondary. Trumpet Net ham repeater (ch 38)",0,30,0],
+[42,"FW UHF",444.100,"+5","110.9","K5FTW","FTW","K5FTW UHF, sometimes linked to 146.940",0,0,0],
+[43,"FW 200",147.200,"+0.6","110.9","WZ5TX","FTW","Skywarn",0,0,0],
+[44,"COW280",147.280,"+0.6","110.9","K5COW","FTW","Cowtown ARC",0,0,0],
+[45,"COW442",442.200,"+5","110.9","K5COW","BEN","Cowtown ARC UHF",0,0,0],
+[46,"FW 840",146.840,"−0.6","110.9","W5SH","FTW","Kilocycle Club",0,0,0],
+[47,"FW 125",442.125,"+5","156.7","KA5GFH","FTW","Different tone",0,0,0],
+[48,"FW 680",146.680,"−0.6","110.9","K5FTW","FTW","",0,0,0],
+[60,"DAL880",146.880,"−0.6","110.9","W5FC","DAL","Dallas RACES/Skywarn primary",1,35,0],
+[61,"DALNET",146.880,"−0.6","114.8","W5FC","DAL","Same machine during RACES/Skywarn nets",0,0,0],
+[62,"DAL442",442.425,"+5","110.9","W5FC","DAL","Dallas ARC UHF",0,0,0],
+[63,"DAL640",146.640,"−0.6","118.8","K5AHT","DAL","",0,0,0],
+[64,"DAL700",146.700,"−0.6","110.9","W5EBQ","DAL","Green Bldg",0,0,0],
+[65,"ARL140",147.140,"+0.6","110.9","K5SLD","ARL","Arlington",0,0,0],
+[66,"MCK740",146.740,"−0.6","110.9","W5MRC","MCK","Collin Co ARES",1,0,0],
+[50,"DEN920",146.920,"−0.6","110.9","W5NGU","DEN","Denton Co ARES primary",1,0,0],
+[51,"DEN170",145.170,"−0.6","110.9","W5NGU","DEN","EOC, backup ARES",0,0,0],
+[52,"DEN444",444.050,"+5","110.9","W5NGU","DEN","EOC UHF",0,0,0],
+[53,"DEC780",146.780,"−0.6","131.8","W5KMC","DEC","Wise Co Skywarn/ARES",1,0,0],
+[54,"DEC442",442.600,"+5","131.8","W5WFR","DEC","Best Wise Co coverage",0,0,0],
+[55,"SHR000",147.000,"+0.6","100.0","W5RVT","SHR","Grayson ARES/Skywarn primary",1,0,0],
+[56,"SHR280",147.280,"+0.6","107.2","W5COP","SHR","Grayson ARES secondary",0,0,0],
+[57,"SHR444",444.750,"+5","100.0","W5RVT","SHR","Grayson UHF backup",0,0,0],
+[58,"ROSSTN",145.490,"−0.6","85.4","WD5U","ROS","Cooke Co",1,0,0],
+[80,"WTH040",147.040,"+0.6","110.9","WB5IDM","WTH","Parker Co Skywarn",1,0,0],
+[81,"WTH443",443.800,"+5","110.9","WB5IDM","WTH","Parker UHF",0,0,0],
+[82,"WTH900",146.900,"−0.6","110.9","KG5CW","WTH","Not on RepeaterBook",0,0,1],
+[83,"MW 470",145.470,"−0.6","85.4","KC5IUR","MW","Palo Pinto Skywarn. Not on RepeaterBook",1,0,1],
+[84,"MW 640",146.640,"−0.6","85.4","W5ABF","MW","Mineral Wells ARC",0,0,0],
+[85,"BRAZOS",146.860,"−0.6","156.7","W5PPC","BRZ","Palo Pinto",0,0,0],
+[86,"WF 940",146.940,"−0.6","192.8","W5US","WF","Wichita Falls Skywarn",1,0,0],
+[87,"WF 140",147.140,"+0.6","192.8","N5WF","WF","Red Cross",0,0,0],
+[88,"ABL760",146.760,"−0.6","146.2","KC5OLO","ABL","Key City ARC",1,0,0],
+[70,"CLB490",145.490,"−0.6","88.5","KB5YBI","CLB","Johnson Co ARES primary, emergency power",1,0,0],
+[71,"CLB444",444.000,"+5","136.5","N5OAN","CLB","ARES backup, I-35 to Waco",0,50,0],
+[72,"GRN080",147.080,"+0.6","88.5","WD5GIC","GRN","Hood Co",1,0,0],
+[73,"HIL780",146.780,"−0.6","123.0","WB5YFX","HIL","Hill Co",1,0,0],
+[74,"WAC660",146.660,"−0.6","123.0","K5AB","WAC","",1,0,0],
+[75,"WAC360",147.360,"+0.6","123.0","AA5RT","WAC","",0,0,0],
+[76,"BEL140",147.140,"+0.6","123.0","W5BEC","BEL","Belton, Bell Co wide area",0,0,0],
+[121,"FW 110",145.110,"−0.6","110.9","K5FTW","FTW","Extra",0,0,0],
+[122,"FW 320",147.320,"+0.6","110.9","K5MOT","FTW","Extra",0,0,0],
+[123,"FW 330",145.330,"−0.6","107.2","WA5JRS","FTW","Extra, FM/Fusion",0,0,0],
+[124,"FW 444",444.300,"+5","110.9","K5MOT","FTW","Extra",0,0,0],
+[125,"DNS330",145.330,"−0.6","100.0","W5DWH","DNS","Extra, Denison",0,0,0],
+[126,"GAI340",147.340,"+0.6","100.0","WB5FHI","GAI","Extra, Cooke Co ARC. Not on RepeaterBook",0,0,1],
+[23,"RPT 15",462.550,"+5","141.3","WQUM597","WRL","GMRS, open",1],
+[30,"RPT 22",462.725,"+5","141.3","WRPL432","HAL","GMRS Haltom 725, open. Trumpet Net GMRS repeater (ch 39)",1],
+[31,"DAL650",462.650,"+5","D051","WRKH887","DLG","GMRS, open"],
+[32,"DAL675",462.675,"+5","D025","WRKH887","DLG","GMRS, open"],
+[33,"DEN600",462.600,"+5","D624","WRPR901","DNG","GMRS TWU, open",0,0,1],
+].map(a=>({ch:a[0],name:a[1],f:a[2],off:a[3],tone:a[4],call:a[5],site:a[6],note:a[7]||"",pri:!!a[8],rad:a[9]||0,ver:!!a[10],gm:a[2]>460}));
+
+const RB={40:543,41:450,42:1427,43:254,44:727,45:1035,46:492,47:1020,48:407,50:527,51:11527,52:1414,53:462,54:1117,55:571,56:618,57:48,58:14535,60:505,61:505,62:1078,63:376,64:411,65:658,66:431,70:352,71:1400,72:620,73:455,74:393,75:778,76:654,80:601,81:1342,84:384,85:16159,86:548,87:659,88:3014,121:218,122:7415,123:295,124:1479,125:11952};
+const ALT={83:["RadioReference (2012)","https://wiki.radioreference.com/index.php/Palo_Pinto_County_(TX)"],30:["Haltom 725 page","https://gofundme.com/f/haltom-725-repeater"],39:["Haltom 725 page","https://gofundme.com/f/haltom-725-repeater"]};
+function srcs(r){const a=[];const L=(t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+ if(RB[r.ch])a.push(L("RepeaterBook","https://www.repeaterbook.com/repeaters/details.php?state_id=48&ID="+RB[r.ch]));
+ if(ALT[r.ch])a.push(L(ALT[r.ch][0],ALT[r.ch][1]));
+ if(r.gm)a.push(L("RepeaterBook GMRS search","https://www.repeaterbook.com/gmrs/"));
+ if(!r.gm&&r.call&&r.call!=="—")a.push(L("License","https://www.repeaterbook.com/fcc/record.php?call="+r.call));
+ if(!RB[r.ch]&&!r.gm)a.unshift("<b>Not on RepeaterBook</b>");
+ return a.join(" · ")}
+const REG=[
+ {n:"Fort Worth & Arlington",a:40,b:48},{n:"North: Denton, Wise, Cooke, Grayson",a:50,b:58},{n:"East: Dallas, Arlington & Collin",a:60,b:66},
+ {n:"South: Johnson, Hood, Hill, Waco",a:70,b:76},{n:"West & far: Parker, Palo Pinto, Wichita Falls, Abilene",a:80,b:88},
+ {n:"Extras",a:121,b:126},{n:"GMRS repeaters",a:23,b:33}];
+const BANDS=[["0","Version check · VER 07 (backup: 108)",""],["34–39","Trumpet Net channels","as"],["1–22","FRS / GMRS simplex","gm"],["23–33","GMRS repeaters","gm"],
+["40s","Fort Worth ★40 · talkaround 49","hm"],["50s","North ★50 Denton · talkaround 59","hm"],["60s","East ★60 Dallas · talkaround 69","hm"],["70s","South ★70 Cleburne · talkaround 79","hm"],
+["80s","West & far ★80 Weatherford · talkaround 89","hm"],["90–97","Weather WX1–7 · APRS",""],["100–108","2m simplex · 100 = 146.520 calling","hm"],["109–115","70cm simplex · 109 = 446.000 calling","hm"],
+["116–120","MURS 1–5",""],["121–126","Extra repeaters","hm"]];
+const LON0=-100.0,LAT1=34.25,K=300,C=Math.cos(32.6*Math.PI/180);
+const X=lon=>(lon-LON0)*C*K, Y=lat=>(LAT1-lat)*K, PXMI=K/69;
+const NS="http://www.w3.org/2000/svg", svg=document.getElementById("map");
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e};
+const pl=pts=>pts.map(([la,lo],i)=>(i?"L":"M")+X(lo).toFixed(1)+" "+Y(la).toFixed(1)).join(" ");
+
+let filter="all", you=[P.FTW[1],P.FTW[2]];
+const gBase=el("g",{}), gRings=el("g",{}), gSites=el("g",{}), gYou=el("g",{});
+// grid
+for(let la=31.5;la<=34;la+=.5){el("line",{x1:0,x2:960,y1:Y(la),y2:Y(la),class:"svg-grid"},gBase);el("text",{x:4,y:Y(la)-3,class:"svg-gridlbl"},gBase).textContent=la.toFixed(1)+"°N"}
+for(let lo=-99.5;lo<=-96.5;lo+=.5){el("line",{y1:0,y2:975,x1:X(lo),x2:X(lo),class:"svg-grid"},gBase);el("text",{x:X(lo)+3,y:970,class:"svg-gridlbl"},gBase).textContent=(-lo).toFixed(1)+"°W"}
+// river
+el("path",{d:pl([[34.16,-100],[34.12,-99.3],[34.08,-98.6],[33.95,-98.0],[33.85,-97.5],[33.73,-97.05],[33.84,-96.8],[33.83,-96.55],[33.86,-96.2]]),class:"svg-river"},gBase);
+el("text",{x:X(-98.95),y:Y(34.17),class:"svg-riverlbl"},gBase).textContent="Red River · Oklahoma";
+// roads
+const ROADS=[
+ ["I-35W",[[33.214,-97.133],[32.95,-97.30],[32.7555,-97.33],[32.54,-97.32],[32.20,-97.18],[32.011,-97.13]]],
+ ["I-35E",[[33.214,-97.133],[33.0,-96.98],[32.7767,-96.797],[32.39,-96.85],[32.011,-97.13]]],
+ ["I-35",[[33.98,-97.15],[33.6259,-97.1334],[33.214,-97.133]]],
+ ["I-35",[[32.011,-97.13],[31.5493,-97.1467],[31.10,-97.34]]],
+ ["I-20",[[32.4487,-99.7331],[32.5,-99.0],[32.73,-98.2],[32.7593,-97.7972],[32.68,-97.33],[32.68,-96.80],[32.70,-96.2]]],
+ ["I-30",[[32.7555,-97.3308],[32.76,-97.06],[32.7767,-96.797],[32.88,-96.2]]],
+ ["US-287",[[32.7555,-97.3308],[33.2343,-97.5861],[33.56,-97.85],[33.9137,-98.4934],[34.1,-99.0]]],
+ ["US-75",[[32.7767,-96.797],[33.1972,-96.6398],[33.6357,-96.6089],[33.7557,-96.5367],[33.9,-96.5]]],
+ ["US-377",[[32.7555,-97.3308],[32.4421,-97.7942],[32.2,-98.2]]],
+ ["US-67",[[32.7767,-96.797],[32.3476,-97.3867],[32.2,-97.7]]],
+];
+ROADS.forEach(([n,p])=>el("path",{d:pl(p),class:"svg-road"},gBase));
+[["I-35W",32.95,-97.30],["I-35E",33.0,-96.98],["I-35",33.42,-97.13],["I-35",31.75,-97.14],["I-20",32.55,-99.0],["I-30",32.76,-97.0],["US-287",33.56,-97.85],["US-75",33.4,-96.62],["US-377",32.3,-98.0],["US-67",32.25,-97.5]]
+ .forEach(([n,la,lo])=>el("text",{x:X(lo)+5,y:Y(la)-4,class:"svg-roadlbl halo"},gBase).textContent=n);
+// scale bar 25 mi
+el("rect",{x:820,y:930,width:25*PXMI,height:4,class:"svg-bar"},gBase);
+el("text",{x:820,y:925,class:"svg-gridlbl"},gBase).textContent="25 mi";
+
+function hav(a,b,c,d){const r=Math.PI/180,dl=(c-a)*r,dn=(d-b)*r,h=Math.sin(dl/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(dn/2)**2;return 3958.8*2*Math.asin(Math.sqrt(h))}
+function brg(a,b,c,d){const r=Math.PI/180,y=Math.sin((d-b)*r)*Math.cos(c*r),x=Math.cos(a*r)*Math.sin(c*r)-Math.sin(a*r)*Math.cos(c*r)*Math.cos((d-b)*r);const t=(Math.atan2(y,x)/r+360)%360;return["N","NE","E","SE","S","SW","W","NW"][Math.round(t/45)%8]}
+const vis=r=>filter==="all"||(filter==="gmrs")===r.gm;
+function range(chs){chs.sort((a,b)=>a-b);if(chs.length<=3)return chs.join(" · ");return chs[0]+"–"+chs[chs.length-1]}
+
+function drawSites(){
+  gRings.replaceChildren();gSites.replaceChildren();
+  R.filter(vis).filter(r=>r.rad).forEach(r=>{const p=P[r.site];el("circle",{cx:X(p[2]),cy:Y(p[1]),r:r.rad*PXMI,class:"svg-ring"},gRings)});
+  const by={};R.filter(vis).forEach(r=>(by[r.site]=by[r.site]||[]).push(r));
+  Object.entries(by).forEach(([k,list])=>{
+    const p=P[k],x=X(p[2]),y=Y(p[1]),g=list[0].gm,n=list.length,rad=n>1?9+Math.min(n,14)*.45:7;
+    const grp=el("g",{tabindex:0,role:"button","aria-label":p[0]+" — "+n+" repeater"+(n>1?"s":"")},gSites);
+    el("circle",{cx:x,cy:y,r:rad,class:"svg-site "+(g?"g":"h")},grp);
+    if(n>1)el("text",{x:x,y:y+4,class:"svg-count"},grp).textContent=n;
+    const left=["DAL","WRL","DLG","SHR","DNS","MCK"].includes(k);
+    const tx=left?x-rad-5:x+rad+5, anchor=left?"end":"start";
+    const dy={HAL:-10,BEN:14,ARL:12,WRL:-10,DLG:12,DNG:-8,CCN:12,DNS:-6,BRZ:14}[k]||0;
+    const t=el("text",{x:tx,y:y-1+dy,class:"svg-city halo","text-anchor":anchor},grp);t.textContent=p[0];
+    const c=el("text",{x:tx,y:y+12+dy,class:"svg-chs halo","text-anchor":anchor},grp);c.textContent="ch "+range(list.map(r=>r.ch));
+    const go=e=>{e.stopPropagation();setYou(p[1],p[2],p[0])};
+    grp.addEventListener("click",go);grp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go(e)}});
+  });
+}
+let youLbl="Fort Worth";
+function drawYou(){gYou.replaceChildren();const x=X(you[1]),y=Y(you[0]);
+  el("circle",{cx:x,cy:y,r:13,class:"svg-you"},gYou);el("circle",{cx:x,cy:y,r:3.5,class:"svg-youdot"},gYou);
+  el("line",{x1:x-19,x2:x-14,y1:y,y2:y,class:"svg-you"},gYou);el("line",{x1:x+14,x2:x+19,y1:y,y2:y,class:"svg-you"},gYou);
+  el("line",{y1:y-19,y2:y-14,x1:x,x2:x,class:"svg-you"},gYou);el("line",{y1:y+14,y2:y+19,x1:x,x2:x,class:"svg-you"},gYou)}
+function fmt(r){return r.f.toFixed(3)+" "+r.off+" · "+(r.tone.startsWith("D")?"DCS ":"tone ")+r.tone}
+function panel(){
+  const list=R.filter(vis).map(r=>{const p=P[r.site];return{...r,d:hav(you[0],you[1],p[1],p[2]),b:brg(you[0],you[1],p[1],p[2])}}).sort((a,b)=>a.d-b.d||b.pri-a.pri||a.ch-b.ch);
+  document.getElementById("where").textContent="Near "+youLbl+(filter==="all"?"":" · "+(filter==="gmrs"?"GMRS only":"Ham only"));
+  // best: nearest primary within 40 mi, else nearest
+  const best=list.find(r=>r.pri&&r.d<40)||list[0];
+  const bp=P[best.site];
+  document.getElementById("best").innerHTML=`<div class="big">${best.ch}</div><div class="lbl">${best.pri?"★ Emergency primary":"Closest"}</div><div class="nm">${best.name} <span style="font-weight:400;color:var(--muted)">${best.call}</span></div><div class="meta">${fmt(best)} · ${bp[0]}, ${dtxt(best)}${best.note?" · "+best.note:""}</div><div class="meta src">Check it: ${srcs(best)}</div>`;
+  const ol=document.getElementById("near");ol.replaceChildren();
+  list.filter(r=>r!==best).slice(0,9).forEach(r=>{const li=document.createElement("li");
+    li.innerHTML=`<span class="ch ${r.gm?"g":"h"}">${r.ch}</span><span class="nm2">${r.pri?'<span class="star">★</span> ':""}${r.name}<span class="sub">${fmt(r)} · ${P[r.site][0]}${r.ver?" · verify":""}</span></span><span class="dist">${dtxt(r)}</span>`;ol.appendChild(li)});
+}
+const dtxt=r=>r.d<3?"here":Math.round(r.d)+" mi "+r.b;
+function setYou(la,lo,lbl){you=[la,lo];youLbl=lbl||nearestTown(la,lo);drawYou();panel();
+  const s=document.getElementById("town");s.value=[...s.options].some(o=>o.value===lbl)?lbl:"";}
+function nearestTown(la,lo){let bn="",bd=1e9;Object.values(P).forEach(p=>{if(p[0].includes("("))return;const d=hav(la,lo,p[1],p[2]);if(d<bd){bd=d;bn=p[0]}});return bd<4?bn:Math.round(bd)+" mi from "+bn}
+svg.addEventListener("click",e=>{const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(svg.getScreenCTM().inverse());
+  const lo=q.x/(C*K)+LON0, la=LAT1-q.y/K;setYou(la,lo)});
+// town select
+const sel=document.getElementById("town");
+const blank=document.createElement("option");blank.value="";blank.textContent="(map point)";sel.appendChild(blank);
+Object.values(P).filter(p=>!p[0].includes("(")).sort((a,b)=>a[0].localeCompare(b[0])).forEach(p=>{const o=document.createElement("option");o.value=p[0];o.textContent=p[0];sel.appendChild(o)});
+sel.addEventListener("change",()=>{const p=Object.values(P).find(p=>p[0]===sel.value);if(p)setYou(p[1],p[2],p[0])});
+// filters
+const chips={all:"f-all",ham:"f-ham",gmrs:"f-gmrs"};
+Object.entries(chips).forEach(([k,id])=>document.getElementById(id).addEventListener("click",()=>{filter=k;
+  Object.values(chips).forEach(i=>document.getElementById(i).setAttribute("aria-pressed",i===id));drawSites();panel()}));
+// bands
+const bg=document.getElementById("bands");BANDS.forEach(([n,t,c])=>{const d=document.createElement("div");d.className="band "+c;d.innerHTML=`<b>${n}</b><span>${t}</span>`;bg.appendChild(d)});
+// table
+const tb=document.querySelector("#tbl tbody");
+REG.forEach(g=>{const tr=document.createElement("tr");tr.className="rg";tr.innerHTML=`<td colspan="8">${g.n} · ch ${g.a}–${g.b}</td>`;tb.appendChild(tr);
+  R.filter(r=>r.ch>=g.a&&r.ch<=g.b).sort((a,b)=>a.ch-b.ch).forEach(r=>{const t=document.createElement("tr");
+   t.innerHTML=`<td class="chc" style="color:var(--${r.gm?"gmrs":"ham"})">${r.ch}</td><td class="mono">${r.pri?'<span class="star">★</span> ':""}${r.name}</td><td class="mono">${r.f.toFixed(3)}</td><td class="mono">${r.off}</td><td class="mono">${r.tone}</td><td class="mono">${r.call}</td><td>${P[r.site][0]}</td><td>${r.note}${r.ver?(r.note?" · ":"")+"verify":""}</td><td class="src">${srcs(r)}</td>`;tb.appendChild(t)})});
+sel.value="Fort Worth";drawSites();drawYou();panel();
+</script>
+
+</body>
+</html>
