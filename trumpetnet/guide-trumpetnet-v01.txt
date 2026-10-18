@@ -14,11 +14,11 @@ BEFORE YOU LEAVE HOME
 [ ] Programming cable packed (and a spare if you have one)
 [ ] Radios charged. A low battery can make programming fail.
 [ ] These files are on the laptop, in the Downloads folder:
-      1-channels-trumpetnet-v01.csv   (the channel list)
-      2-guide-trumpetnet-v01.txt      (this guide)
-      3-trifold-trumpetnet-v01.pdf    (the handout)
-    Tip: type the number and press Tab to fill in the name,
-    e.g.  ls ~/Downloads/1<Tab>
+      channels-trumpetnet-v01.csv   (the channel list)
+      guide-trumpetnet-v01.txt      (this guide)
+      trifold-trumpetnet-v01.pdf    (the handout)
+    Tip: type the first letter and press Tab to fill in the name,
+    e.g.  ls ~/Downloads/c<Tab>
 [ ] Printed trifolds, one per radio
 [ ] CHIRP opens (type  chirp  in a terminal)
 
@@ -67,7 +67,7 @@ Do steps 1-9 for each radio.
 
 6. LOAD THE TRUMPET NET LIST
    File -> Import
-   Pick:  Downloads/1-channels-trumpetnet-v01.csv
+   Pick:  Downloads/channels-trumpetnet-v01.csv
    An import window opens. Click OK to bring in all channels.
    If CHIRP lists channels it couldn't import, that's normal for
    radios that can't use some frequencies (see RADIO NOTES). Read the
@@ -221,9 +221,9 @@ Laptop goes to sleep mid-upload
 REFERENCE
 ----------------------------------------------------------------------
 Where things are
-  Channel list:   ~/Downloads/1-channels-trumpetnet-v01.csv
-  This guide:     ~/Downloads/2-guide-trumpetnet-v01.txt
-  Handout:        ~/Downloads/3-trifold-trumpetnet-v01.pdf
+  Channel list:   ~/Downloads/channels-trumpetnet-v01.csv
+  This guide:     ~/Downloads/guide-trumpetnet-v01.txt
+  Handout:        ~/Downloads/trifold-trumpetnet-v01.pdf
   Radio backups:  wherever you saved them in step 5
   Online copies:  www.deangadberry.com/trumpetnet/  (when online)
 
