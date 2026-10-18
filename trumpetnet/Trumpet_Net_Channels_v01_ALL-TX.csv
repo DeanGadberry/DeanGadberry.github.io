@@ -1,5 +1,5 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
-0,VER 07,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"LIST VERSION 07 - 2026-10-17 - version check, copy of ch 100 2m calling 146.520"
+0,VER 01,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"LIST VERSION 01 - version check, copy of ch 100 2m calling 146.520"
 1,GMRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 1
 2,GMRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 2
 3,GMRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,High,FRS/GMRS ch 3
@@ -30,13 +30,12 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 28,RPT 20,462.675000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 20R - TX 467.675 - travel tone 141.3
 29,RPT 21,462.700000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 21R - TX 467.700 - travel tone 141.3
 30,RPT 22,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 22R - TX 467.725 - travel tone 141.3 - opens Haltom 725 WRPL432 (open)
-31,DAL650,462.650000,+,5.000000,DTCS,88.5,88.5,051,NN,051,Tone->Tone,FM,12.50,S,High,GMRS Dallas WRKH887 D051 (open)
-32,DAL675,462.675000,+,5.000000,DTCS,88.5,88.5,025,NN,025,Tone->Tone,FM,12.50,S,High,GMRS Dallas WRKH887 D025 (open)
-33,DEN600,462.600000,+,5.000000,DTCS,88.5,88.5,624,NN,624,Tone->Tone,FM,12.50,S,High,GMRS Denton TWU WRPR901 D624 (open) - verify
-34,TEAM 1,462.637500,,0.000000,TSQL,107.2,107.2,023,NN,023,Tone->Tone,NFM,12.50,S,High,TRUMPET NET team channel 1 - FRS/GMRS 4 + tone 107.2 - not private
-35,TEAM 2,462.662500,,0.000000,TSQL,107.2,107.2,023,NN,023,Tone->Tone,NFM,12.50,S,High,TRUMPET NET team channel 2 - FRS/GMRS 5 + tone 107.2 - not private
-36,TEAM 3,462.687500,,0.000000,TSQL,107.2,107.2,023,NN,023,Tone->Tone,NFM,12.50,S,High,TRUMPET NET team channel 3 - FRS/GMRS 6 + tone 107.2 - not private
-37,TEAM 4,462.712500,,0.000000,TSQL,107.2,107.2,023,NN,023,Tone->Tone,NFM,12.50,S,High,TRUMPET NET team channel 4 - FRS/GMRS 7 + tone 107.2 - not private
+31,TEAM 1,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET team 1 = FRS/GMRS 5 - any FRS/GMRS radio, no license - not private"
+32,TEAM 2,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET team 2 = FRS/GMRS 6 - any FRS/GMRS radio, no license - not private"
+33,TEAM 3,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET team 3 = MURS 2 - MURS radio, no license - not private"
+34,TEAM 4,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET team 4 = MURS 3 - MURS radio, no license - not private"
+35,TEAM 5,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET team 5 = 2m simplex 146.430 - ham license - not private
+36,TEAM 6,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET team 6 = 2m simplex 147.510 - ham license - not private
 38,TPT RP,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,"TRUMPET NET ham repeater - K5FTW 146.760 Fort Worth, 30 mi - ham license"
 39,TPT GR,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,,High,TRUMPET NET GMRS repeater - Haltom 725 WRPL432 - GMRS license
 40,FW 940,146.940000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,K5FTW Tarrant RACES/ARES/Skywarn primary - ★ PRIMARY
@@ -85,38 +84,37 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 87,WF 140,147.140000,+,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,N5WF Red Cross
 88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,KC5OLO Key City ARC - ★ PRIMARY
 89,WTH TA,147.040000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"TALKAROUND for WTH040 ch 80 - simplex on its output, use when repeater is down"
-90,WX 1,162.550000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,Low,NOAA WX1 Fort Worth KEC55 - RX ONLY
-91,WX 2,162.400000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX2 Dallas KEC56 / Abilene - RX ONLY
-92,WX 3,162.475000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX3 Sherman Waco Wichita Falls Tyler - RX ONLY
-93,WX 4,162.425000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX4 - RX ONLY
-94,WX 5,162.450000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX5 - RX ONLY
-95,WX 6,162.500000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX6 - RX ONLY
-96,WX 7,162.525000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX7 Corsicana / Mineral Wells - RX ONLY
-97,APRS,144.390000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,APRS packet
+90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,Low,NOAA WX1 Fort Worth KEC55 - listen only
+91,WX 2,162.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX2 Dallas KEC56 / Abilene - listen only
+92,WX 3,162.475000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
+93,WX 4,162.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX4 - listen only
+94,WX 5,162.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX5 - listen only
+95,WX 6,162.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX6 - listen only
+96,WX 7,162.525000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX7 Corsicana / Mineral Wells - listen only
 100,CALL2M,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,2m simplex - national 2m calling
 101,S2 550,146.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
 102,S2 580,146.580000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - Dallas RACES simplex
 103,S2 400,146.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
-104,S2 430,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
-105,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
-106,S2 510,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
-107,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - Rockwall ARES simplex
-108,VER 07,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - LIST VERSION 07 backup for radios without channel 0
+104,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
+105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - Rockwall ARES simplex
+106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
+108,VER 01,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,LIST VERSION 01 backup for radios without channel 0
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex - national 70cm calling
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-111,S7 050,446.050000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-112,S7 075,446.075000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-113,S7 100,446.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-114,S7 125,446.125000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-115,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
-116,MURS 1,151.820000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 1
-117,MURS 2,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 2
-118,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 3
-119,MURS 4,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 4
-120,MURS 5,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 5
-121,FW 110,145.110000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,K5FTW Extra
-122,FW 320,147.320000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,K5MOT Extra
-123,FW 330,145.330000,-,0.600000,Tone,107.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"WA5JRS Extra, FM/Fusion"
-124,FW 444,444.300000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,K5MOT Extra
-125,DNS330,145.330000,-,0.600000,Tone,100.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"W5DWH Extra, Denison"
-126,GAI340,147.340000,+,0.600000,Tone,100.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"WB5FHI Extra, Cooke Co ARC - verify"
+111,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
+112,MURS 1,151.820000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 1
+113,MURS 2,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 2
+114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 3
+115,MURS 4,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 4
+116,MURS 5,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 5
+117,MAR 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,Low,"MARINE 16 distress, safety and calling - listen only"
+118,MAR 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 9 boater hailing - listen only
+119,MAR 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 22A Coast Guard liaison - listen only
+120,MAR 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 68 recreational working - listen only
+121,BUSRED,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,"Business itinerant RED DOT - events, security - listen only"
+122,BUSPUR,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant PURPLE DOT - listen only
+123,BUSYEL,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant YELLOW DOT - listen only
+124,BUSBRN,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant BROWN DOT - listen only
+125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,NATSAR / VSAR16 search and rescue ground - listen only
+126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,VCALL10 national interop calling (VHF) - listen only
+127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,UCALL40 national interop calling (UHF) - listen only

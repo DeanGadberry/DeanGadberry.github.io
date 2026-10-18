@@ -1,5 +1,5 @@
 TRUMPET NET - PROGRAMMING RADIOS WITH CHIRP (NO INTERNET NEEDED)
-Channel list version 07 - Xubuntu laptop
+Channel list version 01 - Xubuntu laptop
 ======================================================================
 
 Everything in this file works with no internet connection.
@@ -14,8 +14,8 @@ BEFORE YOU LEAVE HOME
 [ ] Programming cable packed (and a spare if you have one)
 [ ] Radios charged. A low battery can make programming fail.
 [ ] These files are on the laptop, in the Downloads folder:
-      Trumpet_Net_Channels_v07_ALL-TX.csv   (the channel list)
-      Trumpet_Net_Trifold_v07.1.pdf           (the handout)
+      Trumpet_Net_Channels_v01_ALL-TX.csv   (the channel list)
+      Trumpet_Net_Trifold_v01.pdf             (the handout)
       this guide
 [ ] Printed trifolds, one per radio
 [ ] CHIRP opens (type  chirp  in a terminal)
@@ -65,7 +65,7 @@ Do steps 1-9 for each radio.
 
 6. LOAD THE TRUMPET NET LIST
    File -> Import
-   Pick:  Downloads/Trumpet_Net_Channels_v07_ALL-TX.csv
+   Pick:  Downloads/Trumpet_Net_Channels_v01_ALL-TX.csv
    An import window opens. Click OK to bring in all channels.
    If CHIRP lists channels it couldn't import, that's normal for
    radios that can't use some frequencies (see RADIO NOTES). Read the
@@ -78,15 +78,15 @@ Do steps 1-9 for each radio.
 
 8. CHECK THE RADIO
    - Turn the radio off and back on.
-   - Go to channel 0. It should read  VER 07.
-     (No channel 0 on this radio? Channel 108 should read VER 07.)
-   - Go to channel 3, 38 and 40. Each should show a name.
+   - Go to channel 0. It should read  VER 01.
+     (No channel 0 on this radio? Channel 108 should read VER 01.)
+   - Go to channel 3, 31 and 40. Each should show a name.
    - LOCK TEST: go to channel 3, set LOW power, press talk for one
      second. If it only beeps, the maker locked this radio to ham
      channels. It can listen on FRS/GMRS but not transmit there.
      Check "No, listen only" on the back of its trifold.
    - Optional: save the programmed radio too:
-       File -> Save As ->  uv5r-01-trumpet-v07.img
+       File -> Save As ->  uv5r-01-trumpet-v01.img
 
 9. HAND IT OFF
    Give the person the radio with a trifold. Fill in the back:
@@ -105,6 +105,10 @@ UV-5R and similar Baofengs (BF-F8HP, UV-82, etc.)
     channels so it can listen. Transmit there only when a life is in
     danger.
 
+MURS radios
+  - Hold MURS 1-5. Their channels 2 and 3 are Team 3 and Team 4.
+  - Most are set up from the radio's own menu, not CHIRP.
+
 UV-9G (GMRS radio)
   - The radio itself blocks transmitting outside GMRS, so ham and
     MURS channels will be receive-only. That's expected.
@@ -114,8 +118,7 @@ UV-9G (GMRS radio)
 
 BTECH FRS-B1
   - Holds only FRS channels 1-22. Most of the list won't import, and
-    that's fine. Channels 4-7 should be set up as TEAM 1-4 with
-    tone 107.2 if you want team channels on it.
+    that's fine. Its own channels 5 and 6 are Team 1 and Team 2.
   - If CHIRP has no FRS-B1 model, program it by hand per its manual.
 
 
@@ -196,7 +199,7 @@ Radio beeps instead of transmitting on some channels
   there. Use a GMRS/FRS radio for team channels, or ham channels
   with a ham license. Programming can't change this.
 
-Channel 0 doesn't say VER 07
+Channel 0 doesn't say VER 01
   - Check channel 108 instead.
   - If both say something else, the radio has an older list.
     Program it again.
@@ -216,15 +219,15 @@ Laptop goes to sleep mid-upload
 REFERENCE
 ----------------------------------------------------------------------
 Where things are
-  Channel list:   ~/Downloads/Trumpet_Net_Channels_v07_ALL-TX.csv
-  Handout:        ~/Downloads/Trumpet_Net_Trifold_v07.1.pdf
+  Channel list:   ~/Downloads/Trumpet_Net_Channels_v01_ALL-TX.csv
+  Handout:        ~/Downloads/Trumpet_Net_Trifold_v01.pdf
   Radio backups:  wherever you saved them in step 5
   Online copies:  www.deangadberry.com/trumpetnet/  (when online)
 
 Version numbers
   The radio's VER number (channel 0 or 108) matches the channel list.
-  A decimal on the handout (07.1, 07.2) means only the paper changed;
-  radios on VER 07 don't need reprogramming for that.
+  A decimal on the handout (01.1, 01.2) means only the paper changed;
+  radios on VER 01 don't need reprogramming for that.
 
 Useful commands
   chirp                    start CHIRP
