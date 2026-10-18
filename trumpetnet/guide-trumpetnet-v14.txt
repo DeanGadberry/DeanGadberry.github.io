@@ -1,5 +1,5 @@
 TRUMPET NET - PROGRAMMING RADIOS WITH CHIRP (NO INTERNET NEEDED)
-Channel list version 12 - Xubuntu laptop
+Channel list version 14 - Xubuntu laptop
 ======================================================================
 
 Everything in this file works with no internet connection.
@@ -14,9 +14,9 @@ BEFORE YOU LEAVE HOME
 [ ] Programming cable packed (and a spare if you have one)
 [ ] Radios charged. A low battery can make programming fail.
 [ ] These files are on the laptop, in the Downloads folder:
-      channels-trumpetnet-v12.csv   (the channel list)
-      guide-trumpetnet-v12.txt      (this guide)
-      trifold-trumpetnet-v12.pdf    (the handout)
+      channels-trumpetnet-v14.csv   (the channel list)
+      guide-trumpetnet-v14.txt      (this guide)
+      trifold-trumpetnet-v14.pdf    (the handout)
     Tip: type the first letter and press Tab to fill in the name,
     e.g.  ls ~/Downloads/c<Tab>
 [ ] Printed trifolds, one per radio
@@ -67,7 +67,7 @@ Do steps 1-9 for each radio.
 
 6. LOAD THE TRUMPET NET LIST
    File -> Import
-   Pick:  Downloads/channels-trumpetnet-v12.csv
+   Pick:  Downloads/channels-trumpetnet-v14.csv
    An import window opens. Click OK to bring in all channels.
    If CHIRP lists channels it couldn't import, that's normal for
    radios that can't use some frequencies (see RADIO NOTES). Read the
@@ -80,15 +80,15 @@ Do steps 1-9 for each radio.
 
 8. CHECK THE RADIO
    - Turn the radio off and back on.
-   - Go to channel 0. It should read  VER 12.
-     (No channel 0 on this radio? Channel 108 should read VER 12.)
+   - Go to channel 0. It should read  VER 14.
+     (No channel 0 on this radio? Channel 108 should read VER 14.)
    - Go to channel 3, 31 and 40. Each should show a name.
    - LOCK TEST: go to channel 3, set LOW power, press talk for one
      second. If it only beeps, the maker locked this radio to ham
      channels. It can listen on FRS/GMRS but not transmit there.
      Check "No, listen only" on the back of its trifold.
    - Optional: save the programmed radio too:
-       File -> Save As ->  uv5r-01-trumpet-v12.img
+       File -> Save As ->  uv5r-01-trumpet-v14.img
 
 9. HAND IT OFF
    Give the person the radio with a trifold. Fill in the back:
@@ -109,6 +109,7 @@ UV-5R and similar Baofengs (BF-F8HP, UV-82, etc.)
 
 MURS radios
   - Hold MURS 1-5. Their channels 2 and 3 are Trumpet 3 and Trumpet 4.
+    Set privacy code 33 (tone 210.7) on both.
   - Most are set up from the radio's own menu, not CHIRP.
 
 UV-9G (GMRS radio)
@@ -121,6 +122,7 @@ UV-9G (GMRS radio)
 BTECH FRS-B1
   - Holds only FRS channels 1-22. Most of the list won't import, and
     that's fine. Its own channels 5 and 6 are Trumpet 1 and Trumpet 2.
+    Set privacy code 33 (tone 210.7) on both.
   - If CHIRP has no FRS-B1 model, program it by hand per its manual.
 
 
@@ -201,7 +203,7 @@ Radio beeps instead of transmitting on some channels
   there. Use a GMRS/FRS radio for Trumpet 1-2, or ham channels
   with a ham license. Programming can't change this.
 
-Channel 0 doesn't say VER 12
+Channel 0 doesn't say VER 14
   - Check channel 108 instead.
   - If both say something else, the radio has an older list.
     Program it again.
@@ -221,16 +223,16 @@ Laptop goes to sleep mid-upload
 REFERENCE
 ----------------------------------------------------------------------
 Where things are
-  Channel list:   ~/Downloads/channels-trumpetnet-v12.csv
-  This guide:     ~/Downloads/guide-trumpetnet-v12.txt
-  Handout:        ~/Downloads/trifold-trumpetnet-v12.pdf
+  Channel list:   ~/Downloads/channels-trumpetnet-v14.csv
+  This guide:     ~/Downloads/guide-trumpetnet-v14.txt
+  Handout:        ~/Downloads/trifold-trumpetnet-v14.pdf
   Radio backups:  wherever you saved them in step 5
   Online copies:  www.deangadberry.com/trumpetnet/  (when online)
 
 Version numbers
   The radio's VER number (channel 0 or 108) matches the channel list.
-  A decimal on the handout (12.1, 12.2) means only the paper changed;
-  radios on VER 12 don't need reprogramming for that.
+  A decimal on the handout (14.1, 14.2) means only the paper changed;
+  radios on VER 14 don't need reprogramming for that.
 
 Useful commands
   chirp                    start CHIRP
