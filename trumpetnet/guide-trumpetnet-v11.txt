@@ -1,5 +1,5 @@
 TRUMPET NET - PROGRAMMING RADIOS WITH CHIRP (NO INTERNET NEEDED)
-Channel list version 10 - Xubuntu laptop
+Channel list version 11 - Xubuntu laptop
 ======================================================================
 
 Everything in this file works with no internet connection.
@@ -14,9 +14,9 @@ BEFORE YOU LEAVE HOME
 [ ] Programming cable packed (and a spare if you have one)
 [ ] Radios charged. A low battery can make programming fail.
 [ ] These files are on the laptop, in the Downloads folder:
-      channels-trumpetnet-v10.csv   (the channel list)
-      guide-trumpetnet-v10.txt      (this guide)
-      trifold-trumpetnet-v10.pdf    (the handout)
+      channels-trumpetnet-v11.csv   (the channel list)
+      guide-trumpetnet-v11.txt      (this guide)
+      trifold-trumpetnet-v11.pdf    (the handout)
     Tip: type the first letter and press Tab to fill in the name,
     e.g.  ls ~/Downloads/c<Tab>
 [ ] Printed trifolds, one per radio
@@ -67,7 +67,7 @@ Do steps 1-9 for each radio.
 
 6. LOAD THE TRUMPET NET LIST
    File -> Import
-   Pick:  Downloads/channels-trumpetnet-v10.csv
+   Pick:  Downloads/channels-trumpetnet-v11.csv
    An import window opens. Click OK to bring in all channels.
    If CHIRP lists channels it couldn't import, that's normal for
    radios that can't use some frequencies (see RADIO NOTES). Read the
@@ -80,15 +80,15 @@ Do steps 1-9 for each radio.
 
 8. CHECK THE RADIO
    - Turn the radio off and back on.
-   - Go to channel 0. It should read  VER 10.
-     (No channel 0 on this radio? Channel 108 should read VER 10.)
+   - Go to channel 0. It should read  VER 11.
+     (No channel 0 on this radio? Channel 108 should read VER 11.)
    - Go to channel 3, 31 and 40. Each should show a name.
    - LOCK TEST: go to channel 3, set LOW power, press talk for one
      second. If it only beeps, the maker locked this radio to ham
      channels. It can listen on FRS/GMRS but not transmit there.
      Check "No, listen only" on the back of its trifold.
    - Optional: save the programmed radio too:
-       File -> Save As ->  uv5r-01-trumpet-v10.img
+       File -> Save As ->  uv5r-01-trumpet-v11.img
 
 9. HAND IT OFF
    Give the person the radio with a trifold. Fill in the back:
@@ -201,7 +201,7 @@ Radio beeps instead of transmitting on some channels
   there. Use a GMRS/FRS radio for Trumpet 1-2, or ham channels
   with a ham license. Programming can't change this.
 
-Channel 0 doesn't say VER 10
+Channel 0 doesn't say VER 11
   - Check channel 108 instead.
   - If both say something else, the radio has an older list.
     Program it again.
@@ -221,16 +221,16 @@ Laptop goes to sleep mid-upload
 REFERENCE
 ----------------------------------------------------------------------
 Where things are
-  Channel list:   ~/Downloads/channels-trumpetnet-v10.csv
-  This guide:     ~/Downloads/guide-trumpetnet-v10.txt
-  Handout:        ~/Downloads/trifold-trumpetnet-v10.pdf
+  Channel list:   ~/Downloads/channels-trumpetnet-v11.csv
+  This guide:     ~/Downloads/guide-trumpetnet-v11.txt
+  Handout:        ~/Downloads/trifold-trumpetnet-v11.pdf
   Radio backups:  wherever you saved them in step 5
   Online copies:  www.deangadberry.com/trumpetnet/  (when online)
 
 Version numbers
   The radio's VER number (channel 0 or 108) matches the channel list.
-  A decimal on the handout (10.1, 10.2) means only the paper changed;
-  radios on VER 10 don't need reprogramming for that.
+  A decimal on the handout (11.1, 11.2) means only the paper changed;
+  radios on VER 11 don't need reprogramming for that.
 
 Useful commands
   chirp                    start CHIRP

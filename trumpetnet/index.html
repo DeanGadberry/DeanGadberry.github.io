@@ -136,7 +136,7 @@ html,body{margin:0}
 
 <div class="wrap">
   <header class="hero">
-    <div class="ht"><h1>Trumpet Net</h1><span class="hv">Version 10</span></div>
+    <div class="ht"><h1>Trumpet Net</h1><span class="hv">Version 11</span></div>
     <p class="verse">In what place therefore ye hear the sound of the trumpet, resort ye thither unto us: our God shall fight for us. <span>Nehemiah 4:20</span></p>
     <p class="lede">Trumpet Net is our group's emergency radio plan. Every radio we program carries the same channel list, so a channel number means the same thing on every radio. This page has the handout, the channel file for programming radios, and a map of the repeaters on the list.</p>
   </header>
@@ -146,7 +146,7 @@ html,body{margin:0}
       <h2>The handout</h2>
       <p>A two-sided, letter-size trifold that goes with every radio: how to talk on the air, the phonetic alphabet, a page to plan each operation, and every channel on the list.</p>
       <p class="how">Print both sides (flip on the long edge), then fold in thirds so the title is on the front.</p>
-      <a class="btn" href="trifold-trumpetnet-v10.pdf" download>Download the trifold <small>PDF · version 10</small></a>
+      <a class="btn" href="trifold-trumpetnet-v11.pdf" download>Download the trifold <small>PDF · version 11</small></a>
     </div>
     <div class="sheet card">
       <h2>Program a radio</h2>
@@ -157,13 +157,13 @@ html,body{margin:0}
         <li>Choose <b>File → Import</b> and pick this file.</li>
         <li>Choose <b>Radio → Upload to radio</b>.</li>
       </ol>
-      <a class="btn" href="channels-trumpetnet-v10.csv" download>Download the channel list <small>CSV · version 10</small></a>
-      <a class="lnk" href="guide-trumpetnet-v10.txt" download>Step-by-step guide and troubleshooting (text file, works offline)</a>
+      <a class="btn" href="channels-trumpetnet-v11.csv" download>Download the channel list <small>CSV · version 11</small></a>
+      <a class="lnk" href="guide-trumpetnet-v11.txt" download>Step-by-step guide and troubleshooting (text file, works offline)</a>
     </div>
     <div class="sheet card">
       <h2>Check your radio</h2>
-      <p>Turn to <b>channel 0</b>. It should read <b class="mono">VER 10</b>. If your radio has no channel 0, use <b>channel 108</b>. A different number means the radio has an older list and should be reprogrammed.</p>
-      <p class="how"><b>How versions work:</b> the whole number changes only when channels change, so it always matches your radio. A decimal on the handout (10.1, 10.2…) means only the paper was revised.</p>
+      <p>Turn to <b>channel 0</b>. It should read <b class="mono">VER 11</b>. If your radio has no channel 0, use <b>channel 108</b>. A different number means the radio has an older list and should be reprogrammed.</p>
+      <p class="how"><b>How versions work:</b> the whole number changes only when channels change, so it always matches your radio. A decimal on the handout (11.1, 11.2…) means only the paper was revised.</p>
       <p class="how"><b>Licenses:</b> the file lets every channel transmit. Ham channels need an amateur license and GMRS channels a GMRS license. FRS channels 1–22 need none. Anyone may use any channel when a life is in danger.</p>
     </div>
   </section>
@@ -272,8 +272,8 @@ const R=[
 [74,"WAC660",146.660,"−0.6","123.0","K5AB","WAC","",1,0,0],
 [75,"WAC360",147.360,"+0.6","123.0","AA5RT","WAC","",0,0,0],
 [76,"BEL140",147.140,"+0.6","123.0","W5BEC","BEL","Belton, Bell Co wide area",0,0,0],
-[23,"RPT 15",462.550,"+5","141.3","WQUM597","WRL","GMRS, open",1],
-[30,"RPT 22",462.725,"+5","141.3","WRPL432","HAL","GMRS Haltom 725, open. Trumpet Net GMRS repeater (ch 39)",1],
+[115,"RPT 15",462.550,"+5","141.3","WQUM597","WRL","GMRS, open",1],
+[122,"RPT 22",462.725,"+5","141.3","WRPL432","HAL","GMRS Haltom 725, open. Trumpet Net GMRS repeater (ch 39)",1],
 ].map(a=>({ch:a[0],name:a[1],f:a[2],off:a[3],tone:a[4],call:a[5],site:a[6],note:a[7]||"",pri:!!a[8],rad:a[9]||0,ver:!!a[10],gm:a[2]>460}));
 
 const RB={40:543,41:450,42:1427,43:254,44:727,45:1035,46:492,47:1020,48:407,50:527,51:11527,52:1414,53:462,54:1117,55:571,56:618,57:48,58:14535,60:505,61:505,62:1078,63:376,64:411,65:658,66:431,70:352,71:1400,72:620,73:455,74:393,75:778,76:654,80:601,81:1342,84:384,85:16159,86:548,87:659,88:3014,121:218,122:7415,123:295,124:1479,125:11952};
@@ -288,11 +288,11 @@ function srcs(r){const a=[];const L=(t,u)=>`<a href="${u}" target="_blank" rel="
 const REG=[
  {n:"Fort Worth & Arlington",a:40,b:48},{n:"North: Denton, Wise, Cooke, Grayson",a:50,b:58},{n:"East: Dallas, Arlington & Collin",a:60,b:66},
  {n:"South: Johnson, Hood, Hill, Waco",a:70,b:76},{n:"West & far: Parker, Palo Pinto, Wichita Falls, Abilene",a:80,b:88},
- {n:"GMRS repeaters",a:23,b:30}];
-const BANDS=[["0","Version check · VER 10 (backup: 108)",""],["31–39","Trumpet Net: TPT 1–6 and repeaters","as"],["1–22","FRS / GMRS simplex","gm"],["23–30","GMRS repeaters","gm"],
+ {n:"GMRS repeaters",a:115,b:122}];
+const BANDS=[["0","Version check · VER 11 (backup: 108)",""],["31–39","Trumpet Net: TPT 1–6 and repeaters","as"],["1–22","FRS / GMRS simplex","gm"],["23–29","Emergency: marine, search and rescue, public safety",""],
 ["40s","Fort Worth ★40 · talkaround 49","hm"],["50s","North ★50 Denton · talkaround 59","hm"],["60s","East ★60 Dallas · talkaround 69","hm"],["70s","South ★70 Cleburne · talkaround 79","hm"],
-["80s","West & far ★80 Weatherford · talkaround 89","hm"],["90–96","Weather WX1–7",""],["100–108","2m simplex · 100 = 146.520 calling","hm"],["109–111","70cm simplex · 109 = 446.000 calling","hm"],
-["112–116","MURS 1–5",""],["117–127","Emergency only: marine, business, rescue",""]];
+["80s","West & far ★80 Weatherford · talkaround 89","hm"],["90–99","Weather WX1–7 · business dots (listen)",""],["100–108","2m simplex · 100 = 146.520 calling","hm"],["109–111","70cm simplex · 109 = 446.000 calling","hm"],
+["115–122","GMRS repeaters (FRS 15–22 + 100)","gm"],["123–127","MURS 1–5",""]];
 const LON0=-100.0,LAT1=34.25,K=300,C=Math.cos(32.6*Math.PI/180);
 const X=lon=>(lon-LON0)*C*K, Y=lat=>(LAT1-lat)*K, PXMI=K/69;
 const NS="http://www.w3.org/2000/svg", svg=document.getElementById("map");
