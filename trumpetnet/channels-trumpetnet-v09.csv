@@ -1,5 +1,5 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
-0,VER 01,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"LIST VERSION 01 - version check, copy of ch 100 2m calling 146.520"
+0,VER 09,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"LIST VERSION 09 - version check, copy of ch 100 2m calling 146.520"
 1,GMRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 1
 2,GMRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 2
 3,GMRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,High,FRS/GMRS ch 3
@@ -98,7 +98,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 104,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
 105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - Rockwall ARES simplex
 106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
-108,VER 01,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,LIST VERSION 01 backup for radios without channel 0
+108,VER 09,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,LIST VERSION 09 backup for radios without channel 0
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex - national 70cm calling
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
 111,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,70cm simplex
