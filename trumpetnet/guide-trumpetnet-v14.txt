@@ -109,7 +109,7 @@ UV-5R and similar Baofengs (BF-F8HP, UV-82, etc.)
 
 MURS radios
   - Hold MURS 1-5. Their channels 2 and 3 are Trumpet 3 and Trumpet 4.
-    Set privacy code 33 (tone 210.7) on both.
+    Set privacy code 32 on channel 2 and code 30 on channel 3.
   - Most are set up from the radio's own menu, not CHIRP.
 
 UV-9G (GMRS radio)
@@ -122,7 +122,7 @@ UV-9G (GMRS radio)
 BTECH FRS-B1
   - Holds only FRS channels 1-22. Most of the list won't import, and
     that's fine. Its own channels 5 and 6 are Trumpet 1 and Trumpet 2.
-    Set privacy code 33 (tone 210.7) on both.
+    Set privacy code 29 on channel 5 and code 24 on channel 6.
   - If CHIRP has no FRS-B1 model, program it by hand per its manual.
 
 
