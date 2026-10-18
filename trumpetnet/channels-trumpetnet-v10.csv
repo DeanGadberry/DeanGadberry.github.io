@@ -1,5 +1,5 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
-0,VER 09,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 09 - version check, copy of ch 100 2m calling 146.520 | VER = version"
+0,VER 10,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 10 - version check, copy of ch 100 2m calling 146.520 | VER = version"
 1,FRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 1 (shared with GMRS 1) - no license on a certified FRS radio | FRS = Family Radio Service; GMRS = General Mobile Radio Service (FCC license)
 2,FRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 2 (shared with GMRS 2) - no license on a certified FRS radio
 3,FRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5.0W,FRS 3 (shared with GMRS 3) - no license on a certified FRS radio
@@ -98,7 +98,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 104,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Rockwall ARES simplex
 106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
-108,VER 09,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 09 backup for radios without channel 0
+108,VER 10,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 10 backup for radios without channel 0
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling | CALL70 = national 70-centimeter (UHF) calling frequency
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex | S7 = 70-centimeter simplex (radio to radio)
 111,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
