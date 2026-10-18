@@ -1,6 +1,6 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
-0,VER 09,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 09 - version check, copy of ch 100 2m calling 146.520"
-1,FRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 1 (shared with GMRS 1) - no license on a certified FRS radio
+0,VER 09,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 09 - version check, copy of ch 100 2m calling 146.520 | VER = version"
+1,FRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 1 (shared with GMRS 1) - no license on a certified FRS radio | FRS = Family Radio Service; GMRS = General Mobile Radio Service (FCC license)
 2,FRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 2 (shared with GMRS 2) - no license on a certified FRS radio
 3,FRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5.0W,FRS 3 (shared with GMRS 3) - no license on a certified FRS radio
 4,FRS 4,462.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 4 (shared with GMRS 4) - no license on a certified FRS radio
@@ -22,7 +22,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 20,FRS 20,462.675000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,FRS 20 (shared with GMRS 20) - no license on a certified FRS radio
 21,FRS 21,462.700000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 21 (shared with GMRS 21) - no license on a certified FRS radio
 22,FRS 22,462.725000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 22 (shared with GMRS 22) - no license on a certified FRS radio
-23,RPT 15,462.550000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 15R - TX 467.550 - travel tone 141.3 - opens Dallas White Rock Lake WQUM597 (open)
+23,RPT 15,462.550000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 15R - TX 467.550 - travel tone 141.3 - opens Dallas White Rock Lake WQUM597 (open) | RPT = repeater; 15R = repeater pair for channel 15; TX = transmit frequency
 24,RPT 16,462.575000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 16R - TX 467.575 - travel tone 141.3
 25,RPT 17,462.600000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 17R - TX 467.600 - travel tone 141.3
 26,RPT 18,462.625000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 18R - TX 467.625 - travel tone 141.3
@@ -30,91 +30,91 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 28,RPT 20,462.675000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 20R - TX 467.675 - travel tone 141.3
 29,RPT 21,462.700000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 21R - TX 467.700 - travel tone 141.3
 30,RPT 22,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 22R - TX 467.725 - travel tone 141.3 - opens Haltom 725 WRPL432 (open)
-31,TPT 1,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"TRUMPET NET channel TPT 1 = FRS/GMRS 5 - any FRS/GMRS radio, no license - not private"
+31,TPT 1,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"TRUMPET NET channel TPT 1 = FRS/GMRS 5 - any FRS/GMRS radio, no license - not private | TPT = Trumpet (Trumpet Net's own channels)"
 32,TPT 2,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"TRUMPET NET channel TPT 2 = FRS/GMRS 6 - any FRS/GMRS radio, no license - not private"
-33,TPT 3,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"TRUMPET NET channel TPT 3 = MURS 2 - MURS radio, no license - not private"
+33,TPT 3,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"TRUMPET NET channel TPT 3 = MURS 2 - MURS radio, no license - not private | MURS = Multi-Use Radio Service (license-free VHF)"
 34,TPT 4,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"TRUMPET NET channel TPT 4 = MURS 3 - MURS radio, no license - not private"
 35,TPT 5,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,TRUMPET NET channel TPT 5 = 2m simplex 146.430 - ham license - not private
 36,TPT 6,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,TRUMPET NET channel TPT 6 = 2m simplex 147.510 - ham license - not private
-38,TPT RP,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,"TRUMPET NET ham repeater - K5FTW 146.760 Fort Worth, 30 mi - ham license"
-39,TPT GR,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,TRUMPET NET GMRS repeater - Haltom 725 WRPL432 - GMRS license
-40,FW 940,146.940000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,K5FTW Tarrant RACES/ARES/Skywarn primary - ★ PRIMARY
+38,TPT RP,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,"TRUMPET NET ham repeater - K5FTW 146.760 Fort Worth, 30 mi - ham license | RP = ham repeater; K5FTW-style codes = the FCC call sign of the repeater's owner or club"
+39,TPT GR,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,TRUMPET NET GMRS repeater - Haltom 725 WRPL432 - GMRS license | GR = GMRS repeater
+40,FW 940,146.940000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,K5FTW Tarrant RACES/ARES/Skywarn primary - ★ PRIMARY | RACES = Radio Amateur Civil Emergency Service; ARES = Amateur Radio Emergency Service; PRIMARY = county's main emergency repeater; FW = Fort Worth; the number in a repeater name = last digits of its frequency (FW 940 = 146.940)
 41,FW 760,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5FTW Fort Worth secondary
-42,FW UHF,444.100000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"K5FTW K5FTW UHF, sometimes linked to 146.940"
+42,FW UHF,444.100000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"K5FTW K5FTW UHF, sometimes linked to 146.940 | UHF = ultra high frequency (70cm band, 420-450 MHz for ham)"
 43,FW 200,147.200000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WZ5TX Skywarn
-44,COW280,147.280000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5COW Cowtown ARC
+44,COW280,147.280000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"K5COW Cowtown ARC | ARC = Amateur Radio Club; COW = Cowtown Amateur Radio Club, Fort Worth"
 45,COW442,442.200000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5COW Cowtown ARC UHF
 46,FW 840,146.840000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5SH Kilocycle Club
 47,FW 125,442.125000,+,5.000000,Tone,156.7,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KA5GFH Different tone
 48,FW 680,146.680000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5FTW
-49,FW TA,146.940000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for FW 940 ch 40 - simplex on its output, use when repeater is down"
-50,DEN920,146.920000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,W5NGU Denton Co ARES primary - ★ PRIMARY
-51,DEN170,145.170000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"W5NGU EOC, backup ARES"
+49,FW TA,146.940000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for FW 940 ch 40 - simplex on its output, use when repeater is down | TA = talkaround (radio to radio on the repeater's output when it is down)"
+50,DEN920,146.920000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,W5NGU Denton Co ARES primary - ★ PRIMARY | DEN = Denton
+51,DEN170,145.170000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"W5NGU EOC, backup ARES | EOC = Emergency Operations Center"
 52,DEN444,444.050000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5NGU EOC UHF
-53,DEC780,146.780000,-,0.600000,Tone,131.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5KMC Wise Co Skywarn/ARES - ★ PRIMARY
+53,DEC780,146.780000,-,0.600000,Tone,131.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5KMC Wise Co Skywarn/ARES - ★ PRIMARY | DEC = Decatur
 54,DEC442,442.600000,+,5.000000,Tone,131.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5WFR Best Wise Co coverage
-55,SHR000,147.000000,+,0.600000,Tone,100.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5RVT Grayson ARES/Skywarn primary - ★ PRIMARY
+55,SHR000,147.000000,+,0.600000,Tone,100.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5RVT Grayson ARES/Skywarn primary - ★ PRIMARY | SHR = Sherman
 56,SHR280,147.280000,+,0.600000,Tone,107.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5COP Grayson ARES secondary
 57,SHR444,444.750000,+,5.000000,Tone,100.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5RVT Grayson UHF backup
-58,ROSSTN,145.490000,-,0.600000,Tone,85.4,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WD5U Cooke Co - ★ PRIMARY
+58,ROSSTN,145.490000,-,0.600000,Tone,85.4,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WD5U Cooke Co - ★ PRIMARY | ROSSTN = Rosston
 59,DEN TA,146.920000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for DEN920 ch 50 - simplex on its output, use when repeater is down"
-60,DAL880,146.880000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,W5FC Dallas RACES/Skywarn primary - ★ PRIMARY
-61,DALNET,146.880000,-,0.600000,Tone,114.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5FC Same machine during RACES/Skywarn nets
+60,DAL880,146.880000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,W5FC Dallas RACES/Skywarn primary - ★ PRIMARY | DAL = Dallas
+61,DALNET,146.880000,-,0.600000,Tone,114.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5FC Same machine during RACES/Skywarn nets | DALNET = Dallas repeater during nets (different tone)
 62,DAL442,442.425000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5FC Dallas ARC UHF
 63,DAL640,146.640000,-,0.600000,Tone,118.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5AHT
 64,DAL700,146.700000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5EBQ Green Bldg
-65,ARL140,147.140000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5SLD Arlington
-66,MCK740,146.740000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5MRC Collin Co ARES - ★ PRIMARY
+65,ARL140,147.140000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5SLD Arlington | ARL = Arlington
+66,MCK740,146.740000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5MRC Collin Co ARES - ★ PRIMARY | MCK = McKinney
 69,DAL TA,146.880000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for DAL880 ch 60 - simplex on its output, use when repeater is down"
-70,CLB490,145.490000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,"KB5YBI Johnson Co ARES primary, emergency power - ★ PRIMARY"
+70,CLB490,145.490000,-,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,"KB5YBI Johnson Co ARES primary, emergency power - ★ PRIMARY | CLB = Cleburne"
 71,CLB444,444.000000,+,5.000000,Tone,136.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"N5OAN ARES backup, I-35 to Waco"
-72,GRN080,147.080000,+,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WD5GIC Hood Co - ★ PRIMARY
-73,HIL780,146.780000,-,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WB5YFX Hill Co - ★ PRIMARY
-74,WAC660,146.660000,-,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5AB - ★ PRIMARY
+72,GRN080,147.080000,+,0.600000,Tone,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WD5GIC Hood Co - ★ PRIMARY | GRN = Granbury
+73,HIL780,146.780000,-,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WB5YFX Hill Co - ★ PRIMARY | HIL = Hillsboro
+74,WAC660,146.660000,-,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,K5AB - ★ PRIMARY | WAC = Waco
 75,WAC360,147.360000,+,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,AA5RT
-76,BEL140,147.140000,+,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"W5BEC Belton, Bell Co wide area"
+76,BEL140,147.140000,+,0.600000,Tone,123.0,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"W5BEC Belton, Bell Co wide area | BEL = Belton"
 79,CLB TA,145.490000,,0.000000,Tone,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for CLB490 ch 70 - simplex on its output, use when repeater is down"
-80,WTH040,147.040000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,WB5IDM Parker Co Skywarn - ★ PRIMARY
+80,WTH040,147.040000,+,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,WB5IDM Parker Co Skywarn - ★ PRIMARY | WTH = Weatherford
 81,WTH443,443.800000,+,5.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,WB5IDM Parker UHF
 82,WTH900,146.900000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KG5CW - verify
-83,MW 470,145.470000,-,0.600000,Tone,85.4,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5IUR Palo Pinto Skywarn - verify - ★ PRIMARY
+83,MW 470,145.470000,-,0.600000,Tone,85.4,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5IUR Palo Pinto Skywarn - verify - ★ PRIMARY | MW = Mineral Wells
 84,MW 640,146.640000,-,0.600000,Tone,85.4,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5ABF Mineral Wells ARC
-85,BRAZOS,146.860000,-,0.600000,Tone,156.7,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5PPC Palo Pinto
-86,WF 940,146.940000,-,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5US Wichita Falls Skywarn - ★ PRIMARY
+85,BRAZOS,146.860000,-,0.600000,Tone,156.7,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"W5PPC Palo Pinto | BRAZOS = Brazos, Palo Pinto County"
+86,WF 940,146.940000,-,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,W5US Wichita Falls Skywarn - ★ PRIMARY | WF = Wichita Falls
 87,WF 140,147.140000,+,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,N5WF Red Cross
-88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5OLO Key City ARC - ★ PRIMARY
+88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5OLO Key City ARC - ★ PRIMARY | ABL = Abilene
 89,WTH TA,147.040000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for WTH040 ch 80 - simplex on its output, use when repeater is down"
-90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,NOAA WX1 Fort Worth KEC55 - listen only
+90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,NOAA WX1 Fort Worth KEC55 - listen only | WX = weather; NOAA = National Oceanic and Atmospheric Administration weather radio; KEC55 = the NOAA transmitter's station ID
 91,WX 2,162.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX2 Dallas KEC56 / Abilene - listen only
 92,WX 3,162.475000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
 93,WX 4,162.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX4 - listen only
 94,WX 5,162.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX5 - listen only
 95,WX 6,162.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX6 - listen only
 96,WX 7,162.525000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX7 Corsicana / Mineral Wells - listen only
-100,CALL2M,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,2m simplex - national 2m calling
-101,S2 550,146.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
+100,CALL2M,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,2m simplex - national 2m calling | CALL2M = national 2-meter (VHF) calling frequency
+101,S2 550,146.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex | S2 = 2-meter simplex (radio to radio); the number = last digits of the frequency
 102,S2 580,146.580000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Dallas RACES simplex
 103,S2 400,146.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 104,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Rockwall ARES simplex
 106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 108,VER 09,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 09 backup for radios without channel 0
-109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling
-110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
+109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling | CALL70 = national 70-centimeter (UHF) calling frequency
+110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex | S7 = 70-centimeter simplex (radio to radio)
 111,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
 112,MURS 1,151.820000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 1 - license-free on a certified MURS radio, 2 W"
 113,MURS 2,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 2 - license-free on a certified MURS radio, 2 W"
 114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 3 - license-free on a certified MURS radio, 2 W"
-115,BLUDOT,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"BLUE DOT = MURS 4 154.570 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W)"
+115,BLUDOT,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"BLUE DOT = MURS 4 154.570 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W) | DOT = color-dot business channel name (Blue/Green Dot are now MURS)"
 116,GRNDOT,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GREEN DOT = MURS 5 154.600 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W)"
-117,SEA 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - listen only"
+117,SEA 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - listen only | SEA = marine VHF channel (boats); the number is the marine channel"
 118,SEA 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 9 boater hailing - listen only
 119,SEA 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 22A Coast Guard liaison - listen only
 120,SEA 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 68 recreational working - listen only
-121,REDDOT,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,RED DOT = business itinerant 151.625 - FCC business license required; busy at events and security - listen only
+121,REDDOT,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,RED DOT = business itinerant 151.625 - FCC business license required; busy at events and security - listen only | FCC = Federal Communications Commission
 122,PURDOT,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,PURPLE DOT = business itinerant 151.955 - FCC business license required - listen only
 123,YELDOT,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,YELLOW DOT = business itinerant 464.550 - FCC business license required - listen only
 124,BRNDOT,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,BROWN DOT = business itinerant 464.500 - FCC business license required - listen only
-125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,NATSAR / VSAR16 search and rescue ground - listen only
-126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,VCALL10 national interop calling (VHF) - listen only
-127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,UCALL40 national interop calling (UHF) - listen only
+125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,NATSAR / VSAR16 search and rescue ground - listen only | SAR = search and rescue; NATSAR / VSAR16 = national SAR channel name
+126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"VCALL10 national interop calling (VHF) - listen only | VCALL10 / VHF = national public-safety interoperability calling channel, very high frequency band"
+127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"UCALL40 national interop calling (UHF) - listen only | UCALL40 / UHF = national public-safety interoperability calling channel, ultra high frequency band"
