@@ -84,13 +84,13 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 87,WF 140,147.140000,+,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,N5WF Red Cross
 88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5OLO Key City ARC - ★ PRIMARY | ABL = Abilene
 89,WTH TA,147.040000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for WTH040 ch 80 - simplex on its output, use when repeater is down"
-90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,NOAA WX1 Fort Worth KEC55 - listen only | WX = weather; NOAA = National Oceanic and Atmospheric Administration weather radio; KEC55 = the NOAA transmitter's station ID
-91,WX 2,162.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX2 Dallas KEC56 / Abilene - listen only
-92,WX 3,162.475000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
-93,WX 4,162.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX4 - listen only
-94,WX 5,162.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX5 - listen only
-95,WX 6,162.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX6 - listen only
-96,WX 7,162.525000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX7 Corsicana / Mineral Wells - listen only
+90,WX 1,162.550000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,NOAA WX1 Fort Worth KEC55 - listen only | WX = weather; NOAA = National Oceanic and Atmospheric Administration weather radio; KEC55 = the NOAA transmitter's station ID
+91,WX 2,162.400000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX2 Dallas KEC56 / Abilene - listen only
+92,WX 3,162.475000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
+93,WX 4,162.425000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX4 - listen only
+94,WX 5,162.450000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX5 - listen only
+95,WX 6,162.500000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX6 - listen only
+96,WX 7,162.525000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX7 Corsicana / Mineral Wells - listen only
 100,CALL2M,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,2m simplex - national 2m calling | CALL2M = national 2-meter (VHF) calling frequency
 101,S2 550,146.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex | S2 = 2-meter simplex (radio to radio); the number = last digits of the frequency
 102,S2 580,146.580000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Dallas RACES simplex
