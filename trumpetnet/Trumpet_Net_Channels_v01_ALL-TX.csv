@@ -7,13 +7,13 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 5,GMRS 5,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 5
 6,GMRS 6,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 6
 7,GMRS 7,462.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 7
-8,GMRS 8,467.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 8 - 0.5W limit
-9,GMRS 9,467.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 9 - 0.5W limit
-10,GMRS10,467.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 10 - 0.5W limit
-11,GMRS11,467.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 11 - 0.5W limit
-12,GMRS12,467.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 12 - 0.5W limit
-13,GMRS13,467.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 13 - 0.5W limit
-14,GMRS14,467.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,FRS/GMRS ch 14 - 0.5W limit
+8,GMRS 8,467.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 8 - 0.5W limit
+9,GMRS 9,467.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 9 - 0.5W limit
+10,GMRS10,467.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 10 - 0.5W limit
+11,GMRS11,467.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 11 - 0.5W limit
+12,GMRS12,467.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 12 - 0.5W limit
+13,GMRS13,467.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 13 - 0.5W limit
+14,GMRS14,467.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,FRS/GMRS ch 14 - 0.5W limit
 15,GMRS15,462.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,FRS/GMRS ch 15
 16,GMRS16,462.575000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,FRS/GMRS ch 16
 17,GMRS17,462.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,FRS/GMRS ch 17
@@ -84,13 +84,13 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 87,WF 140,147.140000,+,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,N5WF Red Cross
 88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,KC5OLO Key City ARC - ★ PRIMARY
 89,WTH TA,147.040000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,"TALKAROUND for WTH040 ch 80 - simplex on its output, use when repeater is down"
-90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,Low,NOAA WX1 Fort Worth KEC55 - listen only
-91,WX 2,162.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX2 Dallas KEC56 / Abilene - listen only
-92,WX 3,162.475000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
-93,WX 4,162.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX4 - listen only
-94,WX 5,162.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX5 - listen only
-95,WX 6,162.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX6 - listen only
-96,WX 7,162.525000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,Low,NOAA WX7 Corsicana / Mineral Wells - listen only
+90,WX 1,162.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,NOAA WX1 Fort Worth KEC55 - listen only
+91,WX 2,162.400000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX2 Dallas KEC56 / Abilene - listen only
+92,WX 3,162.475000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
+93,WX 4,162.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX4 - listen only
+94,WX 5,162.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX5 - listen only
+95,WX 6,162.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX6 - listen only
+96,WX 7,162.525000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,NOAA WX7 Corsicana / Mineral Wells - listen only
 100,CALL2M,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,2m simplex - national 2m calling
 101,S2 550,146.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex
 102,S2 580,146.580000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,2m simplex - Dallas RACES simplex
@@ -107,14 +107,14 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,MURS 3
 115,MURS 4,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 4
 116,MURS 5,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,MURS 5
-117,MAR 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,Low,"MARINE 16 distress, safety and calling - listen only"
-118,MAR 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 9 boater hailing - listen only
-119,MAR 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 22A Coast Guard liaison - listen only
-120,MAR 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,Low,MARINE 68 recreational working - listen only
-121,BUSRED,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,"Business itinerant RED DOT - events, security - listen only"
-122,BUSPUR,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant PURPLE DOT - listen only
-123,BUSYEL,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant YELLOW DOT - listen only
-124,BUSBRN,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,Business itinerant BROWN DOT - listen only
-125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,NATSAR / VSAR16 search and rescue ground - listen only
-126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,VCALL10 national interop calling (VHF) - listen only
-127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,Low,UCALL40 national interop calling (UHF) - listen only
+117,MAR 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,High,"MARINE 16 distress, safety and calling - listen only"
+118,MAR 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,High,MARINE 9 boater hailing - listen only
+119,MAR 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,High,MARINE 22A Coast Guard liaison - listen only
+120,MAR 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,High,MARINE 68 recreational working - listen only
+121,BUSRED,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"Business itinerant RED DOT - events, security - listen only"
+122,BUSPUR,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,Business itinerant PURPLE DOT - listen only
+123,BUSYEL,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,Business itinerant YELLOW DOT - listen only
+124,BUSBRN,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,Business itinerant BROWN DOT - listen only
+125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,NATSAR / VSAR16 search and rescue ground - listen only
+126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,VCALL10 national interop calling (VHF) - listen only
+127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,UCALL40 national interop calling (UHF) - listen only
