@@ -1,0 +1,233 @@
+TRUMPET NET - PROGRAMMING RADIOS WITH CHIRP (NO INTERNET NEEDED)
+Channel list version 07 - Xubuntu laptop
+======================================================================
+
+Everything in this file works with no internet connection.
+Commands go in a terminal: press Ctrl + Alt + T to open one.
+You can copy a command from this file and paste it into the terminal
+with Ctrl + Shift + V.
+
+
+BEFORE YOU LEAVE HOME
+----------------------------------------------------------------------
+[ ] Laptop charged, and the charger packed
+[ ] Programming cable packed (and a spare if you have one)
+[ ] Radios charged. A low battery can make programming fail.
+[ ] These files are on the laptop, in the Downloads folder:
+      Trumpet_Net_Channels_v07_ALL-TX.csv   (the channel list)
+      Trumpet_Net_Trifold_v07.1.pdf           (the handout)
+      this guide
+[ ] Printed trifolds, one per radio
+[ ] CHIRP opens (type  chirp  in a terminal)
+
+Tip: copy the files to a USB stick too, in case the laptop folder
+gets cleaned out.
+
+
+PROGRAMMING ONE RADIO
+----------------------------------------------------------------------
+Do steps 1-9 for each radio.
+
+1. START CHIRP
+   Open a terminal and type:
+       chirp
+   Leave the terminal open. If something goes wrong, error messages
+   show up there.
+
+2. CONNECT THE RADIO
+   - Turn the radio OFF.
+   - Push the cable's plug into the radio's earpiece jack (the side
+     with the speaker-mic jack). Push HARD, until it seats fully.
+     A half-pushed plug is the #1 reason programming fails.
+   - Plug the USB end into the laptop (directly, not through a hub).
+   - Turn the radio ON. Set the volume about halfway.
+
+3. CHECK THE LAPTOP SEES THE CABLE
+       ls /dev/ttyUSB*
+   You should see:  /dev/ttyUSB0
+   If not, see TROUBLESHOOTING, "No /dev/ttyUSB0".
+
+4. READ THE RADIO
+   In CHIRP:  Radio -> Download from radio
+       Port:    /dev/ttyUSB0
+       Vendor:  Baofeng   (or BTECH for BTECH radios)
+       Model:   the model printed on the radio (e.g. UV-5R)
+   Click OK. Wait for the progress bar to finish.
+   Always read the radio first. It tells CHIRP the radio's exact
+   settings, so the upload fits.
+
+5. BACK UP THE RADIO
+   File -> Save As
+   Name it after the radio, for example:
+       uv5r-01-original.img
+   Write that name on a piece of tape on the radio if you're doing
+   several. This backup lets you put the radio back exactly as it was.
+
+6. LOAD THE TRUMPET NET LIST
+   File -> Import
+   Pick:  Downloads/Trumpet_Net_Channels_v07_ALL-TX.csv
+   An import window opens. Click OK to bring in all channels.
+   If CHIRP lists channels it couldn't import, that's normal for
+   radios that can't use some frequencies (see RADIO NOTES). Read the
+   list, then continue.
+
+7. SEND IT TO THE RADIO
+   Radio -> Upload to radio
+   Same port, vendor and model as step 4.
+   DO NOT touch the radio, cable or laptop until it finishes.
+
+8. CHECK THE RADIO
+   - Turn the radio off and back on.
+   - Go to channel 0. It should read  VER 07.
+     (No channel 0 on this radio? Channel 108 should read VER 07.)
+   - Go to channel 3, 38 and 40. Each should show a name.
+   - LOCK TEST: go to channel 3, set LOW power, press talk for one
+     second. If it only beeps, the maker locked this radio to ham
+     channels. It can listen on FRS/GMRS but not transmit there.
+     Check "No, listen only" on the back of its trifold.
+   - Optional: save the programmed radio too:
+       File -> Save As ->  uv5r-01-trumpet-v07.img
+
+9. HAND IT OFF
+   Give the person the radio with a trifold. Fill in the back:
+   callsign, radio model, and "Programmed on ___ by ___".
+
+
+RADIO NOTES
+----------------------------------------------------------------------
+UV-5R and similar Baofengs (BF-F8HP, UV-82, etc.)
+  - Hold all 128 channels (0-127). The whole list fits.
+  - If "UV-5R" doesn't work, check the label under the battery for
+    the exact model and try that model in CHIRP.
+  - Many newer UV-5Rs are locked by the maker to transmit on ham
+    channels only (beeps on FRS/GMRS). Do the lock test in step 8.
+  - The UV-5R is not legal for GMRS transmit. The list includes GMRS
+    channels so it can listen. Transmit there only when a life is in
+    danger.
+
+UV-9G (GMRS radio)
+  - The radio itself blocks transmitting outside GMRS, so ham and
+    MURS channels will be receive-only. That's expected.
+  - If CHIRP skips some channels on import, read the list. It's
+    usually ham or MURS channels the radio refuses.
+  - It may not have a channel 0. Check channel 108 for the version.
+
+BTECH FRS-B1
+  - Holds only FRS channels 1-22. Most of the list won't import, and
+    that's fine. Channels 4-7 should be set up as TEAM 1-4 with
+    tone 107.2 if you want team channels on it.
+  - If CHIRP has no FRS-B1 model, program it by hand per its manual.
+
+
+TROUBLESHOOTING
+----------------------------------------------------------------------
+
+"chirp: command not found"
+  Try:
+      ~/.local/bin/chirp
+  If that works, run this once, then close and reopen the terminal:
+      pipx ensurepath
+
+CHIRP window doesn't open / crashes on start
+  Read the last lines in the terminal. Then try:
+      pipx reinstall chirp
+  (Works offline as long as nothing was deleted.)
+
+No /dev/ttyUSB0
+  1. Unplug the USB end, wait 3 seconds, plug it back in. Check again.
+  2. Try a different USB port on the laptop.
+  3. See what the laptop says about the cable:
+         sudo dmesg | tail -20
+     - Mentions "brltty"?  That service grabbed the cable. Run:
+         sudo apt remove brltty
+       If you're offline and apt complains, stop it for now instead:
+         sudo systemctl stop brltty-udev.service
+         sudo systemctl mask brltty-udev.service
+       Then unplug and replug the cable.
+     - Mentions "ch341" or "ftdi" and "attached to ttyUSB0"?  The
+       cable is fine; check again with  ls /dev/ttyUSB*
+     - Nothing new at all?  The cable or that USB port isn't working.
+       Try the spare cable.
+  4. Some cables show up as /dev/ttyACM0 instead. Check:
+         ls /dev/ttyACM*
+     If it's there, pick that port in CHIRP.
+
+"Permission denied" on /dev/ttyUSB0
+  Check you're in the dialout group:
+      groups
+  If "dialout" isn't listed:
+      sudo usermod -aG dialout $USER
+  Then log out and back in.
+  Quick one-time fix without logging out (resets when unplugged):
+      sudo chmod 666 /dev/ttyUSB0
+
+"Radio did not respond" / "No response from radio"
+  Work down this list, trying the download again after each one:
+  [ ] Push the plug into the radio harder. Wiggle it slightly.
+  [ ] Radio is ON, volume up, not in the middle of a menu.
+  [ ] Battery isn't low. Swap in a charged one.
+  [ ] Right port chosen (/dev/ttyUSB0).
+  [ ] Right model chosen (check the label under the battery).
+  [ ] Turn the radio off, unplug the USB, plug it back, radio on.
+  [ ] Close CHIRP, run  ls /dev/ttyUSB*  , reopen CHIRP.
+  [ ] Try the spare cable. Cheap cables with fake chips are common.
+  [ ] Keep the radio away from the laptop's charger brick.
+
+Upload stopped partway / radio acts strange after upload
+  Don't panic. The radio can be fixed.
+  1. Turn the radio off and on.
+  2. Radio -> Download from radio again (proves the cable works).
+  3. File -> Open  your backup  ...-original.img
+  4. Radio -> Upload to radio  to restore it.
+  5. Then repeat steps 4-8 from PROGRAMMING ONE RADIO.
+
+"Unsupported model" or "Image doesn't match radio"
+  - Pick the exact model from the radio's label.
+  - Always do "Download from radio" first, then Import, then Upload.
+    Don't upload a file you made for a different radio model.
+
+Channel names don't show on the radio
+  - Baofeng: Menu -> setting 21/22 (MDF-A / MDF-B) -> NAME.
+  - Check you're in channel mode, not frequency mode (the VFO/MR
+    button switches between them).
+
+Radio beeps instead of transmitting on some channels
+  The maker locked it (common on newer UV-5Rs). It can still listen
+  there. Use a GMRS/FRS radio for team channels, or ham channels
+  with a ham license. Programming can't change this.
+
+Channel 0 doesn't say VER 07
+  - Check channel 108 instead.
+  - If both say something else, the radio has an older list.
+    Program it again.
+
+Import says some channels were skipped
+  Normal for GMRS-only and FRS radios. Read the list. If it's a UV-5R
+  and channels are skipped, re-do step 4 with the right model.
+
+CHIRP complains about checking for updates
+  Harmless when offline. Ignore it.
+
+Laptop goes to sleep mid-upload
+  Before you start: Settings -> Power Manager -> set "Put to sleep"
+  to Never while plugged in.
+
+
+REFERENCE
+----------------------------------------------------------------------
+Where things are
+  Channel list:   ~/Downloads/Trumpet_Net_Channels_v07_ALL-TX.csv
+  Handout:        ~/Downloads/Trumpet_Net_Trifold_v07.1.pdf
+  Radio backups:  wherever you saved them in step 5
+  Online copies:  www.deangadberry.com/trumpetnet/  (when online)
+
+Version numbers
+  The radio's VER number (channel 0 or 108) matches the channel list.
+  A decimal on the handout (07.1, 07.2) means only the paper changed;
+  radios on VER 07 don't need reprogramming for that.
+
+Useful commands
+  chirp                    start CHIRP
+  ls /dev/ttyUSB*          is the cable seen?
+  sudo dmesg | tail -20    what did the laptop say about the cable?
+  groups                   am I in the dialout group?
