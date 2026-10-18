@@ -35,7 +35,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 34,TPT 4,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"TRUMPET NET channel TPT 4 = MURS 3 - MURS radio, no license - not private"
 35,TPT 5,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,TRUMPET NET channel TPT 5 = 2m simplex 146.430 - ham license - not private
 36,TPT 6,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,TRUMPET NET channel TPT 6 = 2m simplex 147.510 - ham license - not private
-37,ASPCTAC,146.460000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"ASPCTAC - 2m simplex 146.460, radio to radio - ham license - not private"
+37,ASPCTAC,146.445000,,0.000000,TSQL,233.6,233.6,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"ASPCTAC - 2m simplex 146.445, tone 233.6 both ways, radio to radio - ham license - not private"
 38,TPT RP,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,"TRUMPET NET ham repeater - K5FTW 146.760 Fort Worth, 30 mi - ham license | RP = ham repeater; K5FTW-style codes = the FCC call sign of the repeater's owner or club"
 39,TPT GR,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,TRUMPET NET GMRS repeater - Haltom 725 WRPL432 - GMRS license | GR = GMRS repeater
 40,FW 940,146.940000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,K5FTW Tarrant RACES/ARES/Skywarn primary - ★ PRIMARY | RACES = Radio Amateur Civil Emergency Service; ARES = Amateur Radio Emergency Service; PRIMARY = county's main emergency repeater; FW = Fort Worth; the number in a repeater name = last digits of its frequency (FW 940 = 146.940)
@@ -101,7 +101,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 104,S2 420,147.420000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Rockwall ARES simplex
 106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
-107,GADBERY,147.480000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GADBERY - 2m simplex 147.480, radio to radio - ham license - not private"
+107,GADBERY,147.435000,,0.000000,TSQL,241.8,241.8,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GADBERY - 2m simplex 147.435, tone 241.8 both ways, radio to radio - ham license - not private"
 108,VER 12,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 12 backup for radios without channel 0
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling | CALL70 = national 70-centimeter (UHF) calling frequency
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex | S7 = 70-centimeter simplex (radio to radio)
