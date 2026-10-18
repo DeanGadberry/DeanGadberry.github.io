@@ -30,12 +30,12 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 28,RPT 20,462.675000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 20R - TX 467.675 - travel tone 141.3
 29,RPT 21,462.700000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 21R - TX 467.700 - travel tone 141.3
 30,RPT 22,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,High,GMRS repeater 22R - TX 467.725 - travel tone 141.3 - opens Haltom 725 WRPL432 (open)
-31,TEAM 1,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET team 1 = FRS/GMRS 5 - any FRS/GMRS radio, no license - not private"
-32,TEAM 2,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET team 2 = FRS/GMRS 6 - any FRS/GMRS radio, no license - not private"
-33,TEAM 3,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET team 3 = MURS 2 - MURS radio, no license - not private"
-34,TEAM 4,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET team 4 = MURS 3 - MURS radio, no license - not private"
-35,TEAM 5,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET team 5 = 2m simplex 146.430 - ham license - not private
-36,TEAM 6,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET team 6 = 2m simplex 147.510 - ham license - not private
+31,TPT 1,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET channel TPT 1 = FRS/GMRS 5 - any FRS/GMRS radio, no license - not private"
+32,TPT 2,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,High,"TRUMPET NET channel TPT 2 = FRS/GMRS 6 - any FRS/GMRS radio, no license - not private"
+33,TPT 3,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET channel TPT 3 = MURS 2 - MURS radio, no license - not private"
+34,TPT 4,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,High,"TRUMPET NET channel TPT 4 = MURS 3 - MURS radio, no license - not private"
+35,TPT 5,146.430000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET channel TPT 5 = 2m simplex 146.430 - ham license - not private
+36,TPT 6,147.510000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,High,TRUMPET NET channel TPT 6 = 2m simplex 147.510 - ham license - not private
 38,TPT RP,146.760000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,"TRUMPET NET ham repeater - K5FTW 146.760 Fort Worth, 30 mi - ham license"
 39,TPT GR,462.725000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,,High,TRUMPET NET GMRS repeater - Haltom 725 WRPL432 - GMRS license
 40,FW 940,146.940000,-,0.600000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,,High,K5FTW Tarrant RACES/ARES/Skywarn primary - ★ PRIMARY

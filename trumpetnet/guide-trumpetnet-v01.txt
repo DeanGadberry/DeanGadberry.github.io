@@ -108,7 +108,7 @@ UV-5R and similar Baofengs (BF-F8HP, UV-82, etc.)
     danger.
 
 MURS radios
-  - Hold MURS 1-5. Their channels 2 and 3 are Team 3 and Team 4.
+  - Hold MURS 1-5. Their channels 2 and 3 are Trumpet 3 and Trumpet 4.
   - Most are set up from the radio's own menu, not CHIRP.
 
 UV-9G (GMRS radio)
@@ -120,7 +120,7 @@ UV-9G (GMRS radio)
 
 BTECH FRS-B1
   - Holds only FRS channels 1-22. Most of the list won't import, and
-    that's fine. Its own channels 5 and 6 are Team 1 and Team 2.
+    that's fine. Its own channels 5 and 6 are Trumpet 1 and Trumpet 2.
   - If CHIRP has no FRS-B1 model, program it by hand per its manual.
 
 
@@ -198,7 +198,7 @@ Channel names don't show on the radio
 
 Radio beeps instead of transmitting on some channels
   The maker locked it (common on newer UV-5Rs). It can still listen
-  there. Use a GMRS/FRS radio for team channels, or ham channels
+  there. Use a GMRS/FRS radio for Trumpet 1-2, or ham channels
   with a ham license. Programming can't change this.
 
 Channel 0 doesn't say VER 01
