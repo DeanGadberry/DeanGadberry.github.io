@@ -1,27 +1,27 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
 0,VER 09,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 09 - version check, copy of ch 100 2m calling 146.520"
-1,GMRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 1
-2,GMRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 2
-3,GMRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5.0W,FRS/GMRS ch 3
-4,GMRS 4,462.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 4
-5,GMRS 5,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 5
-6,GMRS 6,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 6
-7,GMRS 7,462.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS/GMRS ch 7
-8,GMRS 8,467.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 8 - 0.5W limit
-9,GMRS 9,467.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 9 - 0.5W limit
-10,GMRS10,467.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 10 - 0.5W limit
-11,GMRS11,467.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 11 - 0.5W limit
-12,GMRS12,467.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 12 - 0.5W limit
-13,GMRS13,467.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 13 - 0.5W limit
-14,GMRS14,467.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS/GMRS ch 14 - 0.5W limit
-15,GMRS15,462.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 15
-16,GMRS16,462.575000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 16
-17,GMRS17,462.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 17
-18,GMRS18,462.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 18
-19,GMRS19,462.650000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 19
-20,GMRS20,462.675000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,FRS/GMRS ch 20 - travel/calling channel
-21,GMRS21,462.700000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 21
-22,GMRS22,462.725000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS/GMRS ch 22
+1,FRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 1 (shared with GMRS 1) - no license on a certified FRS radio
+2,FRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 2 (shared with GMRS 2) - no license on a certified FRS radio
+3,FRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5.0W,FRS 3 (shared with GMRS 3) - no license on a certified FRS radio
+4,FRS 4,462.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 4 (shared with GMRS 4) - no license on a certified FRS radio
+5,FRS 5,462.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 5 (shared with GMRS 5) - no license on a certified FRS radio
+6,FRS 6,462.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 6 (shared with GMRS 6) - no license on a certified FRS radio
+7,FRS 7,462.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 7 (shared with GMRS 7) - no license on a certified FRS radio
+8,FRS 8,467.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 8 (shared with GMRS 8) - no license on a certified FRS radio
+9,FRS 9,467.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 9 (shared with GMRS 9) - no license on a certified FRS radio
+10,FRS 10,467.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 10 (shared with GMRS 10) - no license on a certified FRS radio
+11,FRS 11,467.637500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 11 (shared with GMRS 11) - no license on a certified FRS radio
+12,FRS 12,467.662500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 12 (shared with GMRS 12) - no license on a certified FRS radio
+13,FRS 13,467.687500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 13 (shared with GMRS 13) - no license on a certified FRS radio
+14,FRS 14,467.712500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,0.5W,FRS 14 (shared with GMRS 14) - no license on a certified FRS radio
+15,FRS 15,462.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 15 (shared with GMRS 15) - no license on a certified FRS radio
+16,FRS 16,462.575000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 16 (shared with GMRS 16) - no license on a certified FRS radio
+17,FRS 17,462.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 17 (shared with GMRS 17) - no license on a certified FRS radio
+18,FRS 18,462.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 18 (shared with GMRS 18) - no license on a certified FRS radio
+19,FRS 19,462.650000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 19 (shared with GMRS 19) - no license on a certified FRS radio
+20,FRS 20,462.675000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,,5.0W,FRS 20 (shared with GMRS 20) - no license on a certified FRS radio
+21,FRS 21,462.700000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 21 (shared with GMRS 21) - no license on a certified FRS radio
+22,FRS 22,462.725000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,FRS 22 (shared with GMRS 22) - no license on a certified FRS radio
 23,RPT 15,462.550000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 15R - TX 467.550 - travel tone 141.3 - opens Dallas White Rock Lake WQUM597 (open)
 24,RPT 16,462.575000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 16R - TX 467.575 - travel tone 141.3
 25,RPT 17,462.600000,+,5.000000,Tone,141.3,88.5,023,NN,023,Tone->Tone,FM,12.50,S,5.0W,GMRS repeater 17R - TX 467.600 - travel tone 141.3
@@ -102,19 +102,19 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
 111,S7 500,446.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
-112,MURS 1,151.820000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,MURS 1
-113,MURS 2,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,MURS 2
-114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,MURS 3
-115,MURS 4,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,MURS 4
-116,MURS 5,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,MURS 5
-117,MAR 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - listen only"
-118,MAR 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 9 boater hailing - listen only
-119,MAR 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 22A Coast Guard liaison - listen only
-120,MAR 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 68 recreational working - listen only
-121,BUSRED,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"Business itinerant RED DOT - events, security - listen only"
-122,BUSPUR,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,Business itinerant PURPLE DOT - listen only
-123,BUSYEL,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,Business itinerant YELLOW DOT - listen only
-124,BUSBRN,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,Business itinerant BROWN DOT - listen only
+112,MURS 1,151.820000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 1 - license-free on a certified MURS radio, 2 W"
+113,MURS 2,151.880000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 2 - license-free on a certified MURS radio, 2 W"
+114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 3 - license-free on a certified MURS radio, 2 W"
+115,BLUDOT,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"BLUE DOT = MURS 4 154.570 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W)"
+116,GRNDOT,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GREEN DOT = MURS 5 154.600 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W)"
+117,SEA 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - listen only"
+118,SEA 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 9 boater hailing - listen only
+119,SEA 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 22A Coast Guard liaison - listen only
+120,SEA 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 68 recreational working - listen only
+121,REDDOT,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,RED DOT = business itinerant 151.625 - FCC business license required; busy at events and security - listen only
+122,PURDOT,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,PURPLE DOT = business itinerant 151.955 - FCC business license required - listen only
+123,YELDOT,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,YELLOW DOT = business itinerant 464.550 - FCC business license required - listen only
+124,BRNDOT,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,BROWN DOT = business itinerant 464.500 - FCC business license required - listen only
 125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,NATSAR / VSAR16 search and rescue ground - listen only
 126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,VCALL10 national interop calling (VHF) - listen only
 127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,UCALL40 national interop calling (UHF) - listen only
