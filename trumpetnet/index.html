@@ -292,7 +292,7 @@ const REG=[
 const BANDS=[["0","Version check · VER 09 (backup: 108)",""],["31–39","Trumpet Net: TPT 1–6 and repeaters","as"],["1–22","FRS / GMRS simplex","gm"],["23–30","GMRS repeaters","gm"],
 ["40s","Fort Worth ★40 · talkaround 49","hm"],["50s","North ★50 Denton · talkaround 59","hm"],["60s","East ★60 Dallas · talkaround 69","hm"],["70s","South ★70 Cleburne · talkaround 79","hm"],
 ["80s","West & far ★80 Weatherford · talkaround 89","hm"],["90–96","Weather WX1–7",""],["100–108","2m simplex · 100 = 146.520 calling","hm"],["109–111","70cm simplex · 109 = 446.000 calling","hm"],
-["112–116","MURS 1–5",""],["117–127","Listen only: marine, business, rescue",""]];
+["112–116","MURS 1–5",""],["117–127","Emergency only: marine, business, rescue",""]];
 const LON0=-100.0,LAT1=34.25,K=300,C=Math.cos(32.6*Math.PI/180);
 const X=lon=>(lon-LON0)*C*K, Y=lat=>(LAT1-lat)*K, PXMI=K/69;
 const NS="http://www.w3.org/2000/svg", svg=document.getElementById("map");

@@ -107,14 +107,14 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 114,MURS 3,151.940000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,5.00,S,5.0W,"MURS 3 - license-free on a certified MURS radio, 2 W"
 115,BLUDOT,154.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"BLUE DOT = MURS 4 154.570 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W) | DOT = color-dot business channel name (Blue/Green Dot are now MURS)"
 116,GRNDOT,154.600000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GREEN DOT = MURS 5 154.600 - former business itinerant channel, now license-free MURS (certified MURS radio, 2 W)"
-117,SEA 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - listen only | SEA = marine VHF channel (boats); the number is the marine channel"
-118,SEA 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 9 boater hailing - listen only
-119,SEA 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 22A Coast Guard liaison - listen only
-120,SEA 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 68 recreational working - listen only
-121,REDDOT,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,RED DOT = business itinerant 151.625 - FCC business license required; busy at events and security - listen only | FCC = Federal Communications Commission
-122,PURDOT,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,PURPLE DOT = business itinerant 151.955 - FCC business license required - listen only
-123,YELDOT,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,YELLOW DOT = business itinerant 464.550 - FCC business license required - listen only
-124,BRNDOT,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,BROWN DOT = business itinerant 464.500 - FCC business license required - listen only
-125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,NATSAR / VSAR16 search and rescue ground - listen only | SAR = search and rescue; NATSAR / VSAR16 = national SAR channel name
-126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"VCALL10 national interop calling (VHF) - listen only | VCALL10 / VHF = national public-safety interoperability calling channel, very high frequency band"
-127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"UCALL40 national interop calling (UHF) - listen only | UCALL40 / UHF = national public-safety interoperability calling channel, ultra high frequency band"
+117,SEA 16,156.800000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,,5.0W,"MARINE 16 distress, safety and calling - transmit only in an emergency | SEA = marine VHF channel (boats); the number is the marine channel"
+118,SEA 09,156.450000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 9 boater hailing - transmit only in an emergency
+119,SEA 22,157.100000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 22A Coast Guard liaison - transmit only in an emergency
+120,SEA 68,156.425000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,25.00,S,5.0W,MARINE 68 recreational working - transmit only in an emergency
+121,REDDOT,151.625000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,RED DOT = business itinerant 151.625 - FCC business license required; busy at events and security - transmit only in an emergency | FCC = Federal Communications Commission
+122,PURDOT,151.955000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,PURPLE DOT = business itinerant 151.955 - FCC business license required - transmit only in an emergency
+123,YELDOT,464.550000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,YELLOW DOT = business itinerant 464.550 - FCC business license required - transmit only in an emergency
+124,BRNDOT,464.500000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,BROWN DOT = business itinerant 464.500 - FCC business license required - transmit only in an emergency
+125,SAR 16,155.160000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,NATSAR / VSAR16 search and rescue ground - transmit only in an emergency | SAR = search and rescue; NATSAR / VSAR16 = national SAR channel name
+126,VCALL,155.752500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"VCALL10 national interop calling (VHF) - transmit only in an emergency | VCALL10 / VHF = national public-safety interoperability calling channel, very high frequency band"
+127,UCALL,453.212500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,"UCALL40 national interop calling (UHF) - transmit only in an emergency | UCALL40 / UHF = national public-safety interoperability calling channel, ultra high frequency band"
