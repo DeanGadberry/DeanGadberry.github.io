@@ -136,7 +136,7 @@ html,body{margin:0}
 
 <div class="wrap">
   <header class="hero">
-    <div class="ht"><h1>Trumpet Net</h1><span class="hv">Version 15</span></div>
+    <div class="ht"><h1>Trumpet Net</h1><span class="hv">Version 16</span></div>
     <p class="verse">In what place therefore ye hear the sound of the trumpet, resort ye thither unto us: our God shall fight for us. <span>Nehemiah 4:20</span></p>
     <p class="lede">Trumpet Net is our group's emergency radio plan. Every radio we program carries the same channel list, so a channel number means the same thing on every radio. This page has the handout, the channel file for programming radios, and a map of the repeaters on the list.</p>
   </header>
@@ -146,7 +146,7 @@ html,body{margin:0}
       <h2>The handout</h2>
       <p>A two-sided, letter-size trifold that goes with every radio: how to talk on the air, the phonetic alphabet, a page to plan each operation, and every channel on the list.</p>
       <p class="how">Print both sides (flip on the long edge), then fold in thirds so the title is on the front.</p>
-      <a class="btn" href="trifold-trumpetnet-v15.1.pdf" download>Download the trifold <small>PDF · version 15.1</small></a>
+      <a class="btn" href="trifold-trumpetnet-v16.pdf" download>Download the trifold <small>PDF · version 16</small></a>
       <a class="lnk" href="uv5r-guide-trumpetnet.pdf" download>Baofeng UV-5R quick guide: buttons, dual watch, scan, every menu (PDF, print two-sided)</a>
     </div>
     <div class="sheet card">
@@ -158,13 +158,13 @@ html,body{margin:0}
         <li>Choose <b>File → Import</b> and pick this file.</li>
         <li>Choose <b>Radio → Upload to radio</b>.</li>
       </ol>
-      <a class="btn" href="channels-trumpetnet-v15.csv" download>Download the channel list <small>CSV · version 15</small></a>
-      <a class="lnk" href="guide-trumpetnet-v15.txt" download>Step-by-step guide and troubleshooting (text file, works offline)</a>
+      <a class="btn" href="channels-trumpetnet-v16.csv" download>Download the channel list <small>CSV · version 16</small></a>
+      <a class="lnk" href="guide-trumpetnet-v16.txt" download>Step-by-step guide and troubleshooting (text file, works offline)</a>
     </div>
     <div class="sheet card">
       <h2>Check your radio</h2>
-      <p>Turn to <b>channel 0</b>. It should read <b class="mono">VER 15</b>. If your radio has no channel 0, use <b>channel 108</b>. A different number means the radio has an older list and should be reprogrammed.</p>
-      <p class="how"><b>How versions work:</b> the whole number changes only when channels change, so it always matches your radio. A decimal on the handout (15.1, 15.2…) means only the paper was revised.</p>
+      <p>Turn to <b>channel 0</b>. It should read <b class="mono">VER 16</b>. If your radio has no channel 0, use <b>channel 108</b>. A different number means the radio has an older list and should be reprogrammed.</p>
+      <p class="how"><b>How versions work:</b> the whole number changes only when channels change, so it always matches your radio. A decimal on the handout (16.1, 16.2…) means only the paper was revised.</p>
       <p class="how"><b>Licenses:</b> the file lets every channel transmit. Ham channels need an amateur license and GMRS channels a GMRS license. FRS channels 1–22 need none. Anyone may use any channel when a life is in danger.</p>
     </div>
   </section>
@@ -290,7 +290,7 @@ const REG=[
  {n:"Fort Worth & Arlington",a:40,b:48},{n:"North: Denton, Wise, Cooke, Grayson",a:50,b:58},{n:"East: Dallas, Arlington & Collin",a:60,b:66},
  {n:"South: Johnson, Hood, Hill, Waco",a:70,b:76},{n:"West & far: Parker, Palo Pinto, Wichita Falls, Abilene",a:80,b:88},
  {n:"GMRS repeaters",a:115,b:122}];
-const BANDS=[["0","Version check · VER 15 (backup: 108)",""],["31–39","Trumpet Net: TPT 1–6 and repeaters","as"],["1–22","FRS / GMRS simplex","gm"],["23–29","Emergency: marine, search and rescue, public safety",""],
+const BANDS=[["0","Version check · VER 16 (backup: 108)",""],["31–39","Trumpet Net: TPT 1–6 and repeaters","as"],["1–22","FRS / GMRS simplex","gm"],["23–29","Emergency: marine, search and rescue, public safety",""],
 ["40s","Fort Worth ★40 · talkaround 49","hm"],["50s","North ★50 Denton · talkaround 59","hm"],["60s","East ★60 Dallas · talkaround 69","hm"],["70s","South ★70 Cleburne · talkaround 79","hm"],
 ["80s","West & far ★80 Weatherford · talkaround 89","hm"],["90–99","Weather WX1–7 · business dots (listen)",""],["100–108","2m simplex · 100 = 146.520 calling","hm"],["109–114","70cm simplex · 109 = 446.000 calling","hm"],
 ["115–122","GMRS repeaters (FRS 15–22 + 100)","gm"],["123–127","MURS 1–5",""]];

@@ -1,5 +1,5 @@
 Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPolarity,RxDtcsCode,CrossMode,Mode,TStep,Skip,Power,Comment
-0,VER 15,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 15 - version check, copy of ch 100 2m calling 146.520 | VER = version"
+0,VER 16,146.520000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"LIST VERSION 16 - version check, copy of ch 100 2m calling 146.520 | VER = version"
 1,FRS 1,462.562500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 1 (shared with GMRS 1) - no license on a certified FRS radio | FRS = Family Radio Service; GMRS = General Mobile Radio Service (FCC license)
 2,FRS 2,462.587500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,S,5.0W,FRS 2 (shared with GMRS 2) - no license on a certified FRS radio
 3,FRS 3,462.612500,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,NFM,12.50,,5.0W,FRS 3 (shared with GMRS 3) - no license on a certified FRS radio
@@ -84,7 +84,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 87,WF 140,147.140000,+,0.600000,Tone,192.8,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,N5WF Red Cross
 88,ABL760,146.760000,-,0.600000,Tone,146.2,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,KC5OLO Key City ARC - ★ PRIMARY | ABL = Abilene
 89,WTH TA,147.040000,,0.000000,Tone,110.9,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"TALKAROUND for WTH040 ch 80 - simplex on its output, use when repeater is down"
-90,WX 1,162.550000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,,5.0W,NOAA WX1 Fort Worth KEC55 - listen only | WX = weather; NOAA = National Oceanic and Atmospheric Administration weather radio; KEC55 = the NOAA transmitter's station ID
+90,WX 1,162.550000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX1 Fort Worth KEC55 - listen only | WX = weather; NOAA = National Oceanic and Atmospheric Administration weather radio; KEC55 = the NOAA transmitter's station ID
 91,WX 2,162.400000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX2 Dallas KEC56 / Abilene - listen only
 92,WX 3,162.475000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX3 Sherman Waco Wichita Falls Tyler - listen only
 93,WX 4,162.425000,off,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,NOAA WX4 - listen only
@@ -102,7 +102,7 @@ Location,Name,Frequency,Duplex,Offset,Tone,rToneFreq,cToneFreq,DtcsCode,DtcsPola
 105,S2 555,147.555000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex - Rockwall ARES simplex
 106,S2 540,147.540000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,2m simplex
 107,GADFAM,147.435000,,0.000000,TSQL,241.8,241.8,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,"GADFAM - 2m simplex 147.435, tone 241.8 both ways, radio to radio - ham license - not private"
-108,VER 15,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 15 backup for radios without channel 0
+108,VER 16,147.570000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,LIST VERSION 16 backup for radios without channel 0
 109,CALL70,446.000000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex - national 70cm calling | CALL70 = national 70-centimeter (UHF) calling frequency
 110,S7 025,446.025000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex | S7 = 70-centimeter simplex (radio to radio)
 111,S7 050,446.050000,,0.000000,,88.5,88.5,023,NN,023,Tone->Tone,FM,5.00,S,5.0W,70cm simplex
