@@ -1,40 +1,40 @@
 User-agent: *
-Disallow: /hidden/
+Disallow: /backpage/
 
 # A few crawlers are known to sometimes ignore the wildcard rule above
 # and only check for their own name, so they're listed explicitly too.
 User-agent: GPTBot
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: ChatGPT-User
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Google-Extended
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: ClaudeBot
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Claude-Web
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: anthropic-ai
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: CCBot
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: PerplexityBot
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Applebot-Extended
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Bytespider
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Amazonbot
-Disallow: /hidden/
+Disallow: /backpage/
 
 User-agent: Meta-ExternalAgent
-Disallow: /hidden/
+Disallow: /backpage/
