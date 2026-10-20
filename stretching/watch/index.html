@@ -112,10 +112,81 @@
          color: #8C8CF7;
      }
 
+     /* ---- Notes under the video ---- */
+     .notes {
+        margin-top: 22px;
+        font-size: 1.05rem;
+        line-height: 1.5;
+     }
+     .notes h2 {
+        font-size: 1.22rem;
+        margin: 28px 0 6px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid rgba(28, 36, 32, 0.2);
+        scroll-margin-top: 12px;
+     }
+     .notes h2:first-child { margin-top: 0; }
+     .notes h3 { font-size: 1.05rem; margin: 18px 0 4px; }
+     .notes p { margin: 6px 0 10px; }
+     .notes ol, .notes ul { margin: 4px 0 10px; padding-left: 24px; }
+     .notes li { margin-bottom: 5px; }
+     .notes .nfacts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        font-size: 0.95rem;
+        background: rgba(28, 36, 32, 0.06);
+        border-radius: 12px;
+        padding: 8px 14px;
+        margin-bottom: 4px;
+     }
+     .notes .nmeta { font-size: 0.92rem; opacity: 0.7; }
+     .notes .nnote {
+        background: rgba(28, 36, 32, 0.06);
+        border-radius: 12px;
+        padding: 8px 14px;
+     }
+     .notes .ntoc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 6px;
+     }
+     .notes .ntoc a {
+        font-size: 0.88rem;
+        border: 1px solid rgba(28, 36, 32, 0.2);
+        border-radius: 999px;
+        padding: 3px 10px;
+        white-space: nowrap;
+     }
+     .notes table.ntable {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 6px 0 12px;
+        font-size: 0.98rem;
+     }
+     .notes .ntable th, .notes .ntable td {
+        text-align: left;
+        vertical-align: top;
+        padding: 6px 8px;
+        border-bottom: 1px solid rgba(28, 36, 32, 0.2);
+     }
+     .notes .ntable th { font-weight: 700; }
+     .notes sup a { font-size: 0.75em; opacity: 0.75; }
+     .notes ol.nrefs { font-size: 0.88rem; }
+     .notes ol.nrefs li:target { background: rgba(28, 36, 32, 0.06); border-radius: 6px; }
+     .notes a.ext::after { content: " \2197"; font-size: 0.8em; opacity: 0.6; }
+     .to-top {
+        display: inline-block;
+        margin-top: 18px;
+        font-size: 0.92rem;
+     }
+
      @media (max-width: 400px) {
          .card {
             padding: 24px 20px 28px;
          }
+         .notes .ntable th, .notes .ntable td { padding: 5px 4px; }
          h1 {
             font-size: 1.2rem;
          }
@@ -128,6 +199,7 @@
         <div id="content"></div>
     </div>
 
+    <script src="notes.js"></script>
     <script>
         var params = new URLSearchParams(window.location.search);
         var id = params.get('v');
@@ -175,6 +247,46 @@
             iframe.allowFullscreen = true;
             embed.appendChild(iframe);
             container.appendChild(embed);
+
+            // Written summary under the video, if we have one (notes.js).
+            var n = (window.VIDEO_NOTES || {})[id];
+            if (n) {
+                var box = document.createElement('div');
+                box.className = 'notes';
+                if (n.html) {
+                    box.innerHTML = n.html;
+                } else {
+                    var h = '';
+                    var facts = [];
+                    if (n.time) facts.push('<span><b>Length:</b> ' + n.time + '</span>');
+                    if (n.gear) facts.push('<span><b>You need:</b> ' + n.gear + '</span>');
+                    if (facts.length) h += '<div class="nfacts">' + facts.join('') + '</div>';
+                    if (n.steps && n.steps.length) {
+                        h += '<h2>How to do it</h2><ol>' + n.steps.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol>';
+                    }
+                    if (n.extra) h += (n.steps && n.steps.length ? '' : '<h2>Summary</h2>') + n.extra;
+                    if (n.cues && n.cues.length) {
+                        h += '<h3>Form cues</h3><ul>' + n.cues.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>';
+                    }
+                    if (n.easier || n.harder) {
+                        h += '<h3>Adjust it</h3><ul>';
+                        if (n.easier) h += '<li><b>Easier:</b> ' + n.easier + '</li>';
+                        if (n.harder) h += '<li><b>Harder:</b> ' + n.harder + '</li>';
+                        h += '</ul>';
+                    }
+                    if (n.tips && n.tips.length) {
+                        h += '<h3>Key tips</h3><ul>' + n.tips.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>';
+                    }
+                    h += '<p class="nmeta">Summary written from the video &mdash; full credit to ' + (creator ? creator.replace(/[<>&"]/g, '') : 'the creator') + '.</p>';
+                    box.innerHTML = h;
+                }
+                container.appendChild(box);
+                var toTop = document.createElement('a');
+                toTop.className = 'to-top';
+                toTop.href = '#';
+                toTop.textContent = '↑ Back to video';
+                container.appendChild(toTop);
+            }
         } else {
             var msg = document.createElement('p');
             msg.className = 'empty';
