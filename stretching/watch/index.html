@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Stretching</title>
+    <link rel="icon" href="../../assets/favicon.ico">
+<style>
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../../static/EBGaramond-Regular.ttf') format('truetype');
+        font-weight: 400;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../../static/EBGaramond-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../../static/EBGaramond-Bold.ttf') format('truetype');
+        font-weight: 700;
+     }
+
+     :root {
+        --ink: #1c2420;
+        --bg: #f6f3ec;
+     }
+
+     html, body {
+         margin: 0;
+         padding: 0;
+         width: 100%;
+         min-height: 100%;
+         background-color: var(--bg);
+         color: var(--ink);
+     }
+
+     body {
+         display: flex;
+         align-items: flex-start;
+         justify-content: center;
+         box-sizing: border-box;
+         padding: 30px 15px;
+     }
+
+     .card {
+         width: 100%;
+         max-width: 720px;
+         text-align: left;
+         font-family: 'EB Garamond', Georgia, serif;
+         background: rgba(253, 251, 247, 0.6);
+         border: 1px solid rgba(255, 255, 255, 0.6);
+         border-radius: 28px;
+         box-shadow: 0 40px 80px -30px rgba(28, 36, 32, 0.35), 0 2px 10px rgba(28, 36, 32, 0.08);
+         padding: 32px 36px 40px;
+         box-sizing: border-box;
+     }
+
+     .back-link {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.95rem;
+     }
+
+     h1 {
+        font-family: 'EB Garamond', Georgia, serif;
+        font-weight: 700;
+        color: var(--ink);
+        margin: 0 0 2px;
+        font-size: 1.4rem;
+        line-height: 1.3;
+     }
+
+     .creator {
+        font-size: 0.95rem;
+        opacity: 0.7;
+        margin: 0 0 18px;
+     }
+
+     .video-embed {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 10px 24px -10px rgba(28, 36, 32, 0.4);
+     }
+
+     .video-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+     }
+
+     .empty {
+        font-size: 1.05rem;
+     }
+
+     a {
+         color: var(--ink);
+         text-decoration: none;
+         font-weight: 600;
+     }
+
+     a:hover {
+         color: #8C8CF7;
+     }
+
+     @media (max-width: 400px) {
+         .card {
+            padding: 24px 20px 28px;
+         }
+         h1 {
+            font-size: 1.2rem;
+         }
+     }
+</style>
+</head>
+<body>
+    <div class="card">
+        <a class="back-link" href="../">&larr; Back to Stretching</a>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('v');
+        var title = params.get('t');
+        var creator = params.get('c');
+        var container = document.getElementById('content');
+
+        if (id && /^[A-Za-z0-9_-]{6,15}$/.test(id)) {
+            if (title) document.title = title + ' — Stretching';
+
+            var h1 = document.createElement('h1');
+            h1.textContent = title || 'Stretching';
+            container.appendChild(h1);
+
+            if (creator) {
+                var p = document.createElement('p');
+                p.className = 'creator';
+                p.textContent = creator;
+                container.appendChild(p);
+            }
+
+            var embed = document.createElement('div');
+            embed.className = 'video-embed';
+            var iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(id);
+            iframe.title = title || 'YouTube video';
+            iframe.loading = 'lazy';
+            iframe.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            embed.appendChild(iframe);
+            container.appendChild(embed);
+        } else {
+            var msg = document.createElement('p');
+            msg.className = 'empty';
+            msg.textContent = 'No video selected — head back to the list and pick one.';
+            container.appendChild(msg);
+        }
+    </script>
+</body>
+</html>
