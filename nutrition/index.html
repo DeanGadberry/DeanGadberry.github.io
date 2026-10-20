@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Nutrition &amp; Macros</title>
+    <link rel="icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="../styles/vitality.css">
+</head>
+<body>
+    <div class="card">
+
+        <nav class="vnav"><a href="../vitality/">Hub</a><a href="../strength/">Strength</a><a href="../flexibility/">Flexibility</a><a href="../nutrition/" class="here">Nutrition</a><a href="../energy/">Energy & Health</a></nav>
+
+        <img class="logo" src="../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
+
+        <h1>Nutrition &amp; Macros</h1>
+        <p class="intro">
+            What to eat to build muscle, lean out and keep your energy up &mdash; with a macro calculator,
+            the research behind the numbers, and three ways to track.
+        </p>
+        <p class="toc">
+            <a href="#priorities">Priorities</a>
+            <a href="#calculator">Calculator</a>
+            <a href="#protein">Protein</a>
+            <a href="#tracking">Tracking</a>
+            <a href="#supplements">Supplements</a>
+            <a href="#resources">Resources</a>
+        </p>
+
+        <h2 id="priorities">What matters, in order</h2>
+        <ol>
+            <li><b>Calories</b> &mdash; decide whether you gain, lose or hold weight.</li>
+            <li><b>Protein</b> &mdash; decides how much of that weight is muscle.</li>
+            <li><b>Carbs &amp; fat</b> &mdash; carbs fuel hard training; fat supports hormones. Split the rest of your calories to taste.</li>
+            <li><b>Food quality</b> &mdash; fiber, fruit and vegetables, micronutrients.</li>
+            <li><b>Meal timing</b> &mdash; spread protein across the day; eat around training.</li>
+            <li><b>Supplements</b> &mdash; a small finishing touch.</li>
+        </ol>
+        <p class="src">The order follows Eric Helms&rsquo; <i>Muscle and Strength Pyramid: Nutrition</i>.</p>
+
+        <h2 id="calculator">Macro calculator</h2>
+        <div class="calc">
+            <div class="row">
+                <div><label for="w">Bodyweight (lb)</label><input id="w" type="number" inputmode="decimal" min="80" max="450" placeholder="e.g. 190"></div>
+                <div><label for="age">Age</label><input id="age" type="number" inputmode="numeric" min="15" max="90" placeholder="e.g. 30"></div>
+                <div><label for="hft">Height (ft)</label><input id="hft" type="number" inputmode="numeric" min="4" max="7" value="6"></div>
+                <div><label for="hin">Height (in)</label><input id="hin" type="number" inputmode="numeric" min="0" max="11" value="1"></div>
+                <div><label for="sex">Sex</label>
+                    <select id="sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+                <div><label for="act">Activity</label>
+                    <select id="act">
+                        <option value="1.375">Desk job, lift 3&times;/week</option>
+                        <option value="1.55" selected>Lift 4&ndash;5&times;/week + daily walking</option>
+                        <option value="1.725">Physical job or very active</option>
+                    </select></div>
+                <div><label for="goal">Goal</label>
+                    <select id="goal">
+                        <option value="bulk">Lean bulk</option>
+                        <option value="maint">Maintain / recomp</option>
+                        <option value="cut">Cut (lose fat)</option>
+                    </select></div>
+            </div>
+            <div class="out" id="out"><p class="meta">Enter your weight and age.</p></div>
+        </div>
+        <p class="note"><b>It&rsquo;s a starting estimate.</b> Weigh yourself each morning and compare weekly averages. After 2&ndash;3 weeks, if the trend is off target, change calories by 100&ndash;200 a day (from carbs or fat) and repeat.</p>
+
+        <h2>Rates of change</h2>
+        <table>
+            <tr><th>Lean bulk</th><td>10&ndash;20% above maintenance, gaining <b>0.25&ndash;0.5% of bodyweight per week</b>. The more experienced you are, the slower you should gain.</td></tr>
+            <tr><th>Cut</th><td>Lose <b>0.5&ndash;1% of bodyweight per week</b>. Faster than that risks muscle and energy.</td></tr>
+            <tr><th>Recomp</th><td>Eating near maintenance with high protein can build muscle and lose fat at once &mdash; best for newer lifters or those returning after a break.</td></tr>
+        </table>
+        <p class="src">Iraki et al., <i>Sports</i> 2019 &middot; Helms et al., <i>JISSN</i> 2014</p>
+
+        <h2 id="protein">Protein</h2>
+        <ul>
+            <li><b>Daily:</b> 1.6&ndash;2.2 g/kg (0.7&ndash;1 g/lb). A large 2018 meta-analysis found muscle gains leveled off around 1.6 g/kg; 2.2 covers nearly everyone.</li>
+            <li><b>While cutting:</b> aim higher &mdash; 2.3&ndash;3.1 g per kg of lean mass helps keep muscle.</li>
+            <li><b>Per meal:</b> about 0.4&ndash;0.55 g/kg (roughly 30&ndash;50 g) across 3&ndash;6 meals, every 3&ndash;4 hours.</li>
+            <li><b>Before bed:</b> 30&ndash;40 g of slow protein (Greek yogurt, cottage cheese, casein) raises overnight muscle building.</li>
+            <li><b>Best sources:</b> meat, fish, eggs, dairy, whey. Plant sources work in slightly larger amounts.</li>
+        </ul>
+        <p class="src">ISSN Position Stand: Protein and Exercise, 2017 &middot; Morton et al., <i>Br J Sports Med</i> 2018 &middot; Iraki et al. 2019</p>
+
+        <h2>Carbs, fat &amp; fiber</h2>
+        <ul>
+            <li><b>Fat:</b> 0.5&ndash;1.5 g/kg (about 0.25&ndash;0.7 g/lb). Don&rsquo;t drop below ~20% of calories for long.</li>
+            <li><b>Carbs:</b> the remaining calories, at least 3&ndash;5 g/kg when training hard. Put a good share before and after training.</li>
+            <li><b>Fiber:</b> 14 g per 1,000 calories &mdash; about 38 g for most men. Fewer than 1 in 10 adults get there.</li>
+            <li><b>Fruit and vegetables</b> at most meals; oily fish twice a week.</li>
+            <li><b>Alcohol</b> blunts muscle building: a heavy dose after training cut muscle protein synthesis by about 24&ndash;37%. Keep it occasional and small.</li>
+        </ul>
+        <p class="src">Iraki et al. 2019 &middot; American Society for Nutrition (fiber) &middot; Parr et al., <i>PLoS One</i> 2014 (alcohol)</p>
+
+        <h2 id="tracking">Three ways to track</h2>
+        <div class="school">
+            <h3>1. Full macro tracking</h3>
+            <dl>
+                <dt>Best for</dt><dd>Learning portions, cutting for a deadline, breaking a stall.</dd>
+                <dt>How</dt><dd>A kitchen scale; weigh food raw; log as you eat, not at night; save recipes and repeat meals so logging takes minutes. Hit protein and calories &mdash; carbs and fat can float.</dd>
+            </dl>
+        </div>
+        <div class="school">
+            <h3>2. Hand portions (no counting)</h3>
+            <dl>
+                <dt>Best for</dt><dd>Long stretches of maintenance or lean bulking without an app.</dd>
+                <dt>How</dt><dd>Per meal, about 4 meals a day: <b>2 palms</b> of protein, <b>2 fists</b> of vegetables, <b>2 cupped hands</b> of carbs, <b>2 thumbs</b> of fat. Gaining too slowly? Add a cupped hand of carbs or a thumb of fat to a meal or two. Stalled on a cut? Remove one.</dd>
+                <dt>Guide</dt><dd><a class="ext" href="https://assets.precisionnutrition.com/2019/09/Hand-portion-guide-FF.pdf" target="_blank" rel="noopener noreferrer">Precision Nutrition hand-portion guide (PDF)</a></dd>
+            </dl>
+        </div>
+        <div class="school">
+            <h3>3. Protein + scale only</h3>
+            <dl>
+                <dt>Best for</dt><dd>The simplest system that still works.</dd>
+                <dt>How</dt><dd>Count only protein, weigh in daily, and nudge portions based on the weekly average.</dd>
+            </dl>
+        </div>
+
+        <h3>Tools</h3>
+        <ul>
+            <li><a class="ext" href="https://cronometer.com/" target="_blank" rel="noopener noreferrer">Cronometer</a> &mdash; lab-verified food data (USDA, NCCDB), tracks dozens of vitamins and minerals, free tier. Also runs in a web browser, so it works from a laptop.</li>
+            <li><a class="ext" href="https://macrofactor.com/" target="_blank" rel="noopener noreferrer">MacroFactor</a> &mdash; phone app from the Stronger By Science team; adjusts your targets weekly from your intake and weight trend. Paid (about $72/year).</li>
+            <li><b>MyFitnessPal</b> &mdash; the biggest food database, but many entries are user-submitted and wrong; double-check them.</li>
+            <li><a class="ext" href="https://fdc.nal.usda.gov/" target="_blank" rel="noopener noreferrer">USDA FoodData Central</a> &mdash; the government database to check any food.</li>
+            <li>A <b>spreadsheet or notebook</b> works too: date, morning weight, calories, protein.</li>
+        </ul>
+
+        <h2>Eating for steady energy</h2>
+        <ul>
+            <li>Protein and fiber at every meal keep you full and blood sugar steady.</li>
+            <li>Eat carbs before and after training; a huge, mostly-carb lunch is a common cause of the afternoon slump.</li>
+            <li>Even a 2&ndash;5 minute walk after meals blunts the blood-sugar spike.</li>
+            <li>Drink water through the day; around hard training, add salt or electrolytes.</li>
+            <li>A deep, long deficit is the biggest energy killer &mdash; take a week or two at maintenance every 8&ndash;12 weeks of cutting.</li>
+        </ul>
+
+        <h2 id="supplements">Supplements</h2>
+        <table>
+            <tr><th>Worth it</th><td>
+                <b>Creatine monohydrate</b> &mdash; 3&ndash;5 g every day, any time. The most effective legal supplement for strength and muscle; safe in long-term studies.<br>
+                <b>Caffeine</b> &mdash; 3&ndash;6 mg/kg about an hour before training improves performance. Mind the cutoff time (see <a href="../energy/">Energy</a>).<br>
+                <b>Protein powder</b> &mdash; food, just convenient.
+            </td></tr>
+            <tr><th>If needed</th><td>
+                <b>Vitamin D</b> if blood levels are low or sun is scarce; <b>fish oil</b> if you rarely eat fish; <b>electrolytes</b> for heavy sweating.
+            </td></tr>
+            <tr><th>Minor</th><td>Beta-alanine (3&ndash;5 g/day), citrulline malate (~8 g pre-workout) &mdash; small effects.</td></tr>
+            <tr><th>Skip</th><td>BCAAs (pointless if protein is adequate), &ldquo;test boosters,&rdquo; fat burners, proprietary blends.</td></tr>
+        </table>
+        <p class="src">ISSN Position Stands: Creatine (2017), Caffeine (2021) &middot; Iraki et al. 2019</p>
+
+        <h2 id="resources">Resources</h2>
+        <h3>Books</h3>
+        <ul>
+            <li><i>The Muscle and Strength Pyramid: Nutrition</i> &mdash; Eric Helms, Andy Morgan, Andrea Valdez</li>
+            <li><i>The Renaissance Diet 2.0</i> &mdash; Mike Israetel et al.</li>
+            <li><i>Fat Loss Forever</i> &mdash; Layne Norton &amp; Peter Baker</li>
+        </ul>
+        <h3>Research</h3>
+        <ul>
+            <li><a class="ext" href="https://pubmed.ncbi.nlm.nih.gov/28642676/" target="_blank" rel="noopener noreferrer">ISSN Position Stand: Protein and Exercise</a></li>
+            <li><a class="ext" href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0173-z" target="_blank" rel="noopener noreferrer">ISSN Position Stand: Creatine</a></li>
+            <li><a class="ext" href="https://www.mdpi.com/2075-4663/7/7/154" target="_blank" rel="noopener noreferrer">Nutrition Recommendations for Bodybuilders in the Off-Season</a> &mdash; Iraki, Helms et al.</li>
+            <li><a class="ext" href="https://jissn.biomedcentral.com/articles/10.1186/1550-2783-11-20" target="_blank" rel="noopener noreferrer">Natural Bodybuilding Contest Preparation: Nutrition</a> &mdash; Helms, Aragon, Fitschen</li>
+        </ul>
+        <h3>Sites</h3>
+        <ul>
+            <li><a class="ext" href="https://examine.com/" target="_blank" rel="noopener noreferrer">Examine</a> &mdash; independent research summaries on every supplement</li>
+            <li><a class="ext" href="https://www.strongerbyscience.com/" target="_blank" rel="noopener noreferrer">Stronger By Science</a> &mdash; nutrition articles alongside training</li>
+            <li><a href="../diet/">The Gut&ndash;Brain Connection</a> &mdash; on this site</li>
+        </ul>
+
+    <script>
+        (function () {
+            var ids = ['w', 'age', 'hft', 'hin', 'sex', 'act', 'goal'];
+            var KEY = 'vitality-macros';
+            var el = {};
+            ids.forEach(function (id) { el[id] = document.getElementById(id); });
+            try {
+                var saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {};
+                ids.forEach(function (id) { if (saved[id] != null && saved[id] !== '') el[id].value = saved[id]; });
+            } catch (e) {}
+
+            function r5(x) { return Math.round(x / 5) * 5; }
+
+            function calc() {
+                var store = {};
+                ids.forEach(function (id) { store[id] = el[id].value; });
+                try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {}
+
+                var lb = parseFloat(el.w.value), age = parseFloat(el.age.value);
+                var inches = (parseFloat(el.hft.value) || 0) * 12 + (parseFloat(el.hin.value) || 0);
+                var out = document.getElementById('out');
+                if (!(lb > 0) || !(age > 0) || !(inches > 0)) {
+                    out.innerHTML = '<p class="meta">Enter your weight and age.</p>';
+                    return;
+                }
+                var kg = lb / 2.2046, cm = inches * 2.54;
+                var bmr = 10 * kg + 6.25 * cm - 5 * age + (el.sex.value === 'm' ? 5 : -161);
+                var tdee = bmr * parseFloat(el.act.value);
+                var goal = el.goal.value, kcal, pPerLb, fPerLb, rate;
+                if (goal === 'bulk') { kcal = tdee * 1.10; pPerLb = 0.8; fPerLb = 0.35; rate = '+' + (lb * 0.0025).toFixed(1) + ' to +' + (lb * 0.005).toFixed(1) + ' lb/week'; }
+                else if (goal === 'cut') { kcal = tdee - 3.75 * lb; pPerLb = 1.0; fPerLb = 0.3; rate = '−' + (lb * 0.005).toFixed(1) + ' to −' + (lb * 0.01).toFixed(1) + ' lb/week'; }
+                else { kcal = tdee; pPerLb = 0.9; fPerLb = 0.35; rate = 'hold steady'; }
+                var protein = lb * pPerLb;
+                var fat = Math.max(lb * fPerLb, kcal * 0.2 / 9);
+                var carbs = Math.max(0, (kcal - protein * 4 - fat * 9) / 4);
+                var fiber = kcal / 1000 * 14;
+                out.innerHTML =
+                    '<table>' +
+                    '<tr><td>Estimated maintenance</td><td>' + r5(tdee).toLocaleString() + ' kcal</td></tr>' +
+                    '<tr><td><b>Daily calories</b></td><td>' + r5(kcal).toLocaleString() + ' kcal</td></tr>' +
+                    '<tr><td>Protein</td><td>' + r5(protein) + ' g</td></tr>' +
+                    '<tr><td>Fat</td><td>' + r5(fat) + ' g</td></tr>' +
+                    '<tr><td>Carbs</td><td>' + r5(carbs) + ' g</td></tr>' +
+                    '<tr><td>Fiber</td><td>' + Math.round(fiber) + ' g</td></tr>' +
+                    '<tr><td>Target weight change</td><td>' + rate + '</td></tr>' +
+                    '</table>' +
+                    '<p class="meta">Maintenance uses the Mifflin&ndash;St Jeor equation. If you carry a lot of body fat, base protein on your goal weight instead.</p>';
+            }
+            ids.forEach(function (id) {
+                el[id].addEventListener('input', calc);
+                el[id].addEventListener('change', calc);
+            });
+            calc();
+        })();
+    </script>
+    </div>
+</body>
+</html>
+

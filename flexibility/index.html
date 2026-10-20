@@ -7,183 +7,12 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Flexibility Plan</title>
     <link rel="icon" href="../assets/favicon.ico">
-<style>
-     @font-face {
-        font-family: 'EB Garamond';
-        src: url('../static/EBGaramond-Regular.ttf') format('truetype');
-        font-weight: 400;
-     }
-     @font-face {
-        font-family: 'EB Garamond';
-        src: url('../static/EBGaramond-SemiBold.ttf') format('truetype');
-        font-weight: 600;
-     }
-     @font-face {
-        font-family: 'EB Garamond';
-        src: url('../static/EBGaramond-Bold.ttf') format('truetype');
-        font-weight: 700;
-     }
-
-     :root {
-        --ink: #1c2420;
-        --bg: #f6f3ec;
-        --rule: rgba(28, 36, 32, 0.2);
-        --soft: rgba(28, 36, 32, 0.06);
-     }
-
-     html, body {
-         margin: 0;
-         padding: 0;
-         width: 100%;
-         min-height: 100%;
-         background-color: var(--bg);
-         color: var(--ink);
-     }
-
-     body {
-         display: flex;
-         align-items: flex-start;
-         justify-content: center;
-         box-sizing: border-box;
-         padding: 30px 15px;
-     }
-
-     .card {
-         width: 100%;
-         max-width: 720px;
-         text-align: left;
-         font-family: 'EB Garamond', Georgia, serif;
-         font-size: 1.08rem;
-         line-height: 1.5;
-         background: rgba(253, 251, 247, 0.6);
-         border: 1px solid rgba(255, 255, 255, 0.6);
-         border-radius: 28px;
-         box-shadow: 0 40px 80px -30px rgba(28, 36, 32, 0.35), 0 2px 10px rgba(28, 36, 32, 0.08);
-         padding: 40px 44px;
-         box-sizing: border-box;
-     }
-
-     .back-link {
-        display: inline-block;
-        margin-bottom: 18px;
-        font-size: 0.95rem;
-     }
-
-     .logo {
-         display: block;
-         margin: 0 auto 15px auto;
-         width: 75px;
-         height: auto;
-     }
-
-     h1 {
-        font-weight: 700;
-        text-align: center;
-        margin: 0 0 6px;
-        font-size: 1.6rem;
-     }
-
-     .intro {
-        text-align: center;
-        margin: 0 auto 8px;
-     }
-
-     h2 {
-         font-weight: 700;
-         font-size: 1.3rem;
-         margin: 34px 0 8px;
-         border-bottom: 1px solid var(--rule);
-         padding-bottom: 3px;
-     }
-
-     h3 {
-         font-weight: 700;
-         font-size: 1.08rem;
-         margin: 18px 0 4px;
-     }
-
-     p { margin: 6px 0 10px; }
-
-     ul, ol { margin: 4px 0 10px; padding-left: 24px; }
-     li { margin-bottom: 4px; }
-
-     ul.videos li { margin-bottom: 6px; }
-
-     .desc {
-        display: block;
-        font-size: 0.85rem;
-        font-weight: 400;
-        opacity: 0.65;
-        margin-top: -2px;
-     }
-
-     .phase-meta {
-        font-size: 0.92rem;
-        opacity: 0.75;
-        margin-top: -4px;
-     }
-
-     .note {
-        background: var(--soft);
-        border-radius: 12px;
-        padding: 10px 14px;
-        font-size: 0.98rem;
-     }
-
-     table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 6px 0 12px;
-        font-size: 1rem;
-     }
-     th, td {
-        text-align: left;
-        padding: 6px 8px;
-        border-bottom: 1px solid var(--rule);
-        vertical-align: top;
-     }
-     th { font-weight: 700; width: 3.2em; }
-
-     .tracker {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 6px;
-        margin: 8px 0 6px;
-     }
-     .tracker label {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        padding: 6px 0;
-        border: 1px solid var(--rule);
-        border-radius: 10px;
-        font-size: 0.92rem;
-        cursor: pointer;
-        user-select: none;
-     }
-     .tracker input { accent-color: var(--ink); margin: 0; }
-     .tracker label.done { background: var(--soft); }
-
-     a {
-         color: var(--ink);
-         text-decoration: none;
-         font-weight: 600;
-     }
-     a:hover { color: #8C8CF7; }
-
-     @media (max-width: 480px) {
-         body { padding: 20px 12px; }
-         .card { padding: 28px 22px; }
-         h1 { font-size: 1.4rem; }
-         .tracker { grid-template-columns: repeat(4, 1fr); }
-     }
-</style>
+    <link rel="stylesheet" href="../styles/vitality.css">
 </head>
 <body>
     <div class="card">
 
-        <a class="back-link" href="../">&larr; Home</a>
+        <nav class="vnav"><a href="../vitality/">Hub</a><a href="../strength/">Strength</a><a href="../flexibility/" class="here">Flexibility</a><a href="../nutrition/">Nutrition</a><a href="../energy/">Energy & Health</a></nav>
 
         <img class="logo" src="../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
 
@@ -192,8 +21,16 @@
             A full pancake, a deep toe touch, and a backbend that works toward toes-to-head.
             Videos open in the site&rsquo;s player &mdash; full credit to the creators.
         </p>
+        <p class="toc">
+            <a href="#how">How it works</a>
+            <a href="#science">Science</a>
+            <a href="#phases">Phases</a>
+            <a href="#ladder">Backbend</a>
+            <a href="#schools">Methods</a>
+            <a href="#progress">Progress</a>
+        </p>
 
-        <h2>How it works</h2>
+        <h2 id="how">How it works</h2>
         <p>Two kinds of sessions, and that&rsquo;s the whole system:</p>
         <ul>
             <li><b>Daily</b> &mdash; 10&ndash;15 minutes, easy, almost every day. It keeps what you&rsquo;ve gained.</li>
@@ -205,20 +42,30 @@
             Expect 6&ndash;18 months for a pancake and longer for the backbend.
         </p>
 
-        <h2>Weekly schedule</h2>
-        <table>
-            <tr><th>Mon</th><td>Lift + <b>Focus A</b> (pancake &amp; hamstrings)</td></tr>
-            <tr><th>Tue</th><td>Daily</td></tr>
-            <tr><th>Wed</th><td>Lift + <b>Focus B</b> (back &amp; bridge)</td></tr>
-            <tr><th>Thu</th><td>Daily</td></tr>
-            <tr><th>Fri</th><td>Lift + <b>Focus A</b></td></tr>
-            <tr><th>Sat</th><td>Daily, or the longer full-body routine</td></tr>
+        <h3>Weekly schedule</h3>
+        <table class="week">
+            <tr><th>Mon</th><td>Upper body lift + <b>Focus B</b> (back &amp; shoulders)</td></tr>
+            <tr><th>Tue</th><td>Lower body lift + <b>Focus A</b> (pancake &amp; hamstrings)</td></tr>
+            <tr><th>Wed</th><td>Daily</td></tr>
+            <tr><th>Thu</th><td>Upper body lift + Daily</td></tr>
+            <tr><th>Fri</th><td>Lower body lift + <b>Focus A</b></td></tr>
+            <tr><th>Sat</th><td>The longer full-body routine (add a second Focus B once you&rsquo;re in Phase 2)</td></tr>
             <tr><th>Sun</th><td>Rest</td></tr>
         </table>
-        <p>Short on time? Keep the two Focus A sessions and one Focus B. Daily sessions are the first thing to drop.</p>
+        <p class="meta">Matches the sample week on the <a href="../vitality/">Hub</a>. Short on time? Keep the two Focus A sessions and one Focus B; drop Daily sessions first.</p>
 
-        <h2>Phase 1 &mdash; Foundation</h2>
-        <p class="phase-meta">Weeks 1&ndash;8 &middot; move on once these feel easy, not before week 8</p>
+        <h2 id="science">What the research says</h2>
+        <ul>
+            <li><b>Weekly time matters most.</b> A review of 23 studies found at least about 5 minutes of stretching per muscle per week was needed for gains, and more stretching days per week helped more than longer single sessions.</li>
+            <li><b>Static stretching works best</b> for long-term range, though every method improved it.</li>
+            <li><b>Lifting through a full range builds flexibility too</b> &mdash; a 2021 meta-analysis found strength training and stretching improved range of motion about equally. Loaded stretching gets you both.</li>
+            <li><b>Stretching before lifting is fine</b> if each hold is under about 60 seconds. Longer holds can sap strength for that session, so save long holds for after.</li>
+            <li><b>You keep range by using it.</b> Once you reach a goal, roughly a sixth of the work it took to build it maintains it.</li>
+        </ul>
+        <p class="src">Thomas et al., <i>Int J Sports Med</i> 2018 &middot; Afonso et al., <i>Healthcare</i> 2021 &middot; Kay &amp; Blazevich, <i>Med Sci Sports Exerc</i> 2012 &middot; Tom Merrick, Bodyweight Warrior</p>
+
+        <h2 id="phases">Phase 1 &mdash; Foundation</h2>
+        <p class="meta">Weeks 1&ndash;8 &middot; move on once these feel easy, not before week 8</p>
         <h3>Daily</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=L_xrDAtykMI&amp;t=15%20Minute%20Beginner%20Stretch%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Beginner Stretch Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
@@ -229,28 +76,35 @@
         <ul class="videos">
             <li><a href="../stretching/watch/?v=Z9diEcFCFME&amp;t=Beginner%20Hamstring%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">Beginner Hamstring Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
             <li><a href="../stretching/watch/?v=bs63okrxH8E&amp;t=15%20Minute%20Pancake%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Pancake Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=zLewsx9rL_8&amp;t=How%20to%20Get%20Down%20in%20the%20Pancake&amp;c=Kit%20Laughlin&amp;from=flexibility">How to Get Down in the Pancake</a><span class="desc">Kit Laughlin &middot; technique for getting down in the pancake</span></li>
         </ul>
-        <h3>Focus B &mdash; back</h3>
+        <h3>Focus B &mdash; back &amp; shoulders</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=tSvmWU-0Zo0&amp;t=How%20To%20Back%20Bridge%20For%20Beginners&amp;c=FitnessFAQs&amp;from=flexibility">How To Back Bridge For Beginners</a><span class="desc">FitnessFAQs &middot; learn the bridge properly before pushing depth</span></li>
+            <li><a href="../stretching/watch/?v=g-MPVjOmOrA&amp;t=Top%209%20Exercises%20to%20Warm%20Up%20Your%20Shoulders&amp;c=Antranik&amp;from=flexibility">Top 9 Exercises to Warm Up Your Shoulders</a><span class="desc">Antranik &middot; use as the warm-up</span></li>
+            <li><a href="../stretching/watch/?v=yQk3GD53DV0&amp;t=Practitioner%20Hip%20Flexor%20Stretch&amp;c=Kit%20Laughlin&amp;from=flexibility">Practitioner Hip Flexor Stretch</a><span class="desc">Kit Laughlin &middot; hip flexors limit backbends more than the spine</span></li>
         </ul>
 
         <h2>Phase 2 &mdash; Build</h2>
-        <p class="phase-meta">Weeks 9&ndash;20 &middot; longer holds, some load</p>
+        <p class="meta">Weeks 9&ndash;20 &middot; longer holds, some load</p>
         <h3>Daily</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=R3WDe7byUXo&amp;t=15%20Minute%20Full%20Body%20Mobility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Full Body Mobility Routine</a><span class="desc">Tom Merrick</span></li>
             <li><a href="../stretching/watch/?v=CmCysOVh5gA&amp;t=30%20Minute%20Full%20Body%20Flexibility%20Routine%20V4&amp;c=Tom%20Merrick&amp;from=flexibility">30 Minute Full Body Flexibility Routine V4</a><span class="desc">Tom Merrick &middot; Saturday</span></li>
+            <li><a href="../stretching/watch/?v=UNX7jc7S1_g&amp;t=One-Hour%20Beginner%20Stretch%20Therapy%20Class&amp;c=Kit%20Laughlin&amp;from=flexibility">One-Hour Beginner Stretch Therapy Class</a><span class="desc">Kit Laughlin &middot; one-hour class; a good Saturday alternative</span></li>
         </ul>
         <h3>Focus A &mdash; alternate these</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=c6phS041zwU&amp;t=25%20Minute%20Pancake%20Flexibility%20Routine%20V2&amp;c=Tom%20Merrick&amp;from=flexibility">25 Minute Pancake Flexibility Routine V2</a><span class="desc">Tom Merrick &middot; main pancake session</span></li>
             <li><a href="../stretching/watch/?v=pq3X3Gl4nzE&amp;t=20%20Minute%20Middle%20Split%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">20 Minute Middle Split Flexibility Routine</a><span class="desc">Tom Merrick &middot; straddle width feeds the pancake</span></li>
             <li><a href="../stretching/watch/?v=3Ymjw7TSzrE&amp;t=15%20Minute%20Hamstring%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Hamstring Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=nAeU-4QDl1I&amp;t=Skater%20Squat%20and%20Cossack%20Squat%20Tutorial&amp;c=Kit%20Laughlin&amp;from=flexibility">Skater Squat and Cossack Squat Tutorial</a><span class="desc">Kit Laughlin &middot; strength in the straddle</span></li>
         </ul>
-        <h3>Focus B &mdash; back</h3>
+        <h3>Focus B &mdash; back &amp; shoulders</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=W-CDmfcTXNo&amp;t=Spinal%20Flexibility%3A%20Backbending%20and%20Bridge%20Routine&amp;c=GMB%20Fitness&amp;from=flexibility">Spinal Flexibility: Backbending and Bridge Routine</a><span class="desc">GMB Fitness</span></li>
+            <li><a href="../stretching/watch/?v=j2hozPuCLTE&amp;t=Shoulder%20%26%20Upper%20Back%20Flexibility%20Program&amp;c=Antranik&amp;from=flexibility">Shoulder &amp; Upper Back Flexibility Program</a><span class="desc">Antranik &middot; overhead range you need for a full bridge</span></li>
+            <li><a href="../stretching/watch/?v=d0HfgL6r3zg&amp;t=Camel%20Pose%20Backbend%20Tutorial&amp;c=Antranik&amp;from=flexibility">Camel Pose Backbend Tutorial</a><span class="desc">Antranik</span></li>
         </ul>
         <h3>On lifting days (swap in for a set or two)</h3>
         <ul class="videos">
@@ -259,7 +113,7 @@
         </ul>
 
         <h2>Phase 3 &mdash; Push</h2>
-        <p class="phase-meta">Week 21 on &middot; heavy loaded stretching, advanced positions</p>
+        <p class="meta">Week 21 on &middot; heavy loaded stretching, advanced positions</p>
         <h3>Focus A</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=GmZJjpcvPrQ&amp;t=Ballistic%20Pancake%20Stretching%20Routine%20ft.%20Emmet%20Louis&amp;c=Tom%20Merrick&amp;from=flexibility">Ballistic Pancake Stretching Routine ft. Emmet Louis</a><span class="desc">Tom Merrick &middot; once a part-way pancake is there</span></li>
@@ -267,14 +121,14 @@
             <li><a href="../stretching/watch/?v=1ETlQl_6ISk&amp;t=Seated%20Pancake%20Good%20Mornings%20%28demo%29&amp;c=MissIzaCalzado&amp;from=flexibility">Seated Pancake Good Mornings (demo)</a><span class="desc">MissIzaCalzado &middot; loaded pancake drill; start with a light plate</span></li>
         </ul>
         <h3>Focus B</h3>
-        <p>Keep the GMB routine and work down the backbend ladder below.</p>
+        <p>Keep the GMB and Antranik routines and work down the backbend ladder below.</p>
         <h3>Optional &mdash; front splits</h3>
         <ul class="videos">
             <li><a href="../stretching/watch/?v=m_XEo-iecCs&amp;t=20%20Minute%20Front%20Splits%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">20 Minute Front Splits Routine</a><span class="desc">Tom Merrick</span></li>
             <li><a href="../stretching/watch/?v=bMzEV_5kmR4&amp;t=Front%20Split%20Loaded%20Mobility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">Front Split Loaded Mobility Routine</a><span class="desc">Tom Merrick</span></li>
         </ul>
 
-        <h2>Backbend ladder</h2>
+        <h2 id="ladder">Backbend ladder</h2>
         <p>Toes-to-head is the top rung. Hold each until it&rsquo;s comfortable for 3 sets of 30 seconds, then move up.</p>
         <ol>
             <li>Sphinx, then cobra</li>
@@ -286,7 +140,7 @@
             <li>King pigeon &mdash; foot to head, one leg</li>
             <li>Chest stand, then toes toward the head</li>
         </ol>
-        <p class="note">Most backbend limits are tight hip flexors and shoulders, not the spine. Couch stretch and overhead shoulder work count as backbend training.</p>
+        <p class="note">Most backbend limits are tight hip flexors and shoulders, not the spine. Couch stretch and overhead shoulder work count as backbend training. Build slowly: the lower back takes months to adapt, and any sharp or nerve-like pain means stop.</p>
 
         <h2>Loaded stretching for lifters</h2>
         <ul>
@@ -294,8 +148,56 @@
             <li><b>Seated pancake good morning</b> &mdash; sit in the straddle with a plate or bar, fold forward with a flat back.</li>
             <li><b>Deep-stretch RDLs</b> &mdash; pause 2 seconds at the bottom.</li>
             <li><b>Weighted pancake hold</b> &mdash; plate on the upper back, 30&ndash;60 seconds.</li>
+            <li><b>Cossack squats</b> and <b>ATG split squats</b> &mdash; strength at the end of your hip range.</li>
         </ul>
-        <p>2&ndash;3 sets each, after lifting. Go light and progress slowly &mdash; these build strength at end range, which is what makes the new range stick.</p>
+        <p>2&ndash;3 sets each, after lifting. Go light and progress slowly &mdash; strength at end range is what makes new range stick.</p>
+
+        <h2 id="schools">Methods &amp; schools of thought</h2>
+        <div class="school">
+            <h3>Stretch Therapy</h3>
+            <dl>
+                <dt>Who</dt><dd>Kit Laughlin</dd>
+                <dt>Idea</dt><dd>Contract-relax done gently and precisely, often with a partner, plus relaxation to calm the nervous system&rsquo;s protective tension. The source of many adult pancakes.</dd>
+            </dl>
+        </div>
+        <div class="school">
+            <h3>Loaded progressive stretching</h3>
+            <dl>
+                <dt>Who</dt><dd>Emmet Louis, Tom Merrick (Bodyweight Warrior)</dd>
+                <dt>Idea</dt><dd>Treat flexibility like strength: sets, reps, load and progression in the stretched position. Twice-weekly hard sessions plus easy daily practice &mdash; the structure this plan uses.</dd>
+            </dl>
+            <ul class="videos"><li><a href="../stretching/watch/?v=nF9-fz20bDM&amp;t=Interview%20with%20Emmet%20Louis%3A%20Flexibility%20for%20Lifters&amp;c=Propane&amp;from=flexibility">Interview with Emmet Louis: Flexibility for Lifters</a><span class="desc">Propane &middot; long interview, worth a listen</span></li></ul>
+        </div>
+        <div class="school">
+            <h3>Functional Range Conditioning (FRC)</h3>
+            <dl>
+                <dt>Who</dt><dd>Dr. Andreo Spina</dd>
+                <dt>Idea</dt><dd><b>CARs</b> &mdash; slow, controlled circles of each joint at its outer limits, done daily. <b>PAILs/RAILs</b> &mdash; hard isometric contractions at end range to strengthen and claim new range.</dd>
+                <dt>Try</dt><dd>Add hip and shoulder CARs (5 slow circles each way) to your daily session.</dd>
+            </dl>
+        </div>
+        <div class="school">
+            <h3>Knees Over Toes</h3>
+            <dl>
+                <dt>Who</dt><dd>Ben Patrick</dd>
+                <dt>Idea</dt><dd>Strengthen joints through their full range from the ground up: backward walking, tibialis raises, ATG split squats, Jefferson curls. Popular for knee health.</dd>
+            </dl>
+            <ul class="videos"><li><a href="../stretching/watch/?v=KPHVrjRmlUY&amp;t=How%20To%20Build%20a%20Bulletproof%20Body%3A%20Ben%20Patrick&amp;c=FitnessFAQs%20Podcast&amp;from=flexibility">How To Build a Bulletproof Body: Ben Patrick</a><span class="desc">FitnessFAQs Podcast &middot; interview</span></li></ul>
+        </div>
+        <div class="school">
+            <h3>Gymnastics &amp; calisthenics mobility</h3>
+            <dl>
+                <dt>Who</dt><dd>Antranik, GMB Fitness, FitnessFAQs</dd>
+                <dt>Idea</dt><dd>Mobility in service of skills &mdash; bridges, handstands, L-sits. Clear progressions and strong shoulder work.</dd>
+            </dl>
+        </div>
+        <div class="school">
+            <h3>Classic martial-arts stretching</h3>
+            <dl>
+                <dt>Who</dt><dd>Thomas Kurz, Pavel Tsatsouline</dd>
+                <dt>Idea</dt><dd>Dynamic stretching in the morning, isometric stretching for strength at length, relaxed static stretching to finish. Built for splits.</dd>
+            </dl>
+        </div>
 
         <h2>Checkpoints &mdash; every 4 weeks</h2>
         <ul>
@@ -304,19 +206,20 @@
             <li><b>Bridge:</b> measure hands-to-heels distance.</li>
         </ul>
 
-        <h2>Progress</h2>
+        <h2 id="progress">Progress</h2>
         <p>Tick each week you hit your sessions. Saved on this device only.</p>
         <div class="tracker" id="tracker"></div>
 
-        <h2>Further reading</h2>
+        <h2>Further reading &amp; resources</h2>
         <ul>
-            <li><b>Stretch Therapy</b> &mdash; Kit Laughlin</li>
-            <li><b>Relax into Stretch</b> &mdash; Pavel Tsatsouline</li>
-            <li><b>Stretching Scientifically</b> &mdash; Thomas Kurz</li>
-            <li><b>Mobility Development</b> &mdash; Emmet Louis</li>
+            <li><i>Stretch Therapy</i> &mdash; Kit Laughlin</li>
+            <li><i>Relax into Stretch</i> &mdash; Pavel Tsatsouline</li>
+            <li><i>Stretching Scientifically</i> &mdash; Thomas Kurz</li>
+            <li><i>Mobility Development</i> &mdash; Emmet Louis</li>
+            <li><a class="ext" href="https://www.bodyweightwarrior.co.uk/blog/get-started-with-flexibility/" target="_blank" rel="noopener noreferrer">Where to start with flexibility</a> &mdash; Tom Merrick&rsquo;s guide, beginner to advanced</li>
+            <li><a class="ext" href="https://antranik.org/splits/" target="_blank" rel="noopener noreferrer">Antranik&rsquo;s splits routine</a> &mdash; detailed, free</li>
+            <li><a href="../stretching/">Stretching</a> &mdash; more beginner routines on this site</li>
         </ul>
-
-    </div>
 
     <script>
         (function () {
@@ -344,5 +247,7 @@
             }
         })();
     </script>
+    </div>
 </body>
 </html>
+

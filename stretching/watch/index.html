@@ -138,7 +138,11 @@
         // Pages that reuse this player can pass ?from=<key> to get a matching
         // back link. Only keys listed here are honored.
         var backTargets = {
-            flexibility: { href: '../../flexibility/', label: 'Back to Flexibility Plan' }
+            flexibility: { href: '../../flexibility/', label: 'Back to Flexibility Plan' },
+            strength: { href: '../../strength/', label: 'Back to Strength & Muscle' },
+            nutrition: { href: '../../nutrition/', label: 'Back to Nutrition & Macros' },
+            energy: { href: '../../energy/', label: 'Back to Energy & Health' },
+            vitality: { href: '../../vitality/', label: 'Back to Physical Vitality' }
         };
         var back = backTargets[params.get('from')];
         if (back) {
