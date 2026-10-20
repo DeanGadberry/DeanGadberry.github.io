@@ -254,3 +254,20 @@ a.ext::after { content: " \2197"; font-size: 0.8em; opacity: 0.6; }
     .school dt { float: none; width: auto; }
     .school dd { margin-left: 0; }
 }
+
+/* Citations */
+sup.cite {
+    font-size: 0.7em;
+    line-height: 0;
+    margin-left: 1px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+sup.cite a { font-weight: 600; opacity: 0.75; }
+ol.refs {
+    font-size: 0.86rem;
+    line-height: 1.45;
+    padding-left: 26px;
+}
+ol.refs li { margin-bottom: 6px; }
+ol.refs li:target { background: var(--soft); border-radius: 6px; }
