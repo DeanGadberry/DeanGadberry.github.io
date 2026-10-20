@@ -80,13 +80,27 @@ a:hover { text-decoration: underline; }
 }
 
 /* ------------------------------------------------------------ masthead */
+/* The branded card back as a band: the book colour, the mark tessellated
+   across it in the paper's off-white, and the book-colour gradient deepening
+   to its solid edge on the right, as the cards' side stripe does. */
 
-.masthead { text-align: center; padding: 36px 16px 8px; }
-/* The shared mark inherits its weight from the <use> that draws it. */
-use { stroke-width: 2; }
-.logo { width: min(360px, 86vw); height: auto; color: var(--brand); overflow: visible; cursor: pointer; display: block; margin: 0 auto; }
-.logo text { font: 600 9px var(--serif); letter-spacing: 1.4px; fill: currentColor; }
-.tagline { margin: 6px 0 0; font-style: italic; color: var(--muted); font-size: 1.05rem; }
+.masthead {
+  position: relative; overflow: hidden; color: var(--paper);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--book) 82%, #0b1a2a) 0%, var(--book) 55%, color-mix(in srgb, var(--book) 70%, #08121d) 100%);
+  padding: 28px 16px 26px;
+}
+.masthead .tess { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--paper); opacity: 0.13; pointer-events: none; }
+.masthead-inner { position: relative; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; }
+.logo { width: 112px; height: auto; color: var(--paper); overflow: visible; cursor: pointer; flex: none; }
+.wordmark { text-align: left; }
+.wordmark .name { font: 600 2.1rem/1 var(--serif); letter-spacing: 0.32em; }
+.wordmark .hebrew { font: 500 1.6rem/1 'SBL Hebrew', 'Taamey Frank CLM', 'Times New Roman', serif; letter-spacing: 0; opacity: 0.8; margin-left: 4px; }
+.tagline { margin: 8px 0 0; font-style: italic; font-size: 1.12rem; opacity: 0.88; }
+
+/* The canon in Chi Rho Cards' nine section colours, one bar per book, 1 Peter marked. */
+.canon { display: flex; height: 7px; align-items: flex-start; }
+.canon i { flex: 1; height: 100%; }
+.canon i.here { flex: 3; height: 14px; border-radius: 0 0 3px 3px; }
 
 /* ------------------------------------------------------------ layout */
 
@@ -96,7 +110,14 @@ use { stroke-width: 2; }
 }
 .pane-controls { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
 @media (min-width: 960px) {
-  .layout { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: start; }
+  .layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); column-gap: 56px; row-gap: 28px; align-items: start;
+    grid-template-areas: "pick text" "options text";
+    grid-template-rows: auto 1fr;
+  }
+  .pane-controls { grid-area: pick; }
+  .pane-text { grid-area: text; }
+  .pane-options { grid-area: options; }
 }
 
 .book-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
@@ -183,79 +204,42 @@ use { stroke-width: 2; }
 .ref input:focus { outline: 2px solid var(--book-ink); outline-offset: 0; }
 .btn {
   padding: 8px 16px; border-radius: 30px; border: 0; cursor: pointer;
-  background: var(--brand); color: var(--paper); font: 600 15px var(--serif); letter-spacing: 0.5px;
+  background: var(--book); color: var(--on-book); font: 600 15px var(--serif); letter-spacing: 0.5px;
 }
 .err { margin: -8px 0 0; color: #b3261e; font: 14px var(--ui); }
-
-/* ------------------------------------------------------------ the card */
-/* A Chi Rho business card, landscape: header and rule, verse-number column,
-   KJV / logo / number footer, and the book-colour stripe on the right edge
-   of the front and the left edge of the back (a card turns over left to
-   right). The card flips to the next verse as it plays. */
-
-.card-stage { perspective: 1400px; padding: 6px 0 4px; }
-.card { container-type: inline-size; }
-.card-inner {
-  display: grid; transform-style: preserve-3d;
-  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-.face {
-  grid-area: 1 / 1; position: relative;
-  min-height: calc(100cqw * 4 / 7);
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  background: var(--paper); color: var(--ink);
-  border-radius: 12px; overflow: hidden;
-  box-shadow: var(--shadow-card);
-  padding: 6.5cqw 13cqw 15cqw 7cqw;
-  display: flex; flex-direction: column;
-}
-.face.back { transform: rotateY(180deg); padding: 6.5cqw 7cqw 15cqw 13cqw; }
-.face::after {
-  content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 6.2cqw;
-  background: linear-gradient(270deg, var(--book), color-mix(in srgb, var(--book) 0%, transparent));
-}
-.face.back::after { right: auto; left: 0; background: linear-gradient(90deg, var(--book), color-mix(in srgb, var(--book) 0%, transparent)); }
-.face-head {
-  font: 700 3.1cqw/1 var(--serif); letter-spacing: 0.45cqw; text-transform: uppercase; color: var(--book);
-  padding-bottom: 1.8cqw; border-bottom: 1px solid color-mix(in srgb, var(--book) 40%, transparent);
-  display: flex; justify-content: space-between;
-}
-.face-head .src { font-weight: 600; color: var(--gray); letter-spacing: 0.3cqw; }
-.face-body { display: grid; grid-template-columns: 4.6cqw 1fr; gap: 0 1.4cqw; padding-top: 2.6cqw; }
-.face-body .vn { font: 700 3.1cqw/1.9 var(--serif); color: var(--book); text-align: right; }
-.face-body p { margin: 0; font: 400 4.25cqw/1.42 var(--serif); }
-.face.long .face-body p { font-size: 3.55cqw; }
-.face.xlong .face-body p { font-size: 3.05cqw; }
-.face-foot {
-  position: absolute; left: 7cqw; right: 13cqw; bottom: 5cqw;
-  display: flex; justify-content: space-between; align-items: baseline;
-  font: 600 2.3cqw/1 var(--serif); letter-spacing: 0.3cqw; color: var(--gray);
-}
-.face.back .face-foot { left: 13cqw; right: 7cqw; }
-.face-foot .mini { color: var(--book); display: inline-flex; align-items: baseline; gap: 0.8cqw; }
-.face-foot .mini svg { width: 5.4cqw; height: 4.3cqw; align-self: center; color: var(--book); overflow: visible; }
-.face-foot .mini use { stroke-width: 4.2; }
-.face.title use { stroke-width: 3; }
-.face em { font-style: italic; }
-
-/* Title card: the book opens with the mark and its name, as each Chi Rho deck does. */
-.face.title { justify-content: center; align-items: center; text-align: center; gap: 1.5cqw; padding-bottom: 8cqw; }
-.face.title svg { width: 22cqw; color: var(--book); overflow: visible; }
-.face.title .t-book { font: 700 7cqw/1 var(--serif); color: var(--book); letter-spacing: 0.3cqw; }
-.face.title .t-hint { font: italic 3.4cqw/1.3 var(--serif); color: var(--gray); }
 
 /* ------------------------------------------------------------ options */
 
 .options { display: flex; flex-wrap: wrap; gap: 14px 28px; }
 .option { display: flex; flex-direction: column; gap: 7px; }
 .option .segmented button { font-size: 14.5px; padding: 6px 11px; }
+.save-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.save-note { margin: 0; color: var(--muted); font-size: 0.92rem; font-style: italic; }
+.btn:disabled { opacity: 0.5; cursor: default; }
 
 /* ------------------------------------------------------------ chapter text */
+/* Verse by verse, as Apple Podcasts follows a transcript: while it plays,
+   the verse being read is lit and the others step back. */
+
+.text-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); margin: 8px 0 10px; }
+.text-head .chapter-title { border: 0; margin: 0; }
+.link { border: 0; background: none; padding: 4px 0; color: var(--brand); font: 600 14px var(--serif); letter-spacing: 0.4px; cursor: pointer; }
+.link:hover { text-decoration: underline; }
+.chap-break { font: 600 12px/1 var(--serif); letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); margin: 18px 0 6px; }
+.text.ranged .verse { font-size: 1.22rem; line-height: 1.55; padding: 10px 14px; margin: 2px -14px; }
+.text.ranged .verse.sel { background: transparent; }
+.text.ranged .verse:hover { background: var(--book-soft); }
+.text.live .verse { opacity: 0.38; transition: opacity 0.35s, background-color 0.35s; }
+.text.live .verse.playing {
+  opacity: 1; box-shadow: inset 4px 0 0 var(--book);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--book) 20%, transparent), color-mix(in srgb, var(--book) 4%, transparent));
+}
 
 .chapter-title {
   font: 600 13px/1 var(--serif); letter-spacing: 2px; text-transform: uppercase; color: var(--book-ink);
   margin: 8px 0 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
 }
+.text.ranged ~ .text-hint { display: none; }
 .verse {
   margin: 0 -12px; padding: 7px 12px; border-radius: 10px;
   cursor: pointer; transition: background-color 0.15s, box-shadow 0.15s;
@@ -277,7 +261,7 @@ use { stroke-width: 2; }
   border-top: 1px solid var(--line); color: var(--muted); font-size: 0.98rem;
 }
 .colophon-mark use { stroke-width: 2.6; }
-.colophon-mark { width: 54px; color: var(--brand); overflow: visible; }
+.colophon-mark { width: 54px; color: var(--book-ink); color: var(--brand); overflow: visible; }
 .colophon strong { color: var(--text); }
 .verse-cite { font-style: italic; }
 
@@ -287,7 +271,8 @@ use { stroke-width: 2; }
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--book), color-mix(in srgb, var(--book) 0%, transparent)) 1;
   padding: 10px 16px calc(12px + env(safe-area-inset-bottom));
 }
 .transport-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
@@ -318,7 +303,11 @@ use { stroke-width: 2; }
 
 @media (max-width: 520px) {
   body { font-size: 17px; }
-  .masthead { padding-top: 24px; }
+  .masthead { padding: 20px 16px 18px; }
+  .logo { width: 76px; }
+  .wordmark .name { font-size: 1.6rem; }
+  .wordmark .hebrew { font-size: 1.25rem; }
+  .tagline { font-size: 1rem; margin-top: 6px; }
   .book-name { font-size: 1.7rem; }
   .options { gap: 12px; }
   .option .segmented button { padding: 6px 9px; font-size: 14px; }
@@ -327,5 +316,5 @@ use { stroke-width: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card-inner { transition: none; }
+  .verse { transition: none; }
 }

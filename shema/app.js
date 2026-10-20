@@ -1,4 +1,4 @@
-// Alpha Omega: plays a range of human-recorded verses, optionally announcing
+// Shema: plays a range of human-recorded verses, optionally announcing
 // "Chapter N, verse M" before each one, and loops it.
 //
 // Speed strategy: each verse is its own small MP3, so a range only downloads
@@ -18,8 +18,8 @@ const els = {
   announce: $("announce"), gap: $("gap"), label: $("rangeLabel"), status: $("status"),
   segbar: $("segbar"), trim: $("trim"), track: $("trimTrack"), fill: $("trimFill"),
   lo: $("trimLo"), hi: $("trimHi"), handleLo: $("handleLo"), handleHi: $("handleHi"),
-  ticks: $("trimTicks"), readout: $("trimReadout"), cardInner: $("cardInner"),
-  faces: [$("faceA"), $("faceB")],
+  ticks: $("trimTicks"), readout: $("trimReadout"), viewToggle: $("viewToggle"),
+  save: $("save"), saveLen: $("saveLen"), saveNote: $("saveNote"),
 };
 
 const settings = loadSettings();
@@ -32,6 +32,7 @@ const state = {
   renderId: 0,
   url: null,
   autoplay: false,
+  view: "chapter",     // "range": just the chosen verses; "chapter": a whole chapter to pick from
 };
 
 const audio = new Audio();
@@ -229,12 +230,14 @@ function tick() {
   const key = seg && !audio.paused ? `${seg.c}:${seg.v}` : null;
   if (key !== lastSeg) {
     document.querySelector(".verse.playing")?.classList.remove("playing");
+    els.text.classList.toggle("live", !!key);
     if (key) {
-      if (seg.c !== state.shown) showChapter(seg.c);
       const el = document.getElementById(`v${seg.c}-${seg.v}`);
       el?.classList.add("playing");
-      if (el && innerWidth >= 960) el.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      showVerseCard(seg.c, seg.v);
+      // Follow along, unless the listener has scrolled in the last few seconds.
+      if (el && state.view === "range" && performance.now() - lastUserScroll > 4000) {
+        el.scrollIntoView({ block: "nearest", behavior: REDUCED_MOTION ? "auto" : "smooth" });
+      }
     }
     lastSeg = key;
   }
@@ -242,6 +245,9 @@ function tick() {
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+let lastUserScroll = -1e9;
+// Any scrolling, touching or typing pauses the follow-along for a few seconds.
+for (const ev of ["wheel", "touchmove", "pointerdown", "keydown"]) addEventListener(ev, () => { lastUserScroll = performance.now(); }, { passive: true, capture: true });
 
 function renderSegbar() {
   els.segbar.innerHTML = state.timeline
@@ -284,7 +290,7 @@ function updateMediaSession() {
   navigator.mediaSession.metadata = new MediaMetadata({
     title: fmtRange(state.range),
     artist: `${state.book.reader} · LibriVox`,
-    album: "Alpha Omega",
+    album: "Shema",
     artwork: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" },
               { src: "icon-512.png", sizes: "512x512", type: "image/png" }],
   });
@@ -292,55 +298,125 @@ function updateMediaSession() {
   navigator.mediaSession.setActionHandler("pause", () => audio.pause());
 }
 
-// ------------------------------------------------------------------ the card
+// ------------------------------------------------------------------ verses on screen
+// With a range chosen, only its verses are shown. While it plays, the verse
+// being read is lit and the rest are dimmed, and tapping a verse jumps to
+// it. "Whole chapter" shows a chapter to choose a new range from by tapping
+// a first and a last verse.
 
-const MARK = `<svg viewBox="-46 -34 92 74" aria-hidden="true"><use href="#ao-mark"/></svg>`;
-let cardFace = 0, cardTurn = 0, cardKey = null;
-
-function flipCard(key, html, cls) {
-  if (key === cardKey) return;
-  const first = cardKey === null;
-  cardKey = key;
-  if (REDUCED_MOTION || first) {
-    els.faces[cardFace].innerHTML = html;
-    els.faces[cardFace].className = `face ${cardFace ? "back" : "front"} ${cls}`;
-    return;
+function renderText() {
+  const r = state.range;
+  const ranged = state.view === "range" && !!r;
+  const verses = ranged ? verseList(r) : chapter(state.shown).verses.map((vv) => ({ c: state.shown, ...vv }));
+  const multi = ranged && r.from[0] !== r.to[0];
+  let html = "", lastC = null;
+  for (const vv of verses) {
+    if (multi && vv.c !== lastC) html += `<h3 class="chap-break">Chapter ${vv.c}</h3>`;
+    lastC = vv.c;
+    html += `<p class="verse" id="v${vv.c}-${vv.v}" data-c="${vv.c}" data-v="${vv.v}" tabindex="0" role="button">` +
+      `<sup>${vv.v}</sup> ${kjvHtml(vv.text)}</p>`;
   }
-  const next = 1 - cardFace;
-  els.faces[next].innerHTML = html;
-  els.faces[next].className = `face ${next ? "back" : "front"} ${cls}`;
-  cardTurn -= 180;
-  els.cardInner.style.transform = `rotateY(${cardTurn}deg)`;
-  cardFace = next;
+  els.text.innerHTML = html;
+  els.text.classList.toggle("ranged", ranged);
+  els.chapterTitle.textContent = ranged ? fmtRange(r) : `Chapter ${state.shown}`;
+  els.viewToggle.hidden = !r;
+  els.viewToggle.textContent = ranged ? `Whole chapter ${r.from[0]}` : "Just my verses";
+  paintSelection();
+  lastSeg = null; // re-light the verse being read
 }
 
-function showVerseCard(c, v) {
-  const text = verseText(c, v);
-  const words = text.split(/\s+/).length;
-  const cls = words > 70 ? "xlong" : words > 48 ? "long" : "";
-  flipCard(`${c}:${v}`, `
-    <div class="face-head"><span>1 Peter ${c}</span></div>
-    <div class="face-body"><span class="vn">${v}</span><p>${kjvHtml(text)}</p></div>
-    <div class="face-foot"><span>KJV</span><span class="mini">ALPHA ${MARK} OMEGA</span><span>${c}:${v}</span></div>`, cls);
+els.viewToggle.addEventListener("click", () => {
+  if (state.view === "range") { state.view = "chapter"; showChapter(state.range.from[0]); }
+  else { state.view = "range"; state.anchor = null; renderText(); }
+});
+
+function jumpTo(c, v) {
+  const seg = state.timeline.find((s) => s.c === c && s.v === v);
+  if (!seg) return;
+  audio.currentTime = seg.start;
+  audio.play().catch(() => {});
 }
 
-function showTitleCard() {
-  flipCard("title", `${MARK}<div class="t-book">1 Peter</div>
-    <div class="t-hint">Choose verses with Α and Ω, then press play</div>`, "title");
+// ------------------------------------------------------------------ save a loop
+// A web page can't keep playing once it's closed, so this makes a file
+// that can: the range repeated for 15 minutes to an hour, built by joining
+// the recorded MP3 clips frame by frame (nothing is re-encoded). Each clip's
+// ID3 tag and Xing/Info header are dropped so the joined file is one plain
+// stream whose length every player reads correctly.
+
+const KBPS = { 1: [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320],
+               2: [0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160] };
+const RATES = { 3: [44100, 48000, 32000], 2: [22050, 24000, 16000], 0: [11025, 12000, 8000] };
+function frameLength(b, i) {
+  const ver = (b[i + 1] >> 3) & 3, mpeg1 = ver === 3;
+  const kbps = KBPS[mpeg1 ? 1 : 2][b[i + 2] >> 4], rate = RATES[ver]?.[(b[i + 2] >> 2) & 3];
+  return kbps && rate ? Math.floor(((mpeg1 ? 144 : 72) * kbps * 1000) / rate) + ((b[i + 2] >> 1) & 1) : 0;
 }
+function mp3Frames(buf) {
+  const b = new Uint8Array(buf);
+  let i = 0, end = b.length;
+  if (b[0] === 0x49 && b[1] === 0x44 && b[2] === 0x33) {  // "ID3"
+    i = 10 + (((b[6] & 127) << 21) | ((b[7] & 127) << 14) | ((b[8] & 127) << 7) | (b[9] & 127));
+  }
+  if (end > 128 && b[end - 128] === 0x54 && b[end - 127] === 0x41 && b[end - 126] === 0x47) end -= 128; // "TAG"
+  while (i + 4 < end && !(b[i] === 0xff && (b[i + 1] & 0xe0) === 0xe0)) i++;
+  const head = String.fromCharCode(...b.subarray(i + 4, i + 48));
+  if (/Xing|Info/.test(head)) i += frameLength(b, i);
+  return b.subarray(i, end);
+}
+const rawClips = new Map(); // url -> Promise<Uint8Array>
+function rawClip(url) {
+  if (!rawClips.has(url)) {
+    const p = fetch(url).then((r) => { if (!r.ok) throw new Error(url); return r.arrayBuffer(); }).then(mp3Frames);
+    p.catch(() => rawClips.delete(url));
+    rawClips.set(url, p);
+  }
+  return rawClips.get(url);
+}
+const silenceUrl = (sec) => `audio/1pe/s/${Math.round(sec * 1000)}.mp3`;
+
+async function saveLoop() {
+  const r = state.range;
+  if (!r || !state.total) return;
+  const minutes = +settings.saveLen;
+  els.save.disabled = true;
+  els.saveNote.textContent = "Making the file…";
+  try {
+    const pass = [];
+    for (const vv of verseList(r)) {
+      const ann = annUrl(vv.c, vv.v);
+      if (ann) pass.push(ann, silenceUrl(ANN_GAP));
+      pass.push(`audio/1pe/v/${vv.c}-${vv.v}.mp3`, silenceUrl(+settings.gap));
+    }
+    const parts = await Promise.all(pass.map(rawClip));
+    const repeats = Math.max(1, Math.round((minutes * 60) / state.total));
+    const blob = new Blob(Array.from({ length: repeats }, () => parts).flat(), { type: "audio/mpeg" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `1 Peter ${shortRange(r).replace(/:/g, ".")} - ${minutes < 60 ? `${minutes} min` : "1 hour"} loop.mp3`;
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 60000);
+    els.saveNote.textContent = `Saved: ${repeats} times through, ${fmtTime(repeats * state.total)}, ${(blob.size / 1e6).toFixed(1)} MB.`;
+  } catch {
+    els.saveNote.textContent = "Couldn't make the file. Check the connection and try again.";
+  } finally {
+    els.save.disabled = false;
+  }
+}
+els.save.addEventListener("click", saveLoop);
 
 // ------------------------------------------------------------------ settings
 
 function loadSettings() {
-  const d = { loop: true, announce: "full", gap: "0.8" };
-  try { return { ...d, ...JSON.parse(localStorage.getItem("alphaomega") || "{}") }; } catch { return d; }
+  const d = { loop: true, announce: "full", gap: "0.8", saveLen: "30" };
+  try { return { ...d, ...JSON.parse(localStorage.getItem("shema") || localStorage.getItem("alphaomega") || "{}") }; } catch { return d; }
 }
 function saveSettings() {
-  try { localStorage.setItem("alphaomega", JSON.stringify(settings)); } catch {}
+  try { localStorage.setItem("shema", JSON.stringify(settings)); } catch {}
 }
 function syncSettingsUI() {
   els.loop.setAttribute("aria-pressed", String(settings.loop));
-  for (const [group, value] of [[els.announce, settings.announce], [els.gap, settings.gap]]) {
+  for (const [group, value] of [[els.announce, settings.announce], [els.gap, settings.gap], [els.saveLen, settings.saveLen]]) {
     for (const b of group.querySelectorAll("button")) b.setAttribute("aria-checked", String(b.dataset.v === value));
   }
 }
@@ -349,27 +425,29 @@ els.loop.addEventListener("click", () => {
   audio.loop = settings.loop;
   syncSettingsUI(); saveSettings(); updateStatus();
 });
-for (const [group, key] of [[els.announce, "announce"], [els.gap, "gap"]]) {
+for (const [group, key] of [[els.announce, "announce"], [els.gap, "gap"], [els.saveLen, "saveLen"]]) {
   group.addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (!b || settings[key] === b.dataset.v) return;
     settings[key] = b.dataset.v;
-    syncSettingsUI(); saveSettings(); render();
+    syncSettingsUI(); saveSettings();
+    if (key !== "saveLen") render();
   });
 }
 
 // ------------------------------------------------------------------ selection
 
-function setRange(range, { autoplay = false, card = true } = {}) {
+function setRange(range, { autoplay = false } = {}) {
   state.range = range;
   state.autoplay = autoplay;
   els.label.textContent = fmtRange(range);
   els.ref.value = shortRange(range);
   els.err.hidden = true;
   history.replaceState(null, "", `#${shortRange(range)}`);
-  paintSelection();
+  // Show just the chosen verses, except mid-way through a tap-tap choice.
+  state.view = state.anchor ? "chapter" : "range";
+  renderText();
   renderTrim();
-  if (card && audio.paused) showVerseCard(...range.from);
   render();
 }
 
@@ -388,18 +466,14 @@ function paintSelection() {
 
 function showChapter(c) {
   state.shown = c;
-  const ch = chapter(c);
-  els.chapterTitle.textContent = `Chapter ${c}`;
-  els.text.innerHTML = ch.verses.map((vv) =>
-    `<p class="verse" id="v${c}-${vv.v}" data-c="${c}" data-v="${vv.v}" tabindex="0" role="button">` +
-    `<sup>${vv.v}</sup> ${kjvHtml(vv.text)}</p>`).join("");
   for (const b of els.chapters.querySelectorAll("button")) b.setAttribute("aria-current", String(+b.dataset.c === c));
-  paintSelection();
+  renderText();
   renderTrim(true);
 }
 
 function onVerseTap(el) {
   const at = [+el.dataset.c, +el.dataset.v];
+  if (state.view === "range") return jumpTo(...at);
   if (!state.anchor) {
     state.anchor = at;
     setRange({ from: at, to: at });
@@ -426,8 +500,9 @@ els.form.addEventListener("submit", (e) => {
     const r = parseRef(els.ref.value, state.book);
     if (!r) return;
     state.anchor = null;
-    showChapter(r.from[0]);
+    state.shown = r.from[0];
     setRange(r, { autoplay: true });
+    showChapter(r.from[0]);
   } catch (err) {
     els.err.textContent = err.message;
     els.err.hidden = false;
@@ -510,11 +585,7 @@ function setupTrim() {
     const [lo, hi] = trimSpan() || [v, v];
     if (which === "lo") commit(Math.min(v, hi), hi); else commit(lo, Math.max(v, lo));
   };
-  const end = () => {
-    if (!which) return;
-    grab(null);
-    if (state.range && audio.paused) showVerseCard(...state.range.from);
-  };
+  const end = () => { if (which) grab(null); };
   track.addEventListener("pointermove", move);
   track.addEventListener("pointerup", end);
   track.addEventListener("pointercancel", end);
@@ -522,22 +593,23 @@ function setupTrim() {
     input.addEventListener("input", () => {
       let a = +els.lo.value, b = +els.hi.value;
       if (a > b) { if (w === "lo") a = b; else b = a; }
-      commit(a, b, true);
+      commit(a, b);
     });
     input.addEventListener("focus", () => (w === "lo" ? els.handleLo : els.handleHi).classList.add("focus"));
     input.addEventListener("blur", () => (w === "lo" ? els.handleLo : els.handleHi).classList.remove("focus"));
   }
-  function commit(a, b, card = false) {
+  function commit(a, b) {
     const c = state.shown, r = state.range;
     if (r && r.from[0] === c && r.to[0] === c && r.from[1] === a && r.to[1] === b) return;
     state.anchor = null;
-    setRange({ from: [c, a], to: [c, b] }, { card });
+    setRange({ from: [c, a], to: [c, b] });
   }
 }
 
 // ------------------------------------------------------------------ the mark, built on
-// Alpha draws down from its apex, Omega draws around, then the return arrow
-// sweeps back to the beginning and lands with the Chi Rho logo's "click"
+// The shin's bowl draws down and round, its middle arm follows and the
+// serifs pop on, then the return arrow sweeps back and lands with the Chi
+// Rho logo's "click"
 // (a quick press, then a damped spring: omega0 14.4, zeta 0.8).
 
 function animateLogo() {
@@ -585,6 +657,18 @@ function fmtTime(s) { s = Math.round(s); return `${Math.floor(s / 60)}:${String(
 function kjvHtml(s) { return escapeHtml(s).replace(/\[([^\]]+)\]/g, "<em>$1</em>"); }
 function escapeHtml(s) { return s.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]); }
 
+// ------------------------------------------------------------------ the canon strip
+// Chi Rho Cards' nine section colours (bible_palette.py), one bar per book
+// in canonical order, with this book marked.
+const CANON = [["#4C6A7D", 5], ["#8E244D", 12], ["#B85C00", 5], ["#2E6B66", 5], ["#526E2D", 12],
+               ["#AE3434", 4], ["#A67C52", 1], ["#1C5D99", 13], ["#1C5D99", 8], ["#6B2E8F", 1]];
+const THIS_BOOK = 60; // 1 Peter, 60th of 66
+{
+  let n = 0;
+  $("canon").innerHTML = CANON.flatMap(([color, count]) => Array.from({ length: count }, () =>
+    `<i style="background:${color}"${++n === THIS_BOOK ? ' class="here"' : ""}></i>`)).join("");
+}
+
 // ------------------------------------------------------------------ boot
 
 animateLogo();
@@ -592,15 +676,15 @@ bookReady.then((book) => {
   els.chapters.innerHTML = book.chapters.map((ch) => `<button type="button" data-c="${ch.c}">${ch.c}</button>`).join("");
   els.chapters.addEventListener("click", (e) => {
     const b = e.target.closest("button");
-    if (b) showChapter(+b.dataset.c);
+    if (b) { state.view = "chapter"; showChapter(+b.dataset.c); }
   });
   syncSettingsUI();
   setupTrim();
   let initial = null;
   try { initial = parseRef(decodeURIComponent(location.hash.slice(1)), book); } catch {}
-  showChapter(initial ? initial.from[0] : 1);
+  state.shown = initial ? initial.from[0] : 1;
   if (initial) setRange(initial);
-  else showTitleCard();
+  showChapter(state.shown);
 });
 
 if ("serviceWorker" in navigator) {

@@ -1,12 +1,12 @@
 {
-  "name": "Alpha Omega · 1 Peter",
-  "short_name": "Alpha Omega",
+  "name": "Shema · 1 Peter",
+  "short_name": "Shema",
   "description": "Loop any run of verses, read aloud by a human voice.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#FDFBF7",
-  "theme_color": "#FDFBF7",
+  "theme_color": "#1C5D99",
   "icons": [
     { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
     { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
