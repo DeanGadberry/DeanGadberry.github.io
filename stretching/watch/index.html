@@ -124,7 +124,7 @@
 </head>
 <body>
     <div class="card">
-        <a class="back-link" href="../">&larr; Back to Stretching</a>
+        <a class="back-link" id="back-link" href="../">&larr; Back to Stretching</a>
         <div id="content"></div>
     </div>
 
@@ -134,6 +134,18 @@
         var title = params.get('t');
         var creator = params.get('c');
         var container = document.getElementById('content');
+
+        // Pages that reuse this player can pass ?from=<key> to get a matching
+        // back link. Only keys listed here are honored.
+        var backTargets = {
+            flexibility: { href: '../../flexibility/', label: 'Back to Flexibility Plan' }
+        };
+        var back = backTargets[params.get('from')];
+        if (back) {
+            var backLink = document.getElementById('back-link');
+            backLink.href = back.href;
+            backLink.textContent = '← ' + back.label;
+        }
 
         if (id && /^[A-Za-z0-9_-]{6,15}$/.test(id)) {
             if (title) document.title = title + ' — Stretching';

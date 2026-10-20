@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Flexibility Plan</title>
+    <link rel="icon" href="../assets/favicon.ico">
+<style>
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Regular.ttf') format('truetype');
+        font-weight: 400;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Bold.ttf') format('truetype');
+        font-weight: 700;
+     }
+
+     :root {
+        --ink: #1c2420;
+        --bg: #f6f3ec;
+        --rule: rgba(28, 36, 32, 0.2);
+        --soft: rgba(28, 36, 32, 0.06);
+     }
+
+     html, body {
+         margin: 0;
+         padding: 0;
+         width: 100%;
+         min-height: 100%;
+         background-color: var(--bg);
+         color: var(--ink);
+     }
+
+     body {
+         display: flex;
+         align-items: flex-start;
+         justify-content: center;
+         box-sizing: border-box;
+         padding: 30px 15px;
+     }
+
+     .card {
+         width: 100%;
+         max-width: 720px;
+         text-align: left;
+         font-family: 'EB Garamond', Georgia, serif;
+         font-size: 1.08rem;
+         line-height: 1.5;
+         background: rgba(253, 251, 247, 0.6);
+         border: 1px solid rgba(255, 255, 255, 0.6);
+         border-radius: 28px;
+         box-shadow: 0 40px 80px -30px rgba(28, 36, 32, 0.35), 0 2px 10px rgba(28, 36, 32, 0.08);
+         padding: 40px 44px;
+         box-sizing: border-box;
+     }
+
+     .back-link {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.95rem;
+     }
+
+     .logo {
+         display: block;
+         margin: 0 auto 15px auto;
+         width: 75px;
+         height: auto;
+     }
+
+     h1 {
+        font-weight: 700;
+        text-align: center;
+        margin: 0 0 6px;
+        font-size: 1.6rem;
+     }
+
+     .intro {
+        text-align: center;
+        margin: 0 auto 8px;
+     }
+
+     h2 {
+         font-weight: 700;
+         font-size: 1.3rem;
+         margin: 34px 0 8px;
+         border-bottom: 1px solid var(--rule);
+         padding-bottom: 3px;
+     }
+
+     h3 {
+         font-weight: 700;
+         font-size: 1.08rem;
+         margin: 18px 0 4px;
+     }
+
+     p { margin: 6px 0 10px; }
+
+     ul, ol { margin: 4px 0 10px; padding-left: 24px; }
+     li { margin-bottom: 4px; }
+
+     ul.videos li { margin-bottom: 6px; }
+
+     .desc {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.65;
+        margin-top: -2px;
+     }
+
+     .phase-meta {
+        font-size: 0.92rem;
+        opacity: 0.75;
+        margin-top: -4px;
+     }
+
+     .note {
+        background: var(--soft);
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 0.98rem;
+     }
+
+     table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 6px 0 12px;
+        font-size: 1rem;
+     }
+     th, td {
+        text-align: left;
+        padding: 6px 8px;
+        border-bottom: 1px solid var(--rule);
+        vertical-align: top;
+     }
+     th { font-weight: 700; width: 3.2em; }
+
+     .tracker {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin: 8px 0 6px;
+     }
+     .tracker label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 6px 0;
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+        font-size: 0.92rem;
+        cursor: pointer;
+        user-select: none;
+     }
+     .tracker input { accent-color: var(--ink); margin: 0; }
+     .tracker label.done { background: var(--soft); }
+
+     a {
+         color: var(--ink);
+         text-decoration: none;
+         font-weight: 600;
+     }
+     a:hover { color: #8C8CF7; }
+
+     @media (max-width: 480px) {
+         body { padding: 20px 12px; }
+         .card { padding: 28px 22px; }
+         h1 { font-size: 1.4rem; }
+         .tracker { grid-template-columns: repeat(4, 1fr); }
+     }
+</style>
+</head>
+<body>
+    <div class="card">
+
+        <a class="back-link" href="../">&larr; Home</a>
+
+        <img class="logo" src="../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
+
+        <h1>Flexibility Plan</h1>
+        <p class="intro">
+            A full pancake, a deep toe touch, and a backbend that works toward toes-to-head.
+            Videos open in the site&rsquo;s player &mdash; full credit to the creators.
+        </p>
+
+        <h2>How it works</h2>
+        <p>Two kinds of sessions, and that&rsquo;s the whole system:</p>
+        <ul>
+            <li><b>Daily</b> &mdash; 10&ndash;15 minutes, easy, almost every day. It keeps what you&rsquo;ve gained.</li>
+            <li><b>Focus</b> &mdash; 20&ndash;30 minutes, hard, 2&ndash;3 times a week, right after lifting while you&rsquo;re warm. This is what builds new range.</li>
+        </ul>
+        <p class="note">
+            <b>Rules.</b> Warm up first. Use contract-relax: push into the stretch 5&ndash;10 seconds, let go, breathe out, sink deeper.
+            Strong stretch is fine; sharp or pinching pain means back off. Keep the back flat in the pancake &mdash; fold from the hips.
+            Expect 6&ndash;18 months for a pancake and longer for the backbend.
+        </p>
+
+        <h2>Weekly schedule</h2>
+        <table>
+            <tr><th>Mon</th><td>Lift + <b>Focus A</b> (pancake &amp; hamstrings)</td></tr>
+            <tr><th>Tue</th><td>Daily</td></tr>
+            <tr><th>Wed</th><td>Lift + <b>Focus B</b> (back &amp; bridge)</td></tr>
+            <tr><th>Thu</th><td>Daily</td></tr>
+            <tr><th>Fri</th><td>Lift + <b>Focus A</b></td></tr>
+            <tr><th>Sat</th><td>Daily, or the longer full-body routine</td></tr>
+            <tr><th>Sun</th><td>Rest</td></tr>
+        </table>
+        <p>Short on time? Keep the two Focus A sessions and one Focus B. Daily sessions are the first thing to drop.</p>
+
+        <h2>Phase 1 &mdash; Foundation</h2>
+        <p class="phase-meta">Weeks 1&ndash;8 &middot; move on once these feel easy, not before week 8</p>
+        <h3>Daily</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=L_xrDAtykMI&amp;t=15%20Minute%20Beginner%20Stretch%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Beginner Stretch Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=XIXjdireZzE&amp;t=Morning%20Flexibility%20Routine%20with%20Tom%20Merrick&amp;c=VIVOBAREFOOT&amp;from=flexibility">Morning Flexibility Routine with Tom Merrick</a><span class="desc">VIVOBAREFOOT &middot; 9 min, good before work</span></li>
+            <li><a href="../stretching/watch/?v=OjcN6RzWFWs&amp;t=25%20Minute%20Beginner%20Flexibility%20Routine%20V3&amp;c=Tom%20Merrick&amp;from=flexibility">25 Minute Beginner Flexibility Routine V3</a><span class="desc">Tom Merrick &middot; Saturday</span></li>
+        </ul>
+        <h3>Focus A &mdash; pancake &amp; hamstrings</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=Z9diEcFCFME&amp;t=Beginner%20Hamstring%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">Beginner Hamstring Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=bs63okrxH8E&amp;t=15%20Minute%20Pancake%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Pancake Routine</a><span class="desc">Tom Merrick</span></li>
+        </ul>
+        <h3>Focus B &mdash; back</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=tSvmWU-0Zo0&amp;t=How%20To%20Back%20Bridge%20For%20Beginners&amp;c=FitnessFAQs&amp;from=flexibility">How To Back Bridge For Beginners</a><span class="desc">FitnessFAQs &middot; learn the bridge properly before pushing depth</span></li>
+        </ul>
+
+        <h2>Phase 2 &mdash; Build</h2>
+        <p class="phase-meta">Weeks 9&ndash;20 &middot; longer holds, some load</p>
+        <h3>Daily</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=R3WDe7byUXo&amp;t=15%20Minute%20Full%20Body%20Mobility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Full Body Mobility Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=CmCysOVh5gA&amp;t=30%20Minute%20Full%20Body%20Flexibility%20Routine%20V4&amp;c=Tom%20Merrick&amp;from=flexibility">30 Minute Full Body Flexibility Routine V4</a><span class="desc">Tom Merrick &middot; Saturday</span></li>
+        </ul>
+        <h3>Focus A &mdash; alternate these</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=c6phS041zwU&amp;t=25%20Minute%20Pancake%20Flexibility%20Routine%20V2&amp;c=Tom%20Merrick&amp;from=flexibility">25 Minute Pancake Flexibility Routine V2</a><span class="desc">Tom Merrick &middot; main pancake session</span></li>
+            <li><a href="../stretching/watch/?v=pq3X3Gl4nzE&amp;t=20%20Minute%20Middle%20Split%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">20 Minute Middle Split Flexibility Routine</a><span class="desc">Tom Merrick &middot; straddle width feeds the pancake</span></li>
+            <li><a href="../stretching/watch/?v=3Ymjw7TSzrE&amp;t=15%20Minute%20Hamstring%20Flexibility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">15 Minute Hamstring Flexibility Routine</a><span class="desc">Tom Merrick</span></li>
+        </ul>
+        <h3>Focus B &mdash; back</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=W-CDmfcTXNo&amp;t=Spinal%20Flexibility%3A%20Backbending%20and%20Bridge%20Routine&amp;c=GMB%20Fitness&amp;from=flexibility">Spinal Flexibility: Backbending and Bridge Routine</a><span class="desc">GMB Fitness</span></li>
+        </ul>
+        <h3>On lifting days (swap in for a set or two)</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=b_YEKyeLkcY&amp;t=Strong%20%26%20Flexible%3A%20Lower%20Body%20Workout&amp;c=Tom%20Merrick&amp;from=flexibility">Strong &amp; Flexible: Lower Body Workout</a><span class="desc">Tom Merrick &middot; loaded hips and hamstrings</span></li>
+            <li><a href="../stretching/watch/?v=_fSMxQOHPuY&amp;t=Strong%20%26%20Flexible%3A%20Upper%20Body%20Workout&amp;c=Tom%20Merrick&amp;from=flexibility">Strong &amp; Flexible: Upper Body Workout</a><span class="desc">Tom Merrick &middot; shoulder range you need for bridges</span></li>
+        </ul>
+
+        <h2>Phase 3 &mdash; Push</h2>
+        <p class="phase-meta">Week 21 on &middot; heavy loaded stretching, advanced positions</p>
+        <h3>Focus A</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=GmZJjpcvPrQ&amp;t=Ballistic%20Pancake%20Stretching%20Routine%20ft.%20Emmet%20Louis&amp;c=Tom%20Merrick&amp;from=flexibility">Ballistic Pancake Stretching Routine ft. Emmet Louis</a><span class="desc">Tom Merrick &middot; once a part-way pancake is there</span></li>
+            <li><a href="../stretching/watch/?v=OprCe6oi8sU&amp;t=Middle%20Split%20Loaded%20Mobility%20Routine%20%28Intense%29&amp;c=Tom%20Merrick&amp;from=flexibility">Middle Split Loaded Mobility Routine (Intense)</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=1ETlQl_6ISk&amp;t=Seated%20Pancake%20Good%20Mornings%20%28demo%29&amp;c=MissIzaCalzado&amp;from=flexibility">Seated Pancake Good Mornings (demo)</a><span class="desc">MissIzaCalzado &middot; loaded pancake drill; start with a light plate</span></li>
+        </ul>
+        <h3>Focus B</h3>
+        <p>Keep the GMB routine and work down the backbend ladder below.</p>
+        <h3>Optional &mdash; front splits</h3>
+        <ul class="videos">
+            <li><a href="../stretching/watch/?v=m_XEo-iecCs&amp;t=20%20Minute%20Front%20Splits%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">20 Minute Front Splits Routine</a><span class="desc">Tom Merrick</span></li>
+            <li><a href="../stretching/watch/?v=bMzEV_5kmR4&amp;t=Front%20Split%20Loaded%20Mobility%20Routine&amp;c=Tom%20Merrick&amp;from=flexibility">Front Split Loaded Mobility Routine</a><span class="desc">Tom Merrick</span></li>
+        </ul>
+
+        <h2>Backbend ladder</h2>
+        <p>Toes-to-head is the top rung. Hold each until it&rsquo;s comfortable for 3 sets of 30 seconds, then move up.</p>
+        <ol>
+            <li>Sphinx, then cobra</li>
+            <li>Bridge from the floor, bent arms is fine</li>
+            <li>Straight-arm bridge, shoulders pushed over the hands</li>
+            <li>Bridge, walking the hands closer to the feet</li>
+            <li>Wall walk-downs into a bridge</li>
+            <li>Kneeling backbend (camel) &rarr; hands to heels</li>
+            <li>King pigeon &mdash; foot to head, one leg</li>
+            <li>Chest stand, then toes toward the head</li>
+        </ol>
+        <p class="note">Most backbend limits are tight hip flexors and shoulders, not the spine. Couch stretch and overhead shoulder work count as backbend training.</p>
+
+        <h2>Loaded stretching for lifters</h2>
+        <ul>
+            <li><b>Jefferson curl</b> &mdash; slow, rounded-spine toe touch holding a light weight. Start with 10&ndash;20 lb.</li>
+            <li><b>Seated pancake good morning</b> &mdash; sit in the straddle with a plate or bar, fold forward with a flat back.</li>
+            <li><b>Deep-stretch RDLs</b> &mdash; pause 2 seconds at the bottom.</li>
+            <li><b>Weighted pancake hold</b> &mdash; plate on the upper back, 30&ndash;60 seconds.</li>
+        </ul>
+        <p>2&ndash;3 sets each, after lifting. Go light and progress slowly &mdash; these build strength at end range, which is what makes the new range stick.</p>
+
+        <h2>Checkpoints &mdash; every 4 weeks</h2>
+        <ul>
+            <li><b>Pancake:</b> measure chest-to-floor distance in a wide straddle. Take a side photo.</li>
+            <li><b>Toe touch:</b> standing, knees straight &mdash; fingertips, knuckles, then palms flat.</li>
+            <li><b>Bridge:</b> measure hands-to-heels distance.</li>
+        </ul>
+
+        <h2>Progress</h2>
+        <p>Tick each week you hit your sessions. Saved on this device only.</p>
+        <div class="tracker" id="tracker"></div>
+
+        <h2>Further reading</h2>
+        <ul>
+            <li><b>Stretch Therapy</b> &mdash; Kit Laughlin</li>
+            <li><b>Relax into Stretch</b> &mdash; Pavel Tsatsouline</li>
+            <li><b>Stretching Scientifically</b> &mdash; Thomas Kurz</li>
+            <li><b>Mobility Development</b> &mdash; Emmet Louis</li>
+        </ul>
+
+    </div>
+
+    <script>
+        (function () {
+            var KEY = 'flexibility-weeks';
+            var WEEKS = 36;
+            var saved = {};
+            try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+            var box = document.getElementById('tracker');
+            for (var w = 1; w <= WEEKS; w++) {
+                (function (w) {
+                    var label = document.createElement('label');
+                    var input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.checked = !!saved[w];
+                    if (input.checked) label.className = 'done';
+                    input.addEventListener('change', function () {
+                        saved[w] = input.checked;
+                        label.className = input.checked ? 'done' : '';
+                        try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+                    });
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode('Wk ' + w));
+                    box.appendChild(label);
+                })(w);
+            }
+        })();
+    </script>
+</body>
+</html>
