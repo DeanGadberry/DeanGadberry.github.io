@@ -1,4 +1,4 @@
-// Shema: plays a range of human-recorded verses, optionally announcing
+// Verse Loop: plays a range of human-recorded verses, optionally announcing
 // "Chapter N, verse M" before each one, and loops it.
 //
 // Speed strategy: each verse is its own small MP3, so a range only downloads
@@ -290,7 +290,7 @@ function updateMediaSession() {
   navigator.mediaSession.metadata = new MediaMetadata({
     title: fmtRange(state.range),
     artist: `${state.book.reader} · LibriVox`,
-    album: "Shema",
+    album: "Verse Loop",
     artwork: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" },
               { src: "icon-512.png", sizes: "512x512", type: "image/png" }],
   });
@@ -409,10 +409,10 @@ els.save.addEventListener("click", saveLoop);
 
 function loadSettings() {
   const d = { loop: true, announce: "full", gap: "0.8", saveLen: "30" };
-  try { return { ...d, ...JSON.parse(localStorage.getItem("shema") || localStorage.getItem("alphaomega") || "{}") }; } catch { return d; }
+  try { return { ...d, ...JSON.parse(localStorage.getItem("verseloop") || localStorage.getItem("shema") || localStorage.getItem("alphaomega") || "{}") }; } catch { return d; }
 }
 function saveSettings() {
-  try { localStorage.setItem("shema", JSON.stringify(settings)); } catch {}
+  try { localStorage.setItem("verseloop", JSON.stringify(settings)); } catch {}
 }
 function syncSettingsUI() {
   els.loop.setAttribute("aria-pressed", String(settings.loop));
@@ -607,9 +607,9 @@ function setupTrim() {
 }
 
 // ------------------------------------------------------------------ the mark, built on
-// The shin's bowl draws down and round, its middle arm follows and the
-// serifs pop on, then the return arrow sweeps back and lands with the Chi
-// Rho logo's "click"
+// The tick pops on and the loop draws round from it, the pilcrow draws in,
+// then the arrowhead lands where the loop began with the Chi Rho logo's
+// "click"
 // (a quick press, then a damped spring: omega0 14.4, zeta 0.8).
 
 function animateLogo() {

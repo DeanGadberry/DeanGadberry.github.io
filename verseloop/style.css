@@ -90,12 +90,10 @@ a:hover { text-decoration: underline; }
   padding: 28px 16px 26px;
 }
 .masthead .tess { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--paper); opacity: 0.13; pointer-events: none; }
-.masthead-inner { position: relative; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 18px; }
-.logo { width: 112px; height: auto; color: var(--paper); overflow: visible; cursor: pointer; flex: none; }
-.wordmark { text-align: left; }
-.wordmark .name { font: 600 2.1rem/1 var(--serif); letter-spacing: 0.32em; }
-.wordmark .hebrew { font: 500 1.6rem/1 'SBL Hebrew', 'Taamey Frank CLM', 'Times New Roman', serif; letter-spacing: 0; opacity: 0.8; margin-left: 4px; }
-.tagline { margin: 8px 0 0; font-style: italic; font-size: 1.12rem; opacity: 0.88; }
+.masthead-inner { position: relative; max-width: 1180px; margin: 0 auto; text-align: center; }
+.logo { width: min(440px, 90vw); height: auto; color: var(--paper); overflow: visible; cursor: pointer; display: block; margin: 0 auto; }
+.logo text { font: 600 9px var(--serif); letter-spacing: 1.6px; fill: currentColor; }
+.tagline { margin: 4px 0 0; font-style: italic; font-size: 1.12rem; opacity: 0.88; }
 
 /* The canon in Chi Rho Cards' nine section colours, one bar per book, 1 Peter marked. */
 .canon { display: flex; height: 7px; align-items: flex-start; }
@@ -298,16 +296,14 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--line); background: transparent; border-radius: 14px; padding: 8px 12px 6px;
   color: var(--muted); cursor: pointer; font: 600 11px var(--serif); letter-spacing: 1.2px; text-transform: uppercase;
 }
-.loop svg { width: 40px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.loop svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
 .loop[aria-pressed="true"] { color: var(--book-ink); border-color: var(--book); background: var(--book-soft); }
 
 @media (max-width: 520px) {
   body { font-size: 17px; }
   .masthead { padding: 20px 16px 18px; }
-  .logo { width: 76px; }
-  .wordmark .name { font-size: 1.6rem; }
-  .wordmark .hebrew { font-size: 1.25rem; }
-  .tagline { font-size: 1rem; margin-top: 6px; }
+  .logo { width: min(330px, 88vw); }
+  .tagline { font-size: 1rem; margin-top: 2px; }
   .book-name { font-size: 1.7rem; }
   .options { gap: 12px; }
   .option .segmented button { padding: 6px 9px; font-size: 14px; }

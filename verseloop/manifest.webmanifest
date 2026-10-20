@@ -1,6 +1,6 @@
 {
-  "name": "Shema · 1 Peter",
-  "short_name": "Shema",
+  "name": "Verse Loop · 1 Peter",
+  "short_name": "Verse Loop",
   "description": "Loop any run of verses, read aloud by a human voice.",
   "start_url": "./",
   "scope": "./",

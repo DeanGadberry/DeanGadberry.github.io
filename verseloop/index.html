@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verse Loop · 1 Peter</title>
+<meta name="description" content="Loop any run of verses in 1 Peter, read aloud by a human voice, again and again.">
+<meta name="theme-color" content="#1C5D99" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#164b7c" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Verse Loop">
+<meta property="og:description" content="Scripture by ear. Pick a run of verses and hear it read aloud, again and again.">
+<meta property="og:image" content="https://www.deangadberry.com/verseloop/og.png">
+<meta property="og:url" content="https://www.deangadberry.com/verseloop/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preload" href="fonts/ebgaramond-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="data/1pe.json" as="fetch" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- The mark: a loop drawn in the Chi Rho glyph's stroke, with its tick serif
+     at the start and an arrow coming round to it, around a pilcrow (¶), the
+     mark the King James Version prints at each new paragraph. -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <defs>
+    <g id="mark" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10.32,-16.74 A18 18 0 1 1 -10.32,-16.74"/>
+      <path d="M-16.32,-17.06 L-10.32,-16.74 L-12.08,-11.01"/>
+      <path d="M11.33,-20.19 L7.43,-14.62"/>
+      <path d="M0.5,-11 V9 M5.5,-11 V9 M-1,-11 H7"/>
+      <path d="M0.5,-11 C-9,-11 -9,0 0.5,0"/>
+    </g>
+    <!-- The branded backs' tessellation: the mark in a half-drop grid, turned -40 degrees. -->
+    <pattern id="tess" width="40" height="72" patternUnits="userSpaceOnUse" patternTransform="rotate(-40) scale(0.62)">
+      <use href="#mark" transform="translate(20 18) scale(0.42)" style="stroke-width:4.4"/>
+      <use href="#mark" transform="translate(0 54) scale(0.42)" style="stroke-width:4.4"/>
+      <use href="#mark" transform="translate(40 54) scale(0.42)" style="stroke-width:4.4"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="masthead">
+  <svg class="tess" aria-hidden="true"><rect width="100%" height="100%" fill="url(#tess)"/></svg>
+  <div class="masthead-inner">
+    <svg id="logo" class="logo" viewBox="-110 -30 220 56" role="img" aria-label="Verse Loop">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path data-pop="1" d="M11.33,-20.19 L7.43,-14.62"/>
+        <path data-draw="1" d="M10.32,-16.74 A18 18 0 1 1 -10.32,-16.74"/>
+        <path data-click="3" d="M-16.32,-17.06 L-10.32,-16.74 L-12.08,-11.01"/>
+        <path data-draw="2" d="M0.5,-11 C-9,-11 -9,0 0.5,0"/>
+        <path data-pop="2" d="M0.5,-11 V9 M5.5,-11 V9 M-1,-11 H7"/>
+      </g>
+      <text x="-28" y="5" text-anchor="end">VERSE</text>
+      <text x="28" y="5">LOOP</text>
+    </svg>
+    <p class="tagline">Any verses, read aloud, again and again.</p>
+  </div>
+</header>
+<div class="canon" id="canon" aria-hidden="true"></div>
+
+<div class="layout">
+  <section class="pane-controls" aria-label="Choose verses">
+    <div class="book-line">
+      <h1 class="book-name">1 Peter</h1>
+      <p class="book-meta">King James Version · read by Simon Wainwright</p>
+    </div>
+
+    <nav class="segmented chapters" id="chapters" aria-label="Chapter"></nav>
+
+    <div class="trim" id="trim">
+      <div class="trim-head">
+        <span class="label">Verses</span>
+        <span class="trim-readout" id="trimReadout">Drag Α and Ω to choose</span>
+      </div>
+      <div class="trim-track" id="trimTrack">
+        <div class="trim-rail"></div>
+        <div class="trim-fill" id="trimFill"></div>
+        <div class="handle alpha" id="handleLo" aria-hidden="true">Α</div>
+        <div class="handle omega" id="handleHi" aria-hidden="true">Ω</div>
+        <input type="range" id="trimLo" min="1" max="25" value="1" step="1" aria-label="First verse (Alpha)">
+        <input type="range" id="trimHi" min="1" max="25" value="25" step="1" aria-label="Last verse (Omega)">
+      </div>
+      <div class="trim-ticks" id="trimTicks" aria-hidden="true"></div>
+    </div>
+
+    <form id="refForm" class="ref" autocomplete="off">
+      <label for="ref" class="label">Or type</label>
+      <input id="ref" name="ref" placeholder="2:3-5 or 1:22-2:3" spellcheck="false" enterkeyhint="go">
+      <button type="submit" class="btn">Go</button>
+    </form>
+    <p id="refError" class="err" role="alert" hidden></p>
+
+  </section>
+
+  <section class="pane-text" aria-label="Chapter text">
+    <div class="text-head">
+      <h2 class="chapter-title" id="chapterTitle">Chapter 1</h2>
+      <button type="button" class="link" id="viewToggle" hidden>Whole chapter</button>
+    </div>
+    <div id="text" class="text"></div>
+    <p class="text-hint" id="textHint">Tap a first verse, then a last, to choose a range.</p>
+  </section>
+
+  <section class="pane-options" aria-label="Listening options">
+    <div class="options">
+      <div class="option">
+        <span class="label">Before each verse</span>
+        <div class="segmented" id="announce" role="radiogroup" aria-label="Before each verse">
+          <button type="button" role="radio" data-v="full">Chapter &amp; verse</button>
+          <button type="button" role="radio" data-v="verse">Verse</button>
+          <button type="button" role="radio" data-v="off">Nothing</button>
+        </div>
+      </div>
+      <div class="option">
+        <span class="label">Between verses</span>
+        <div class="segmented" id="gap" role="radiogroup" aria-label="Pause between verses">
+          <button type="button" role="radio" data-v="0.3">Brief</button>
+          <button type="button" role="radio" data-v="0.8">Pause</button>
+          <button type="button" role="radio" data-v="1.6">Long</button>
+          <button type="button" role="radio" data-v="3">3 s</button>
+        </div>
+      </div>
+      <div class="option save">
+        <span class="label">Listen with the page closed</span>
+        <div class="save-row">
+          <div class="segmented" id="saveLen" role="radiogroup" aria-label="Length of the saved loop">
+            <button type="button" role="radio" data-v="15">15 min</button>
+            <button type="button" role="radio" data-v="30">30 min</button>
+            <button type="button" role="radio" data-v="60">1 hour</button>
+          </div>
+          <button type="button" class="btn" id="save">Save loop</button>
+        </div>
+        <p class="save-note" id="saveNote">Downloads this range, repeating, as an MP3 for any audio app.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="colophon">
+  <svg class="colophon-mark" viewBox="-46 -34 92 74" aria-hidden="true"><use href="#mark"/></svg>
+  <p>Every word you hear is a human voice. The verses, the chapter headings and the verse
+  numbers are all cut from public-domain <a href="https://librivox.org/the-epistles-of-peter-by-king-james-version/">LibriVox</a>
+  King James Version recordings by <strong>Simon Wainwright</strong>. Nothing is synthesized.
+  “Verse” is the middle of “conversation” in his 1 Peter 1:18, and the numbers
+  are his chapter headings in <a href="https://archive.org/details/bible_kjv_14_2chronicles_1110_librivox">2 Chronicles</a>.</p>
+  <p>Text: King James Version, public domain. After your first visit the
+  whole book is kept on your device, so it plays offline.</p>
+  <p class="verse-cite">“For precept must be upon precept, precept upon precept; line upon line, line upon line; here a little, and there a little.” Isaiah 28:10</p>
+</footer>
+
+<div class="transport" id="transport">
+  <div class="transport-inner">
+    <button id="play" class="play" aria-label="Play" disabled>
+      <svg viewBox="0 0 24 24" class="i-play"><path d="M8.5 5.5v13l10.5-6.5z"/></svg>
+      <svg viewBox="0 0 24 24" class="i-pause"><path d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></svg>
+    </button>
+    <div class="now">
+      <div class="now-range" id="rangeLabel">Choose a range of verses</div>
+      <div class="now-status" id="status"></div>
+      <div class="segbar" id="segbar"></div>
+    </div>
+    <button id="loop" class="loop" aria-pressed="true" title="Loop the range" aria-label="Loop">
+      <svg viewBox="-23 -23 46 44"><path d="M10.32,-16.74 A18 18 0 1 1 -10.32,-16.74"/><path d="M-16.32,-17.06 L-10.32,-16.74 L-12.08,-11.01"/><path d="M11.33,-20.19 L7.43,-14.62"/></svg>
+      <span>Loop</span>
+    </button>
+  </div>
+</div>
+
+<script src="app.js" type="module"></script>
+</body>
+</html>
