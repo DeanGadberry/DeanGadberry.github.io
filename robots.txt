@@ -1,0 +1,40 @@
+User-agent: *
+Disallow: /hidden/
+
+# A few crawlers are known to sometimes ignore the wildcard rule above
+# and only check for their own name, so they're listed explicitly too.
+User-agent: GPTBot
+Disallow: /hidden/
+
+User-agent: ChatGPT-User
+Disallow: /hidden/
+
+User-agent: Google-Extended
+Disallow: /hidden/
+
+User-agent: ClaudeBot
+Disallow: /hidden/
+
+User-agent: Claude-Web
+Disallow: /hidden/
+
+User-agent: anthropic-ai
+Disallow: /hidden/
+
+User-agent: CCBot
+Disallow: /hidden/
+
+User-agent: PerplexityBot
+Disallow: /hidden/
+
+User-agent: Applebot-Extended
+Disallow: /hidden/
+
+User-agent: Bytespider
+Disallow: /hidden/
+
+User-agent: Amazonbot
+Disallow: /hidden/
+
+User-agent: Meta-ExternalAgent
+Disallow: /hidden/
