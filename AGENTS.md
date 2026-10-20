@@ -12,9 +12,10 @@ No setup, no build step, nothing to learn — just copy-paste.
 
 1. Open `backpage/index.html`.
 2. Pick the right list:
-   - Under `<h3>This site</h3>` — anything that lives in this repo.
-   - Under `<h3>Elsewhere</h3>` — anything hosted elsewhere (another repo,
-     a subdomain, a different site entirely).
+   - The first `<ul class="links">` (right under the `<h1>`) — everything
+     current, whether it lives in this repo or elsewhere.
+   - The one under `<h3>Old stuff</h3>` at the end — only for things that
+     are genuinely old/legacy, not new additions.
 3. Add one line right before that list's closing `</ul>`, copied exactly
    from this pattern:
 
