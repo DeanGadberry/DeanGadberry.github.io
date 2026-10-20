@@ -320,8 +320,8 @@ function showVerseCard(c, v) {
   const cls = words > 70 ? "xlong" : words > 48 ? "long" : "";
   flipCard(`${c}:${v}`, `
     <div class="face-head"><span>1 Peter ${c}</span></div>
-    <div class="face-body"><span class="vn">${v}</span><p>${asvHtml(text)}</p></div>
-    <div class="face-foot"><span>ASV</span><span class="mini">ALPHA ${MARK} OMEGA</span><span>${c}:${v}</span></div>`, cls);
+    <div class="face-body"><span class="vn">${v}</span><p>${kjvHtml(text)}</p></div>
+    <div class="face-foot"><span>KJV</span><span class="mini">ALPHA ${MARK} OMEGA</span><span>${c}:${v}</span></div>`, cls);
 }
 
 function showTitleCard() {
@@ -392,7 +392,7 @@ function showChapter(c) {
   els.chapterTitle.textContent = `Chapter ${c}`;
   els.text.innerHTML = ch.verses.map((vv) =>
     `<p class="verse" id="v${c}-${vv.v}" data-c="${c}" data-v="${vv.v}" tabindex="0" role="button">` +
-    `<sup>${vv.v}</sup> ${asvHtml(vv.text)}</p>`).join("");
+    `<sup>${vv.v}</sup> ${kjvHtml(vv.text)}</p>`).join("");
   for (const b of els.chapters.querySelectorAll("button")) b.setAttribute("aria-current", String(+b.dataset.c === c));
   paintSelection();
   renderTrim(true);
@@ -580,8 +580,9 @@ $("logo").addEventListener("click", animateLogo);
 
 function setStatus(s) { els.status.textContent = s; }
 function fmtTime(s) { s = Math.round(s); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; }
-// [Brackets] mark words the ASV translators supplied; print them in italics.
-function asvHtml(s) { return escapeHtml(s).replace(/\[([^\]]+)\]/g, "<em>$1</em>"); }
+// [Brackets] mark the words the KJV prints in italics (supplied by the
+// translators); print them in italics.
+function kjvHtml(s) { return escapeHtml(s).replace(/\[([^\]]+)\]/g, "<em>$1</em>"); }
 function escapeHtml(s) { return s.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]); }
 
 // ------------------------------------------------------------------ boot
