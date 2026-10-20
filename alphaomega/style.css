@@ -1,0 +1,331 @@
+@font-face {
+  font-family: 'EB Garamond'; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url(fonts/ebgaramond-latin-normal.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: italic; font-weight: 400 800; font-display: swap;
+  src: url(fonts/ebgaramond-latin-italic.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url(fonts/ebgaramond-greek-normal.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'EB Garamond'; font-style: italic; font-weight: 400 800; font-display: swap;
+  src: url(fonts/ebgaramond-greek-italic.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+
+/* Chi Rho Cards' palette: paper, ink, footer gray; the brand's neutral
+   accent for the mark; the book's section colour (1 Peter: General
+   Epistles blue) for everything that belongs to the passage. */
+:root {
+  --paper: #FDFBF7;
+  --ink: #1A1A1A;
+  --gray: #666666;
+  --brand: #4C6A7D;
+  --book: #1C5D99;
+  --bg: #FDFBF7;
+  --text: #1A1A1A;
+  --muted: #6b665d;
+  --line: #E4DFD3;
+  --surface: #FBF8F1;
+  --surface-2: #F3EFE6;
+  --book-soft: color-mix(in srgb, var(--book) 11%, transparent);
+  --book-ink: var(--book);
+  --on-book: #FDFBF7;
+  --shadow-card: 0 4px 18px rgb(0 0 0 / 0.14);
+  --shadow-lift: 0 18px 36px rgb(0 0 0 / 0.22);
+  --serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --ui: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141310;
+    --text: #EEEAE2;
+    --muted: #A39D92;
+    --line: #34312A;
+    --surface: #1D1C18;
+    --surface-2: #26241F;
+    --brand: #8FB0C4;
+    --book-ink: #7FB0E6;
+    --book-soft: color-mix(in srgb, #7FB0E6 16%, transparent);
+    --shadow-card: 0 6px 24px rgb(0 0 0 / 0.5);
+    --shadow-lift: 0 22px 44px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/1.6 var(--serif);
+  padding-bottom: calc(112px + env(safe-area-inset-bottom));
+}
+button, input { font: inherit; color: inherit; }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.label {
+  font: 600 12px/1 var(--serif);
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------ masthead */
+
+.masthead { text-align: center; padding: 36px 16px 8px; }
+/* The shared mark inherits its weight from the <use> that draws it. */
+use { stroke-width: 2; }
+.logo { width: min(360px, 86vw); height: auto; color: var(--brand); overflow: visible; cursor: pointer; display: block; margin: 0 auto; }
+.logo text { font: 600 9px var(--serif); letter-spacing: 1.4px; fill: currentColor; }
+.tagline { margin: 6px 0 0; font-style: italic; color: var(--muted); font-size: 1.05rem; }
+
+/* ------------------------------------------------------------ layout */
+
+.layout {
+  max-width: 1180px; margin: 0 auto; padding: 16px 16px 0;
+  display: grid; gap: 28px;
+}
+.pane-controls { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+@media (min-width: 960px) {
+  .layout { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: start; }
+}
+
+.book-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.book-name {
+  margin: 0; font-size: 2rem; line-height: 1.1; font-weight: 700; color: var(--book-ink);
+  letter-spacing: 0.5px;
+}
+.book-meta { margin: 0; color: var(--muted); font-size: 0.98rem; }
+
+/* Segmented control (as in Aleph with Beth Offline). */
+.segmented {
+  display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
+}
+.segmented button {
+  border: 0; background: transparent; border-radius: 9px; padding: 7px 14px; cursor: pointer;
+  font: 600 15px/1.2 var(--serif); letter-spacing: 0.3px; color: var(--muted);
+  -webkit-tap-highlight-color: transparent;
+}
+.segmented button:hover { color: var(--text); }
+.segmented button[aria-current="true"], .segmented button[aria-checked="true"] {
+  background: var(--book); color: var(--on-book); box-shadow: 0 1px 2px rgb(0 0 0 / 0.12);
+}
+.segmented button:focus-visible { outline: 2px solid var(--book-ink); outline-offset: 1px; }
+.chapters { align-self: flex-start; }
+.chapters button { min-width: 46px; font-size: 17px; position: relative; }
+.chapters button.has-sel::after {
+  content: ""; position: absolute; left: 50%; bottom: 3px; width: 4px; height: 4px; margin-left: -2px;
+  border-radius: 50%; background: currentColor; opacity: 0.6;
+}
+
+/* ------------------------------------------------------------ range slider */
+/* Two handles, Alpha and Omega, over the chapter's verses. The visible
+   handles are drawn here; the native range inputs underneath stay for the
+   keyboard and screen readers. */
+
+.trim-head { display: flex; gap: 12px; align-items: baseline; margin-bottom: 4px; min-width: 0; }
+.trim-readout {
+  color: var(--muted); font-size: 1rem; font-variant-numeric: tabular-nums;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+}
+.trim.active .trim-readout { color: var(--text); font-weight: 600; }
+.trim-track { position: relative; height: 48px; touch-action: none; cursor: pointer; margin: 0 2px; }
+.trim-rail, .trim-fill { position: absolute; top: 21px; height: 6px; border-radius: 3px; }
+.trim-rail { left: 0; right: 0; background: var(--surface-2); border: 1px solid var(--line); }
+.trim-fill { background: var(--line); }
+.trim.active .trim-fill {
+  background: linear-gradient(90deg, var(--book), color-mix(in srgb, var(--book) 70%, var(--paper)));
+}
+.handle {
+  position: absolute; top: 4px; width: 28px; height: 40px; margin-left: -14px;
+  display: grid; place-items: center;
+  font: 600 22px/1 var(--serif); color: var(--book-ink);
+  background: var(--paper); border: 2px solid var(--book); border-radius: 9px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1), 0 4px 12px rgb(0 0 0 / 0.08);
+  pointer-events: none; transition: transform 0.12s, box-shadow 0.12s;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .handle { color: var(--book); } }
+.trim:not(.active) .handle { border-color: var(--line); color: var(--muted); }
+.handle.grab { transform: translateY(-2px) scale(1.06); box-shadow: 0 8px 20px rgb(0 0 0 / 0.16); }
+.handle.focus { outline: 2px solid var(--book-ink); outline-offset: 2px; }
+.trim-track input {
+  position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none;
+}
+.trim-ticks { position: relative; height: 18px; margin: 0 2px; }
+.trim-ticks span {
+  position: absolute; top: 0; transform: translateX(-50%);
+  font: 12px/1 var(--ui); color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.trim-ticks span::before {
+  content: ""; display: block; width: 1px; height: 5px; margin: 0 auto 3px; background: var(--line);
+}
+.trim-ticks span.minor { font-size: 0; }
+.trim-ticks span.minor::before { height: 3px; margin-bottom: 0; }
+
+/* ------------------------------------------------------------ typed reference */
+
+.ref { display: flex; align-items: center; gap: 10px; }
+.ref input {
+  flex: 1; min-width: 0; padding: 8px 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface);
+  font: 16px var(--ui); font-variant-numeric: tabular-nums;
+}
+.ref input:focus { outline: 2px solid var(--book-ink); outline-offset: 0; }
+.btn {
+  padding: 8px 16px; border-radius: 30px; border: 0; cursor: pointer;
+  background: var(--brand); color: var(--paper); font: 600 15px var(--serif); letter-spacing: 0.5px;
+}
+.err { margin: -8px 0 0; color: #b3261e; font: 14px var(--ui); }
+
+/* ------------------------------------------------------------ the card */
+/* A Chi Rho business card, landscape: header and rule, verse-number column,
+   KJV / logo / number footer, and the book-colour stripe on the right edge
+   of the front and the left edge of the back (a card turns over left to
+   right). The card flips to the next verse as it plays. */
+
+.card-stage { perspective: 1400px; padding: 6px 0 4px; }
+.card { container-type: inline-size; }
+.card-inner {
+  display: grid; transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.face {
+  grid-area: 1 / 1; position: relative;
+  min-height: calc(100cqw * 4 / 7);
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: var(--paper); color: var(--ink);
+  border-radius: 12px; overflow: hidden;
+  box-shadow: var(--shadow-card);
+  padding: 6.5cqw 13cqw 15cqw 7cqw;
+  display: flex; flex-direction: column;
+}
+.face.back { transform: rotateY(180deg); padding: 6.5cqw 7cqw 15cqw 13cqw; }
+.face::after {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 6.2cqw;
+  background: linear-gradient(270deg, var(--book), color-mix(in srgb, var(--book) 0%, transparent));
+}
+.face.back::after { right: auto; left: 0; background: linear-gradient(90deg, var(--book), color-mix(in srgb, var(--book) 0%, transparent)); }
+.face-head {
+  font: 700 3.1cqw/1 var(--serif); letter-spacing: 0.45cqw; text-transform: uppercase; color: var(--book);
+  padding-bottom: 1.8cqw; border-bottom: 1px solid color-mix(in srgb, var(--book) 40%, transparent);
+  display: flex; justify-content: space-between;
+}
+.face-head .src { font-weight: 600; color: var(--gray); letter-spacing: 0.3cqw; }
+.face-body { display: grid; grid-template-columns: 4.6cqw 1fr; gap: 0 1.4cqw; padding-top: 2.6cqw; }
+.face-body .vn { font: 700 3.1cqw/1.9 var(--serif); color: var(--book); text-align: right; }
+.face-body p { margin: 0; font: 400 4.25cqw/1.42 var(--serif); }
+.face.long .face-body p { font-size: 3.55cqw; }
+.face.xlong .face-body p { font-size: 3.05cqw; }
+.face-foot {
+  position: absolute; left: 7cqw; right: 13cqw; bottom: 5cqw;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font: 600 2.3cqw/1 var(--serif); letter-spacing: 0.3cqw; color: var(--gray);
+}
+.face.back .face-foot { left: 13cqw; right: 7cqw; }
+.face-foot .mini { color: var(--book); display: inline-flex; align-items: baseline; gap: 0.8cqw; }
+.face-foot .mini svg { width: 5.4cqw; height: 4.3cqw; align-self: center; color: var(--book); overflow: visible; }
+.face-foot .mini use { stroke-width: 4.2; }
+.face.title use { stroke-width: 3; }
+.face em { font-style: italic; }
+
+/* Title card: the book opens with the mark and its name, as each Chi Rho deck does. */
+.face.title { justify-content: center; align-items: center; text-align: center; gap: 1.5cqw; padding-bottom: 8cqw; }
+.face.title svg { width: 22cqw; color: var(--book); overflow: visible; }
+.face.title .t-book { font: 700 7cqw/1 var(--serif); color: var(--book); letter-spacing: 0.3cqw; }
+.face.title .t-hint { font: italic 3.4cqw/1.3 var(--serif); color: var(--gray); }
+
+/* ------------------------------------------------------------ options */
+
+.options { display: flex; flex-wrap: wrap; gap: 14px 28px; }
+.option { display: flex; flex-direction: column; gap: 7px; }
+.option .segmented button { font-size: 14.5px; padding: 6px 11px; }
+
+/* ------------------------------------------------------------ chapter text */
+
+.chapter-title {
+  font: 600 13px/1 var(--serif); letter-spacing: 2px; text-transform: uppercase; color: var(--book-ink);
+  margin: 8px 0 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line);
+}
+.verse {
+  margin: 0 -12px; padding: 7px 12px; border-radius: 10px;
+  cursor: pointer; transition: background-color 0.15s, box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.verse sup { font: 700 12px var(--serif); color: var(--book-ink); vertical-align: 5px; margin-right: 3px; }
+.verse:hover { background: color-mix(in srgb, var(--book-soft) 50%, transparent); }
+.verse.sel { background: var(--book-soft); }
+.verse.edge-a { box-shadow: inset 3px 0 0 var(--book); }
+.verse.playing { background: color-mix(in srgb, var(--book) 22%, var(--bg)); }
+.verse:focus-visible { outline: 2px solid var(--book-ink); }
+.verse em { font-style: italic; }
+.text-hint { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+
+/* ------------------------------------------------------------ colophon */
+
+.colophon {
+  max-width: 640px; margin: 56px auto 24px; padding: 28px 20px 0; text-align: center;
+  border-top: 1px solid var(--line); color: var(--muted); font-size: 0.98rem;
+}
+.colophon-mark use { stroke-width: 2.6; }
+.colophon-mark { width: 54px; color: var(--brand); overflow: visible; }
+.colophon strong { color: var(--text); }
+.verse-cite { font-style: italic; }
+
+/* ------------------------------------------------------------ transport */
+
+.transport {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  padding: 10px 16px calc(12px + env(safe-area-inset-bottom));
+}
+.transport-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+.play {
+  flex: none; width: 58px; height: 58px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--book); color: var(--on-book); display: grid; place-items: center;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--book) 40%, transparent);
+  transition: transform 0.12s;
+}
+.play:active { transform: scale(0.95); }
+.play:disabled { opacity: 0.4; cursor: default; box-shadow: none; }
+.play svg { width: 28px; height: 28px; fill: currentColor; }
+.i-pause, .is-playing .i-play { display: none; }
+.is-playing .i-pause { display: block; }
+.now { flex: 1; min-width: 0; }
+.now-range { font-weight: 700; font-size: 1.12rem; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.now-status { color: var(--muted); font: 13px/1.4 var(--ui); min-height: 1.4em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.segbar { display: flex; gap: 2px; height: 4px; margin-top: 5px; }
+.segbar span { position: relative; height: 100%; background: var(--line); border-radius: 2px; overflow: hidden; }
+.segbar span i { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--book); }
+.loop {
+  flex: none; display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+  border: 1px solid var(--line); background: transparent; border-radius: 14px; padding: 8px 12px 6px;
+  color: var(--muted); cursor: pointer; font: 600 11px var(--serif); letter-spacing: 1.2px; text-transform: uppercase;
+}
+.loop svg { width: 40px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.loop[aria-pressed="true"] { color: var(--book-ink); border-color: var(--book); background: var(--book-soft); }
+
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .masthead { padding-top: 24px; }
+  .book-name { font-size: 1.7rem; }
+  .options { gap: 12px; }
+  .option .segmented button { padding: 6px 9px; font-size: 14px; }
+  .loop span { display: none; }
+  .loop { padding: 12px 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-inner { transition: none; }
+}
