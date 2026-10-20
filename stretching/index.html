@@ -60,7 +60,7 @@
      .card {
          pointer-events: auto;
          width: 100%;
-         max-width: 760px;
+         max-width: 600px;
          text-align: left;
          font-family: 'EB Garamond', Georgia, serif;
          background: rgba(253, 251, 247, 0.22);
@@ -91,65 +91,44 @@
         font-weight: 700;
         color: var(--ink);
         text-align: center;
-        margin: 0 0 6px;
-        font-size: 1.8rem;
+        margin: 0 0 10px;
+        font-size: 1.6rem;
      }
 
      .intro {
         text-align: center;
-        font-size: 1.05rem;
-        line-height: 1.5;
-        margin: 0 auto 28px;
-        max-width: 540px;
-     }
-
-     .intro small {
-        display: block;
-        margin-top: 10px;
-        opacity: 0.7;
-        font-size: 0.85rem;
-     }
-
-     .video-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 28px;
-     }
-
-     @media (min-width: 640px) {
-        .video-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-     }
-
-     .video-embed {
-        position: relative;
-        width: 100%;
-        padding-top: 56.25%;
-        border-radius: 14px;
-        overflow: hidden;
-        background: #000;
-        box-shadow: 0 10px 24px -10px rgba(28, 36, 32, 0.4);
-     }
-
-     .video-embed iframe {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-     }
-
-     .video-title {
-        font-weight: 600;
-        margin: 10px 0 2px;
         font-size: 1.02rem;
-        line-height: 1.3;
+        line-height: 1.5;
+        margin: 0 auto 10px;
      }
 
-     .video-meta {
-        font-size: 0.88rem;
-        opacity: 0.7;
+     h3 {
+         font-family: 'EB Garamond', Georgia, serif;
+         font-weight: 700;
+         color: var(--ink);
+         font-size: 1.15rem;
+         margin: 24px 0 8px 0;
+         border-bottom: 1px solid rgba(28, 36, 32, 0.2);
+         padding-bottom: 3px;
+     }
+
+     ol.video-list {
+         margin: 0;
+         padding-left: 24px;
+         font-size: 1.1rem;
+         line-height: 1.45;
+     }
+
+     ol.video-list li {
+        margin-bottom: 6px;
+     }
+
+     ol.video-list .desc {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 400;
+        opacity: 0.65;
+        margin-top: -2px;
      }
 
      a {
@@ -171,7 +150,7 @@
             padding: 28px 24px;
          }
          h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
          }
      }
 </style>
@@ -189,79 +168,36 @@
         <h1>Stretching</h1>
         <p class="intro">
             A few free, beginner-friendly stretching routines I come back to.
-            Everything below plays right from YouTube &mdash; full credit to the creators.
-            <small>Can't make it through all of these? Pick one and just hit play.</small>
+            Tap a title to open that one video &mdash; full credit to the creators.
         </p>
 
-        <div class="video-grid">
-            <div>
-                <div class="video-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/ugXQe5hbUAA"
-                        title="BEGINNER FLEXIBILITY ROUTINE (Stretches for the Inflexible) by MadFit"
-                        loading="lazy"
-                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <p class="video-title">
-                    <a href="https://www.youtube.com/watch?v=ugXQe5hbUAA" target="_blank" rel="noopener noreferrer">
-                        Beginner Flexibility Routine (Stretches for the Inflexible)
-                    </a>
-                </p>
-                <p class="video-meta">MadFit</p>
-            </div>
-
-            <div>
-                <div class="video-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/wUHK87X3lkI"
-                        title="20 Min Beginner Flexibility Routine by MadFit"
-                        loading="lazy"
-                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <p class="video-title">
-                    <a href="https://www.youtube.com/watch?v=wUHK87X3lkI" target="_blank" rel="noopener noreferrer">
-                        20 Min Beginner Flexibility Routine
-                    </a>
-                </p>
-                <p class="video-meta">MadFit &mdash; 20 min</p>
-            </div>
-
-            <div>
-                <div class="video-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/8GL73mrsvJ8"
-                        title="15 Min Full Body Stretch (Cool Down) by MadFit"
-                        loading="lazy"
-                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <p class="video-title">
-                    <a href="https://www.youtube.com/watch?v=8GL73mrsvJ8" target="_blank" rel="noopener noreferrer">
-                        15 Min Full Body Stretch (Cool Down)
-                    </a>
-                </p>
-                <p class="video-meta">MadFit &mdash; 15 min</p>
-            </div>
-
-            <div>
-                <div class="video-embed">
-                    <iframe
-                        src="https://www.youtube.com/embed/flDQ-Av5DZ8"
-                        title="15 Min Full Body Stretch and Cool Down Routine by MadFit"
-                        loading="lazy"
-                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
-                </div>
-                <p class="video-title">
-                    <a href="https://www.youtube.com/watch?v=flDQ-Av5DZ8" target="_blank" rel="noopener noreferrer">
-                        15 Min Full Body Stretch &amp; Cool Down Routine
-                    </a>
-                </p>
-                <p class="video-meta">MadFit &mdash; 15 min</p>
-            </div>
-        </div>
+        <h3>Videos</h3>
+        <ol class="video-list">
+            <li>
+                <a href="watch/?v=ugXQe5hbUAA&amp;t=Beginner%20Flexibility%20Routine%20(Stretches%20for%20the%20Inflexible)&amp;c=MadFit">
+                    Beginner Flexibility Routine (Stretches for the Inflexible)
+                </a>
+                <span class="desc">MadFit</span>
+            </li>
+            <li>
+                <a href="watch/?v=wUHK87X3lkI&amp;t=20%20Min%20Beginner%20Flexibility%20Routine&amp;c=MadFit%20%E2%80%94%2020%20min">
+                    20 Min Beginner Flexibility Routine
+                </a>
+                <span class="desc">MadFit &mdash; 20 min</span>
+            </li>
+            <li>
+                <a href="watch/?v=8GL73mrsvJ8&amp;t=15%20Min%20Full%20Body%20Stretch%20(Cool%20Down)&amp;c=MadFit%20%E2%80%94%2015%20min">
+                    15 Min Full Body Stretch (Cool Down)
+                </a>
+                <span class="desc">MadFit &mdash; 15 min</span>
+            </li>
+            <li>
+                <a href="watch/?v=flDQ-Av5DZ8&amp;t=15%20Min%20Full%20Body%20Stretch%20%26%20Cool%20Down%20Routine&amp;c=MadFit%20%E2%80%94%2015%20min">
+                    15 Min Full Body Stretch &amp; Cool Down Routine
+                </a>
+                <span class="desc">MadFit &mdash; 15 min</span>
+            </li>
+        </ol>
 
     </div>
     </div>
