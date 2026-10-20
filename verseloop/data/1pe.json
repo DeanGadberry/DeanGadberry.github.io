@@ -11,12 +11,12 @@
     {
      "v": 1,
      "text": "Peter, an apostle of Jesus Christ, to the strangers scattered throughout Pontus, Galatia, Cappadocia, Asia, and Bithynia,",
-     "dur": 8.98,
+     "dur": 8.96,
      "src": [
       6.08,
-      15.06
+      15.04
      ],
-     "ann": 2.28
+     "ann": 1.08
     },
     {
      "v": 2,
@@ -26,97 +26,97 @@
       15.58,
       29.15
      ],
-     "ann": 2.37
+     "ann": 1.1
     },
     {
      "v": 3,
      "text": "Blessed [be] the God and Father of our Lord Jesus Christ, which according to his abundant mercy hath begotten us again unto a lively hope by the resurrection of Jesus Christ from the dead,",
-     "dur": 11.9,
+     "dur": 11.86,
      "src": [
       29.88,
-      41.78
+      41.74
      ],
-     "ann": 2.34
+     "ann": 1.35
     },
     {
      "v": 4,
      "text": "To an inheritance incorruptible, and undefiled, and that fadeth not away, reserved in heaven for you,",
-     "dur": 6.92,
+     "dur": 6.85,
      "src": [
       42.22,
-      49.14
+      49.07
      ],
-     "ann": 2.54
+     "ann": 1.34
     },
     {
      "v": 5,
      "text": "Who are kept by the power of God through faith unto salvation ready to be revealed in the last time.",
-     "dur": 6.02,
+     "dur": 5.97,
      "src": [
       49.48,
-      55.5
+      55.45
      ],
-     "ann": 2.78
+     "ann": 1.48
     },
     {
      "v": 6,
      "text": "Wherein ye greatly rejoice, though now for a season, if need be, ye are in heaviness through manifold temptations:",
-     "dur": 7.98,
+     "dur": 7.87,
      "src": [
       56.58,
-      64.56
+      64.45
      ],
-     "ann": 2.21
+     "ann": 1.68
     },
     {
      "v": 7,
      "text": "That the trial of your faith, being much more precious than of gold that perisheth, though it be tried with fire, might be found unto praise and honour and glory at the appearing of Jesus Christ:",
-     "dur": 11.68,
+     "dur": 11.61,
      "src": [
       65.16,
-      76.84
+      76.77
      ],
-     "ann": 2.44
+     "ann": 1.31
     },
     {
      "v": 8,
      "text": "Whom having not seen, ye love; in whom, though now ye see [him] not, yet believing, ye rejoice with joy unspeakable and full of glory:",
-     "dur": 10.24,
+     "dur": 10.11,
      "src": [
       77.38,
-      87.62
+      87.49
      ],
-     "ann": 2.39
+     "ann": 1.17
     },
     {
      "v": 9,
      "text": "Receiving the end of your faith, [even] the salvation of [your] souls.",
-     "dur": 4.23,
+     "dur": 4.18,
      "src": [
       87.8,
-      92.03
+      91.98
      ],
-     "ann": 2.52
+     "ann": 1.41
     },
     {
      "v": 10,
      "text": "Of which salvation the prophets have enquired and searched diligently, who prophesied of the grace [that should come] unto you:",
-     "dur": 8.03,
+     "dur": 8.0,
      "src": [
       92.8,
-      100.83
+      100.8
      ],
-     "ann": 2.45
+     "ann": 1.39
     },
     {
      "v": 11,
      "text": "Searching what, or what manner of time the Spirit of Christ which was in them did signify, when it testified beforehand the sufferings of Christ, and the glory that should follow.",
-     "dur": 11.68,
+     "dur": 11.62,
      "src": [
       101.2,
-      112.88
+      112.82
      ],
-     "ann": 2.39
+     "ann": 1.36
     },
     {
      "v": 12,
@@ -126,7 +126,7 @@
       113.46,
       130.06
      ],
-     "ann": 2.36
+     "ann": 1.22
     },
     {
      "v": 13,
@@ -136,7 +136,7 @@
       130.78,
       140.83
      ],
-     "ann": 3.39
+     "ann": 2.38
     },
     {
      "v": 14,
@@ -146,7 +146,7 @@
       141.12,
       147.29
      ],
-     "ann": 2.66
+     "ann": 1.61
     },
     {
      "v": 15,
@@ -156,7 +156,7 @@
       147.62,
       154.18
      ],
-     "ann": 2.67
+     "ann": 1.65
     },
     {
      "v": 16,
@@ -166,7 +166,7 @@
       154.22,
       158.72
      ],
-     "ann": 2.63
+     "ann": 1.78
     },
     {
      "v": 17,
@@ -176,7 +176,7 @@
       159.56,
       169.08
      ],
-     "ann": 2.66
+     "ann": 1.59
     },
     {
      "v": 18,
@@ -186,7 +186,7 @@
       169.38,
       179.44
      ],
-     "ann": 2.51
+     "ann": 1.44
     },
     {
      "v": 19,
@@ -196,17 +196,17 @@
       179.68,
       185.24
      ],
-     "ann": 2.52
+     "ann": 1.49
     },
     {
      "v": 20,
      "text": "Who verily was foreordained before the foundation of the world, but was manifest in these last times for you,",
-     "dur": 7.74,
+     "dur": 7.35,
      "src": [
       185.36,
-      193.1
+      192.71
      ],
-     "ann": 2.28
+     "ann": 1.81
     },
     {
      "v": 21,
@@ -216,7 +216,7 @@
       193.51,
       202.6
      ],
-     "ann": 2.55
+     "ann": 1.63
     },
     {
      "v": 22,
@@ -226,17 +226,17 @@
       202.8,
       213.82
      ],
-     "ann": 3.47
+     "ann": 2.31
     },
     {
      "v": 23,
      "text": "Being born again, not of corruptible seed, but of incorruptible, by the word of God, which liveth and abideth for ever.",
-     "dur": 7.81,
+     "dur": 7.45,
      "src": [
-      214.03,
-      221.84
+      214.02,
+      221.47
      ],
-     "ann": 2.65
+     "ann": 1.64
     },
     {
      "v": 24,
@@ -246,7 +246,7 @@
       222.58,
       231.86
      ],
-     "ann": 2.6
+     "ann": 1.49
     },
     {
      "v": 25,
@@ -256,7 +256,7 @@
       232.19,
       239.78
      ],
-     "ann": 2.85
+     "ann": 1.75
     }
    ]
   },
@@ -271,17 +271,17 @@
       3.56,
       10.99
      ],
-     "ann": 3.26
+     "ann": 1.1
     },
     {
      "v": 2,
      "text": "As newborn babes, desire the sincere milk of the word, that ye may grow thereby:",
-     "dur": 5.77,
+     "dur": 5.51,
      "src": [
-      11.74,
-      17.51
+      11.83,
+      17.34
      ],
-     "ann": 3.35
+     "ann": 1.12
     },
     {
      "v": 3,
@@ -291,7 +291,7 @@
       17.89,
       21.48
      ],
-     "ann": 3.32
+     "ann": 1.37
     },
     {
      "v": 4,
@@ -301,57 +301,57 @@
       22.1,
       29.11
      ],
-     "ann": 3.52
+     "ann": 1.36
     },
     {
      "v": 5,
      "text": "Ye also, as lively stones, are built up a spiritual house, an holy priesthood, to offer up spiritual sacrifices, acceptable to God by Jesus Christ.",
-     "dur": 11.5,
+     "dur": 11.46,
      "src": [
       29.11,
-      40.61
+      40.57
      ],
-     "ann": 3.76
+     "ann": 1.5
     },
     {
      "v": 6,
      "text": "Wherefore also it is contained in the scripture, Behold, I lay in Sion a chief corner stone, elect, precious: and he that believeth on him shall not be confounded.",
-     "dur": 11.44,
+     "dur": 11.36,
      "src": [
       41.78,
-      53.22
+      53.14
      ],
-     "ann": 3.19
+     "ann": 1.7
     },
     {
      "v": 7,
      "text": "Unto you therefore which believe [he is] precious: but unto them which be disobedient, the stone which the builders disallowed, the same is made the head of the corner,",
-     "dur": 10.37,
+     "dur": 10.29,
      "src": [
       54.32,
-      64.69
+      64.61
      ],
-     "ann": 3.42
+     "ann": 1.33
     },
     {
      "v": 8,
      "text": "And a stone of stumbling, and a rock of offence, [even to them] which stumble at the word, being disobedient: whereunto also they were appointed.",
-     "dur": 9.57,
+     "dur": 9.48,
      "src": [
       64.98,
-      74.55
+      74.46
      ],
-     "ann": 3.37
+     "ann": 1.19
     },
     {
      "v": 9,
      "text": "But ye [are] a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light:",
-     "dur": 13.03,
+     "dur": 12.93,
      "src": [
       75.4,
-      88.43
+      88.33
      ],
-     "ann": 3.5
+     "ann": 1.43
     },
     {
      "v": 10,
@@ -361,17 +361,17 @@
       89.06,
       98.62
      ],
-     "ann": 3.43
+     "ann": 1.41
     },
     {
      "v": 11,
      "text": "Dearly beloved, I beseech [you] as strangers and pilgrims, abstain from fleshly lusts, which war against the soul;",
-     "dur": 7.68,
+     "dur": 7.59,
      "src": [
       99.36,
-      107.04
+      106.95
      ],
-     "ann": 3.37
+     "ann": 1.38
     },
     {
      "v": 12,
@@ -381,87 +381,87 @@
       107.34,
       120.36
      ],
-     "ann": 3.34
+     "ann": 1.24
     },
     {
      "v": 13,
      "text": "Submit yourselves to every ordinance of man for the Lord’s sake: whether it be to the king, as supreme;",
-     "dur": 6.87,
+     "dur": 6.84,
      "src": [
       121.32,
-      128.19
+      128.16
      ],
-     "ann": 4.37
+     "ann": 2.4
     },
     {
      "v": 14,
      "text": "Or unto governors, as unto them that are sent by him for the punishment of evildoers, and for the praise of them that do well.",
-     "dur": 8.29,
+     "dur": 8.23,
      "src": [
       128.37,
-      136.66
+      136.6
      ],
-     "ann": 3.64
+     "ann": 1.63
     },
     {
      "v": 15,
      "text": "For so is the will of God, that with well doing ye may put to silence the ignorance of foolish men:",
-     "dur": 6.7,
+     "dur": 6.31,
      "src": [
       137.28,
-      143.98
+      143.59
      ],
-     "ann": 3.65
+     "ann": 1.67
     },
     {
      "v": 16,
      "text": "As free, and not using [your] liberty for a cloke of maliciousness, but as the servants of God.",
-     "dur": 6.89,
+     "dur": 6.84,
      "src": [
       144.23,
-      151.12
+      151.07
      ],
-     "ann": 3.61
+     "ann": 1.8
     },
     {
      "v": 17,
      "text": "Honour all [men]. Love the brotherhood. Fear God. Honour the king.",
-     "dur": 6.18,
+     "dur": 5.79,
      "src": [
       151.72,
-      157.9
+      157.51
      ],
-     "ann": 3.64
+     "ann": 1.61
     },
     {
      "v": 18,
      "text": "Servants, [be] subject to [your] masters with all fear; not only to the good and gentle, but also to the froward.",
-     "dur": 8.63,
+     "dur": 8.59,
      "src": [
       158.13,
-      166.76
+      166.72
      ],
-     "ann": 3.49
+     "ann": 1.46
     },
     {
      "v": 19,
      "text": "For this [is] thankworthy, if a man for conscience toward God endure grief, suffering wrongfully.",
-     "dur": 6.56,
+     "dur": 6.29,
      "src": [
       167.04,
-      173.6
+      173.33
      ],
-     "ann": 3.5
+     "ann": 1.51
     },
     {
      "v": 20,
      "text": "For what glory [is it], if, when ye be buffeted for your faults, ye shall take it patiently? but if, when ye do well, and suffer [for it], ye take it patiently, this [is] acceptable with God.",
-     "dur": 13.24,
+     "dur": 13.98,
      "src": [
-      174.14,
-      187.38
+      173.34,
+      187.32
      ],
-     "ann": 3.26
+     "ann": 1.83
     },
     {
      "v": 21,
@@ -471,7 +471,7 @@
       187.98,
       196.35
      ],
-     "ann": 3.53
+     "ann": 1.65
     },
     {
      "v": 22,
@@ -481,7 +481,7 @@
       196.35,
       199.98
      ],
-     "ann": 4.45
+     "ann": 2.33
     },
     {
      "v": 23,
@@ -491,17 +491,17 @@
       200.24,
       209.88
      ],
-     "ann": 3.63
+     "ann": 1.66
     },
     {
      "v": 24,
      "text": "Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed.",
-     "dur": 11.155,
+     "dur": 11.18,
      "src": [
-      210.185,
+      210.16,
       221.34
      ],
-     "ann": 3.58
+     "ann": 1.51
     },
     {
      "v": 25,
@@ -511,7 +511,7 @@
       221.58,
       228.64
      ],
-     "ann": 3.83
+     "ann": 1.77
     }
    ]
   },
@@ -521,72 +521,72 @@
     {
      "v": 1,
      "text": "Likewise, ye wives, [be] in subjection to your own husbands; that, if any obey not the word, they also may without the word be won by the conversation of the wives;",
-     "dur": 11.65,
+     "dur": 11.61,
      "src": [
-      4.51,
-      16.16
+      4.52,
+      16.13
      ],
-     "ann": 2.11
+     "ann": 1.35
     },
     {
      "v": 2,
      "text": "While they behold your chaste conversation [coupled] with fear.",
-     "dur": 3.86,
+     "dur": 3.83,
      "src": [
       16.65,
-      20.51
+      20.48
      ],
-     "ann": 2.2
+     "ann": 1.37
     },
     {
      "v": 3,
      "text": "Whose adorning let it not be that outward [adorning] of plaiting the hair, and of wearing of gold, or of putting on of apparel;",
-     "dur": 6.98,
+     "dur": 6.91,
      "src": [
       21.13,
-      28.11
+      28.04
      ],
-     "ann": 2.17
+     "ann": 1.62
     },
     {
      "v": 4,
      "text": "But [let it be] the hidden man of the heart, in that which is not corruptible, [even the ornament] of a meek and quiet spirit, which is in the sight of God of great price.",
-     "dur": 10.5,
+     "dur": 10.47,
      "src": [
       28.92,
-      39.42
+      39.39
      ],
-     "ann": 2.37
+     "ann": 1.61
     },
     {
      "v": 5,
      "text": "For after this manner in the old time the holy women also, who trusted in God, adorned themselves, being in subjection unto their own husbands:",
-     "dur": 8.61,
+     "dur": 8.58,
      "src": [
       40.26,
-      48.87
+      48.84
      ],
-     "ann": 2.61
+     "ann": 1.75
     },
     {
      "v": 6,
      "text": "Even as Sara obeyed Abraham, calling him lord: whose daughters ye are, as long as ye do well, and are not afraid with any amazement.",
-     "dur": 9.58,
+     "dur": 9.56,
      "src": [
       49.35,
-      58.93
+      58.91
      ],
-     "ann": 2.04
+     "ann": 1.95
     },
     {
      "v": 7,
      "text": "Likewise, ye husbands, dwell with [them] according to knowledge, giving honour unto the wife, as unto the weaker vessel, and as being heirs together of the grace of life; that your prayers be not hindered.",
-     "dur": 12.29,
+     "dur": 12.2,
      "src": [
       59.92,
-      72.21
+      72.12
      ],
-     "ann": 2.27
+     "ann": 1.58
     },
     {
      "v": 8,
@@ -596,77 +596,77 @@
       73.21,
       81.67
      ],
-     "ann": 2.22
+     "ann": 1.44
     },
     {
      "v": 9,
      "text": "Not rendering evil for evil, or railing for railing: but contrariwise blessing; knowing that ye are thereunto called, that ye should inherit a blessing.",
-     "dur": 11.05,
+     "dur": 11.01,
      "src": [
       82.04,
-      93.09
+      93.05
      ],
-     "ann": 2.35
+     "ann": 1.68
     },
     {
      "v": 10,
      "text": "For he that will love life, and see good days, let him refrain his tongue from evil, and his lips that they speak no guile:",
-     "dur": 7.64,
+     "dur": 7.6,
      "src": [
       93.76,
-      101.4
+      101.36
      ],
-     "ann": 2.28
+     "ann": 1.66
     },
     {
      "v": 11,
      "text": "Let him eschew evil, and do good; let him seek peace, and ensue it.",
-     "dur": 4.66,
+     "dur": 4.63,
      "src": [
       101.84,
-      106.5
+      106.47
      ],
-     "ann": 2.22
+     "ann": 1.63
     },
     {
      "v": 12,
      "text": "For the eyes of the Lord [are] over the righteous, and his ears [are open] unto their prayers: but the face of the Lord [is] against them that do evil.",
-     "dur": 9.0,
+     "dur": 8.95,
      "src": [
       107.14,
-      116.14
+      116.09
      ],
-     "ann": 2.19
+     "ann": 1.49
     },
     {
      "v": 13,
      "text": "And who [is] he that will harm you, if ye be followers of that which is good?",
-     "dur": 4.63,
+     "dur": 4.52,
      "src": [
       117.13,
-      121.76
+      121.65
      ],
-     "ann": 3.22
+     "ann": 2.65
     },
     {
      "v": 14,
      "text": "But and if ye suffer for righteousness’ sake, happy [are ye]: and be not afraid of their terror, neither be troubled;",
-     "dur": 7.49,
+     "dur": 7.42,
      "src": [
       122.36,
-      129.85
+      129.78
      ],
-     "ann": 2.49
+     "ann": 1.88
     },
     {
      "v": 15,
      "text": "But sanctify the Lord God in your hearts: and [be] ready always to [give] an answer to every man that asketh you a reason of the hope that is in you with meekness and fear:",
-     "dur": 10.8,
+     "dur": 10.41,
      "src": [
       130.18,
-      140.98
+      140.59
      ],
-     "ann": 2.5
+     "ann": 1.92
     },
     {
      "v": 16,
@@ -676,7 +676,7 @@
       141.5,
       152.72
      ],
-     "ann": 2.46
+     "ann": 2.05
     },
     {
      "v": 17,
@@ -686,17 +686,17 @@
       153.37,
       160.18
      ],
-     "ann": 2.49
+     "ann": 1.86
     },
     {
      "v": 18,
      "text": "For Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God, being put to death in the flesh, but quickened by the Spirit:",
-     "dur": 10.44,
+     "dur": 10.11,
      "src": [
       160.66,
-      171.1
+      170.77
      ],
-     "ann": 2.34
+     "ann": 1.71
     },
     {
      "v": 19,
@@ -706,7 +706,7 @@
       171.26,
       175.08
      ],
-     "ann": 2.35
+     "ann": 1.76
     },
     {
      "v": 20,
@@ -716,7 +716,7 @@
       175.56,
       186.94
      ],
-     "ann": 2.11
+     "ann": 2.08
     },
     {
      "v": 21,
@@ -726,17 +726,17 @@
       187.66,
       200.52
      ],
-     "ann": 2.38
+     "ann": 1.9
     },
     {
      "v": 22,
      "text": "Who is gone into heaven, and is on the right hand of God; angels and authorities and powers being made subject unto him.",
-     "dur": 7.76,
+     "dur": 7.59,
      "src": [
       200.54,
-      208.3
+      208.13
      ],
-     "ann": 3.3
+     "ann": 2.58
     }
    ]
   },
@@ -746,182 +746,182 @@
     {
      "v": 1,
      "text": "Forasmuch then as Christ hath suffered for us in the flesh, arm yourselves likewise with the same mind: for he that hath suffered in the flesh hath ceased from sin;",
-     "dur": 11.93,
+     "dur": 11.68,
      "src": [
       4.67,
-      16.6
+      16.35
      ],
-     "ann": 2.42
+     "ann": 1.34
     },
     {
      "v": 2,
      "text": "That he no longer should live the rest of [his] time in the flesh to the lusts of men, but to the will of God.",
-     "dur": 6.52,
+     "dur": 6.24,
      "src": [
       16.86,
-      23.38
+      23.1
      ],
-     "ann": 2.51
+     "ann": 1.36
     },
     {
      "v": 3,
      "text": "For the time past of [our] life may suffice us to have wrought the will of the Gentiles, when we walked in lasciviousness, lusts, excess of wine, revellings, banquetings, and abominable idolatries:",
-     "dur": 12.34,
+     "dur": 12.05,
      "src": [
       24.12,
-      36.46
+      36.17
      ],
-     "ann": 2.48
+     "ann": 1.61
     },
     {
      "v": 4,
      "text": "Wherein they think it strange that ye run not with [them] to the same excess of riot, speaking evil of [you]:",
-     "dur": 6.24,
+     "dur": 5.98,
      "src": [
       36.8,
-      43.04
+      42.78
      ],
-     "ann": 2.68
+     "ann": 1.6
     },
     {
      "v": 5,
      "text": "Who shall give account to him that is ready to judge the quick and the dead.",
-     "dur": 4.34,
+     "dur": 4.14,
      "src": [
       43.24,
-      47.58
+      47.38
      ],
-     "ann": 2.92
+     "ann": 1.74
     },
     {
      "v": 6,
      "text": "For for this cause was the gospel preached also to them that are dead, that they might be judged according to men in the flesh, but live according to God in the spirit.",
-     "dur": 10.4,
+     "dur": 10.09,
      "src": [
       48.48,
-      58.88
+      58.57
      ],
-     "ann": 2.35
+     "ann": 1.94
     },
     {
      "v": 7,
      "text": "But the end of all things is at hand: be ye therefore sober, and watch unto prayer.",
-     "dur": 5.38,
+     "dur": 5.21,
      "src": [
       59.58,
-      64.96
+      64.79
      ],
-     "ann": 2.58
+     "ann": 1.57
     },
     {
      "v": 8,
      "text": "And above all things have fervent charity among yourselves: for charity shall cover the multitude of sins.",
-     "dur": 7.27,
+     "dur": 7.1,
      "src": [
       65.33,
-      72.6
+      72.43
      ],
-     "ann": 2.53
+     "ann": 1.43
     },
     {
      "v": 9,
      "text": "Use hospitality one to another without grudging.",
-     "dur": 3.81,
+     "dur": 3.61,
      "src": [
       73.18,
-      76.99
+      76.79
      ],
-     "ann": 2.66
+     "ann": 1.67
     },
     {
      "v": 10,
      "text": "As every man hath received the gift, [even so] minister the same one to another, as good stewards of the manifold grace of God.",
-     "dur": 8.32,
+     "dur": 8.11,
      "src": [
       77.72,
-      86.04
+      85.83
      ],
-     "ann": 2.59
+     "ann": 1.65
     },
     {
      "v": 11,
      "text": "If any man speak, [let him speak] as the oracles of God; if any man minister, [let him do it] as of the ability which God giveth: that God in all things may be glorified through Jesus Christ, to whom be praise and dominion for ever and ever. Amen.",
-     "dur": 18.4,
+     "dur": 18.27,
      "src": [
       86.72,
-      105.12
+      104.99
      ],
-     "ann": 2.53
+     "ann": 1.62
     },
     {
      "v": 12,
      "text": "Beloved, think it not strange concerning the fiery trial which is to try you, as though some strange thing happened unto you:",
-     "dur": 8.32,
+     "dur": 8.25,
      "src": [
       106.26,
-      114.58
+      114.51
      ],
-     "ann": 2.5
+     "ann": 1.48
     },
     {
      "v": 13,
      "text": "But rejoice, inasmuch as ye are partakers of Christ’s sufferings; that, when his glory shall be revealed, ye may be glad also with exceeding joy.",
-     "dur": 10.52,
+     "dur": 10.46,
      "src": [
       115.04,
-      125.56
+      125.5
      ],
-     "ann": 3.53
+     "ann": 2.64
     },
     {
      "v": 14,
      "text": "If ye be reproached for the name of Christ, happy [are ye]; for the spirit of glory and of God resteth upon you: on their part he is evil spoken of, but on your part he is glorified.",
-     "dur": 13.62,
+     "dur": 13.49,
      "src": [
       126.2,
-      139.82
+      139.69
      ],
-     "ann": 2.8
+     "ann": 1.87
     },
     {
      "v": 15,
      "text": "But let none of you suffer as a murderer, or [as] a thief, or [as] an evildoer, or as a busybody in other men’s matters.",
-     "dur": 8.28,
+     "dur": 8.13,
      "src": [
       140.56,
-      148.84
+      148.69
      ],
-     "ann": 2.81
+     "ann": 1.91
     },
     {
      "v": 16,
      "text": "Yet if [any man suffer] as a Christian, let him not be ashamed; but let him glorify God on this behalf.",
-     "dur": 7.34,
+     "dur": 7.27,
      "src": [
       149.52,
-      156.86
+      156.79
      ],
-     "ann": 2.77
+     "ann": 2.04
     },
     {
      "v": 17,
      "text": "For the time [is come] that judgment must begin at the house of God: and if [it] first [begin] at us, what shall the end [be] of them that obey not the gospel of God?",
-     "dur": 11.54,
+     "dur": 11.48,
      "src": [
       157.4,
-      168.94
+      168.88
      ],
-     "ann": 2.8
+     "ann": 1.85
     },
     {
      "v": 18,
      "text": "And if the righteous scarcely be saved, where shall the ungodly and the sinner appear?",
-     "dur": 5.78,
+     "dur": 5.42,
      "src": [
       169.48,
-      175.26
+      174.9
      ],
-     "ann": 2.65
+     "ann": 1.7
     },
     {
      "v": 19,
@@ -931,7 +931,7 @@
       175.98,
       185.18
      ],
-     "ann": 2.66
+     "ann": 1.75
     }
    ]
   },
@@ -941,122 +941,122 @@
     {
      "v": 1,
      "text": "The elders which are among you I exhort, who am also an elder, and a witness of the sufferings of Christ, and also a partaker of the glory that shall be revealed:",
-     "dur": 11.37,
+     "dur": 11.08,
      "src": [
-      3.8,
-      15.17
+      3.92,
+      15.0
      ],
-     "ann": 3.89
+     "ann": 1.48
     },
     {
      "v": 2,
      "text": "Feed the flock of God which is among you, taking the oversight [thereof], not by constraint, but willingly; not for filthy lucre, but of a ready mind;",
-     "dur": 11.07,
+     "dur": 10.84,
      "src": [
       15.64,
-      26.71
+      26.48
      ],
-     "ann": 3.98
+     "ann": 1.5
     },
     {
      "v": 3,
      "text": "Neither as being lords over [God’s] heritage, but being ensamples to the flock.",
-     "dur": 5.41,
+     "dur": 5.16,
      "src": [
       26.93,
-      32.34
+      32.09
      ],
-     "ann": 3.95
+     "ann": 1.75
     },
     {
      "v": 4,
      "text": "And when the chief Shepherd shall appear, ye shall receive a crown of glory that fadeth not away.",
-     "dur": 6.09,
+     "dur": 5.88,
      "src": [
       33.16,
-      39.25
+      39.04
      ],
-     "ann": 4.15
+     "ann": 1.74
     },
     {
      "v": 5,
      "text": "Likewise, ye younger, submit yourselves unto the elder. Yea, all [of you] be subject one to another, and be clothed with humility: for God resisteth the proud, and giveth grace to the humble.",
-     "dur": 14.22,
+     "dur": 13.97,
      "src": [
       40.27,
-      54.49
+      54.24
      ],
-     "ann": 4.39
+     "ann": 1.88
     },
     {
      "v": 6,
      "text": "Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time:",
-     "dur": 5.94,
+     "dur": 5.66,
      "src": [
       54.98,
-      60.92
+      60.64
      ],
-     "ann": 3.82
+     "ann": 2.08
     },
     {
      "v": 7,
      "text": "Casting all your care upon him; for he careth for you.",
-     "dur": 4.0,
+     "dur": 3.89,
      "src": [
       61.12,
-      65.12
+      65.01
      ],
-     "ann": 4.05
+     "ann": 1.71
     },
     {
      "v": 8,
      "text": "Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour:",
-     "dur": 9.51,
+     "dur": 9.28,
      "src": [
       65.61,
-      75.12
+      74.89
      ],
-     "ann": 4.0
+     "ann": 1.57
     },
     {
      "v": 9,
      "text": "Whom resist stedfast in the faith, knowing that the same afflictions are accomplished in your brethren that are in the world.",
-     "dur": 7.48,
+     "dur": 7.28,
      "src": [
       75.36,
-      82.84
+      82.64
      ],
-     "ann": 4.13
+     "ann": 1.81
     },
     {
      "v": 10,
      "text": "But the God of all grace, who hath called us unto his eternal glory by Christ Jesus, after that ye have suffered a while, make you perfect, stablish, strengthen, settle [you].",
-     "dur": 12.46,
+     "dur": 12.36,
      "src": [
       83.76,
-      96.22
+      96.12
      ],
-     "ann": 4.06
+     "ann": 1.79
     },
     {
      "v": 11,
      "text": "To him [be] glory and dominion for ever and ever. Amen.",
-     "dur": 4.96,
+     "dur": 4.81,
      "src": [
       96.64,
-      101.6
+      101.45
      ],
-     "ann": 4.0
+     "ann": 1.76
     },
     {
      "v": 12,
      "text": "By Silvanus, a faithful brother unto you, as I suppose, I have written briefly, exhorting, and testifying that this is the true grace of God wherein ye stand.",
-     "dur": 10.76,
+     "dur": 10.66,
      "src": [
       102.38,
-      113.14
+      113.04
      ],
-     "ann": 3.97
+     "ann": 1.62
     },
     {
      "v": 13,
@@ -1066,17 +1066,17 @@
       113.76,
       120.98
      ],
-     "ann": 5.0
+     "ann": 2.78
     },
     {
      "v": 14,
      "text": "Greet ye one another with a kiss of charity. Peace [be] with you all that are in Christ Jesus. Amen.",
-     "dur": 8.12,
+     "dur": 7.97,
      "src": [
       121.66,
-      129.78
+      129.63
      ],
-     "ann": 4.27
+     "ann": 2.01
     }
    ]
   }
