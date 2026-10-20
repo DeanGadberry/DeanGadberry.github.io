@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Flexibility Planner</title>
+    <link rel="icon" href="../../assets/favicon.ico">
+    <link rel="stylesheet" href="../../styles/vitality.css">
+<style>
+    .card { max-width: 820px; }
+
+    /* blueprint flow */
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; margin: 14px 0 6px; }
+    .flow div { border: 1px solid var(--rule); border-radius: 12px; padding: 8px 8px 6px; font-size: 0.86rem; line-height: 1.3; position: relative; }
+    .flow b { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+    .flow div:not(:last-child)::after { content: "\2192"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); opacity: 0.5; }
+
+    /* skill picker & tests */
+    #skills { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+    .skillbtn { font: inherit; font-size: 0.95rem; border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+    .skillbtn.on { background: var(--ink); color: var(--bg); }
+    fieldset.test { border: 1px solid var(--rule); border-radius: 14px; padding: 8px 14px 10px; margin: 10px 0; }
+    fieldset.test legend { font-weight: 700; padding: 0 4px; }
+    fieldset.lvl { border-width: 2px; }
+    .how { margin: 2px 0 6px; font-size: 0.97rem; }
+    .opts { display: flex; flex-direction: column; gap: 4px; }
+    .opt { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; font-size: 0.98rem; }
+    .opt input { margin-top: 5px; accent-color: var(--ink); }
+    details.tvid summary { cursor: pointer; font-size: 0.92rem; font-weight: 600; margin-bottom: 6px; }
+    .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .day { display: flex; flex-direction: column; font-size: 0.85rem; font-weight: 600; gap: 2px; }
+    .day select, .row2 select, .logform input, .logform select, .filters select, .filters input {
+        font: inherit; font-size: 0.92rem; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 8px; background: #fdfbf7; color: var(--ink); width: 100%; box-sizing: border-box; }
+    .row2 { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 10px; align-items: end; }
+    .row2 label { font-size: 0.95rem; font-weight: 600; }
+    .row2 select { width: auto; margin-left: 6px; }
+    .chk { display: flex; gap: 6px; align-items: center; }
+    .bigbtn, #log-add, #print, #f-clear { font: inherit; font-weight: 700; border: 0; border-radius: 999px; padding: 9px 20px; background: var(--ink); color: var(--bg); cursor: pointer; }
+    #f-clear, #print { font-weight: 600; padding: 5px 14px; background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+    #build-msg { color: #a33; font-weight: 600; }
+
+    /* plan */
+    #plan-wrap { margin-top: 10px; border-top: 2px solid var(--ink); padding-top: 4px; }
+    .ntoc { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+    .ntoc a { font-size: 0.88rem; border: 1px solid var(--rule); border-radius: 999px; padding: 3px 10px; }
+    .sumgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 8px 0; }
+    .sumgrid div { background: var(--soft); border-radius: 12px; padding: 8px 10px; }
+    .sumgrid span { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sumgrid b { display: block; font-size: 1.05rem; }
+    .sumgrid small { display: block; font-size: 0.85rem; line-height: 1.3; opacity: 0.8; }
+    .bars { display: grid; gap: 4px; }
+    .bar { display: grid; grid-template-columns: 11em 1fr 3.5em; gap: 8px; align-items: center; font-size: 0.95rem; }
+    .bar i { display: block; height: 10px; border-radius: 6px; background: var(--ink); opacity: 0.75; }
+    .bar em { font-size: 0.8rem; opacity: 0.7; font-style: normal; }
+    ol.stack { padding-left: 0; list-style: none; counter-reset: s; }
+    ol.stack > li { counter-increment: s; }
+    ol.stack > li h3::before { content: counter(s) ". "; }
+    .card-ex { border: 1px solid var(--rule); border-radius: 14px; padding: 10px 14px 12px; margin: 10px 0; }
+    .card-ex h3 { margin: 0; }
+    .card-ex p { margin: 6px 0; }
+    .role { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.65; }
+    .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 !important; }
+    .chips span { font-size: 0.78rem; background: var(--soft); border-radius: 999px; padding: 1px 8px; }
+    .dose { font-size: 0.97rem; }
+    table.wk th { width: 6.5em; }
+    table.wk tr.focus td { font-weight: 600; }
+    table.wk tr.rest td { opacity: 0.6; }
+    .logform { display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 8px; align-items: end; }
+    .logform label { font-size: 0.85rem; font-weight: 600; }
+    .del { border: 0; background: none; font-size: 1.1rem; cursor: pointer; color: var(--ink); opacity: 0.5; }
+
+    /* video facade */
+    .vf { position: relative; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; margin-top: 6px; }
+    .vf.small { max-width: 360px; padding-top: min(56.25%, 202px); }
+    .vf img, .vf iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
+    .vf .play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(0,0,0,0.15); cursor: pointer; }
+    .vf .play span { display: inline-flex; align-items: center; justify-content: center; width: 58px; height: 58px; border-radius: 50%; background: rgba(253,251,247,0.92); color: #1c2420; font-size: 1.4rem; padding-left: 4px; box-sizing: border-box; }
+    .vcred { font-size: 0.82rem; opacity: 0.7; margin: 4px 0 0 !important; }
+
+    /* catalog */
+    .filters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
+    .filters .q { grid-column: span 2; }
+    #count { font-size: 0.9rem; opacity: 0.75; }
+    .matrix-wrap { overflow-x: auto; }
+    table.matrix { font-size: 0.82rem; min-width: 560px; }
+    table.matrix th, table.matrix td { padding: 4px 5px; text-align: center; border-bottom: 1px solid var(--rule); }
+    table.matrix tr th:first-child { text-align: left; white-space: nowrap; }
+    table.matrix button { font: inherit; font-weight: 700; border: 1px solid var(--rule); background: transparent; border-radius: 8px; padding: 1px 8px; cursor: pointer; color: var(--ink); }
+    table.matrix button:hover { background: var(--soft); }
+    ol.refs { font-size: 0.86rem; }
+
+    @media (max-width: 640px) {
+        .flow { grid-template-columns: repeat(2, 1fr); }
+        .flow div::after { display: none; }
+        .sumgrid { grid-template-columns: repeat(2, 1fr); }
+        .days { grid-template-columns: repeat(4, 1fr); }
+        .filters { grid-template-columns: 1fr 1fr; }
+        .logform { grid-template-columns: 1fr 1fr; }
+        .logform .wide { grid-column: span 2; }
+        .bar { grid-template-columns: 8.5em 1fr 3em; font-size: 0.88rem; }
+    }
+    @media print {
+        body { background: #fff; padding: 0; }
+        .card { box-shadow: none; border: 0; max-width: none; padding: 0; }
+        nav.vnav, #form-sec, #catalog-sec, .noprint, .vf, .vcred, .ntoc, .logform, .del, #intro-sec { display: none !important; }
+        #plan-wrap { border: 0; }
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <nav class="vnav"><a href="../../vitality/">Hub</a><a href="../../strength/">Strength</a><a href="../" class="here">Flexibility</a><a href="../../nutrition/">Nutrition</a><a href="../../energy/">Energy &amp; Health</a></nav>
+
+        <section id="intro-sec">
+            <img class="logo" src="../../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
+            <h1>Flexibility Planner</h1>
+            <p class="intro">
+                Pick a skill, rate yourself on a few quick tests, and get the stretches you need,
+                in the right order, with doses, a weekly schedule and a target date.
+            </p>
+            <p class="toc"><a href="#form-sec">Build a plan</a> <a href="#catalog-sec">Catalog</a> <a href="#matrix-h">Skill &times; method grid</a> <a href="#sources-h">Sources</a> <a href="../../stretching/watch/?v=3j7oSqCuTHs&amp;t=The%20Blueprint%20to%20Get%20Flexible%20Once%2C%20Forever&amp;c=Matt%20Smith&amp;from=flexibility">The blueprint video</a></p>
+
+            <h2>The blueprint</h2>
+            <p>Based on Matt Smith&rsquo;s method, with dosing from the stretching research.</p>
+            <div class="flow">
+                <div><b>1. Skill</b>Pick one position to train.</div>
+                <div><b>2. Test</b>Rate yourself on quick checks.</div>
+                <div><b>3. Limiters</b>Find what&rsquo;s really holding you back.</div>
+                <div><b>4. Stack</b>Small &rarr; big, assisted + resisted.</div>
+                <div><b>5. Schedule</b>1&ndash;3 focus sessions, rest between.</div>
+                <div><b>6. Retest</b>Every 4 weeks; re-plan.</div>
+            </div>
+        </section>
+
+        <section id="form-sec">
+            <h2>Build your plan</h2>
+            <h3>1. Choose a skill</h3>
+            <div id="skills"></div>
+            <h3>2. Rate yourself</h3>
+            <p class="meta">Warm up for 5 minutes first. Answers are saved on this device.</p>
+            <div id="tests"></div>
+            <h3>3. Your training week</h3>
+            <p class="meta">What you do each day, so focus sessions land on the right days.</p>
+            <div id="sched-in"></div>
+            <p style="margin-top:16px"><button type="button" class="bigbtn" id="build">Build my plan</button> <span id="build-msg" role="status"></span></p>
+        </section>
+
+        <section id="plan-wrap" hidden>
+            <div id="plan"></div>
+        </section>
+
+        <section id="catalog-sec">
+            <h2 id="catalog-top">Stretch catalog</h2>
+            <p>Every exercise the planner can use, each with a demo video. Filter by skill, target, method, or where it sits from assisted to resisted.</p>
+            <div class="filters">
+                <select id="f-skill" aria-label="Skill"></select>
+                <select id="f-lim" aria-label="Target"></select>
+                <select id="f-m" aria-label="Method"></select>
+                <select id="f-spec" aria-label="Assisted or resisted"></select>
+                <input id="f-q" class="q" type="search" placeholder="Search exercises" aria-label="Search">
+            </div>
+            <p><span id="count"></span> <button type="button" id="f-clear">Clear filters</button></p>
+            <div id="catalog"></div>
+
+            <h2 id="matrix-h">Skill &times; method grid</h2>
+            <p>How many exercises cover each skill with each method. Tap a number to see them.</p>
+            <div class="matrix-wrap" id="matrix"></div>
+        </section>
+
+        <h2 id="sources-h">Sources</h2>
+        <ol class="refs" id="sources"></ol>
+        <p class="meta">Exercise descriptions are our own; every video belongs to its creator.</p>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

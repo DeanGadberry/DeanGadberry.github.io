@@ -34,6 +34,7 @@ window.VIDEO_NOTES = {
   <li><b>Train 1&ndash;2 focused sessions a week</b>, scheduled away from hard training, so the nervous system adapts and the gains last.</li>
 </ol>
 <p class="nmeta">This is a summary of the video, not a transcript. It runs in the same order as the video.</p>
+<p class="nnote"><b><a href="../../flexibility/planner/">Use the Flexibility Planner &rarr;</a></b> It applies this method to all eight skills: rate yourself, get your stretch stack, doses, schedule and target date.</p>
 
 <h2 id="n-ladder">1 &middot; Find your limiter: the flexibility ladder</h2>
 <p>Picture every factor that affects a skill as a rung on a ladder. Whatever sits lowest caps your progress, so stretching harder at something that isn&rsquo;t the limiter wastes time. Assess first, then train. His analogy: sharpen the axe before chopping.</p>
@@ -182,7 +183,7 @@ window.VIDEO_NOTES = {
   <li><b>Evening sessions:</b> lift in the morning, do the focused flexibility session that evening on Tuesday (pancake &amp; pike) and Thursday or Saturday (backbend). Keep short daily maintenance work easy.</li>
   <li><b>Weekend focus:</b> put the hardest session on Saturday after the Wednesday rest day, and keep the Tuesday/Friday sessions shorter.</li>
 </ul>
-<p>Either way, keep total time per position at 5&ndash;10 minutes a week or more, use a 3&ndash;5 exercise stack, and test every 4 weeks. The full plan is on the <a href="../../flexibility/">Flexibility</a> page.</p>
+<p>Either way, keep total time per position at 5&ndash;10 minutes a week or more, use a 3&ndash;5 exercise stack, and test every 4 weeks. The <a href="../../flexibility/planner/">Flexibility Planner</a> builds this for you.</p>
 
 <h2 id="n-sources">Sources</h2>
 <ol class="nrefs">
