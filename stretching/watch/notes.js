@@ -8,7 +8,7 @@ window.VIDEO_NOTES = {
 /* ------------------------------------------------------------------ */
 /*  Matt Smith — The Blueprint to Get Flexible Once, Forever           */
 /* ------------------------------------------------------------------ */
-'3j7oSqCuTHs': { html: `
+'3j7oSqCuTHs': { cta: ['../../flexibility/planner/', 'Open the Flexibility Planner', 'This method, applied to all eight skills: rate yourself, get your stretches, schedule and target date.'], html: `
 <nav class="ntoc" aria-label="On this page">
   <a href="#n-glance">At a glance</a>
   <a href="#n-ladder">1 &middot; Find your limiter</a>

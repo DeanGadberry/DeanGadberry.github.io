@@ -176,6 +176,17 @@
      .notes ol.nrefs { font-size: 0.88rem; }
      .notes ol.nrefs li:target { background: rgba(28, 36, 32, 0.06); border-radius: 6px; }
      .notes a.ext::after { content: " \2197"; font-size: 0.8em; opacity: 0.6; }
+     .cta {
+        display: block;
+        margin-top: 14px;
+        padding: 12px 16px;
+        border-radius: 14px;
+        background: #1c2420;
+        color: #f6f3ec;
+     }
+     .cta:hover { color: #f6f3ec; opacity: 0.92; }
+     .cta b { display: block; font-size: 1.08rem; }
+     .cta span { display: block; font-weight: 400; font-size: 0.92rem; opacity: 0.85; }
      .to-top {
         display: inline-block;
         margin-top: 18px;
@@ -247,6 +258,21 @@
             iframe.allowFullscreen = true;
             embed.appendChild(iframe);
             container.appendChild(embed);
+
+            // Optional call-to-action right under the video (notes.js "cta").
+            var cta = ((window.VIDEO_NOTES || {})[id] || {}).cta;
+            if (cta) {
+                var c = document.createElement('a');
+                c.className = 'cta';
+                c.href = cta[0];
+                var strong = document.createElement('b');
+                strong.textContent = cta[1] + ' →';
+                var small = document.createElement('span');
+                small.textContent = cta[2];
+                c.appendChild(strong);
+                c.appendChild(small);
+                container.appendChild(c);
+            }
 
             // Written summary under the video, if we have one (notes.js).
             var n = (window.VIDEO_NOTES || {})[id];
