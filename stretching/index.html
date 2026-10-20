@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Stretching" />
+    <meta property="og:description" content="Free beginner-friendly stretching routines." />
+    <title>Stretching</title>
+    <link rel="icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="../styles/rain.css">
+<style>
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Regular.ttf') format('truetype');
+        font-weight: 400;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-SemiBold.ttf') format('truetype');
+        font-weight: 600;
+     }
+     @font-face {
+        font-family: 'EB Garamond';
+        src: url('../static/EBGaramond-Bold.ttf') format('truetype');
+        font-weight: 700;
+     }
+
+     :root {
+        --ink: #1c2420;
+        --bg: #f6f3ec;
+     }
+
+     html, body {
+         margin: 0;
+         padding: 0;
+         width: 100%;
+         min-height: 100%;
+         background-color: var(--bg);
+         color: var(--ink);
+     }
+
+     body {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         box-sizing: border-box;
+         padding: 30px 15px;
+     }
+
+     .page {
+         position: relative;
+         z-index: 1;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+         pointer-events: none;
+     }
+
+     .card {
+         pointer-events: auto;
+         width: 100%;
+         max-width: 760px;
+         text-align: left;
+         font-family: 'EB Garamond', Georgia, serif;
+         background: rgba(253, 251, 247, 0.22);
+         backdrop-filter: blur(12px) saturate(140%);
+         -webkit-backdrop-filter: blur(12px) saturate(140%);
+         border: 1px solid rgba(255, 255, 255, 0.6);
+         border-radius: 28px;
+         box-shadow: 0 40px 80px -30px rgba(28, 36, 32, 0.35), 0 2px 10px rgba(28, 36, 32, 0.08);
+         padding: 40px 44px;
+         box-sizing: border-box;
+     }
+
+     .back-link {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 0.95rem;
+     }
+
+     .logo {
+         display: block;
+         margin: 0 auto 15px auto;
+         width: 75px;
+         height: auto;
+     }
+
+     h1 {
+        font-family: 'EB Garamond', Georgia, serif;
+        font-weight: 700;
+        color: var(--ink);
+        text-align: center;
+        margin: 0 0 6px;
+        font-size: 1.8rem;
+     }
+
+     .intro {
+        text-align: center;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        margin: 0 auto 28px;
+        max-width: 540px;
+     }
+
+     .intro small {
+        display: block;
+        margin-top: 10px;
+        opacity: 0.7;
+        font-size: 0.85rem;
+     }
+
+     .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+     }
+
+     @media (min-width: 640px) {
+        .video-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+     }
+
+     .video-embed {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #000;
+        box-shadow: 0 10px 24px -10px rgba(28, 36, 32, 0.4);
+     }
+
+     .video-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+     }
+
+     .video-title {
+        font-weight: 600;
+        margin: 10px 0 2px;
+        font-size: 1.02rem;
+        line-height: 1.3;
+     }
+
+     .video-meta {
+        font-size: 0.88rem;
+        opacity: 0.7;
+     }
+
+     a {
+         color: var(--ink);
+         text-decoration: none;
+         font-weight: 600;
+     }
+
+     a:hover {
+         color: #8C8CF7;
+     }
+
+     @media (max-width: 400px) {
+         body {
+             align-items: flex-start;
+             padding: 20px 15px;
+         }
+         .card {
+            padding: 28px 24px;
+         }
+         h1 {
+            font-size: 1.5rem;
+         }
+     }
+</style>
+</head>
+<body>
+    <div class="rain" id="rain" aria-hidden="true"></div>
+
+    <div class="page">
+    <div class="card">
+
+        <a class="back-link" href="../">&larr; Back</a>
+
+        <img class="logo" src="../assets/dg-monogram.svg" alt="Dean Gadberry monogram">
+
+        <h1>Stretching</h1>
+        <p class="intro">
+            A few free, beginner-friendly stretching routines I come back to.
+            Everything below plays right from YouTube &mdash; full credit to the creators.
+            <small>Can't make it through all of these? Pick one and just hit play.</small>
+        </p>
+
+        <div class="video-grid">
+            <div>
+                <div class="video-embed">
+                    <iframe
+                        src="https://www.youtube.com/embed/ugXQe5hbUAA"
+                        title="BEGINNER FLEXIBILITY ROUTINE (Stretches for the Inflexible) by MadFit"
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <p class="video-title">
+                    <a href="https://www.youtube.com/watch?v=ugXQe5hbUAA" target="_blank" rel="noopener noreferrer">
+                        Beginner Flexibility Routine (Stretches for the Inflexible)
+                    </a>
+                </p>
+                <p class="video-meta">MadFit</p>
+            </div>
+
+            <div>
+                <div class="video-embed">
+                    <iframe
+                        src="https://www.youtube.com/embed/wUHK87X3lkI"
+                        title="20 Min Beginner Flexibility Routine by MadFit"
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <p class="video-title">
+                    <a href="https://www.youtube.com/watch?v=wUHK87X3lkI" target="_blank" rel="noopener noreferrer">
+                        20 Min Beginner Flexibility Routine
+                    </a>
+                </p>
+                <p class="video-meta">MadFit &mdash; 20 min</p>
+            </div>
+
+            <div>
+                <div class="video-embed">
+                    <iframe
+                        src="https://www.youtube.com/embed/8GL73mrsvJ8"
+                        title="15 Min Full Body Stretch (Cool Down) by MadFit"
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <p class="video-title">
+                    <a href="https://www.youtube.com/watch?v=8GL73mrsvJ8" target="_blank" rel="noopener noreferrer">
+                        15 Min Full Body Stretch (Cool Down)
+                    </a>
+                </p>
+                <p class="video-meta">MadFit &mdash; 15 min</p>
+            </div>
+
+            <div>
+                <div class="video-embed">
+                    <iframe
+                        src="https://www.youtube.com/embed/flDQ-Av5DZ8"
+                        title="15 Min Full Body Stretch and Cool Down Routine by MadFit"
+                        loading="lazy"
+                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <p class="video-title">
+                    <a href="https://www.youtube.com/watch?v=flDQ-Av5DZ8" target="_blank" rel="noopener noreferrer">
+                        15 Min Full Body Stretch &amp; Cool Down Routine
+                    </a>
+                </p>
+                <p class="video-meta">MadFit &mdash; 15 min</p>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <script src="../static/rain.js"></script>
+    <script>
+        initRain({
+            containerId: 'rain',
+            images: [
+                '../assets/rain/fisterra_handstand.jpg',
+                '../assets/rain/gorkha.jpg',
+                '../assets/rain/gorkha_alone.jpg',
+                '../assets/rain/kathmandu_kids.jpg',
+                '../assets/rain/pelican.jpg',
+                '../assets/rain/plants.jpg',
+                '../assets/rain/pokhara_friend.jpg',
+                '../assets/rain/pool.jpg',
+                '../assets/rain/roadster-cropped.jpg',
+                '../assets/rain/spain_dog.jpg',
+                '../assets/rain/goat-hug.jpg',
+                '../assets/rain/guitar-sing.jpg',
+                '../assets/rain/arm-around-friend.jpg',
+                '../assets/rain/mountain-overlook.jpg'
+            ],
+            count: 16,
+            minDur: 55,
+            maxDur: 100
+        });
+    </script>
+</body>
+</html>
