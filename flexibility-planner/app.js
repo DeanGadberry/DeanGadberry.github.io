@@ -380,7 +380,8 @@
     // stack
     var mins = Math.round(p.stack.reduce(function (a, it) { return a + F.METHODS[it.e.m].min + 1; }, 4));
     h += '<h2 style="--c:var(--green)"><span class="dot"></span>Your stretches <small class="muted" style="font-size:.95rem;font-weight:400">&middot; about ' + mins + ' min, in order</small></h2>';
-    if (p.warm.length) h += '<div class="warm"><b>Warm-up 3&ndash;5 min:</b> ' + p.warm.map(function (it) { return it.e.n; }).join(' and ') + '.</div>';
+    if (p.warm.length) h += '<div class="warm"><b>Warm-up 3&ndash;5 min</b> <span class="muted">&middot; one easy set each, then start</span><ol class="exlist">' +
+      p.warm.map(function (it) { return exItem(it.e, 'W', 'Easy set &middot; ' + dose(it.e, 0)); }).join('') + '</ol></div>';
     h += '<ol class="exlist">' + p.stack.map(function (it, i) {
       return exItem(it.e, i + 1, dose(it.e, p.level) + ' &middot; rest ' + F.METHODS[it.e.m].rest);
     }).join('') + '</ol>';
@@ -473,7 +474,13 @@
     // header
     f('600', 30); ctx.fillStyle = SC; ctx.fillText('FLEXIBILITY PLAN', M, y); y += 46 * sc;
     ctx.fillStyle = INK; f('700', 76);
-    wrap(ctx, txt(s.name), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 84 * sc; });
+    if (cardIcon) {
+      var isz = 190 * sc;
+      ctx.fillStyle = SC + '22'; rrect(ctx, W - M - isz, M - 6, isz, isz, 36); ctx.fill();
+      ctx.drawImage(cardIcon, W - M - isz + 18 * sc, M - 6 + 18 * sc, isz - 36 * sc, isz - 36 * sc);
+    }
+    ctx.fillStyle = INK;
+    wrap(ctx, txt(s.name), W - 2 * M - (cardIcon ? 210 * sc : 0)).forEach(function (l) { ctx.fillText(l, M, y); y += 84 * sc; });
     f('400', 34); ctx.fillStyle = MUTED;
     ctx.fillText('Level ' + p.level + '  →  goal level ' + (s.levels.length - 1), M, y); y += 44 * sc;
     wrap(ctx, 'Now: ' + txt(s.levels[p.level]), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 42 * sc; });
@@ -532,8 +539,16 @@
     ctx.fillText('Focus sessions 48 h+ apart  ·  week 4 lighter, then reassess', M, fy + 22);
     return y;
   }
+  var cardIcon = null;
   function renderCard() {
     if (!lastPlan) return;
+    var k = lastPlan.skill;
+    if (!cardIcon || cardIcon.dataset.k !== k) {
+      var im = new Image(); im.dataset.k = k;
+      im.onload = function () { cardIcon = im; renderCard(); };
+      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="400" height="400" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round">' + ICON[k] + '</svg>');
+      return;
+    }
     var cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920;
     var go = function () {
       var sc = 1;
