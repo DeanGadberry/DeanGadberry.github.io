@@ -1,7 +1,7 @@
 // Offline cache. App files: stale-while-revalidate (instant, updates in the
 // background). Audio clips: cache-first, and the open book is prefetched
 // once the page asks for it. Bump AUDIO when the clips are rebuilt.
-const SHELL = "shell-v8";
+const SHELL = "shell-v9";
 const AUDIO = "audio-v5";
 const SHELL_FILES = ["./", "index.html", "app.js", "style.css", "data/books.json", "manifest.webmanifest", "icon.svg", "icon-192.png",
   "fonts/ebgaramond-latin-normal.woff2", "fonts/ebgaramond-latin-italic.woff2", "fonts/ebgaramond-greek-normal.woff2"];

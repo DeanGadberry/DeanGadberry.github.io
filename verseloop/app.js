@@ -19,7 +19,7 @@ const els = {
   segbar: $("segbar"), trim: $("trim"), track: $("trimTrack"), fill: $("trimFill"),
   lo: $("trimLo"), hi: $("trimHi"), handleLo: $("handleLo"), handleHi: $("handleHi"),
   ticks: $("trimTicks"), readout: $("trimReadout"), viewToggle: $("viewToggle"),
-  book: $("book"), bookMeta: $("bookMeta"),
+  bookName: $("bookName"), bookMeta: $("bookMeta"),
   save: $("save"), saveLen: $("saveLen"), saveNote: $("saveNote"),
 };
 
@@ -718,7 +718,9 @@ async function openBook(id, initial = null) {
   document.documentElement.style.setProperty("--book", info.color);
   document.querySelector('meta[name="theme-color"][media*="light"]')?.setAttribute("content", info.color);
   document.title = `Verse Loop · ${book.book}`;
-  els.book.value = id;
+  els.bookName.textContent = book.book;
+  document.body.classList.add("has-book");
+  showPicker(false);
   els.bookMeta.textContent = `King James Version · read by ${book.reader}`;
   paintCanon(info.canon);
   els.chapters.innerHTML = book.chapters.map((ch) => `<button type="button" data-c="${ch.c}">${ch.c}</button>`).join("");
@@ -729,9 +731,23 @@ async function openBook(id, initial = null) {
   prefetchBook(id);
 }
 
+// The book chooser: first thing on a visit with no book in the address, and
+// again from "Change book" (what's playing keeps playing until a new book opens).
+function showPicker(on, focus = false) {
+  document.body.classList.toggle("picking", on);
+  const back = $("pickerBack");
+  back.hidden = !state.book;
+  if (state.book) $("pickerBackName").textContent = state.book.book;
+  document.querySelectorAll("#pickerGrid button").forEach((b) => b.setAttribute("aria-current", String(b.dataset.id === state.book?.id)));
+  if (on) scrollTo(0, 0);
+  if (on && focus) { (document.querySelector('#pickerGrid [aria-current="true"]') || document.querySelector("#pickerGrid button"))?.focus({ preventScroll: true }); }
+}
+
 // The address keeps the book and passage: #rom8:28-30 (a bare #2:3-5 is 1 Peter).
+// No book in it: null, and the chooser is shown.
 function fromHash() {
   const h = decodeURIComponent(location.hash.slice(1));
+  if (!h) return [null, ""];
   const m = h.match(/^([a-z0-9]{3})(.*)$/i);
   const id = m && bookInfo(m[1].toLowerCase()) ? m[1].toLowerCase() : "1pe";
   return [id, m && id === m[1].toLowerCase() ? m[2] : h];
@@ -741,8 +757,18 @@ function fromHash() {
 
 animateLogo();
 indexReady.then(async (index) => {
-  els.book.innerHTML = index.books.map((b) => `<option value="${b.id}">${b.name}</option>`).join("");
-  els.book.addEventListener("change", () => openBook(els.book.value));
+  const chapters = (b) => `${b.verses.length} chapter${b.verses.length > 1 ? "s" : ""}`;
+  $("pickerGrid").innerHTML = index.books.map((b) =>
+    `<button type="button" data-id="${b.id}" style="--c:${b.color}"><span class="pk-name">${b.name}</span><span class="pk-meta">${chapters(b)}</span></button>`).join("");
+  $("pickerGrid").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    if (b.dataset.id === state.book?.id) showPicker(false);
+    else openBook(b.dataset.id);
+  });
+  $("changeBook").addEventListener("click", () => showPicker(true, true));
+  $("pickerBack").addEventListener("click", () => showPicker(false));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && state.book && document.body.classList.contains("picking")) showPicker(false); });
   els.chapters.addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (b) { state.view = "chapter"; showChapter(+b.dataset.c); }
@@ -750,6 +776,7 @@ indexReady.then(async (index) => {
   syncSettingsUI();
   setupTrim();
   const [id, ref] = fromHash();
+  if (!id) { paintCanon(0); showPicker(true); return; }
   const book = await loadBook(id);
   let initial = null;
   try { initial = parseRef(ref, book); } catch {}

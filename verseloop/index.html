@@ -20,7 +20,7 @@
 <link rel="preload" href="data/books.json" as="fetch" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="picking">
 
 <!-- The mark: a loop drawn in the Chi Rho glyph's stroke, with its tick serif
      at the start and an arrow coming round to it, around a pilcrow (¶), the
@@ -62,10 +62,20 @@
 </header>
 <div class="canon" id="canon" aria-hidden="true"></div>
 
+<section class="picker" id="picker" aria-labelledby="pickerTitle">
+  <div class="picker-head">
+    <h2 class="picker-title" id="pickerTitle">Choose a book</h2>
+    <button type="button" class="link" id="pickerBack" hidden>Back to <span id="pickerBackName"></span></button>
+  </div>
+  <p class="picker-note">King James Version, read aloud by Willard Waggoner.</p>
+  <div class="picker-grid" id="pickerGrid"></div>
+</section>
+
 <div class="layout">
   <section class="pane-controls" aria-label="Choose verses">
     <div class="book-line">
-      <h1 class="book-title"><label for="book" class="sr">Book</label><select id="book" class="book-name"></select></h1>
+      <h1 class="book-name" id="bookName"></h1>
+      <button type="button" class="change-book" id="changeBook" aria-controls="picker">Change book</button>
       <p class="book-meta" id="bookMeta">King James Version · read by Willard Waggoner</p>
     </div>
 

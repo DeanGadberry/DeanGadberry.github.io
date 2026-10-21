@@ -119,18 +119,37 @@ a:hover { text-decoration: underline; }
 }
 
 .book-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
-.book-title { margin: 0; position: relative; display: inline-block; }
-.book-title::after {
-  content: ""; position: absolute; right: 0.2em; top: 50%; width: 0.38rem; height: 0.38rem; pointer-events: none;
-  border: solid var(--book-ink); border-width: 0 2.5px 2.5px 0; transform: translateY(-75%) rotate(45deg);
+.book-name { margin: 0; font-size: 2rem; line-height: 1.1; font-weight: 700; color: var(--book-ink); letter-spacing: 0.5px; }
+.change-book {
+  align-self: center; padding: 5px 12px; border-radius: 30px; cursor: pointer;
+  border: 1px solid color-mix(in srgb, var(--book-ink) 45%, transparent); background: var(--book-soft);
+  color: var(--book-ink); font: 600 14px var(--serif); letter-spacing: 0.4px;
 }
-.book-name {
-  margin: 0; font: 700 2rem/1.1 var(--serif); color: var(--book-ink); letter-spacing: 0.5px;
-  appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 6px;
-  padding: 0 0.85em 0 0; cursor: pointer; max-width: 100%; field-sizing: content;
+.change-book:hover { border-color: var(--book-ink); }
+.change-book:focus-visible { outline: 2px solid var(--book-ink); outline-offset: 2px; }
+.book-line .book-meta { flex-basis: 100%; }
+
+/* The book chooser: shown first, and again from "Change book". */
+body.picking .layout, body.picking .colophon { display: none; }
+body:not(.picking) .picker { display: none; }
+body:not(.has-book) .transport { display: none; }
+.picker { max-width: 1180px; margin: 0 auto; padding: 22px 16px 40px; }
+.picker-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.picker-title { margin: 0; font-size: 2rem; line-height: 1.1; font-weight: 700; letter-spacing: 0.5px; color: var(--text); }
+.picker-note { margin: 6px 0 18px; color: var(--muted); }
+.picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+body.has-book .picker { padding-bottom: 120px; }
+.picker-grid button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; text-align: left; cursor: pointer;
+  padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); border-left: 6px solid var(--c);
+  background: var(--surface); color: var(--text); font: inherit;
 }
-.book-name:focus-visible { outline: 2px solid var(--book-ink); outline-offset: 2px; }
-.book-name option { font-size: 1rem; color: var(--ink); background: var(--surface); }
+.picker-grid button:hover { border-color: var(--c); background: color-mix(in srgb, var(--c) 7%, var(--surface)); }
+.picker-grid button:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+.picker-grid button[aria-current="true"] { background: color-mix(in srgb, var(--c) 12%, var(--surface)); }
+.pk-name { font-size: 1.35rem; font-weight: 700; color: var(--c); }
+.pk-meta { font-size: 0.9rem; color: var(--muted); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pk-name { color: color-mix(in srgb, var(--c) 55%, white); } }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .book-meta { margin: 0; color: var(--muted); font-size: 0.98rem; }
 
