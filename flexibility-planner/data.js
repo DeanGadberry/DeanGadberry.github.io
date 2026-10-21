@@ -68,7 +68,7 @@ FLEX.LIMITERS = {
 /* ---------------------------------------------------------------- */
 FLEX.SKILLS = {
   pike: {
-    name: 'Pike (toe touch)', region: 'lower', weeks: [4, 8],
+    name: 'Pike &amp; Head to Toe', region: 'lower', weeks: [4, 8],
     defaults: ['hamstrings', 'calves'],
     levels: ['Fingertips above the knees', 'Fingertips reach the shins', 'Fingertips touch the floor', 'Palms flat on the floor', 'Chest on thighs, legs straight'],
     levelHow: 'Stand, feet together, knees straight. Fold forward, relaxed, and let your hands hang.',
@@ -84,7 +84,7 @@ FLEX.SKILLS = {
     measure: 'Chest-to-floor distance at a fixed leg width (mark the floor), plus a side photo.'
   },
   middle: {
-    name: 'Side (middle) split', region: 'lower', weeks: [8, 16],
+    name: 'Side Split', region: 'lower', weeks: [8, 16],
     defaults: ['adductors_short', 'adductors_long'],
     levels: ['Hips more than 12 in (30 cm) off the floor', 'Hips 6&ndash;12 in off the floor', 'Hips within 6 in', 'Hips within 2 in', 'Full side split'],
     levelHow: 'Slide into a side split with hands down for support. Measure crotch-to-floor height.',
@@ -92,7 +92,7 @@ FLEX.SKILLS = {
     measure: 'Crotch-to-floor height in your deepest side split.'
   },
   front: {
-    name: 'Front split', region: 'lower', weeks: [6, 12],
+    name: 'Front Split', region: 'lower', weeks: [6, 12],
     defaults: ['hamstrings', 'hip_flexors'],
     levels: ['Hips more than 12 in off the floor', 'Hips 6&ndash;12 in off the floor', 'Hips within 6 in', 'Hips within 2 in', 'Full front split, hips square'],
     levelHow: 'Slide into a front split on your tighter side with blocks under your hands. Measure from the front of the hips to the floor.',
@@ -100,7 +100,7 @@ FLEX.SKILLS = {
     measure: 'Hip-to-floor height on each side.'
   },
   bridge: {
-    name: 'Bridge &amp; backbend (toward toes-to-head)', region: 'both', weeks: [6, 12],
+    name: 'Bridge', region: 'both', weeks: [6, 12],
     defaults: ['thoracic', 'hip_flexors', 'lats'],
     levels: ['Can&rsquo;t press up into a bridge', 'Bent arms or head on the floor', 'Straight arms, shoulders well behind hands', 'Shoulders stacked over hands', 'Hands within a foot of the feet', 'Chest stand / toes toward the head'],
     levelHow: 'Lie on your back, hands by your ears, and press up into a bridge. Note where your shoulders end up.',
@@ -108,7 +108,7 @@ FLEX.SKILLS = {
     measure: 'Hands-to-heels distance in your best bridge.'
   },
   flexion: {
-    name: 'Overhead shoulder (flexion)', region: 'upper', weeks: [3, 8],
+    name: 'Shoulder Flexion', region: 'upper', weeks: [3, 8],
     defaults: ['lats', 'thoracic'],
     levels: ['Hands more than 6 in off the floor', 'Hands within 6 in', 'Touch, but elbows bend or ribs flare', 'Touch with straight arms, low back flat', 'Can also lift hands off the floor overhead'],
     levelHow: 'Lie on your back, knees bent, low back flat. Reach straight arms overhead toward the floor.',
@@ -116,7 +116,7 @@ FLEX.SKILLS = {
     measure: 'Hand-to-floor distance with the low back flat.'
   },
   extension: {
-    name: 'Shoulder extension (arms behind)', region: 'upper', weeks: [4, 8],
+    name: 'Shoulder Extension', region: 'upper', weeks: [4, 8],
     defaults: ['shoulder_front', 'pecs'],
     levels: ['Clasped hands lift under 30&deg;', 'About 30&ndash;45&deg;', 'About 45&ndash;60&deg;', 'About 60&ndash;90&deg;', 'Past 90&deg; / comfortable German hang'],
     levelHow: 'Stand tall, clasp your hands behind you, arms straight, and lift them away from your back without leaning forward.',
@@ -124,7 +124,7 @@ FLEX.SKILLS = {
     measure: 'Height of clasped hands behind you (photo from the side).'
   },
   squat: {
-    name: 'Deep squat', region: 'lower', weeks: [3, 8],
+    name: 'Squat', region: 'lower', weeks: [3, 8],
     defaults: ['ankles', 'adductors_short'],
     levels: ['Can&rsquo;t reach the bottom with heels down', 'Bottom only with heels raised or holding on', 'Heels down for about 10 s', 'Relaxed for 1 minute', 'Relaxed for 5 minutes, chest up'],
     levelHow: 'Feet about shoulder width, toes slightly out. Sit all the way down and try to rest there.',

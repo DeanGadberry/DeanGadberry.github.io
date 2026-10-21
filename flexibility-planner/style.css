@@ -47,12 +47,13 @@ button, select, input { font: inherit; color: inherit; }
 
 /* skill tiles */
 .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0 12px; }
-.skill { --c: var(--blue); border: 2px solid transparent; background: var(--card); border-radius: 14px; padding: 8px 4px 6px; cursor: pointer;
+.skill { --c: var(--blue); --tile: var(--card); border: 2px solid transparent; background: var(--tile); border-radius: 14px; padding: 8px 4px 6px; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; box-shadow: 0 1px 0 var(--line); }
-.skill svg { width: 40px; height: 40px; }
-.skill span { font-size: .82rem; line-height: 1.1; font-weight: 600; }
+.skill svg { width: 52px; height: 52px; }
+.skill .tl { font: 800 .7rem/1.1 var(--sans); text-transform: uppercase; letter-spacing: .03em; }
+.skill .tl em { display: block; font-style: normal; font-weight: 500; font-size: .6rem; letter-spacing: .08em; }
 .skill small { font: 600 .66rem/1 var(--sans); color: var(--muted); }
-.skill.on { border-color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--card)); }
+.skill.on { --tile: color-mix(in srgb, var(--c) 14%, var(--card)); border-color: var(--c); }
 .skill.on small { color: var(--c); }
 
 /* steps */
@@ -172,7 +173,7 @@ ol.refs { padding-left: 20px; font-size: .88rem; }
 
 @media (max-width: 420px) {
   .skills { gap: 6px; }
-  .skill span { font-size: .74rem; }
+  .skill .tl { font-size: .64rem; }
   .bar { grid-template-columns: 7.5em 1fr; font-size: .88rem; }
   .stat b { font-size: 1.05rem; }
 }

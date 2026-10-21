@@ -12,19 +12,30 @@
   var SKILL_COLOR = { pike: '#d79921', pancake: '#d65d0e', middle: '#cc241d', front: '#b16286', bridge: '#458588', flexion: '#689d6a', extension: '#98971a', squat: '#a0522d' };
   var MCOLOR = { static: '#458588', pir: '#b16286', loaded: '#cc241d', iso: '#689d6a', isoreps: '#689d6a', active: '#98971a', strength: '#d65d0e',
     dynamic: '#d79921', ballistic: '#d65d0e', nerve: '#b16286', soft: '#928374', cars: '#d79921', technique: '#458588' };
-  var T = function (pts) { return '<polygon points="' + pts + '" fill="%C" stroke-linejoin="round"/>'; };
-  var H = function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="4" fill="%C" stroke="none"/>'; };
-  var ICON = {
-    pike: '<line x1="5" y1="32" x2="36" y2="32"/>' + T('7,30 22,18 27,25') + H(31, 19) + '<line x1="25" y1="22" x2="34" y2="30"/>',
-    pancake: '<line x1="20" y1="31" x2="3" y2="36"/><line x1="20" y1="31" x2="37" y2="36"/>' + T('20,31 11,21 29,21') + H(20, 15) + '<line x1="12" y1="22" x2="7" y2="31"/><line x1="28" y1="22" x2="33" y2="31"/>',
-    middle: '<line x1="2" y1="34" x2="38" y2="34"/>' + T('20,33 12,16 28,16') + H(20, 10) + '<line x1="13" y1="17" x2="5" y2="11"/><line x1="27" y1="17" x2="35" y2="11"/>',
-    front: '<line x1="3" y1="34" x2="37" y2="34"/>' + T('20,33 15,16 26,16') + H(21, 10) + '<line x1="16" y1="17" x2="11" y2="4"/><line x1="25" y1="17" x2="30" y2="4"/>',
-    bridge: '<line x1="6" y1="36" x2="11" y2="22"/>' + T('9,21 15,13 27,15') + '<polyline points="26,15 32,23 34,36" fill="none"/>' + H(13, 27),
-    flexion: T('13,15 27,15 20,29') + '<line x1="20" y1="28" x2="16" y2="38"/><line x1="20" y1="28" x2="24" y2="38"/>' + H(20, 9.5) + '<line x1="14" y1="15" x2="14" y2="2"/><line x1="26" y1="15" x2="26" y2="2"/>',
-    extension: T('13,14 23,14 18,29') + '<line x1="18" y1="28" x2="15" y2="38"/><line x1="18" y1="28" x2="21" y2="38"/>' + H(18, 8.5) + '<line x1="20" y1="15" x2="32" y2="26"/>',
-    squat: T('12,31 15,14 24,16') + H(21, 9.5) + '<polyline points="12,31 25,26 24,37" fill="none"/><line x1="12" y1="31" x2="9" y2="37"/><line x1="20" y1="17" x2="31" y2="22"/>'
+  var ICON;
+  /* Skill figures: one shared skeleton (fixed proportions, 15-degree joint steps,
+     heavier torso than limbs, free-floating head, knock-out gaps where a near limb
+     crosses the body, far limbs tinted), after Otl Aicher's 1972 pictograms. */
+  ICON = {
+    pike: '<path d="M3 37.5 H45" stroke-width="1.2" opacity=".35"/><g opacity=".42"><path d="M17 14 L17 24" stroke-width="3.2"/><path d="M17 24 L17 34" stroke-width="2.5"/></g><g opacity=".42"><path d="M26.2 22.5 L23.4 29.3" stroke-width="3.2"/><path d="M23.4 29.3 L22.3 36.1" stroke-width="2.5"/></g><path d="M17 14 L23.7 17.1 L27 24.2" stroke-width="4.4"/><circle cx="27" cy="31.2" r="3.8" fill="%C" stroke="none"/><path d="M17 14 L17 24 L17 34" stroke-width="5.4" stroke="%BG"/><path d="M17 14 L17 24" stroke-width="3.2"/><path d="M17 24 L17 34" stroke-width="2.5"/><path d="M26.2 22.5 L22.7 29 L21.3 35.7" stroke-width="5.4" stroke="%BG"/><path d="M26.2 22.5 L22.7 29" stroke-width="3.2"/><path d="M22.7 29 L21.3 35.7" stroke-width="2.5"/>',
+    pancake: '<path d="M26.6 12 L27.4 24 L20.6 24 L21.4 12 Z" fill="%C" stroke-width="3.2"/><path d="M26.6 12 L17.2 13.3 L7.8 14.6" stroke-width="5.4" stroke="%BG"/><path d="M26.6 12 L17.2 13.3" stroke-width="3.2"/><path d="M17.2 13.3 L7.8 14.6" stroke-width="2.5"/><path d="M21.4 12 L30.8 13.3 L40.2 14.6" stroke-width="5.4" stroke="%BG"/><path d="M21.4 12 L30.8 13.3" stroke-width="3.2"/><path d="M30.8 13.3 L40.2 14.6" stroke-width="2.5"/><path d="M27.4 22.8 L25 29.4 L23.9 35.8" stroke-width="5.4" stroke="%BG"/><path d="M27.4 22.8 L25 29.4" stroke-width="3.2"/><path d="M25 29.4 L23.9 35.8" stroke-width="2.5"/><path d="M20.6 22.8 L23 29.4 L24.1 35.8" stroke-width="5.4" stroke="%BG"/><path d="M20.6 22.8 L23 29.4" stroke-width="3.2"/><path d="M23 29.4 L24.1 35.8" stroke-width="2.5"/><circle cx="24" cy="30" r="3.6" fill="%C" stroke="none"/>',
+    middle: '<path d="M3 37.5 H45" stroke-width="1.2" opacity=".35"/><path d="M22 34 L21 24 L27 24 L26 34 Z" fill="%C" stroke-width="3.2"/><path d="M22 34 L12.5 34 L3 34" stroke-width="5.4" stroke="%BG"/><path d="M22 34 L12.5 34" stroke-width="3.2"/><path d="M12.5 34 L3 34" stroke-width="2.5"/><path d="M26 34 L35.5 34 L45 34" stroke-width="5.4" stroke="%BG"/><path d="M26 34 L35.5 34" stroke-width="3.2"/><path d="M35.5 34 L45 34" stroke-width="2.5"/><path d="M21 25.2 L14.2 23.4 L8.6 20.1" stroke-width="5.4" stroke="%BG"/><path d="M21 25.2 L14.2 23.4" stroke-width="3.2"/><path d="M14.2 23.4 L8.6 20.1" stroke-width="2.5"/><path d="M27 25.2 L33.8 23.4 L39.4 20.1" stroke-width="5.4" stroke="%BG"/><path d="M27 25.2 L33.8 23.4" stroke-width="3.2"/><path d="M33.8 23.4 L39.4 20.1" stroke-width="2.5"/><circle cx="24" cy="18" r="3.6" fill="%C" stroke="none"/>',
+    front: '<path d="M3 37.5 H45" stroke-width="1.2" opacity=".35"/><g opacity=".42"><path d="M23 34 L14 34" stroke-width="3.2"/><path d="M14 34 L4.9 34" stroke-width="2.5"/></g><g opacity=".42"><path d="M23 24.3 L17.2 21" stroke-width="3.2"/><path d="M17.2 21 L11.9 17.9" stroke-width="2.5"/></g><path d="M23 34 L23 22.6" stroke-width="4.4"/><circle cx="23" cy="16" r="3.4" fill="%C" stroke="none"/><path d="M23 34 L32 34 L41 34" stroke-width="5.4" stroke="%BG"/><path d="M23 34 L32 34" stroke-width="3.2"/><path d="M32 34 L41 34" stroke-width="2.5"/><path d="M23 24.3 L28.4 20.5 L33.5 17" stroke-width="5.4" stroke="%BG"/><path d="M23 24.3 L28.4 20.5" stroke-width="3.2"/><path d="M28.4 20.5 L33.5 17" stroke-width="2.5"/>',
+    bridge: '<path d="M3 38 H45" stroke-width="1.2" opacity=".35"/><g opacity=".42"><path d="M30 17 L35.2 24.4" stroke-width="3.2"/><path d="M35.2 24.4 L34.4 33.4" stroke-width="2.5"/></g><g opacity=".42"><path d="M20 17.6 L17.2 23.6" stroke-width="3.2"/><path d="M17.2 23.6 L15.1 29.4" stroke-width="2.5"/></g><path d="M30 17 L24.5 15.5 L18.5 18.3" stroke-width="4.4"/><circle cx="19.6" cy="24.9" r="3.4" fill="%C" stroke="none"/><path d="M30 17 L36.4 23.4 L35.6 32.4" stroke-width="5.4" stroke="%BG"/><path d="M30 17 L36.4 23.4" stroke-width="3.2"/><path d="M36.4 23.4 L35.6 32.4" stroke-width="2.5"/><path d="M20 17.6 L16.5 23.3 L13.9 28.8" stroke-width="5.4" stroke="%BG"/><path d="M20 17.6 L16.5 23.3" stroke-width="3.2"/><path d="M16.5 23.3 L13.9 28.8" stroke-width="2.5"/>',
+    flexion: '<path d="M3 42.5 H45" stroke-width="1.2" opacity=".35"/><path d="M22.6 27 L21.8 21.2 L26.2 21.2 L25.4 27 Z" fill="%C" stroke-width="3.2"/><path d="M22.6 27 L21.4 33.7 L20.8 40.6" stroke-width="5.4" stroke="%BG"/><path d="M22.6 27 L21.4 33.7" stroke-width="3.2"/><path d="M21.4 33.7 L20.8 40.6" stroke-width="2.5"/><path d="M25.4 27 L26.6 33.7 L27.2 40.6" stroke-width="5.4" stroke="%BG"/><path d="M25.4 27 L26.6 33.7" stroke-width="3.2"/><path d="M26.6 33.7 L27.2 40.6" stroke-width="2.5"/><path d="M21.8 22.1 L19.7 17.5 L18.5 13" stroke-width="5.4" stroke="%BG"/><path d="M21.8 22.1 L19.7 17.5" stroke-width="3.2"/><path d="M19.7 17.5 L18.5 13" stroke-width="2.5"/><path d="M26.2 22.1 L28.3 17.5 L29.5 13" stroke-width="5.4" stroke="%BG"/><path d="M26.2 22.1 L28.3 17.5" stroke-width="3.2"/><path d="M28.3 17.5 L29.5 13" stroke-width="2.5"/><circle cx="24" cy="16.5" r="2.6" fill="%C" stroke="none"/>',
+    extension: '<path d="M3 42.5 H45" stroke-width="1.2" opacity=".35"/><g opacity=".42"><path d="M20 29 L19.3 37" stroke-width="3.2"/><path d="M19.3 37 L18.6 45.1" stroke-width="2.5"/></g><g opacity=".42"><path d="M26.8 25.1 L24.3 19.7" stroke-width="3.2"/><path d="M24.3 19.7 L21.9 14.7" stroke-width="2.5"/></g><path d="M20 29 L28.1 24.3" stroke-width="4.4"/><circle cx="33.5" cy="21.2" r="3.1" fill="%C" stroke="none"/><path d="M20 29 L20.7 37 L21.4 45.1" stroke-width="5.4" stroke="%BG"/><path d="M20 29 L20.7 37" stroke-width="3.2"/><path d="M20.7 37 L21.4 45.1" stroke-width="2.5"/><path d="M26.8 25.1 L23.4 20.2 L20.2 15.7" stroke-width="5.4" stroke="%BG"/><path d="M26.8 25.1 L23.4 20.2" stroke-width="3.2"/><path d="M23.4 20.2 L20.2 15.7" stroke-width="2.5"/>',
+    squat: '<path d="M3 41 H45" stroke-width="1.2" opacity=".35"/><g opacity=".42"><path d="M15 36 L23 31.8" stroke-width="3.2"/><path d="M23 31.8 L19.6 40.1" stroke-width="2.5"/></g><g opacity=".42"><path d="M19.1 27.2 L25.6 28.4" stroke-width="3.2"/><path d="M25.6 28.4 L31.7 29.4" stroke-width="2.5"/></g><path d="M15 36 L19.8 25.7" stroke-width="4.4"/><circle cx="22.6" cy="19.7" r="3.4" fill="%C" stroke="none"/><path d="M15 36 L23.5 32.9 L20.7 41.5" stroke-width="5.4" stroke="%BG"/><path d="M15 36 L23.5 32.9" stroke-width="3.2"/><path d="M23.5 32.9 L20.7 41.5" stroke-width="2.5"/><path d="M19.1 27.2 L25.7 27.8 L31.9 28.3" stroke-width="5.4" stroke="%BG"/><path d="M19.1 27.2 L25.7 27.8" stroke-width="3.2"/><path d="M25.7 27.8 L31.9 28.3" stroke-width="2.5"/>'
   };
-  function icon(k) { return ICON[k].replace(/%C/g, SKILL_COLOR[k]); }
+  function mixHex(a, b, t) {
+    var pa = parseInt(a.slice(1), 16), pb = parseInt(b.slice(1), 16), o = '#';
+    [16, 8, 0].forEach(function (sh) { var x = Math.round(((pa >> sh) & 255) * t + ((pb >> sh) & 255) * (1 - t)); o += (x < 16 ? '0' : '') + x.toString(16); });
+    return o;
+  }
+  function icon(k, bg) { return ICON[k].replace(/%C/g, SKILL_COLOR[k]).replace(/ stroke="%BG"/g, ' style="stroke:' + (bg || 'var(--tile)') + '"'); }
+  function iconSvg(k, size, bg) {
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"' + (size ? ' width="' + size + '" height="' + size + '"' : '') +
+      ' fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icon(k, bg) + '</svg>';
+  }
 
   /* ---------------- storage ---------------- */
   function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
@@ -63,6 +74,10 @@
   function weeksText(w) { return w < 9 ? Math.round(w) + ' wk' : Math.round(w / 4.35) + ' mo'; }
   function todayStr() { var d = new Date(), z = function (n) { return (n < 10 ? '0' : '') + n; }; return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()); }
   function sizeFor(level) { if (state.sizeMode !== 'auto') return +state.sizeMode; return level <= 1 ? 3 : level === 2 ? 4 : 5; }
+  function tileLabel(k) {
+    var n = short(k), m = n.match(/^Shoulder (\w+)/);
+    return m ? '<span class="tl">Shoulder<em>' + m[1] + '</em></span>' : '<span class="tl">' + n + '</span>';
+  }
   function short(k) { return F.SKILLS[k].name.split(' (')[0]; }
   function skc() { return SKILL_COLOR[state.skill]; }
 
@@ -116,8 +131,8 @@
     $('#skills').innerHTML = Object.keys(F.SKILLS).map(function (k) {
       var l = state.levels[k];
       return '<button type="button" class="skill' + (k === state.skill ? ' on' : '') + '" data-skill="' + k + '" style="--c:' + SKILL_COLOR[k] + '" aria-pressed="' + (k === state.skill) + '">' +
-        '<svg viewBox="0 0 40 40" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round" aria-hidden="true">' + icon(k) + '</svg>' +
-        '<span>' + short(k) + '</span><small>' + (l == null ? 'not assessed' : 'level ' + l + '/' + (F.SKILLS[k].levels.length - 1)) + '</small></button>';
+        iconSvg(k) +
+        tileLabel(k) + '<small>' + (l == null ? 'not assessed' : 'level ' + l + '/' + (F.SKILLS[k].levels.length - 1)) + '</small></button>';
     }).join('');
   }
   $('#skills').addEventListener('click', function (e) {
@@ -479,8 +494,8 @@
     ctx.fillStyle = INK; f('700', 76);
     if (cardIcon) {
       var isz = 190 * sc;
-      ctx.fillStyle = SC + '22'; rrect(ctx, W - M - isz, M - 6, isz, isz, 36); ctx.fill();
-      ctx.drawImage(cardIcon, W - M - isz + 18 * sc, M - 6 + 18 * sc, isz - 36 * sc, isz - 36 * sc);
+      ctx.fillStyle = mixHex(SC, BG, 0.16); rrect(ctx, W - M - isz, M - 6, isz, isz, 36); ctx.fill();
+      ctx.drawImage(cardIcon, W - M - isz + 8 * sc, M - 6 + 8 * sc, isz - 16 * sc, isz - 16 * sc);
     }
     ctx.fillStyle = INK;
     wrap(ctx, txt(s.name), W - 2 * M - (cardIcon ? 210 * sc : 0)).forEach(function (l) { ctx.fillText(l, M, y); y += 84 * sc; });
@@ -549,7 +564,7 @@
     if (!cardIcon || cardIcon.dataset.k !== k) {
       var im = new Image(); im.dataset.k = k;
       im.onload = function () { cardIcon = im; renderCard(); };
-      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="400" height="400" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round">' + icon(k) + '</svg>');
+      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(iconSvg(k, 480, mixHex(SKILL_COLOR[k], '#fbf1c7', 0.16)));
       return;
     }
     var cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920;
