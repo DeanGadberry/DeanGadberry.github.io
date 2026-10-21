@@ -211,3 +211,5 @@ ol.refs { padding-left: 20px; font-size: .88rem; }
   .pv-log td:first-child { width: 46%; }
   .muted { color: #7c6f64; }
 }
+
+.thumb.wu1 { display: grid; place-items: center; color: var(--yellow); background: color-mix(in srgb, var(--yellow) 22%, var(--card)); cursor: default; }

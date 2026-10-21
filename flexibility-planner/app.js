@@ -163,6 +163,14 @@
       s.levels.map(function (l, i) {
         return '<li><label><input type="radio" name="level" value="' + i + '"' + (lvl === i ? ' checked' : '') + '><span class="lv">' + i + '</span><span>' + l + (i === s.levels.length - 1 ? ' <small class="muted">&middot; goal</small>' : '') + '</span></label></li>';
       }).join('') + '</ol>';
+    var wu = F.WARMUP[state.skill] || [];
+    $('#warm-box').innerHTML = '<h3>5-minute warm-up</h3><p class="lede">Warm, not tired. Do this before the self-test and before every stretch session.</p>' +
+      '<ol class="exlist"><li class="ex" style="--c:var(--yellow)"><div class="exrow"><div class="thumb wu1" aria-hidden="true"><span class="n">1</span><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5 V9.5 M10 3 H14 M12 3 V6 M18.5 6.5 L20 5"/></svg></div>' +
+      '<div class="txt"><b>Easy whole-body movement</b><span class="dose">1 min &middot; march in place, jumping jacks or an easy bike, until you&rsquo;re slightly warm</span></div></div></li>' +
+      wu.map(function (w, i) {
+        var e = F.EX.filter(function (x) { return x.id === w[0]; })[0];
+        return e ? exItem(e, i + 2, '1 min &middot; ' + w[1]) : '';
+      }).join('') + '</ol>';
     $('#tests').innerHTML = s.tests.map(function (k) {
       var t = F.TESTS[k];
       return '<div class="q" style="--c:#458588"><b>' + t.q + '</b><details><summary>How to test</summary>' + t.how + (t.video ? video(t.video) : '') + '</details>' +

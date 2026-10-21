@@ -630,3 +630,17 @@ FLEX.SKILL_MEASURES = {
   extension: ['clasp_angle', 'prone_back', 'german_hang'],
   squat:     ['squat_hold', 'heel_raise', 'knee_wall', 'butterfly']
 };
+
+/* 5-minute warm-up before the self-test (and before every focus session):
+   one minute of easy whole-body movement, then four 1-minute drills that
+   take the joints for that skill through their range without pushing it. */
+FLEX.WARMUP = {
+  pike:      [['leg_swings', '10 each way, each leg'], ['ham_rocks', '10 slow rocks each leg'], ['sciatic', '10 each leg, gentle'], ['squat_pike', '6 slow reps']],
+  pancake:   [['leg_swings', '10 each way, each leg'], ['rockback', '10 slow rocks'], ['hip_cars', '3 circles each way, each leg'], ['cossack', '5 each side, shallow']],
+  middle:    [['leg_swings', '10 side-to-side, each leg'], ['rockback', '10 slow rocks'], ['hip_cars', '3 circles each way, each leg'], ['cossack', '5 each side, shallow']],
+  front:     [['leg_swings', '10 front-to-back, each leg'], ['ham_rocks', '10 slow rocks each leg'], ['hip_cars', '3 circles each way, each leg'], ['atg', '5 each leg, no weight']],
+  bridge:    [['wrist_prep', '1 minute'], ['band_shoulder', '10 pass-throughs, wide grip'], ['gmb_back', '5 each side'], ['sphinx', '3 &times; 10 s, easy']],
+  flexion:   [['band_shoulder', '10 pass-throughs, wide grip'], ['needle', '5 each side'], ['wall_slide', '10 slow reps'], ['prone_ext', '8 slow reps, no weight']],
+  extension: [['band_shoulder', '10 pass-throughs, wide grip'], ['needle', '5 each side'], ['prone_ext', '8 slow reps, no weight'], ['wall_slide', '8 slow reps']],
+  squat:     [['knee_wall', '10 rocks each ankle'], ['hip_cars', '3 circles each way, each leg'], ['rockback', '10 slow rocks'], ['pry_squat', '5 slow reps, no weight']]
+};
