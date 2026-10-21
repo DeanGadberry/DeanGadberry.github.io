@@ -134,11 +134,43 @@
         .lgtop { grid-template-columns: 1fr 1fr; }
         .mgrid { grid-template-columns: 1fr; }
     }
+    /* take-away */
+    .take { display: grid; grid-template-columns: 230px 1fr; gap: 16px; align-items: start; }
+    .cardprev img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px -12px rgba(28,36,32,0.45); background: var(--soft); min-height: 200px; display: block; }
+    .takebtns { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    #printview { display: none; }
+    @media (max-width: 640px) { .take { grid-template-columns: 1fr; } .cardprev img { max-width: 280px; } }
+
     @media print {
-        body { background: #fff; padding: 0; }
-        .card { box-shadow: none; border: 0; max-width: none; padding: 0; }
-        #form-sec, #catalog-sec, #log-sec, .noprint, .vf, .vcred, .ntoc, .logform, .del, #intro-sec { display: none !important; }
-        #plan-wrap { border: 0; }
+        @page { size: letter; margin: 10mm; }
+        body { background: #fff; padding: 0; display: block; }
+        .card { box-shadow: none; border: 0; max-width: none; padding: 0; background: #fff; }
+        .card > *:not(#printview) { display: none !important; }
+        #printview { display: block !important; font-family: 'EB Garamond', Georgia, serif; font-size: 10pt; line-height: 1.25; color: #1c2420; }
+        #printview header { border-bottom: 2px solid #1c2420; padding-bottom: 4pt; margin-bottom: 8pt; }
+        #printview header span { font-size: 8.5pt; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+        #printview header h1 { text-align: left; font-size: 20pt; margin: 0; }
+        #printview header small { font-size: 8.5pt; opacity: 0.7; }
+        #printview h2 { font-size: 12pt; margin: 10pt 0 4pt; border-bottom: 1px solid #bbb; padding-bottom: 2pt; break-after: avoid; }
+        .pv-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; }
+        .pv-sum div { border: 1px solid #bbb; border-radius: 6pt; padding: 5pt 7pt; }
+        .pv-sum div.hot { background: #1c2420; color: #fff; border-color: #1c2420; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .pv-sum span { display: block; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+        .pv-sum b { display: block; font-size: 12pt; }
+        .pv-sum small { display: block; font-size: 8.5pt; opacity: 0.85; }
+        #printview table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+        #printview th, #printview td { border: 1px solid #ccc; padding: 2pt 5pt; vertical-align: top; text-align: left; }
+        #printview th { background: #f1efe9; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        #printview tr { break-inside: avoid; }
+        .pv-stack td:first-child { width: 14pt; text-align: center; font-weight: 700; }
+        .pv-week th, .pv-week td { text-align: center; width: 14.28%; }
+        .pv-week td.focus { background: #1c2420; color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .pv-week td.focus .muted { color: #ddd; }
+        .muted { opacity: 0.6; }
+        .pv-rules { font-size: 8.5pt; margin: 4pt 0 0; opacity: 0.85; }
+        .pv-log td { height: 14pt; padding: 2pt 5pt; }
+        .pv-log td:first-child { width: 40%; }
+        .lr { display: inline-block; width: 48%; font-size: 7pt; opacity: 0.55; }
     }
 </style>
 </head>
@@ -181,6 +213,7 @@
         <section id="plan-wrap" hidden>
             <div id="plan"></div>
         </section>
+        <div id="printview" aria-hidden="true"></div>
 
         <section id="log-sec">
             <h2>Test log</h2>

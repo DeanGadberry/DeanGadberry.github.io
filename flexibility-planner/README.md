@@ -13,7 +13,15 @@ exercise has a demo video.
 Open `index.html` in a browser, or host the folder anywhere static
 (GitHub Pages works as-is). No build step, no dependencies.
 
-Answers and the progress log are saved in the browser on that device only.
+Answers and the test log are saved in the browser on that device only. Use
+Export / Back up in the Test log to keep a copy.
+
+## Take it with you
+
+- **Phone image:** each plan makes a 1080 x 1920 card with the stack, the
+  week and the next retest date, ready to save to your photos.
+- **Print:** a one-page plan with a blank retest sheet for the next three
+  retests.
 
 ## Files
 

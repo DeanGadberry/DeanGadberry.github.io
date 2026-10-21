@@ -273,7 +273,7 @@
     var today = new Date();
 
     var h = '<nav class="ntoc"><a href="#p-sum">Summary</a><a href="#p-lim">Limiters</a><a href="#p-stack">Your stack</a>' +
-      '<a href="#p-week">Week</a><a href="#p-between">Between sessions</a><a href="#p-prog">Progression</a><a href="#p-log">Track</a></nav>';
+      '<a href="#p-week">Week</a><a href="#p-between">Between sessions</a><a href="#p-prog">Progression</a><a href="#p-log">Track</a><a href="#p-take">Phone card &amp; print</a></nav>';
 
     // Summary
     h += '<h2 id="p-sum">' + s.name + ' plan</h2>';
@@ -339,12 +339,175 @@
     // Log
     h += '<h2 id="p-log">Track your progress</h2><div id="plan-proj"></div>' +
       '<p class="noprint"><a class="linkbtn" href="#log-sec">Log a test session &rarr;</a></p>';
-    h += '<p class="noprint"><button type="button" id="print">Print this plan</button></p>';
+    h += '<h2 id="p-take">Take it with you</h2>' +
+      '<p>A phone-sized card with your stack, your week and your retest date &mdash; save it to your photos. Or print a one-page plan with a blank retest sheet.</p>' +
+      '<div class="take"><div class="cardprev"><img id="card-img" alt="Phone card for this plan"></div>' +
+      '<div class="takebtns"><button type="button" class="bigbtn" id="card-save">Save phone image</button>' +
+      '<button type="button" class="linkbtn" id="card-share" hidden>Share&hellip;</button>' +
+      '<button type="button" class="linkbtn" id="print">Print plan</button></div></div>';
 
     $('#plan').innerHTML = h;
+    lastPlan = { skill: skill, s: s, level: level, tl: tl, stack: stack, sched: sched, built: today };
+    renderPrint(); renderCard();
     $('#plan-wrap').hidden = false;
     renderPlanProj();
     $('#plan-wrap').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* ---------------- print view & phone card ---------------- */
+  var lastPlan = null;
+  function txt(html) { var d = document.createElement('textarea'); d.innerHTML = String(html).replace(/<[^>]+>/g, ''); return d.value; }
+  function retestDate(skill) {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var rows = (typeof skillSessions === 'function') ? skillSessions(skill) : [];
+    if (rows.length) {
+      var d = addDays(new Date(rows[rows.length - 1].date + 'T12:00'), 28);
+      return d < today ? today : d;
+    }
+    return addDays(today, 28);
+  }
+  function daysUntil(d) { var t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((d - t) / 864e5); }
+  function estText(p) {
+    if (!p.tl) return { range: 'At goal', dates: 'Keep one session a week' };
+    return { range: weeksText(p.tl.lo) + '–' + weeksText(p.tl.hi), dates: fmtDate(addDays(p.built, p.tl.lo * 7)) + ' – ' + fmtDate(addDays(p.built, p.tl.hi * 7)) };
+  }
+
+  function renderPrint() {
+    var p = lastPlan; if (!p) return;
+    var s = p.s, rt = retestDate(p.skill), est = estText(p);
+    var focusN = p.sched.filter(function (r) { return r.kind === 'focus'; }).length;
+    var h = '<header><span>Flexibility plan</span><h1>' + s.name + '</h1><small>Built ' + fmtDate(p.built) + '</small></header>' +
+      '<div class="pv-sum"><div><span>Now</span><b>Level ' + p.level + '</b><small>' + s.levels[p.level] + '</small></div>' +
+      '<div><span>Goal</span><b>Level ' + (s.levels.length - 1) + '</b><small>' + s.levels[s.levels.length - 1] + '</small></div>' +
+      '<div><span>Estimate</span><b>' + esc(est.range) + '</b><small>' + esc(est.dates) + '</small></div>' +
+      '<div class="hot"><span>Retest</span><b>' + fmtDate(rt) + '</b><small>then every 4 weeks</small></div></div>';
+    h += '<h2>Focus session &mdash; in this order</h2><table class="pv-stack"><tr><th>#</th><th>Exercise</th><th>Dose</th><th>Rest</th><th>Cue</th></tr>' +
+      p.stack.map(function (it, i) {
+        var e = it.e, m = F.METHODS[e.m];
+        return '<tr><td>' + (i + 1) + '</td><td><b>' + e.n + '</b><br><small>' + m.label + ' &middot; ' + it.role + '</small></td><td>' + dose(e, p.level) + '</td><td>' + m.rest + '</td><td>' + e.cue + '</td></tr>';
+      }).join('') + '</table>';
+    h += '<h2>Week</h2><table class="pv-week"><tr>' + p.sched.map(function (r) { return '<th>' + r.day.slice(0, 3) + '</th>'; }).join('') + '</tr><tr>' +
+      p.sched.map(function (r) {
+        var lab = r.kind === 'focus' ? '<b>Focus</b>' + (/evening/.test(r.what) ? '<br><small>evening</small>' : '') : r.kind === 'maint' ? 'Easy<br><small>5&ndash;10 min</small>' : '<span class="muted">Rest</span>';
+        return '<td class="' + r.kind + '">' + lab + '<br><small class="muted">' + r.type + '</small></td>';
+      }).join('') + '</tr></table>' +
+      '<p class="pv-rules">' + focusN + ' focus session' + (focusN === 1 ? '' : 's') + ' a week, 48 h+ apart &middot; rest 60&ndash;90 s between exercises &middot; ' +
+      'weeks 1&ndash;3 build from the low to the high end of each dose, week 4 deload (half the sets) then retest.</p>';
+    var ms = F.SKILL_MEASURES[p.skill];
+    var dates = [rt, addDays(rt, 28), addDays(rt, 56)];
+    h += '<h2>Retest sheet</h2><table class="pv-log"><tr><th>Test</th>' + dates.map(function (d) { return '<th>' + fmtDate(d) + '</th>'; }).join('') + '</tr>' +
+      '<tr><td>Level (0&ndash;' + (s.levels.length - 1) + ')</td><td></td><td></td><td></td></tr>' +
+      ms.map(function (id) {
+        var m = F.MEASURES[id];
+        return '<tr><td>' + m.label + ' <small>(' + m.unit + ')</small></td>' + dates.map(function () { return '<td>' + (m.sides ? '<span class="lr">L</span><span class="lr">R</span>' : '') + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</table><p class="pv-rules">Same time of day and same warm-up each retest. Enter results in the Test log to update your projected date.</p>';
+    $('#printview').innerHTML = h;
+  }
+
+  function wrap(ctx, text, maxW) {
+    var words = text.split(/\s+/), lines = [], cur = '';
+    words.forEach(function (w) {
+      var t = cur ? cur + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && cur) { lines.push(cur); cur = w; } else cur = t;
+    });
+    if (cur) lines.push(cur);
+    return lines;
+  }
+  function rrect(ctx, x, y, w, h, r) {
+    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  function drawCard(cv, sc) {
+    var p = lastPlan, s = p.s, W = 1080, H = 1920, M = 84, ctx = cv.getContext('2d');
+    var INK = '#1c2420', BG = '#f6f3ec', MUTED = 'rgba(28,36,32,0.6)', SOFT = 'rgba(28,36,32,0.07)';
+    var FF = '"EB Garamond", Georgia, serif';
+    var f = function (wt, px) { ctx.font = wt + ' ' + Math.round(px * sc) + 'px ' + FF; };
+    ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = INK; ctx.textBaseline = 'top';
+    var y = M;
+    // header
+    f('600', 30); ctx.fillStyle = MUTED; ctx.fillText('FLEXIBILITY PLAN', M, y); y += 46 * sc;
+    ctx.fillStyle = INK; f('700', 76);
+    wrap(ctx, txt(s.name), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 84 * sc; });
+    f('400', 34); ctx.fillStyle = MUTED;
+    ctx.fillText('Level ' + p.level + '  →  goal level ' + (s.levels.length - 1), M, y); y += 44 * sc;
+    wrap(ctx, 'Now: ' + txt(s.levels[p.level]), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 42 * sc; });
+    y += 26 * sc;
+    // retest block
+    var rt = retestDate(p.skill), dn = daysUntil(rt), bh = 190 * sc;
+    ctx.fillStyle = INK; rrect(ctx, M, y, W - 2 * M, bh, 28); ctx.fill();
+    ctx.fillStyle = BG; f('600', 28); ctx.fillText('NEXT RETEST', M + 40, y + 30 * sc);
+    f('700', 72); ctx.fillText(fmtDate(rt), M + 40, y + 66 * sc);
+    f('400', 30); ctx.fillStyle = 'rgba(246,243,236,0.8)';
+    ctx.fillText((dn <= 0 ? 'today' : 'in ' + dn + ' day' + (dn === 1 ? '' : 's')) + '  ·  then every 4 weeks', M + 40, y + 148 * sc);
+    y += bh + 30 * sc;
+    var est = estText(p);
+    ctx.fillStyle = INK; f('600', 32); ctx.fillText('Estimated goal: ' + est.range, M, y); y += 42 * sc;
+    f('400', 28); ctx.fillStyle = MUTED; ctx.fillText(est.dates, M, y); y += 58 * sc;
+    // week strip
+    ctx.fillStyle = INK; f('700', 40); ctx.fillText('Your week', M, y); y += 58 * sc;
+    var cw = (W - 2 * M) / 7, r = Math.min(46, cw / 2 - 8) * sc;
+    p.sched.forEach(function (row, i) {
+      var cx = M + cw * i + cw / 2, cy = y + r;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      if (row.kind === 'focus') { ctx.fillStyle = INK; ctx.fill(); }
+      else if (row.kind === 'maint') { ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke(); }
+      else { ctx.fillStyle = SOFT; ctx.fill(); }
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      f('700', 30); ctx.fillStyle = row.kind === 'focus' ? BG : row.kind === 'maint' ? INK : MUTED;
+      ctx.fillText(row.day.slice(0, 2), cx, cy + 1);
+      ctx.textBaseline = 'top'; f('400', 22); ctx.fillStyle = MUTED;
+      ctx.fillText(row.kind === 'focus' ? 'FOCUS' : row.kind === 'maint' ? 'easy' : 'rest', cx, cy + r + 10 * sc);
+      ctx.textAlign = 'left';
+    });
+    y += 2 * r + 52 * sc;
+    // stack
+    ctx.fillStyle = INK; f('700', 40); ctx.fillText('Focus session, in order', M, y); y += 58 * sc;
+    p.stack.forEach(function (it, i) {
+      var e = it.e, m = F.METHODS[e.m];
+      f('700', 34); ctx.fillStyle = INK;
+      ctx.fillText(String(i + 1), M, y);
+      var x = M + 52 * sc, w = W - M - x;
+      wrap(ctx, txt(e.n), w).forEach(function (l) { ctx.fillText(l, x, y); y += 40 * sc; });
+      f('400', 27); ctx.fillStyle = MUTED;
+      wrap(ctx, txt(dose(e, p.level)) + '  ·  rest ' + txt(m.rest), w).forEach(function (l) { ctx.fillText(l, x, y); y += 34 * sc; });
+      y += 16 * sc;
+    });
+    // footer
+    var fy = Math.max(y + 10, H - M - 60);
+    ctx.strokeStyle = 'rgba(28,36,32,0.2)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, fy); ctx.lineTo(W - M, fy); ctx.stroke();
+    f('400', 26); ctx.fillStyle = MUTED;
+    ctx.fillText('Focus sessions 48 h+ apart  ·  week 4 = deload, then retest', M, fy + 22);
+    return y;
+  }
+  function renderCard() {
+    if (!lastPlan) return;
+    var cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920;
+    var go = function () {
+      var sc = 1;
+      for (var i = 0; i < 8; i++) { if (drawCard(cv, sc) <= 1920 - 84 - 80) break; sc -= 0.06; }
+      cv.toBlob(function (b) {
+        if (!b) return;
+        if (lastPlan.cardUrl) URL.revokeObjectURL(lastPlan.cardUrl);
+        lastPlan.cardBlob = b; lastPlan.cardUrl = URL.createObjectURL(b);
+        var img = $('#card-img'); if (img) img.src = lastPlan.cardUrl;
+        var sh = $('#card-share');
+        try { if (sh && navigator.canShare && navigator.canShare({ files: [new File([b], 'x.png', { type: 'image/png' })] })) sh.hidden = false; } catch (e) {}
+      }, 'image/png');
+    };
+    if (document.fonts && document.fonts.load) {
+      Promise.all([document.fonts.load('700 40px "EB Garamond"'), document.fonts.load('400 30px "EB Garamond"'), document.fonts.load('600 30px "EB Garamond"')]).then(go, go);
+    } else go();
+  }
+  function cardName() { var d = lastPlan.built, z = function (n) { return (n < 10 ? '0' : '') + n; }; return 'flexibility-' + lastPlan.skill + '-' + d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()) + '.png'; }
+  document.addEventListener('click', function (e) {
+    if (!lastPlan) return;
+    if (e.target.id === 'card-save' && lastPlan.cardUrl) {
+      var a = document.createElement('a'); a.href = lastPlan.cardUrl; a.download = cardName();
+      document.body.appendChild(a); a.click(); a.remove();
+    } else if (e.target.id === 'card-share' && lastPlan.cardBlob) {
+      navigator.share({ files: [new File([lastPlan.cardBlob], cardName(), { type: 'image/png' })], title: 'Flexibility plan' }).catch(function () {});
+    }
   });
 
   /* ---------------- test log ---------------- */
@@ -578,7 +741,7 @@
       document.querySelectorAll('#log-form input[data-m]').forEach(function (inp) { inp.value = ''; });
       $('#lg-note').value = '';
       $('#lg-msg').textContent = 'Saved.';
-      renderHistory(); renderPlanProj();
+      renderHistory(); renderPlanProj(); renderPrint(); renderCard();
     } else if (t.classList.contains('del') && t.dataset.id) {
       if (!confirm('Delete this session?')) return;
       setSessions(sessions().filter(function (r) { return r.id !== t.dataset.id; })); renderHistory(); renderPlanProj();
