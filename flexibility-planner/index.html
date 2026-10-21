@@ -2,268 +2,87 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#282828">
     <title>Flexibility Planner</title>
     <link rel="stylesheet" href="style.css">
-<style>
-    .card { max-width: 760px; padding-top: 26px; }
-    h1 { margin-bottom: 2px; }
-    .intro { margin-bottom: 4px; }
-
-    /* tabs */
-    .tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 4px; padding: 8px 0; margin: 6px 0 4px;
-            background: rgba(246,243,236,0.96); border-bottom: 1px solid var(--rule); }
-    .tabs button { flex: 1; font: inherit; font-weight: 700; font-size: 1rem; border: 1px solid var(--rule); background: transparent;
-                   color: var(--ink); border-radius: 999px; padding: 7px 6px; cursor: pointer; }
-    .tabs button.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .view[hidden] { display: none; }
-
-    /* chips */
-    .chiprow { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 8px; scrollbar-width: none; }
-    .chiprow::-webkit-scrollbar { display: none; }
-    .chip { flex: none; font: inherit; font-size: 0.93rem; border: 1px solid var(--rule); background: transparent; color: var(--ink);
-            border-radius: 999px; padding: 5px 12px; cursor: pointer; white-space: nowrap; }
-    .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-
-    /* summary strip */
-    .strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 6px 0 10px; }
-    .strip div { background: var(--soft); border-radius: 12px; padding: 7px 10px; }
-    .strip span { display: block; font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.7; }
-    .strip b { display: block; font-size: 1.02rem; line-height: 1.2; }
-    .strip small { display: block; font-size: 0.82rem; opacity: 0.8; line-height: 1.25; }
-    .strip .hot { background: var(--ink); color: var(--bg); }
-    .line { margin: 6px 0; font-size: 0.98rem; }
-    .muted { opacity: 0.7; }
-
-    /* exercise rows */
-    ol.exlist { list-style: none; padding: 0; margin: 6px 0; counter-reset: x; }
-    ol.exlist > li { border: 1px solid var(--rule); border-radius: 12px; padding: 8px 12px; margin: 6px 0; }
-    .exrow { display: flex; align-items: center; gap: 10px; }
-    .exrow .num { flex: none; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--ink); color: var(--bg);
-                  display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
-    .exrow .txt { flex: 1; min-width: 0; line-height: 1.25; }
-    .exrow .txt b { display: block; }
-    .exrow .txt small { display: block; font-size: 0.86rem; opacity: 0.75; }
-    .howbtn { flex: none; font: inherit; font-size: 0.85rem; font-weight: 600; border: 1px solid var(--rule); background: transparent;
-              color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; white-space: nowrap; }
-    .howbtn[aria-expanded="true"] { background: var(--soft); }
-    .howbox { margin-top: 8px; font-size: 0.97rem; }
-    .howbox p { margin: 4px 0; }
-
-    /* week strip */
-    .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin: 6px 0 4px; text-align: center; }
-    .week div { border-radius: 10px; padding: 6px 2px; font-size: 0.82rem; line-height: 1.2; border: 1px solid var(--rule); }
-    .week b { display: block; font-size: 0.95rem; }
-    .week .focus { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .week .rest { opacity: 0.5; }
-
-    /* buttons */
-    .bigbtn, .btn { font: inherit; font-weight: 700; border: 0; border-radius: 999px; padding: 9px 18px; background: var(--ink); color: var(--bg); cursor: pointer; }
-    .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule); font-weight: 600; padding: 6px 14px; }
-    .btnrow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0; }
-
-    /* details panels */
-    details.panel { border: 1px solid var(--rule); border-radius: 14px; padding: 6px 14px; margin: 10px 0; }
-    details.panel > summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
-    details.panel > summary small { font-weight: 400; opacity: 0.7; margin-left: 4px; }
-
-    /* self-test */
-    .q { padding: 8px 0; border-bottom: 1px solid var(--rule); }
-    .q:last-child { border-bottom: 0; }
-    .q > b { display: block; }
-    .q details { font-size: 0.9rem; margin: 2px 0 4px; }
-    .q details summary { cursor: pointer; opacity: 0.75; }
-    .pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
-    .pills label { cursor: pointer; }
-    .pills input { position: absolute; opacity: 0; pointer-events: none; }
-    .pills span { display: inline-block; font-size: 0.9rem; border: 1px solid var(--rule); border-radius: 999px; padding: 4px 10px; }
-    .pills input:checked + span { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-    .pills input:focus-visible + span { outline: 2px solid var(--accent); }
-    .lvlsel { width: 100%; }
-
-    /* settings */
-    .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-    .day { display: flex; flex-direction: column; font-size: 0.8rem; font-weight: 600; gap: 2px; }
-    select, input[type=date], input[type=number], input[type=search] {
-        font: inherit; font-size: 0.92rem; padding: 4px 6px; border: 1px solid var(--rule); border-radius: 8px;
-        background: #fdfbf7; color: var(--ink); box-sizing: border-box; max-width: 100%; }
-    .day select { width: 100%; font-size: 0.82rem; padding: 3px 2px; }
-    .row2 { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 10px; align-items: center; font-size: 0.95rem; }
-    .row2 label { font-weight: 600; }
-
-    /* retest */
-    .mrow { display: grid; grid-template-columns: 1fr 5em 5em; gap: 6px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--rule); }
-    .mrow .lab { font-size: 0.95rem; line-height: 1.25; }
-    .mrow .lab small { opacity: 0.7; }
-    .mrow details { font-size: 0.86rem; }
-    .mrow details summary { cursor: pointer; opacity: 0.7; }
-    .mrow input { width: 100%; }
-    .mrow.one input { grid-column: 2 / span 2; }
-    .mhead { font-size: 0.8rem; font-weight: 700; opacity: 0.7; }
-    table.prog { width: 100%; font-size: 0.92rem; }
-    table.prog td, table.prog th { padding: 4px 6px; }
-    .up { color: #2f7a3e; font-weight: 700; } .down { color: #a33; font-weight: 700; }
-    .mgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .mcard { border: 1px solid var(--rule); border-radius: 12px; padding: 6px 10px; font-size: 0.9rem; }
-    .spark { width: 100%; height: auto; }
-    .spark .ser { fill: none; stroke: var(--ink); stroke-width: 2; }
-    .spark circle.ser { fill: var(--ink); stroke: none; }
-    .spark .R { stroke-dasharray: 5 4; opacity: 0.6; }
-    .spark circle.R { fill: #8a8f8b; }
-    .spark .goal { stroke: #8C8CF7; stroke-width: 1.5; stroke-dasharray: 2 3; }
-    .del { border: 0; background: none; font-size: 1.1rem; cursor: pointer; color: var(--ink); opacity: 0.5; }
-    .filebtn input { display: none; }
-    .ok { font-weight: 600; }
-
-    /* video */
-    .vf { position: relative; width: 100%; padding-top: 56.25%; border-radius: 12px; overflow: hidden; background: #000; margin-top: 6px; }
-    .vf img, .vf iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
-    .vf .play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(0,0,0,0.15); cursor: pointer; }
-    .vf .play span { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%;
-                     background: rgba(253,251,247,0.92); color: #1c2420; font-size: 1.3rem; padding-left: 4px; box-sizing: border-box; }
-    .vcred { font-size: 0.8rem; opacity: 0.7; margin: 3px 0 0 !important; }
-
-    /* phone card */
-    #card-panel img { width: 200px; max-width: 60%; border-radius: 14px; box-shadow: 0 10px 26px -12px rgba(28,36,32,0.45); display: block; margin: 6px 0; }
-
-    /* stretches */
-    .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 6px 0; }
-    .filters input { grid-column: span 2; }
-    .matrix-wrap { overflow-x: auto; }
-    table.matrix { font-size: 0.8rem; min-width: 540px; }
-    table.matrix th, table.matrix td { padding: 3px 4px; text-align: center; }
-    table.matrix tr th:first-child { text-align: left; white-space: nowrap; }
-    table.matrix button { font: inherit; font-weight: 700; border: 1px solid var(--rule); background: transparent; border-radius: 8px; padding: 0 7px; cursor: pointer; color: var(--ink); }
-    .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
-    .flow div { border: 1px solid var(--rule); border-radius: 10px; padding: 6px 8px; font-size: 0.86rem; line-height: 1.3; }
-    .flow b { display: block; }
-    ol.refs { font-size: 0.85rem; }
-    #printview { display: none; }
-
-    @media (max-width: 560px) {
-        .strip { grid-template-columns: 1fr 1fr; }
-        .strip .hot { grid-column: span 2; }
-        .days { grid-template-columns: repeat(4, 1fr); }
-        .mgrid { grid-template-columns: 1fr; }
-        .flow { grid-template-columns: 1fr 1fr; }
-        .week div { font-size: 0.72rem; padding: 5px 1px; }
-    }
-
-    @media print {
-        @page { size: letter; margin: 10mm; }
-        body { background: #fff; padding: 0; display: block; }
-        .card { box-shadow: none; border: 0; max-width: none; padding: 0; background: #fff; }
-        .card > *:not(#printview) { display: none !important; }
-        #printview { display: block !important; font-family: 'EB Garamond', Georgia, serif; font-size: 10pt; line-height: 1.25; color: #1c2420; }
-        #printview header { border-bottom: 2px solid #1c2420; padding-bottom: 4pt; margin-bottom: 8pt; }
-        #printview header span { font-size: 8.5pt; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
-        #printview header h1 { text-align: left; font-size: 20pt; margin: 0; }
-        #printview header small { font-size: 8.5pt; opacity: 0.7; }
-        #printview h2 { font-size: 12pt; margin: 10pt 0 4pt; border-bottom: 1px solid #bbb; padding-bottom: 2pt; break-after: avoid; }
-        .pv-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6pt; }
-        .pv-sum div { border: 1px solid #bbb; border-radius: 6pt; padding: 5pt 7pt; }
-        .pv-sum div.hot { background: #1c2420; color: #fff; border-color: #1c2420; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .pv-sum span { display: block; font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
-        .pv-sum b { display: block; font-size: 12pt; }
-        .pv-sum small { display: block; font-size: 8.5pt; opacity: 0.85; }
-        #printview table { width: 100%; border-collapse: collapse; font-size: 9pt; }
-        #printview th, #printview td { border: 1px solid #ccc; padding: 2pt 5pt; vertical-align: top; text-align: left; }
-        #printview th { background: #f1efe9; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        #printview tr { break-inside: avoid; }
-        .pv-stack td:first-child { width: 14pt; text-align: center; font-weight: 700; }
-        .pv-week th, .pv-week td { text-align: center; width: 14.28%; }
-        .pv-week td.focus { background: #1c2420; color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .pv-week td.focus .muted { color: #ddd; }
-        .pv-rules { font-size: 8.5pt; margin: 4pt 0 0; opacity: 0.85; }
-        .pv-log td { height: 14pt; padding: 2pt 5pt; }
-        .pv-log td:first-child { width: 40%; }
-        .lr { display: inline-block; width: 48%; font-size: 7pt; opacity: 0.55; }
-    }
-</style>
 </head>
 <body>
-    <div class="card">
-        <h1>Flexibility Planner</h1>
-        <p class="intro">Pick a skill, rate yourself, get your stretches. Retest every 4 weeks.</p>
+    <header class="hero">
+        <div class="wrap">
+            <h1>Flexibility Planner</h1>
+            <p>Assess yourself, find what&rsquo;s holding you back, and get 3&ndash;5 stretches to do 1&ndash;2 times a week.</p>
+        </div>
+    </header>
+    <div class="rainbow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
-        <nav class="tabs" aria-label="Sections">
-            <button type="button" data-view="plan">Plan</button>
-            <button type="button" data-view="retest">Retest</button>
-            <button type="button" data-view="stretches">Stretches</button>
+    <main class="wrap">
+        <div class="skills" id="skills" role="group" aria-label="Skill"></div>
+
+        <nav class="steps" aria-label="Steps">
+            <button type="button" data-view="assess"><b>1</b>Assess</button>
+            <button type="button" data-view="plan"><b>2</b>Plan</button>
+            <button type="button" data-view="library"><b>3</b>Library</button>
         </nav>
 
-        <div class="chiprow" id="skills" role="group" aria-label="Skill"></div>
-
-        <section class="view" id="view-plan">
-            <div id="plan-out"></div>
-            <details class="panel" id="selftest-panel">
-                <summary>Self-test <small id="selftest-sum"></small></summary>
-                <div id="selftest"></div>
-            </details>
-            <details class="panel" id="settings-panel">
-                <summary>Week &amp; session settings <small id="settings-sum"></small></summary>
+        <section id="view-assess">
+            <div class="box" id="lvl-box"></div>
+            <div class="box" style="--c: var(--blue)">
+                <h3>Self-test</h3>
+                <p class="lede">Warm up for 5 minutes, then try each one. These find your limiters.</p>
+                <div class="progress"><i id="as-prog"></i></div>
+                <small class="muted" id="as-count"></small>
+                <div id="tests"></div>
+            </div>
+            <div class="box" style="--c: var(--aqua)">
+                <h3>Your training week</h3>
+                <p class="lede">Your stretch days are placed around your lifting.</p>
                 <div id="settings"></div>
-            </details>
+            </div>
+            <button type="button" class="bigbtn" data-go="plan">See my plan &rarr;</button>
         </section>
 
-        <section class="view" id="view-retest" hidden>
-            <div id="rt-head"></div>
-            <div id="rt-form"></div>
-            <div id="rt-progress"></div>
-            <details class="panel">
-                <summary>Back up or export</summary>
-                <div class="btnrow">
-                    <button type="button" class="btn ghost" id="lg-csv">Export CSV</button>
-                    <button type="button" class="btn ghost" id="lg-json">Back up</button>
-                    <label class="btn ghost filebtn">Restore <input type="file" id="lg-import" accept="application/json,.json"></label>
-                    <span id="lg-io-msg" role="status"></span>
-                </div>
-                <p class="meta">Retests are saved in this browser only.</p>
-            </details>
+        <section id="view-plan" hidden>
+            <div id="plan-out"></div>
         </section>
 
-        <section class="view" id="view-stretches" hidden>
-            <div class="btnrow">
+        <section id="view-library" hidden>
+            <div class="libbar">
+                <h2 style="margin:12px 0 0"><span class="dot"></span><span id="count"></span></h2>
                 <button type="button" class="btn ghost" id="cat-toggle"></button>
-                <span id="count" class="muted"></span>
             </div>
-            <details class="panel">
-                <summary>Filter</summary>
-                <div class="filters">
-                    <select id="f-lim" aria-label="Target"></select>
-                    <select id="f-m" aria-label="Method"></select>
-                    <select id="f-spec" aria-label="Assisted or resisted"></select>
-                    <button type="button" class="btn ghost" id="f-clear">Clear</button>
-                    <input id="f-q" type="search" placeholder="Search" aria-label="Search">
-                </div>
-            </details>
+            <div class="filters">
+                <select id="f-lim" aria-label="Target"></select>
+                <select id="f-m" aria-label="Method"></select>
+                <input id="f-q" class="full" type="search" placeholder="Search stretches" aria-label="Search stretches">
+            </div>
             <ol class="exlist" id="catalog"></ol>
-            <details class="panel">
+            <details class="box" style="--c: var(--purple)">
                 <summary>Skill &times; method grid</summary>
-                <p class="meta">Tap a number to list those stretches.</p>
-                <div class="matrix-wrap" id="matrix"></div>
+                <div class="scrollx" id="matrix"></div>
             </details>
         </section>
 
-        <details class="panel">
-            <summary>How this works &amp; sources</summary>
-            <p>Built on Matt Smith&rsquo;s method (<a class="ext" href="https://www.youtube.com/watch?v=3j7oSqCuTHs" target="_blank" rel="noopener noreferrer">video</a>), with dosing from stretching research.</p>
-            <div class="flow">
-                <div><b>Skill</b>Train one position.</div>
-                <div><b>Test</b>Rate yourself.</div>
-                <div><b>Limiters</b>Find what holds you back.</div>
-                <div><b>Stack</b>3&ndash;5 stretches, small to big.</div>
-                <div><b>Schedule</b>1&ndash;3 sessions, 48 h apart.</div>
-                <div><b>Retest</b>Every 4 weeks; plan updates.</div>
-            </div>
-            <p class="meta">Target dates are a coaching rule of thumb, not a promise; bone shape limits some people&rsquo;s side split and pancake. Exercise descriptions are original; every video belongs to its creator.</p>
-            <ol class="refs" id="sources"></ol>
-        </details>
+        <footer>
+            <details>
+                <summary>How this works &amp; sources</summary>
+                <p>Built on Matt Smith&rsquo;s method (<a href="https://www.youtube.com/watch?v=3j7oSqCuTHs" target="_blank" rel="noopener noreferrer">video</a>): assess, find your weak links, then train only the 3&ndash;5 stretches that move you forward, 1&ndash;2 times a week per skill. Dosing is from stretching research.</p>
+                <div class="flow">
+                    <div style="--c: var(--red)"><b>Skill</b><br>Pick one position.</div>
+                    <div style="--c: var(--orange)"><b>Assess</b><br>Level plus self-tests.</div>
+                    <div style="--c: var(--yellow)"><b>Limiters</b><br>What holds you back.</div>
+                    <div style="--c: var(--green)"><b>Stack</b><br>3&ndash;5 stretches, small to big.</div>
+                    <div style="--c: var(--aqua)"><b>Week</b><br>Sessions 48 h+ apart.</div>
+                    <div style="--c: var(--blue)"><b>Reassess</b><br>Every 4 weeks.</div>
+                </div>
+                <p class="muted">Target dates are a rule of thumb, not a promise; bone shape limits some people&rsquo;s side split and pancake. Pictures are stills from each stretch&rsquo;s demo video; every video belongs to its creator.</p>
+                <ol class="refs" id="sources"></ol>
+            </details>
+        </footer>
+    </main>
 
-        <div id="printview" aria-hidden="true"></div>
-    </div>
+    <div id="printview" aria-hidden="true"></div>
 
     <script src="data.js"></script>
     <script src="app.js"></script>

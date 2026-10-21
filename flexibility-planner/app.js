@@ -1,14 +1,27 @@
-/* Flexibility planner: Plan / Retest / Stretches.
-   Self-test -> limiters -> 3-5 stretch stack -> week -> retest every 4 weeks.
-   Data lives in data.js (window.FLEX). Answers and retests are saved in this
-   browser (localStorage); everything still works without storage. */
+/* Flexibility planner: Assess -> Plan -> Library.
+   Self-test -> limiters -> 3-5 stretch stack -> week -> reassess every 4 weeks.
+   Data lives in data.js (window.FLEX). Answers are saved in this browser
+   (localStorage); everything still works without storage. */
 (function () {
   'use strict';
   var F = window.FLEX;
   var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   var DAY_FULL = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  var TYPES = [['rest', 'Rest'], ['upper', 'Upper lift'], ['lower', 'Lower lift'], ['full', 'Full-body lift'], ['cardio', 'Cardio / other']];
+  var TYPES = [['rest', 'Rest'], ['upper', 'Upper'], ['lower', 'Lower'], ['full', 'Full'], ['cardio', 'Cardio']];
   var KEY = 'flexplanner-v1';
+  var SKILL_COLOR = { pike: '#d79921', pancake: '#d65d0e', middle: '#cc241d', front: '#b16286', bridge: '#458588', flexion: '#689d6a', extension: '#98971a', squat: '#a0522d' };
+  var MCOLOR = { static: '#458588', pir: '#b16286', loaded: '#cc241d', iso: '#689d6a', isoreps: '#689d6a', active: '#98971a', strength: '#d65d0e',
+    dynamic: '#d79921', ballistic: '#d65d0e', nerve: '#b16286', soft: '#928374', cars: '#d79921', technique: '#458588' };
+  var ICON = {
+    pike: '<line x1="5" y1="31" x2="35" y2="31"/><line x1="7" y1="29" x2="27" y2="21"/><circle cx="31" cy="20" r="3.4"/><line x1="15" y1="25" x2="32" y2="29"/>',
+    pancake: '<line x1="20" y1="30" x2="3" y2="35"/><line x1="20" y1="30" x2="37" y2="35"/><line x1="20" y1="30" x2="20" y2="20"/><circle cx="20" cy="16" r="3.4"/><line x1="20" y1="23" x2="9" y2="30"/><line x1="20" y1="23" x2="31" y2="30"/>',
+    middle: '<line x1="2" y1="33" x2="38" y2="33"/><line x1="20" y1="33" x2="20" y2="15"/><circle cx="20" cy="10.5" r="3.4"/><line x1="20" y1="20" x2="9" y2="15"/><line x1="20" y1="20" x2="31" y2="15"/>',
+    front: '<line x1="3" y1="33" x2="37" y2="33"/><line x1="20" y1="33" x2="21" y2="15"/><circle cx="21.5" cy="10.5" r="3.4"/><line x1="21" y1="19" x2="16" y2="7"/><line x1="21" y1="19" x2="26" y2="7"/>',
+    bridge: '<path d="M6 35 C6 12 34 12 34 35" fill="none"/><circle cx="9" cy="28" r="3.2"/>',
+    flexion: '<line x1="20" y1="20" x2="20" y2="31"/><line x1="20" y1="31" x2="16" y2="38"/><line x1="20" y1="31" x2="24" y2="38"/><circle cx="20" cy="13" r="3.4"/><line x1="20" y1="19" x2="16" y2="3"/><line x1="20" y1="19" x2="24" y2="3"/>',
+    extension: '<line x1="18" y1="17" x2="18" y2="30"/><line x1="18" y1="30" x2="15" y2="38"/><line x1="18" y1="30" x2="21" y2="38"/><circle cx="18" cy="10" r="3.4"/><line x1="18" y1="17" x2="30" y2="24"/><line x1="18" y1="18" x2="31" y2="27"/>',
+    squat: '<line x1="13" y1="30" x2="9" y2="37"/><line x1="13" y1="30" x2="24" y2="27"/><line x1="24" y1="27" x2="25" y2="37"/><line x1="13" y1="30" x2="20" y2="15"/><circle cx="21" cy="10" r="3.4"/><line x1="19" y1="19" x2="30" y2="21"/>'
+  };
 
   /* ---------------- storage ---------------- */
   function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
@@ -17,16 +30,25 @@
   var state = load(KEY, null) || {};
   state.answers = state.answers || {};
   state.levels = state.levels || {};
+  state.tested = state.tested || {};
   state.days = state.days || ['upper', 'lower', 'cardio', 'upper', 'lower', 'rest', 'rest'];
   if (state.noSun === undefined) state.noSun = false;
   state.n = state.n || 2;
   if (!state.sizeMode) state.sizeMode = 'auto';
-  state.view = state.view || 'plan';
+  if (['assess', 'plan', 'library'].indexOf(state.view) < 0) state.view = null;
   var qs = new URLSearchParams(location.search).get('skill');
   if (qs && F.SKILLS[qs]) state.skill = qs;
   state.skill = state.skill || 'pancake';
+  // carry over the date of the last logged retest from the old version
+  var oldTests = load('flexplanner-tests-v1', []);
+  Object.keys(state.levels).forEach(function (k) {
+    if (state.tested[k]) return;
+    var r = (Array.isArray(oldTests) ? oldTests : []).filter(function (x) { return x && x.skill === k && x.date; }).map(function (x) { return x.date; }).sort();
+    state.tested[k] = r.length ? r[r.length - 1] : todayStr();
+  });
   var hv = location.hash.slice(1);
-  if (hv === 'plan' || hv === 'retest' || hv === 'stretches') state.view = hv;
+  if (hv === 'assess' || hv === 'plan' || hv === 'library') state.view = hv;
+  if (!state.view) state.view = state.levels[state.skill] == null ? 'assess' : 'plan';
   function persist() { save(KEY, state); }
 
   /* ---------------- helpers ---------------- */
@@ -38,30 +60,34 @@
   function weeksText(w) { return w < 9 ? Math.round(w) + ' wk' : Math.round(w / 4.35) + ' mo'; }
   function todayStr() { var d = new Date(), z = function (n) { return (n < 10 ? '0' : '') + n; }; return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' + z(d.getDate()); }
   function sizeFor(level) { if (state.sizeMode !== 'auto') return +state.sizeMode; return level <= 1 ? 3 : level === 2 ? 4 : 5; }
+  function short(k) { return F.SKILLS[k].name.split(' (')[0]; }
+  function skc() { return SKILL_COLOR[state.skill]; }
 
-  /* "Show me how": description + video, hidden until asked */
-  function video(v) {
-    return '<div class="vf" data-id="' + v[0] + '"><img src="https://i.ytimg.com/vi/' + v[0] + '/hqdefault.jpg" alt="" loading="lazy">' +
-      '<button type="button" class="play" aria-label="Play video"><span>&#9654;</span></button></div>' +
-      '<p class="vcred">' + v[1] + ' &middot; ' + v[2] + '</p>';
+  /* ---------------- pictures & "Show me how" ---------------- */
+  function video(id, title, by) {
+    return '<div class="vf" data-id="' + id + '"><img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy">' +
+      '<button type="button" class="play" aria-label="Play video">&#9654;</button></div>' +
+      (title ? '<p class="vcred">' + title + ' &middot; ' + by + '</p>' : '');
   }
   var howSeq = 0;
   function exItem(e, num, sub) {
-    var id = 'h' + (++howSeq);
-    return '<li><div class="exrow">' + (num ? '<span class="num">' + num + '</span>' : '') +
-      '<div class="txt"><b>' + e.n + '</b><small>' + sub + '</small></div>' +
-      '<button type="button" class="howbtn" aria-expanded="false" aria-controls="' + id + '">Show me how</button></div>' +
+    var id = 'h' + (++howSeq), m = F.METHODS[e.m];
+    return '<li class="ex" style="--c:' + (MCOLOR[e.m] || '#458588') + '"><div class="exrow">' +
+      '<button type="button" class="thumb" data-how="' + id + '" aria-label="Show me how: ' + esc(e.n.replace(/&[^;]+;/g, '')) + '">' +
+      '<img src="https://i.ytimg.com/vi/' + e.v[0] + '/mqdefault.jpg" alt="" loading="lazy">' + (num ? '<span class="n">' + num + '</span>' : '') + '</button>' +
+      '<div class="txt"><b>' + e.n + '</b><span class="tag">' + m.label + '</span><span class="dose">' + sub + '</span>' +
+      '<button type="button" class="howbtn" aria-expanded="false" aria-controls="' + id + '">Show me how</button></div></div>' +
       '<div class="howbox" id="' + id + '" hidden><p>' + e.how + ' <i>' + e.cue + '</i></p>' +
-      (e.note ? '<p class="meta">' + e.note + '</p>' : '') + '<div class="vslot" data-v="' + esc(JSON.stringify(e.v)) + '"></div></div></li>';
+      (e.note ? '<p class="muted">' + e.note + '</p>' : '') + '<div class="vslot" data-v="' + esc(JSON.stringify(e.v)) + '"></div></div></li>';
   }
   document.addEventListener('click', function (e) {
-    var hb = e.target.closest('.howbtn');
+    var hb = e.target.closest('.howbtn, .thumb');
     if (hb) {
-      var box = document.getElementById(hb.getAttribute('aria-controls'));
-      var open = box.hidden;
-      box.hidden = !open; hb.setAttribute('aria-expanded', open); hb.textContent = open ? 'Hide' : 'Show me how';
+      var bid = hb.getAttribute('aria-controls') || hb.dataset.how, box = document.getElementById(bid);
+      var btn = box.parentNode.querySelector('.howbtn'), open = box.hidden;
+      box.hidden = !open; btn.setAttribute('aria-expanded', open); btn.textContent = open ? 'Hide' : 'Show me how';
       var slot = box.querySelector('.vslot');
-      if (open && slot && !slot.innerHTML) slot.innerHTML = video(JSON.parse(slot.dataset.v));
+      if (open && slot && !slot.innerHTML) { var v = JSON.parse(slot.dataset.v); slot.innerHTML = video(v[0], v[1], v[2]); }
       return;
     }
     var b = e.target.closest('.vf .play');
@@ -72,84 +98,82 @@
     }
   });
 
-  /* ---------------- tabs & skill chips ---------------- */
+  /* ---------------- steps & skill tiles ---------------- */
   function setView(v) {
     state.view = v; persist();
-    document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.view === v); b.setAttribute('aria-pressed', b.dataset.view === v); });
-    ['plan', 'retest', 'stretches'].forEach(function (x) { $('#view-' + x).hidden = x !== v; });
+    document.querySelectorAll('.steps button').forEach(function (b) { b.classList.toggle('on', b.dataset.view === v); b.setAttribute('aria-pressed', b.dataset.view === v); });
+    ['assess', 'plan', 'library'].forEach(function (x) { $('#view-' + x).hidden = x !== v; });
     try { history.replaceState(null, '', '#' + v); } catch (e) {}
   }
-  $('.tabs').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { setView(b.dataset.view); window.scrollTo(0, 0); } });
+  function go(v) { setView(v); var t = $('.steps').offsetTop; if (window.scrollY > t) window.scrollTo(0, t); }
+  $('.steps').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) go(b.dataset.view); });
+  document.addEventListener('click', function (e) { var t = e.target.closest('[data-go]'); if (t) go(t.dataset.go); });
 
   function renderSkills() {
     $('#skills').innerHTML = Object.keys(F.SKILLS).map(function (k) {
-      return '<button type="button" class="chip' + (k === state.skill ? ' on' : '') + '" data-skill="' + k + '">' + F.SKILLS[k].name.split(' (')[0] + '</button>';
+      var l = state.levels[k];
+      return '<button type="button" class="skill' + (k === state.skill ? ' on' : '') + '" data-skill="' + k + '" style="--c:' + SKILL_COLOR[k] + '" aria-pressed="' + (k === state.skill) + '">' +
+        '<svg viewBox="0 0 40 40" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round" aria-hidden="true">' + ICON[k] + '</svg>' +
+        '<span>' + short(k) + '</span><small>' + (l == null ? 'not assessed' : 'level ' + l + '/' + (F.SKILLS[k].levels.length - 1)) + '</small></button>';
     }).join('');
   }
   $('#skills').addEventListener('click', function (e) {
-    var b = e.target.closest('.chip'); if (!b) return;
+    var b = e.target.closest('.skill'); if (!b) return;
     state.skill = b.dataset.skill; persist();
-    renderSkills(); renderSelftest(); renderPlan(); renderRetest(); renderCatalog();
+    renderAll();
+    if (state.levels[state.skill] == null && state.view === 'plan') setView('assess');
   });
 
-  /* ---------------- self-test & settings ---------------- */
-  function pills(name, opts, sel) {
-    return '<div class="pills">' + opts.map(function (o, i) {
+  /* ---------------- assessment ---------------- */
+  function radios(name, opts, sel) {
+    return '<div class="radios" role="radiogroup">' + opts.map(function (o, i) {
       return '<label><input type="radio" name="' + name + '" value="' + i + '"' + (sel === i ? ' checked' : '') + '><span>' + o + '</span></label>';
     }).join('') + '</div>';
   }
-  function renderSelftest() {
-    var s = F.SKILLS[state.skill], ans = state.answers[state.skill] || {}, lvl = state.levels[state.skill];
-    var h = '<div class="q"><b>Where are you now?</b><details><summary>How to check</summary>' + s.levelHow + '</details>' +
-      '<select class="lvlsel" name="level" aria-label="Current level"><option value="">Choose&hellip;</option>' + s.levels.map(function (l, i) {
-        return '<option value="' + i + '"' + (lvl === i ? ' selected' : '') + '>' + i + ' &middot; ' + l + '</option>'; }).join('') + '</select></div>';
-    s.tests.forEach(function (k) {
+  function renderAssess() {
+    var s = F.SKILLS[state.skill], ans = state.answers[state.skill] || {}, lvl = state.levels[state.skill], c = skc();
+    $('#lvl-box').style.setProperty('--c', c);
+    $('#lvl-box').innerHTML = '<h3>' + s.name + ': where are you now?</h3><p class="lede">' + s.levelHow + '</p><ol class="ladder" style="--c:' + c + '">' +
+      s.levels.map(function (l, i) {
+        return '<li><label><input type="radio" name="level" value="' + i + '"' + (lvl === i ? ' checked' : '') + '><span class="lv">' + i + '</span><span>' + l + (i === s.levels.length - 1 ? ' <small class="muted">&middot; goal</small>' : '') + '</span></label></li>';
+      }).join('') + '</ol>';
+    $('#tests').innerHTML = s.tests.map(function (k) {
       var t = F.TESTS[k];
-      h += '<div class="q"><b>' + t.q + '</b><details><summary>How to test</summary>' + t.how + '</details>' +
-        pills('t_' + k, t.opts.map(function (o) { return o[0]; }), ans[k]) + '</div>';
-    });
-    $('#selftest').innerHTML = h;
-    var n = s.tests.filter(function (k) { return ans[k] != null; }).length;
-    $('#selftest-sum').textContent = lvl == null ? '— start here' : '· level ' + lvl + ', ' + n + ' of ' + s.tests.length + ' answered';
-    $('#selftest-panel').open = lvl == null;
+      return '<div class="q" style="--c:#458588"><b>' + t.q + '</b><details><summary>How to test</summary>' + t.how + (t.video ? video(t.video) : '') + '</details>' +
+        radios('t_' + k, t.opts.map(function (o) { return o[0]; }), ans[k]) + '</div>';
+    }).join('');
+    updateCount();
   }
-  $('#selftest').addEventListener('change', function (e) {
-    var n = e.target.name; if (!n) return;
-    if (n === 'level') { if (e.target.value === '') delete state.levels[state.skill]; else state.levels[state.skill] = +e.target.value; }
+  function updateCount() {
+    var s = F.SKILLS[state.skill], ans = state.answers[state.skill] || {};
+    var n = s.tests.filter(function (k) { return ans[k] != null; }).length;
+    $('#as-prog').style.width = (100 * n / s.tests.length) + '%';
+    $('#as-count').textContent = n + ' of ' + s.tests.length + ' answered' + (n < s.tests.length ? ' — skip any you can’t test' : '');
+  }
+  $('#view-assess').addEventListener('change', function (e) {
+    var n = e.target.name; if (!n || e.target.type !== 'radio') return;
+    if (n === 'level') state.levels[state.skill] = +e.target.value;
     else { state.answers[state.skill] = state.answers[state.skill] || {}; state.answers[state.skill][n.slice(2)] = +e.target.value; }
-    persist();
-    var keepOpen = $('#selftest-panel').open;
-    renderPlan(); updateSelftestSum(); $('#selftest-panel').open = keepOpen;
+    state.tested[state.skill] = todayStr();
+    persist(); updateCount(); renderSkills(); renderPlan();
   });
-  function updateSelftestSum() {
-    var s = F.SKILLS[state.skill], ans = state.answers[state.skill] || {}, lvl = state.levels[state.skill];
-    var n = s.tests.filter(function (k) { return ans[k] != null; }).length;
-    $('#selftest-sum').textContent = lvl == null ? '— start here' : '· level ' + lvl + ', ' + n + ' of ' + s.tests.length + ' answered';
-  }
 
   function renderSettings() {
-    var h = '<div class="days">' + DAYS.map(function (d, i) {
-      return '<label class="day"><span>' + d + '</span><select data-day="' + i + '">' + TYPES.map(function (t) {
+    $('#settings').innerHTML = '<div class="days">' + DAYS.map(function (d, i) {
+      return '<label class="day"><span>' + d + '</span><select data-day="' + i + '" aria-label="' + DAY_FULL[i] + '">' + TYPES.map(function (t) {
         return '<option value="' + t[0] + '"' + (state.days[i] === t[0] ? ' selected' : '') + '>' + t[1] + '</option>'; }).join('') + '</select></label>';
     }).join('') + '</div><div class="row2">' +
-      '<label>Sessions a week <select id="nsess">' + [1, 2, 3].map(function (n) { return '<option' + (state.n === n ? ' selected' : '') + '>' + n + '</option>'; }).join('') + '</select></label>' +
-      '<label>Stretches <select id="nsize">' + [['auto', 'Auto'], ['3', '3'], ['4', '4'], ['5', '5']].map(function (o) {
+      '<label>Stretch sessions a week <select id="nsess">' + [1, 2, 3].map(function (n) { return '<option' + (state.n === n ? ' selected' : '') + '>' + n + '</option>'; }).join('') + '</select></label>' +
+      '<label>Stretches per session <select id="nsize">' + [['auto', 'Auto (3–5)'], ['3', '3'], ['4', '4'], ['5', '5']].map(function (o) {
         return '<option value="' + o[0] + '"' + (String(state.sizeMode) === o[0] ? ' selected' : '') + '>' + o[1] + '</option>'; }).join('') + '</select></label>' +
-      '<label><input type="checkbox" id="nosun"' + (state.noSun ? ' checked' : '') + '> Keep Sunday free</label></div>' +
-      '<p class="meta">Auto: 3 stretches at levels 0&ndash;1, 4 at level 2, 5 from level 3. Add one if a retest shows no progress and you have the time.</p>';
-    $('#settings').innerHTML = h;
-    updateSettingsSum();
-  }
-  function updateSettingsSum() {
-    var lifts = state.days.filter(function (t) { return t === 'upper' || t === 'lower' || t === 'full'; }).length;
-    $('#settings-sum').textContent = '· ' + lifts + ' lifting days, ' + state.n + ' session' + (state.n === 1 ? '' : 's') + ', ' + (state.sizeMode === 'auto' ? 'auto' : state.sizeMode) + ' stretches';
+      '<label><input type="checkbox" id="nosun"' + (state.noSun ? ' checked' : '') + '> Keep Sunday free</label></div>';
   }
   $('#settings').addEventListener('change', function (e) {
     if (e.target.dataset.day) state.days[+e.target.dataset.day] = e.target.value;
     if (e.target.id === 'nsess') state.n = +e.target.value;
     if (e.target.id === 'nsize') state.sizeMode = e.target.value;
     if (e.target.id === 'nosun') state.noSun = e.target.checked;
-    persist(); updateSettingsSum(); renderPlan();
+    persist(); renderPlan();
   });
 
   /* ---------------- engine: limiters ---------------- */
@@ -325,39 +349,56 @@
     return { skill: skill, s: s, level: level, ranked: ranked, sig: sig, stack: built.stack, warm: built.warm,
       sched: schedule(skill), tl: timeline(skill, level, sig.length), built: new Date() };
   }
-  function weekStrip(sched) {
-    return '<div class="week">' + sched.map(function (r) {
-      var lab = r.kind === 'focus' ? 'Focus' + (/evening/.test(r.what) ? '<br>eve' : '') : r.kind === 'maint' ? 'Easy' : 'Rest';
-      return '<div class="' + r.kind + '"><b>' + r.day.slice(0, 2) + '</b>' + lab + '</div>';
-    }).join('') + '</div>';
-  }
   function renderPlan() {
-    var p = lastPlan = computePlan(state.skill), box = $('#plan-out');
+    var p = lastPlan = computePlan(state.skill), box = $('#plan-out'), c = skc();
     if (!p) {
-      box.innerHTML = '<p class="line">Answer <b>Where are you now?</b> in the self-test below to get your plan. The other questions sharpen it.</p>';
-      $('#selftest-panel').open = true;
+      box.innerHTML = '<div class="box" style="--c:' + c + '"><h3>No plan yet for ' + short(state.skill) + '</h3><p>Pick your level in the assessment first. The self-test questions sharpen the plan.</p>' +
+        '<button type="button" class="bigbtn" data-go="assess">Start the assessment</button></div>';
       return;
     }
     var s = p.s, rt = retestDate(p.skill), dn = daysUntil(rt), goal = s.levels.length - 1;
-    var est = p.tl ? weeksText(p.tl.lo) + '&ndash;' + weeksText(p.tl.hi) : 'At goal';
-    var h = '<div class="strip"><div><span>Level</span><b>' + p.level + ' &rarr; ' + goal + '</b><small>' + s.levels[p.level] + '</small></div>' +
-      '<div><span>Estimate</span><b>' + est + '</b><small>' + (p.tl ? 'by ' + shortDate(addDays(p.built, p.tl.lo * 7)) + '&ndash;' + shortDate(addDays(p.built, p.tl.hi * 7)) : 'One session a week keeps it') + '</small></div>' +
-      '<div class="hot"><span>Retest</span><b>' + shortDate(rt) + '</b><small>' + (dn <= 0 ? 'today' : 'in ' + dn + ' days') + '</small></div></div>';
-    var mains = p.sig.map(function (r) { return F.LIMITERS[r.k].label; });
-    h += '<p class="line"><b>Holding you back:</b> ' + (mains.length ? mains.join(', ') : s.defaults.map(function (d) { return F.LIMITERS[d].label; }).join(', ') + ' <span class="muted">(typical &mdash; answer the self-test)</span>') + '</p>';
-    if (p.warm.length) h += '<p class="line"><b>Warm-up 3&ndash;5 min:</b> ' + p.warm.map(function (it) { return it.e.n; }).join(' and ') + '.</p>';
-    h += '<ol class="exlist">' + p.stack.map(function (it, i) {
-      var m = F.METHODS[it.e.m];
-      return exItem(it.e, i + 1, dose(it.e, p.level) + ' &middot; rest ' + m.rest);
-    }).join('') + '</ol>';
-    if (p.skill === 'front') h += '<p class="line muted">Both sides; one extra set on the tighter side.</p>';
-    if (p.skill === 'bridge') h += '<p class="line muted">Build slowly; stop for any sharp low-back pain.</p>';
-    if (p.sig.some(function (r) { return r.k === 'technique'; }) && (p.skill === 'pancake' || p.skill === 'middle'))
-      h += '<p class="line muted">A hip pinch can be bone, not muscle: tilt the pelvis forward, kneecaps up, don&rsquo;t force it.</p>';
+    var h = '<div class="stats">' +
+      '<div class="stat" style="--c:' + c + '"><span>Level</span><b>' + p.level + ' &rarr; ' + goal + '</b><small>' + s.levels[p.level] + '</small></div>' +
+      '<div class="stat" style="--c:var(--yellow)"><span>Goal in</span><b>' + (p.tl ? weeksText(p.tl.lo) + '&ndash;' + weeksText(p.tl.hi) : 'Done') + '</b><small>' +
+        (p.tl ? shortDate(addDays(p.built, p.tl.lo * 7)) + '&ndash;' + shortDate(addDays(p.built, p.tl.hi * 7)) : 'One session a week keeps it') + '</small></div>' +
+      '<div class="stat" style="--c:var(--orange)"><span>Reassess</span><b>' + shortDate(rt) + '</b><small>' + (dn <= 0 ? 'due now' : 'in ' + dn + ' days') + '</small></div></div>';
+    h += '<div class="path" style="--c:' + c + '">' + s.levels.map(function (l, i) {
+      return '<div class="' + (i < p.level ? 'done' : i === p.level ? 'now' : '') + (i === goal ? ' goal' : '') + '" title="' + esc(l.replace(/&[^;]+;/g, "'")) + '">' + (i === p.level ? 'You' : i === goal ? 'Goal' : i) + '</div>';
+    }).join('') + '</div>';
+    if (dn <= 0) h += '<div class="warm" style="border-left:5px solid var(--orange)"><b>Time to reassess.</b> Retake the self-test and update your answers; your plan rebuilds itself. <button type="button" class="btn ghost" data-go="assess">Open assessment</button></div>';
+
+    // focus areas
+    var top = p.ranked.slice(0, 5), max = top.length ? top[0].p : 1;
+    h += '<h2 style="--c:var(--red)"><span class="dot"></span>Your focus areas</h2>';
+    if (top.length) {
+      h += '<div class="bars">' + top.map(function (r) {
+        var col = r.p >= 3 ? 'var(--red)' : r.p >= 2 ? 'var(--orange)' : 'var(--yellow)';
+        return '<div class="bar"><span>' + F.LIMITERS[r.k].label + '</span><div class="track"><i style="width:' + Math.max(12, 100 * r.p / max) + '%;background:' + col + '"></i></div></div>';
+      }).join('') + '</div>';
+    } else h += '<p class="lede">Typical for ' + short(p.skill) + ': ' + s.defaults.map(function (d) { return F.LIMITERS[d].label; }).join(', ') + '. Answer the self-test to find yours.</p>';
+
+    // stack
     var mins = Math.round(p.stack.reduce(function (a, it) { return a + F.METHODS[it.e.m].min + 1; }, 4));
-    h += weekStrip(p.sched) + '<p class="line muted">Focus about ' + mins + ' min &middot; Easy 5&ndash;10 min &middot; weeks 1&ndash;3 build up, week 4 lighter, then retest.</p>';
+    h += '<h2 style="--c:var(--green)"><span class="dot"></span>Your stretches <small class="muted" style="font-size:.95rem;font-weight:400">&middot; about ' + mins + ' min, in order</small></h2>';
+    if (p.warm.length) h += '<div class="warm"><b>Warm-up 3&ndash;5 min:</b> ' + p.warm.map(function (it) { return it.e.n; }).join(' and ') + '.</div>';
+    h += '<ol class="exlist">' + p.stack.map(function (it, i) {
+      return exItem(it.e, i + 1, dose(it.e, p.level) + ' &middot; rest ' + F.METHODS[it.e.m].rest);
+    }).join('') + '</ol>';
+    var notes = [];
+    if (p.skill === 'front') notes.push('Both sides; one extra set on the tighter side.');
+    if (p.skill === 'bridge') notes.push('Build slowly; stop for any sharp low-back pain.');
+    if (p.sig.some(function (r) { return r.k === 'technique'; }) && (p.skill === 'pancake' || p.skill === 'middle'))
+      notes.push('A hip pinch can be bone, not muscle: tilt the pelvis forward, kneecaps up, don&rsquo;t force it.');
+    if (notes.length) h += '<p class="legend">' + notes.join(' ') + '</p>';
+
+    // week
+    h += '<h2 style="--c:var(--aqua)"><span class="dot"></span>Your week</h2><div class="week">' + p.sched.map(function (r) {
+      var lab = r.kind === 'focus' ? 'Stretch' + (/evening/.test(r.what) ? '<br>eve' : '') : r.kind === 'maint' ? 'Easy' : 'Rest';
+      return '<div class="' + r.kind + '"><b>' + r.day.slice(0, 3) + '</b>' + lab + '</div>';
+    }).join('') + '</div>' +
+      '<p class="legend"><i style="background:var(--orange)"></i>Full session<i style="background:var(--aqua)"></i>5&ndash;10 min easy &middot; Weeks 1&ndash;3 build up, week 4 lighter, then reassess.</p>';
     h += '<div class="btnrow"><button type="button" class="btn" id="card-open">Phone image</button><button type="button" class="btn ghost" id="print">Print</button>' +
-      '<button type="button" class="btn ghost" data-go="retest">Retest</button></div><div id="card-panel" hidden></div>';
+      '<button type="button" class="btn ghost" data-go="library">All ' + short(p.skill).toLowerCase() + ' stretches</button></div><div id="card-panel" hidden></div>';
     box.innerHTML = h;
   }
 
@@ -365,12 +406,10 @@
   function txt(html) { var d = document.createElement('textarea'); d.innerHTML = String(html).replace(/<[^>]+>/g, ''); return d.value; }
   function retestDate(skill) {
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var rows = (typeof skillSessions === 'function') ? skillSessions(skill) : [];
-    if (rows.length) {
-      var d = addDays(new Date(rows[rows.length - 1].date + 'T12:00'), 28);
-      return d < today ? today : d;
-    }
-    return addDays(today, 28);
+    var t = state.tested[skill] ? new Date(state.tested[skill] + 'T12:00') : today;
+    t.setHours(0, 0, 0, 0);
+    var d = addDays(t, 28);
+    return d < today ? today : d;
   }
   function daysUntil(d) { var t = new Date(); t.setHours(0, 0, 0, 0); return Math.round((d - t) / 864e5); }
   function estText(p) {
@@ -386,7 +425,7 @@
       '<div class="pv-sum"><div><span>Now</span><b>Level ' + p.level + '</b><small>' + s.levels[p.level] + '</small></div>' +
       '<div><span>Goal</span><b>Level ' + (s.levels.length - 1) + '</b><small>' + s.levels[s.levels.length - 1] + '</small></div>' +
       '<div><span>Estimate</span><b>' + esc(est.range) + '</b><small>' + esc(est.dates) + '</small></div>' +
-      '<div class="hot"><span>Retest</span><b>' + fmtDate(rt) + '</b><small>then every 4 weeks</small></div></div>';
+      '<div class="hot"><span>Reassess</span><b>' + fmtDate(rt) + '</b><small>then every 4 weeks</small></div></div>';
     h += '<h2>Focus session &mdash; ' + p.stack.length + ' stretches, in this order</h2>' + (p.warm && p.warm.length ? '<p class="pv-rules"><b>Warm-up 3&ndash;5 min:</b> ' + p.warm.map(function (it) { return it.e.n; }).join(' and ') + ', one easy set each.</p>' : '') + '<table class="pv-stack"><tr><th>#</th><th>Exercise</th><th>Dose</th><th>Rest</th><th>Cue</th></tr>' +
       p.stack.map(function (it, i) {
         var e = it.e, m = F.METHODS[e.m];
@@ -399,14 +438,11 @@
       }).join('') + '</tr></table>' +
       '<p class="pv-rules">' + focusN + ' focus session' + (focusN === 1 ? '' : 's') + ' a week, 48 h+ apart &middot; rest 60&ndash;90 s between exercises &middot; ' +
       'weeks 1&ndash;3 build from the low to the high end of each dose, week 4 deload (half the sets) then retest.</p>';
-    var ms = F.SKILL_MEASURES[p.skill];
     var dates = [rt, addDays(rt, 28), addDays(rt, 56)];
-    h += '<h2>Retest sheet</h2><table class="pv-log"><tr><th>Test</th>' + dates.map(function (d) { return '<th>' + fmtDate(d) + '</th>'; }).join('') + '</tr>' +
+    h += '<h2>Reassessment sheet</h2><table class="pv-log"><tr><th>Self-test</th>' + dates.map(function (d) { return '<th>' + fmtDate(d) + '</th>'; }).join('') + '</tr>' +
       '<tr><td>Level (0&ndash;' + (s.levels.length - 1) + ')</td><td></td><td></td><td></td></tr>' +
-      ms.map(function (id) {
-        var m = F.MEASURES[id];
-        return '<tr><td>' + m.label + ' <small>(' + m.unit + ')</small></td>' + dates.map(function () { return '<td>' + (m.sides ? '<span class="lr">L</span><span class="lr">R</span>' : '') + '</td>'; }).join('') + '</tr>';
-      }).join('') + '</table><p class="pv-rules">Same time of day and same warm-up each retest. Enter them in the Retest tab to update your plan.</p>';
+      s.tests.map(function (k) { return '<tr><td>' + F.TESTS[k].q + '</td><td></td><td></td><td></td></tr>'; }).join('') +
+      '</table><p class="pv-rules">On each date, warm up the same way, retake the self-test, and change your answers in the planner. The plan rebuilds itself.</p>';
     $('#printview').innerHTML = h;
   }
 
@@ -425,14 +461,17 @@
   }
   function drawCard(cv, sc) {
     var p = lastPlan, s = p.s, W = 1080, H = 1920, M = 84, ctx = cv.getContext('2d');
-    var INK = '#1c2420', BG = '#f6f3ec', MUTED = 'rgba(28,36,32,0.6)', SOFT = 'rgba(28,36,32,0.07)';
+    var INK = '#3c3836', BG = '#fbf1c7', MUTED = '#7c6f64', SOFT = '#ebdbb2', ORANGE = '#d65d0e', AQUA = '#689d6a', DARK = '#282828';
+    var SC = SKILL_COLOR[p.skill] || ORANGE;
     var FF = '"EB Garamond", Georgia, serif';
     var f = function (wt, px) { ctx.font = wt + ' ' + Math.round(px * sc) + 'px ' + FF; };
     ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H);
+    var rb = ['#cc241d', '#d65d0e', '#d79921', '#98971a', '#689d6a', '#458588', '#b16286'];
+    rb.forEach(function (c, i) { ctx.fillStyle = c; ctx.fillRect(i * W / 7, 0, W / 7 + 1, 22); });
     ctx.fillStyle = INK; ctx.textBaseline = 'top';
     var y = M;
     // header
-    f('600', 30); ctx.fillStyle = MUTED; ctx.fillText('FLEXIBILITY PLAN', M, y); y += 46 * sc;
+    f('600', 30); ctx.fillStyle = SC; ctx.fillText('FLEXIBILITY PLAN', M, y); y += 46 * sc;
     ctx.fillStyle = INK; f('700', 76);
     wrap(ctx, txt(s.name), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 84 * sc; });
     f('400', 34); ctx.fillStyle = MUTED;
@@ -441,10 +480,11 @@
     y += 26 * sc;
     // retest block
     var rt = retestDate(p.skill), dn = daysUntil(rt), bh = 190 * sc;
-    ctx.fillStyle = INK; rrect(ctx, M, y, W - 2 * M, bh, 28); ctx.fill();
-    ctx.fillStyle = BG; f('600', 28); ctx.fillText('NEXT RETEST', M + 40, y + 30 * sc);
+    ctx.fillStyle = DARK; rrect(ctx, M, y, W - 2 * M, bh, 28); ctx.fill();
+    ctx.fillStyle = ORANGE; rrect(ctx, M, y, 18, bh, 9); ctx.fill();
+    ctx.fillStyle = BG; f('600', 28); ctx.fillStyle = '#fe8019'; ctx.fillText('NEXT REASSESSMENT', M + 40, y + 30 * sc); ctx.fillStyle = BG;
     f('700', 72); ctx.fillText(fmtDate(rt), M + 40, y + 66 * sc);
-    f('400', 30); ctx.fillStyle = 'rgba(246,243,236,0.8)';
+    f('400', 30); ctx.fillStyle = '#d5c4a1';
     ctx.fillText((dn <= 0 ? 'today' : 'in ' + dn + ' day' + (dn === 1 ? '' : 's')) + '  ·  then every 4 weeks', M + 40, y + 148 * sc);
     y += bh + 30 * sc;
     var est = estText(p);
@@ -456,8 +496,8 @@
     p.sched.forEach(function (row, i) {
       var cx = M + cw * i + cw / 2, cy = y + r;
       ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      if (row.kind === 'focus') { ctx.fillStyle = INK; ctx.fill(); }
-      else if (row.kind === 'maint') { ctx.lineWidth = 3; ctx.strokeStyle = INK; ctx.stroke(); }
+      if (row.kind === 'focus') { ctx.fillStyle = ORANGE; ctx.fill(); }
+      else if (row.kind === 'maint') { ctx.fillStyle = '#d9e0b8'; ctx.fill(); ctx.lineWidth = 4; ctx.strokeStyle = AQUA; ctx.stroke(); }
       else { ctx.fillStyle = SOFT; ctx.fill(); }
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       f('700', 30); ctx.fillStyle = row.kind === 'focus' ? BG : row.kind === 'maint' ? INK : MUTED;
@@ -477,7 +517,8 @@
     p.stack.forEach(function (it, i) {
       var e = it.e, m = F.METHODS[e.m];
       f('700', 34); ctx.fillStyle = INK;
-      ctx.fillText(String(i + 1), M, y);
+      ctx.fillStyle = MCOLOR[e.m] || SC; ctx.beginPath(); ctx.arc(M + 18 * sc, y + 20 * sc, 21 * sc, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = BG; ctx.textAlign = 'center'; f('700', 28); ctx.fillText(String(i + 1), M + 18 * sc, y + 5 * sc); ctx.textAlign = 'left'; f('700', 34); ctx.fillStyle = INK;
       var x = M + 52 * sc, w = W - M - x;
       wrap(ctx, txt(e.n), w).forEach(function (l) { ctx.fillText(l, x, y); y += 40 * sc; });
       f('400', 27); ctx.fillStyle = MUTED;
@@ -486,9 +527,9 @@
     });
     // footer
     var fy = Math.max(y + 10, H - M - 60);
-    ctx.strokeStyle = 'rgba(28,36,32,0.2)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, fy); ctx.lineTo(W - M, fy); ctx.stroke();
+    ctx.strokeStyle = '#d5c4a1'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(M, fy); ctx.lineTo(W - M, fy); ctx.stroke();
     f('400', 26); ctx.fillStyle = MUTED;
-    ctx.fillText('Focus sessions 48 h+ apart  ·  week 4 = deload, then retest', M, fy + 22);
+    ctx.fillText('Focus sessions 48 h+ apart  ·  week 4 lighter, then reassess', M, fy + 22);
     return y;
   }
   function renderCard() {
@@ -514,14 +555,13 @@
 
   document.addEventListener('click', function (e) {
     var t = e.target;
-    if (t.dataset && t.dataset.go) { setView(t.dataset.go); window.scrollTo(0, 0); return; }
     if (!lastPlan) return;
     if (t.id === 'print') { renderPrint(); window.print(); }
     else if (t.id === 'card-open') {
       var panel = $('#card-panel');
       panel.hidden = !panel.hidden;
       if (!panel.hidden) {
-        panel.innerHTML = '<img id="card-img" alt="Phone image of this plan"><div class="btnrow"><button type="button" class="btn" id="card-save">Save image</button>' +
+        panel.innerHTML = '<img id="card-img" alt="Phone image of this plan"><div class="btnrow" style="justify-content:center"><button type="button" class="btn" id="card-save">Save image</button>' +
           '<button type="button" class="btn ghost" id="card-share" hidden>Share&hellip;</button></div>';
         renderCard();
       }
@@ -533,228 +573,27 @@
     }
   });
 
-  /* ---------------- retest ---------------- */
-  var TKEY = 'flexplanner-tests-v1';
-  function sessions() { return load(TKEY, []); }
-  function setSessions(l) { save(TKEY, l); }
-  function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
-  function num(v) { if (v === '' || v == null) return null; var n = parseFloat(v); return isFinite(n) ? n : null; }
-  function fmtN(n) { return n == null ? '&ndash;' : (Math.round(n * 10) / 10).toString(); }
-
-  // Bring over entries from the earlier level-only log.
-  (function migrate() {
-    var all = sessions(), changed = false;
-    Object.keys(F.SKILLS).forEach(function (k) {
-      var old = load('flexplanner-log-' + k, null);
-      if (!old || !old.length) return;
-      old.forEach(function (r) { all.push({ id: uid(), skill: k, date: r.date, level: r.level, note: r.note || '', vals: {} }); });
-      try { localStorage.removeItem('flexplanner-log-' + k); } catch (e) {}
-      changed = true;
-    });
-    if (changed) setSessions(all);
-  })();
-
-  function skillSessions(k) {
-    return sessions().filter(function (x) { return x.skill === k; })
-      .sort(function (a, b) { return (a.date + (a.time || '')) < (b.date + (b.time || '')) ? -1 : 1; });
-  }
-  // Single comparable value for a measure in a session (worse side for two-sided tests).
-  function val(sess, id) {
-    var m = F.MEASURES[id], v = sess.vals && sess.vals[id];
-    if (!v) return null;
-    if (!m.sides) return num(v.v);
-    var L = num(v.L), R = num(v.R);
-    if (L == null) return R; if (R == null) return L;
-    return m.better === 'lower' ? Math.max(L, R) : Math.min(L, R);
-  }
-
-  function chart(rows, m) {
-    var pts = [];
-    rows.forEach(function (r) {
-      var v = r.vals && r.vals[r._id];
-      if (!v) return;
-      var t = new Date(r.date + 'T' + (r.time || '12:00')).getTime();
-      if (m.sides) { if (num(v.L) != null) pts.push({ t: t, s: 'L', y: num(v.L) }); if (num(v.R) != null) pts.push({ t: t, s: 'R', y: num(v.R) }); }
-      else if (num(v.v) != null) pts.push({ t: t, s: 'v', y: num(v.v) });
-    });
-    if (pts.length < 2) return '';
-    var W = 320, H = 90, P = 8;
-    var ts = pts.map(function (p) { return p.t; }), ys = pts.map(function (p) { return p.y; });
-    if (m.goal != null) ys.push(m.goal);
-    var t0 = Math.min.apply(0, ts), t1 = Math.max.apply(0, ts), y0 = Math.min.apply(0, ys), y1 = Math.max.apply(0, ys);
-    if (t1 === t0) t1 = t0 + 1; if (y1 === y0) { y1 += 1; y0 -= 1; }
-    var X = function (t) { return P + (t - t0) / (t1 - t0) * (W - 2 * P); };
-    // Up always means better.
-    var Y = function (y) { var f = (y - y0) / (y1 - y0); if (m.better === 'lower') f = 1 - f; return H - P - f * (H - 2 * P); };
-    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="spark" role="img" aria-label="' + esc(m.label.replace(/&[a-z]+;/g, '')) + ' over time">';
-    if (m.goal != null) svg += '<line x1="' + P + '" x2="' + (W - P) + '" y1="' + Y(m.goal) + '" y2="' + Y(m.goal) + '" class="goal"/>';
-    ['L', 'R', 'v'].forEach(function (sd) {
-      var ser = pts.filter(function (p) { return p.s === sd; });
-      if (!ser.length) return;
-      svg += '<polyline class="ser ' + sd + '" points="' + ser.map(function (p) { return X(p.t).toFixed(1) + ',' + Y(p.y).toFixed(1); }).join(' ') + '"/>';
-      ser.forEach(function (p) { svg += '<circle class="ser ' + sd + '" cx="' + X(p.t).toFixed(1) + '" cy="' + Y(p.y).toFixed(1) + '" r="3"/>'; });
-    });
-    return svg + '</svg>';
-  }
-
-  function trend(rows, id) {
-    var m = F.MEASURES[id], pts = rows.map(function (r) {
-      return { t: new Date(r.date).getTime() / 6048e5, y: val(r, id) }; }).filter(function (p) { return p.y != null; });
-    if (pts.length < 2) return null;
-    pts = pts.slice(-8);
-    var n = pts.length, mt = 0, my = 0;
-    pts.forEach(function (p) { mt += p.t / n; my += p.y / n; });
-    var num_ = 0, den = 0;
-    pts.forEach(function (p) { num_ += (p.t - mt) * (p.y - my); den += (p.t - mt) * (p.t - mt); });
-    if (!den) return null;
-    var slope = num_ / den, last = pts[pts.length - 1];
-    var improving = m.better === 'lower' ? slope < 0 : slope > 0;
-    var out = { slope: slope, improving: improving, last: last.y };
-    if (m.goal != null && improving) {
-      var weeks = (m.goal - last.y) / slope;
-      if (weeks <= 0) out.reached = true; else out.eta = addDays(new Date(last.t * 6048e5), weeks * 7);
-    }
-    return out;
-  }
-
-
-  function renderRetest() {
-    var k = state.skill, s = F.SKILLS[k], rows = skillSessions(k), rt = retestDate(k), dn = daysUntil(rt);
-    $('#rt-head').innerHTML = '<p class="line">' + (rows.length ? 'Last retest ' + esc(rows[rows.length - 1].date) + '. ' : 'No retests yet &mdash; this first one is your baseline. ') +
-      '<b>Next: ' + fmtDate(rt) + '</b> ' + (dn <= 0 ? '(due now)' : '(in ' + dn + ' days)') + '.</p>' +
-      '<p class="meta">Same time of day and same warm-up each time. Fill in what you test; blanks are fine.</p>';
-    var lvl = state.levels[k];
-    var h = '<div class="row2"><label>Date <input type="date" id="rt-date" value="' + todayStr() + '"></label>' +
-      '<label>Level <select id="rt-level"><option value="">&ndash;</option>' + s.levels.map(function (l, i) {
-        return '<option value="' + i + '"' + (lvl === i ? ' selected' : '') + '>' + i + ' &middot; ' + l + '</option>'; }).join('') + '</select></label></div>';
-    h += '<div class="mrow mhead"><span></span><span>Left</span><span>Right</span></div>';
-    F.SKILL_MEASURES[k].forEach(function (id) {
-      var m = F.MEASURES[id];
-      var lab = '<div class="lab">' + m.label + ' <small>' + m.unit + (m.better === 'lower' ? ' &darr;' : ' &uarr;') + '</small><details><summary>How</summary>' + m.how + '</details></div>';
-      h += m.sides
-        ? '<div class="mrow">' + lab + '<input type="number" step="0.5" inputmode="decimal" data-m="' + id + '" data-s="L" aria-label="Left"><input type="number" step="0.5" inputmode="decimal" data-m="' + id + '" data-s="R" aria-label="Right"></div>'
-        : '<div class="mrow one">' + lab + '<input type="number" step="0.5" inputmode="decimal" data-m="' + id + '" data-s="v" aria-label="Value"></div>';
-    });
-    h += '<div class="btnrow"><button type="button" class="bigbtn" id="rt-save">Save retest &amp; update plan</button><span id="rt-msg" class="ok" role="status"></span></div>';
-    $('#rt-form').innerHTML = h;
-    renderProgress();
-  }
-
-  function renderProgress() {
-    var k = state.skill, rows = skillSessions(k), box = $('#rt-progress');
-    if (!rows.length) { box.innerHTML = ''; return; }
-    var prim = F.SKILL_MEASURES[k][0], pm = F.MEASURES[prim], tr = trend(rows, prim);
-    var h = '<h2>Progress</h2>';
-    if (tr) {
-      h += '<p class="line"><b>' + pm.label.split(':').pop().trim() + ':</b> ' + (tr.improving ? 'improving' : 'flat') + ', ~' + fmtN(Math.abs(tr.slope)) + ' ' + pm.unit + '/week' +
-        (tr.reached ? ' &mdash; goal reached.' : tr.eta ? ' &mdash; on pace for <b>' + fmtDate(tr.eta) + '</b>.' : tr.improving ? '.' : ' &mdash; plateaus of 4&ndash;5 weeks are normal.') + '</p>';
-    }
-    var have = F.SKILL_MEASURES[k].filter(function (id) { return rows.some(function (r) { return val(r, id) != null; }); });
-    if (have.length) {
-      h += '<table class="prog"><tr><th>Test</th><th>First</th><th>Last</th><th>Change</th></tr>' + have.map(function (id) {
-        var m = F.MEASURES[id], hv = rows.filter(function (r) { return val(r, id) != null; });
-        var a = val(hv[0], id), b = val(hv[hv.length - 1], id), x = b - a, good = m.better === 'lower' ? x < 0 : x > 0;
-        return '<tr><td>' + m.label.split(':').pop().trim() + ' <small class="muted">' + m.unit + '</small></td><td>' + fmtN(a) + '</td><td>' + fmtN(b) + '</td><td>' +
-          (hv.length < 2 ? '&ndash;' : '<span class="' + (x === 0 ? '' : good ? 'up' : 'down') + '">' + (x > 0 ? '+' : '') + fmtN(x) + '</span>') + '</td></tr>';
-      }).join('') + '</table><p class="meta">Two-sided tests use your tighter side.</p>';
-      var charts = have.map(function (id) {
-        var m = F.MEASURES[id], c = chart(rows.filter(function (r) { return val(r, id) != null; }).map(function (r) { var o = Object.assign({}, r); o._id = id; return o; }), m);
-        return c ? '<div class="mcard"><b>' + m.label + '</b>' + c + '</div>' : '';
-      }).join('');
-      if (charts) h += '<details class="panel"><summary>Charts</summary><div class="mgrid">' + charts + '</div><p class="meta">Up is better. Solid = left, dashed = right, line = goal.</p></details>';
-    }
-    h += '<details class="panel"><summary>Past retests <small>&middot; ' + rows.length + '</small></summary><table class="prog">' + rows.slice().reverse().map(function (r) {
-      return '<tr><td>' + esc(r.date) + '</td><td>' + (r.level == null || r.level === '' ? '' : 'Level ' + r.level) + '</td><td><button type="button" class="del" data-id="' + r.id + '" aria-label="Delete retest">&times;</button></td></tr>';
-    }).join('') + '</table></details>';
-    box.innerHTML = h;
-  }
-
-  function download(name, text, type) {
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([text], { type: type }));
-    a.download = name; document.body.appendChild(a); a.click();
-    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
-  }
-  function csv() {
-    var q = function (x) { x = x == null ? '' : String(x); return /[",\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; };
-    var out = [['skill', 'date', 'time', 'warmed_up', 'feel', 'level', 'test', 'side', 'value', 'unit', 'notes'].join(',')];
-    sessions().forEach(function (r) {
-      var base = [r.skill, r.date, r.time, r.warm === false ? 'no' : 'yes', r.feel, r.level];
-      var keys = Object.keys(r.vals || {});
-      if (!keys.length) out.push(base.concat(['', '', '', '', r.note]).map(q).join(','));
-      keys.forEach(function (id) {
-        var m = F.MEASURES[id], v = r.vals[id], unit = m ? m.unit.replace('&deg;', 'deg') : '';
-        var label = m ? m.label.replace(/&[a-z]+;/g, '') : id;
-        (m && m.sides ? ['L', 'R'] : ['v']).forEach(function (sd) {
-          if (num(v[sd]) == null) return;
-          out.push(base.concat([label, sd === 'v' ? '' : sd, v[sd], unit, r.note]).map(q).join(','));
-        });
-      });
-    });
-    return out.join('\n');
-  }
-
-
-  document.addEventListener('change', function (e) {
-    if (e.target.id !== 'lg-import' || !e.target.files[0]) return;
-    var fr = new FileReader();
-    fr.onload = function () {
-      try {
-        var inc = JSON.parse(fr.result); if (!Array.isArray(inc)) throw 0;
-        var all = sessions(), ids = {}, added = 0; all.forEach(function (r) { ids[r.id] = 1; });
-        inc.forEach(function (r) { if (r && r.skill && r.date && !ids[r.id]) { r.id = r.id || uid(); all.push(r); added++; } });
-        setSessions(all); renderRetest(); renderPlan();
-        $('#lg-io-msg').textContent = 'Restored ' + added + ' retest' + (added === 1 ? '' : 's') + '.';
-      } catch (err) { $('#lg-io-msg').textContent = 'That file isn’t a planner backup.'; }
-      e.target.value = '';
-    };
-    fr.readAsText(e.target.files[0]);
-  });
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (t.id === 'rt-save') {
-      var vals = {}, any = false;
-      document.querySelectorAll('#rt-form input[data-m]').forEach(function (inp) {
-        var v = num(inp.value); if (v == null) return;
-        vals[inp.dataset.m] = vals[inp.dataset.m] || {}; vals[inp.dataset.m][inp.dataset.s] = v; any = true;
-      });
-      var lv = $('#rt-level').value;
-      if (!any && lv === '') { $('#rt-msg').textContent = 'Enter your level or at least one result.'; return; }
-      var all = sessions();
-      all.push({ id: uid(), skill: state.skill, date: $('#rt-date').value || todayStr(), level: lv === '' ? null : +lv, vals: vals });
-      setSessions(all);
-      var changed = lv !== '' && state.levels[state.skill] !== +lv;
-      if (lv !== '') { state.levels[state.skill] = +lv; persist(); }
-      renderRetest(); renderPlan(); renderSelftest();
-      $('#rt-msg').innerHTML = 'Saved. ' + (changed ? 'New level &mdash; your plan changed. ' : 'Plan updated. ') + '<button type="button" class="btn ghost" data-go="plan">See plan</button>';
-    } else if (t.classList.contains('del') && t.dataset.id) {
-      setSessions(sessions().filter(function (r) { return r.id !== t.dataset.id; })); renderRetest(); renderPlan();
-    } else if (t.id === 'lg-csv') download('flexibility-retests.csv', csv(), 'text/csv');
-    else if (t.id === 'lg-json') download('flexibility-retests-backup.json', JSON.stringify(sessions(), null, 1), 'application/json');
-  });
-
-  /* ---------------- stretches ---------------- */
+  /* ---------------- library ---------------- */
   function opt(v, l) { return '<option value="' + v + '">' + l + '</option>'; }
   $('#f-lim').innerHTML = opt('', 'Any target') + Object.keys(F.LIMITERS).map(function (k) { return opt(k, F.LIMITERS[k].label); }).join('');
   $('#f-m').innerHTML = opt('', 'Any method') + Object.keys(F.METHODS).map(function (k) { return opt(k, F.METHODS[k].label); }).join('');
-  $('#f-spec').innerHTML = opt('', 'Assisted or resisted') + opt('assisted', 'Assisted') + opt('neutral', 'Neutral') + opt('resisted', 'Resisted');
-  var catAll = false, catMethod = '';
+  var catAll = false;
   function renderCatalog() {
-    var k = state.skill, fl = $('#f-lim').value, fm = $('#f-m').value || catMethod, fsp = $('#f-spec').value, q = $('#f-q').value.toLowerCase();
+    var k = state.skill, fl = $('#f-lim').value, fm = $('#f-m').value, q = $('#f-q').value.toLowerCase();
     var list = F.EX.filter(function (e) {
       return (catAll || e.sk.indexOf(k) >= 0) && (!fl || e.lim.indexOf(fl) >= 0) && (!fm || e.m === fm) &&
-        (!fsp || spec(e) === fsp) && (!q || (e.n + ' ' + e.how).toLowerCase().indexOf(q) >= 0);
+        (!q || (e.n + ' ' + e.how).toLowerCase().indexOf(q) >= 0);
     });
-    $('#cat-toggle').textContent = catAll ? 'Only ' + F.SKILLS[k].name.split(' (')[0] : 'Show all ' + F.EX.length;
-    $('#count').textContent = (catAll ? 'All stretches' : F.SKILLS[k].name.split(' (')[0]) + ' · ' + list.length;
+    $('#cat-toggle').textContent = catAll ? 'Only ' + short(k) : 'Show all ' + F.EX.length;
+    $('#count').textContent = (catAll ? 'All stretches' : short(k) + ' stretches') + ' · ' + list.length;
+    $('#view-library h2').style.setProperty('--c', catAll ? 'var(--purple)' : skc());
     $('#catalog').innerHTML = list.map(function (e) {
-      var m = F.METHODS[e.m];
-      return exItem(e, 0, m.label + ' &middot; ' + e.lim.map(function (l) { return F.LIMITERS[l].label; }).join(', ') + (e.lv ? ' &middot; level ' + e.lv + '+' : ''));
-    }).join('') || '<li>No stretches match. Clear the filter.</li>';
+      return exItem(e, 0, e.lim.map(function (l) { return F.LIMITERS[l].label; }).join(', ') + (e.lv ? ' &middot; level ' + e.lv + '+' : ''));
+    }).join('') || '<li class="warm">No stretches match. Clear the filters.</li>';
   }
   function renderMatrix() {
     var sks = Object.keys(F.SKILLS), ms = Object.keys(F.METHODS);
-    var h = '<table class="matrix"><tr><th></th>' + sks.map(function (k) { return '<th>' + F.SKILLS[k].name.split(' (')[0] + '</th>'; }).join('') + '</tr>';
+    var h = '<table class="matrix"><tr><th></th>' + sks.map(function (k) { return '<th style="color:' + SKILL_COLOR[k] + '">' + short(k) + '</th>'; }).join('') + '</tr>';
     ms.forEach(function (m) {
       h += '<tr><th>' + F.METHODS[m].label + '</th>' + sks.map(function (k) {
         var n = F.EX.filter(function (e) { return e.m === m && e.sk.indexOf(k) >= 0; }).length;
@@ -764,19 +603,19 @@
     $('#matrix').innerHTML = h + '</table>';
   }
   $('#cat-toggle').addEventListener('click', function () { catAll = !catAll; renderCatalog(); });
-  ['#f-lim', '#f-m', '#f-spec'].forEach(function (s) { $(s).addEventListener('change', function () { catMethod = ''; renderCatalog(); }); });
+  ['#f-lim', '#f-m'].forEach(function (s) { $(s).addEventListener('change', renderCatalog); });
   $('#f-q').addEventListener('input', renderCatalog);
-  $('#f-clear').addEventListener('click', function () { $('#f-lim').value = ''; $('#f-m').value = ''; $('#f-spec').value = ''; $('#f-q').value = ''; catMethod = ''; renderCatalog(); });
   $('#matrix').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     state.skill = b.dataset.k; persist(); catAll = false; $('#f-m').value = b.dataset.m;
-    renderSkills(); renderSelftest(); renderPlan(); renderRetest(); renderCatalog(); window.scrollTo(0, 0);
+    renderAll(); go('library');
   });
 
   /* ---------------- sources & start ---------------- */
   $('#sources').innerHTML = F.SOURCES.map(function (s) {
-    return '<li>' + s[0] + ' <a class="ext" href="' + s[1] + '" target="_blank" rel="noopener noreferrer">Link</a></li>';
+    return '<li>' + s[0] + ' <a href="' + s[1] + '" target="_blank" rel="noopener noreferrer">Link</a></li>';
   }).join('');
 
-  renderSkills(); renderSettings(); renderSelftest(); renderPlan(); renderRetest(); renderCatalog(); renderMatrix(); setView(state.view);
+  function renderAll() { renderSkills(); renderAssess(); renderPlan(); renderCatalog(); }
+  renderSettings(); renderMatrix(); renderAll(); setView(state.view);
 })();
