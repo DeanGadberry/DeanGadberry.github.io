@@ -23,7 +23,7 @@
     front: '<path d="M3 37.5 H45" stroke-width="1.5" opacity=".35"/><g opacity=".42"><path d="M23 34 L14 34 L4.9 34" stroke-width="3.8"/><path d="M23 24 L17.2 20.7 L11.9 17.6" stroke-width="3.8"/></g><path d="M23 34 L23 22.1" stroke-width="5.6"/><path d="M23 34 L32 34 L41 34" stroke-width="6.4" stroke="%BG"/><path d="M23 34 L32 34 L41 34" stroke-width="3.8"/><path d="M23 24 L28.4 20.2 L33.5 16.7" stroke-width="6.4" stroke="%BG"/><path d="M23 24 L28.4 20.2 L33.5 16.7" stroke-width="3.8"/><circle cx="23" cy="14.7" r="3.7" fill="%C" stroke="none"/>',
     bridge: '<path d="M3 38 H45" stroke-width="1.5" opacity=".35"/><g opacity=".42"><path d="M30 16.5 L35.2 23.9 L34.4 32.9" stroke-width="3.8"/><path d="M21.6 17.3 L18.2 23.1 L15.6 28.7" stroke-width="3.8"/></g><path d="M30 16.5 L24.4 14.5 L20.2 18.7" stroke-width="5.6"/><path d="M30 16.5 L36.4 22.9 L35.6 31.9" stroke-width="6.4" stroke="%BG"/><path d="M30 16.5 L36.4 22.9 L35.6 31.9" stroke-width="3.8"/><path d="M21.6 17.3 L17.3 22.4 L14.2 27.8" stroke-width="6.4" stroke="%BG"/><path d="M21.6 17.3 L17.3 22.4 L14.2 27.8" stroke-width="3.8"/><circle cx="23.4" cy="25.4" r="3.7" fill="%C" stroke="none"/>',
     flexion: '<path d="M3 42.5 H45" stroke-width="1.5" opacity=".35"/><path d="M22.6 27 L21.4 33.7 L20.8 40.6" stroke-width="3.8"/><path d="M25.4 27 L26.6 33.7 L27.2 40.6" stroke-width="3.8"/><path d="M21.7 19.4 L19.6 14.9 L18.4 10.4" stroke-width="3.8"/><path d="M26.3 19.4 L28.4 14.9 L29.6 10.4" stroke-width="3.8"/><path d="M22.6 27 L21.7 19.4 L26.3 19.4 L25.4 27 Z" fill="%C" stroke-width="3.8"/><circle cx="24" cy="11.5" r="3.1" fill="%C" stroke="none"/>',
-    extension: '<path d="M3 42.5 H45" stroke-width="1.5" opacity=".35"/><g opacity=".42"><path d="M20 29 L19.3 35.5 L18.8 40.6" stroke-width="3.8"/><path d="M27.7 24.5 L25.2 19.1 L22.9 14.1" stroke-width="3.8"/></g><path d="M20 29 L29.2 23.7" stroke-width="5.6"/><path d="M20 29 L20.7 35.5 L21.2 40.6" stroke-width="6.4" stroke="%BG"/><path d="M20 29 L20.7 35.5 L21.2 40.6" stroke-width="3.8"/><path d="M27.7 24.5 L24.3 19.7 L21.1 15.1" stroke-width="6.4" stroke="%BG"/><path d="M27.7 24.5 L24.3 19.7 L21.1 15.1" stroke-width="3.8"/><circle cx="35.3" cy="20.2" r="3.3" fill="%C" stroke="none"/>',
+    extension: '<path d="M3 42 H45" stroke-width="1.5" opacity=".35"/><g opacity=".42"><path d="M21 25.5 L22.6 32.9 L21.3 40.4" stroke-width="3.8"/><path d="M20.7 17.1 L16.5 20.9 L12.7 24.3" stroke-width="3.8"/></g><path d="M21 25.5 L20.7 15.5" stroke-width="5.6"/><path d="M21 25.5 L23 32.8 L21.3 40.2" stroke-width="6.4" stroke="%BG"/><path d="M21 25.5 L23 32.8 L21.3 40.2" stroke-width="3.8"/><path d="M20.7 17.1 L16 20.1 L11.5 22.8" stroke-width="6.4" stroke="%BG"/><path d="M20.7 17.1 L16 20.1 L11.5 22.8" stroke-width="3.8"/><circle cx="20.4" cy="8.7" r="3.1" fill="%C" stroke="none"/>',
     squat: '<path d="M3 39 H45" stroke-width="1.5" opacity=".35"/><g opacity=".42"><path d="M15 33 L23.5 29.9 L19.7 38.1" stroke-width="3.8"/><path d="M20 24.4 L26.5 25.5 L32.6 26.6" stroke-width="3.8"/></g><path d="M15 33 L20.9 22.7" stroke-width="5.6"/><path d="M15 33 L23.9 31.4 L20.8 39.9" stroke-width="6.4" stroke="%BG"/><path d="M15 33 L23.9 31.4 L20.8 39.9" stroke-width="3.8"/><path d="M20 24.4 L26.6 24.9 L32.8 25.5" stroke-width="6.4" stroke="%BG"/><path d="M20 24.4 L26.6 24.9 L32.8 25.5" stroke-width="3.8"/><circle cx="24.6" cy="16.3" r="3.7" fill="%C" stroke="none"/>'
   };
   function mixHex(a, b, t) {
@@ -31,7 +31,15 @@
     [16, 8, 0].forEach(function (sh) { var x = Math.round(((pa >> sh) & 255) * t + ((pb >> sh) & 255) * (1 - t)); o += (x < 16 ? '0' : '') + x.toString(16); });
     return o;
   }
-  function icon(k, bg) { return ICON[k].replace(/%C/g, SKILL_COLOR[k]).replace(/ stroke="%BG"/g, ' style="stroke:' + (bg || 'var(--tile)') + '"'); }
+  // Every figure stands on the same floor line (y = 40) and is centred left to right.
+  var FIX = { pike: [0.2, 0.5], pancake: [0, 3], middle: [0, 2.5], front: [1, 2.5], bridge: [-1.3, 2], flexion: [0, -2.5], extension: [6.8, -2], squat: [0.6, 1] };
+  var FLOOR = /<path d="M3 [\d.]+ H45"[^>]*\/>/;
+  function icon(k, bg) {
+    var f = FIX[k] || [0, 0], body = ICON[k], floor = FLOOR.test(body) ? '<path d="M3 40 H45" stroke-width="1.5" opacity=".35"/>' : '';
+    body = body.replace(FLOOR, '');
+    return (floor + '<g transform="translate(' + f[0] + ' ' + f[1] + ')">' + body + '</g>')
+      .replace(/%C/g, SKILL_COLOR[k]).replace(/ stroke="%BG"/g, ' style="stroke:' + (bg || 'var(--tile)') + '"');
+  }
   function iconSvg(k, size, bg) {
     return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"' + (size ? ' width="' + size + '" height="' + size + '"' : '') +
       ' fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icon(k, bg) + '</svg>';
@@ -84,7 +92,7 @@
   /* ---------------- pictures & "Show me how" ---------------- */
   function video(id, title, by) {
     return '<div class="vf" data-id="' + id + '"><img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy">' +
-      '<button type="button" class="play" aria-label="Play video">&#9654;</button></div>' +
+      '<button type="button" class="play" aria-label="Play video"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5.5 L19 12 L9 18.5 Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></button></div>' +
       (title ? '<p class="vcred">' + title + ' &middot; ' + by + '</p>' : '');
   }
   var howSeq = 0;
@@ -474,6 +482,14 @@
     if (cur) lines.push(cur);
     return lines;
   }
+  function centerText(ctx, t, cx, cy) {
+    var a = ctx.textAlign, b = ctx.textBaseline;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    var m = ctx.measureText(t);
+    var w = m.actualBoundingBoxRight + m.actualBoundingBoxLeft, h = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent;
+    ctx.fillText(t, cx - w / 2 + m.actualBoundingBoxLeft, cy + h / 2 - m.actualBoundingBoxDescent);
+    ctx.textAlign = a; ctx.textBaseline = b;
+  }
   function rrect(ctx, x, y, w, h, r) {
     ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
     ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
@@ -526,7 +542,7 @@
       else { ctx.fillStyle = SOFT; ctx.fill(); }
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       f('700', 30); ctx.fillStyle = row.kind === 'focus' ? BG : row.kind === 'maint' ? INK : MUTED;
-      ctx.fillText(row.day.slice(0, 2), cx, cy + 1);
+      centerText(ctx, row.day.slice(0, 2), cx, cy);
       ctx.textBaseline = 'top'; f('400', 22); ctx.fillStyle = MUTED;
       ctx.fillText(row.kind === 'focus' ? 'FOCUS' : row.kind === 'maint' ? 'easy' : 'rest', cx, cy + r + 10 * sc);
       ctx.textAlign = 'left';
@@ -543,7 +559,7 @@
       var e = it.e, m = F.METHODS[e.m];
       f('700', 34); ctx.fillStyle = INK;
       ctx.fillStyle = MCOLOR[e.m] || SC; ctx.beginPath(); ctx.arc(M + 18 * sc, y + 20 * sc, 21 * sc, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = BG; ctx.textAlign = 'center'; f('700', 28); ctx.fillText(String(i + 1), M + 18 * sc, y + 5 * sc); ctx.textAlign = 'left'; f('700', 34); ctx.fillStyle = INK;
+      ctx.fillStyle = BG; f('700', 28); centerText(ctx, String(i + 1), M + 18 * sc, y + 20 * sc); ctx.textAlign = 'left'; f('700', 34); ctx.fillStyle = INK;
       var x = M + 52 * sc, w = W - M - x;
       wrap(ctx, txt(e.n), w).forEach(function (l) { ctx.fillText(l, x, y); y += 40 * sc; });
       f('400', 27); ctx.fillStyle = MUTED;
