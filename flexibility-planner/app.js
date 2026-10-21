@@ -22,6 +22,7 @@
   state.days = state.days || ['upper', 'lower', 'cardio', 'upper', 'lower', 'rest', 'rest'];
   if (state.noSun === undefined) state.noSun = false;
   state.n = state.n || 2;
+  state.size = state.size || 5;
   var qs = new URLSearchParams(location.search).get('skill');
   if (qs && F.SKILLS[qs]) state.skill = qs;
   state.skill = state.skill || 'pancake';
@@ -104,12 +105,15 @@
     });
     h += '</div><div class="row2"><label>Focused sessions per week <select id="nsess">' +
       [1, 2, 3].map(function (n) { return '<option' + (state.n === n ? ' selected' : '') + '>' + n + '</option>'; }).join('') +
+      '</select></label><label>Stretches per session <select id="nsize">' +
+      [3, 4, 5].map(function (n) { return '<option' + (state.size === n ? ' selected' : '') + '>' + n + '</option>'; }).join('') +
       '</select></label><label class="chk"><input type="checkbox" id="nosun"' + (state.noSun ? ' checked' : '') + '> Keep Sunday free</label></div>';
     $('#sched-in').innerHTML = h;
   }
   $('#sched-in').addEventListener('change', function (e) {
     if (e.target.dataset.day) state.days[+e.target.dataset.day] = e.target.value;
     if (e.target.id === 'nsess') state.n = +e.target.value;
+    if (e.target.id === 'nsize') state.size = +e.target.value;
     if (e.target.id === 'nosun') state.noSun = e.target.checked;
     persist();
   });
@@ -171,8 +175,27 @@
     if (!d) d = pick(skill, level, function (e) { return e.t === 4; }, muscles.concat(['technique']), used);
     push(d, 'Skill position');
 
-    return out.slice(0, 7);
+    return out;
     function push(e, role) { if (e) out.push({ e: e, role: role }); }
+  }
+
+  // Split warm-up drills out, then keep the 3-5 stretches that matter most,
+  // in their original small-to-big order.
+  function trimStack(all, size) {
+    var warm = all.filter(function (it) { return it.role === 'Prep'; });
+    var core = all.filter(function (it) { return it.role !== 'Prep'; });
+    var rank = function (it, i) {
+      if (it.role === 'Skill position') return 0;
+      if (it.role === 'Pair A1' || it.role === 'Compound') return 1;
+      if (it.role === 'Pair A2' || it.role === 'Strength in range') return 2;
+      return 3 + i; // isolated stretches, first one kept before the second
+    };
+    var keep = core.map(function (it, i) { return { it: it, r: rank(it, i), i: i }; })
+      .sort(function (a, b) { return a.r - b.r; }).slice(0, size)
+      .sort(function (a, b) { return a.i - b.i; }).map(function (x) { return x.it; });
+    if (!keep.some(function (it) { return it.role === 'Pair A1'; })) keep.forEach(function (it) { if (it.role === 'Pair A2') it.role = 'Strength in range'; });
+    if (!keep.some(function (it) { return it.role === 'Pair A2'; })) keep.forEach(function (it) { if (it.role === 'Pair A1') it.role = 'Compound'; });
+    return { warm: warm.slice(0, 2), stack: keep };
   }
 
   function doseIdx(level) { return level <= 1 ? 0 : (level <= 3 ? 1 : 2); }
@@ -266,9 +289,10 @@
     var answered = s.tests.filter(function (k) { return ans[k] != null; }).length;
     var ranked = rankLimiters(skill, ans);
     var sig = ranked.filter(function (r) { return r.p >= 2; });
-    var stack = buildStack(skill, level, ranked);
+    var built = trimStack(buildStack(skill, level, ranked), state.size);
+    var stack = built.stack, warm = built.warm;
     var sched = schedule(skill);
-    var mins = weeklyMinutes(stack, sched);
+    var mins = weeklyMinutes(stack.concat(warm), sched);
     var tl = timeline(skill, level, sig.length);
     var today = new Date();
 
@@ -300,7 +324,9 @@
     }
 
     // Stack
-    h += '<h2 id="p-stack">Your stack &mdash; do it in this order</h2>';
+    h += '<h2 id="p-stack">Your ' + stack.length + ' stretches &mdash; do them in this order</h2>';
+    if (warm.length) h += '<p class="nnote"><b>Warm-up, 3&ndash;5 min:</b> ' + warm.map(function (it) { return it.e.n; }).join(' and ') +
+      ' &mdash; one easy set each. These are drills, not part of your stretch count.</p>';
     h += '<p>Small and isolated first, the full skill position last &mdash; each step opens range for the next. The A1/A2 pair alternates an assisted stretch with a resisted exercise. Rest 60&ndash;90 s between exercises.</p>';
     h += '<ol class="stack">' + stack.map(function (it) {
       var e = it.e, m = F.METHODS[e.m];
@@ -316,8 +342,8 @@
     h += '<h2 id="p-week">Your week</h2><table class="wk">' + sched.map(function (r) {
       return '<tr class="' + r.kind + '"><th>' + r.day + '</th><td><small>' + r.type + '</small><br>' + r.what + '</td></tr>';
     }).join('') + '</table>';
-    var maintList = stack.filter(function (it) { return it.role === 'Isolated' || it.role === 'Prep'; }).slice(0, 3);
-    h += '<p><b>Focus session:</b> the full stack above, about ' + Math.round(stack.reduce(function (a, it) { return a + F.METHODS[it.e.m].min + 1; }, 5)) + ' minutes with a 5-minute warm-up.</p>';
+    var maintList = warm.concat(stack.filter(function (it) { return it.role === 'Isolated' || it.role === 'Skill position'; })).slice(0, 3);
+    h += '<p><b>Focus session:</b> warm-up plus the ' + stack.length + ' stretches above, about ' + Math.round(stack.reduce(function (a, it) { return a + F.METHODS[it.e.m].min + 1; }, 4)) + ' minutes.</p>';
     h += '<p><b>Maintenance session:</b> one easy set each of ' + maintList.map(function (it) { return it.e.n; }).join(', ') + ' &mdash; about 60&ndash;70% effort.</p>';
     h += '<p><b>Between focus sessions:</b> at least 48 hours. Matt Smith&rsquo;s ranking for timing: 2+ days after training that loads the same areas is best; the evening of a lifting day is next; straight after lifting is last.</p>';
     var mk = Object.keys(mins).sort(function (a, b) { return mins[b] - mins[a]; }).slice(0, 4);
@@ -347,7 +373,7 @@
       '<button type="button" class="linkbtn" id="print">Print plan</button></div></div>';
 
     $('#plan').innerHTML = h;
-    lastPlan = { skill: skill, s: s, level: level, tl: tl, stack: stack, sched: sched, built: today };
+    lastPlan = { skill: skill, s: s, level: level, tl: tl, stack: stack, warm: warm, sched: sched, built: today };
     renderPrint(); renderCard();
     $('#plan-wrap').hidden = false;
     renderPlanProj();
@@ -381,7 +407,7 @@
       '<div><span>Goal</span><b>Level ' + (s.levels.length - 1) + '</b><small>' + s.levels[s.levels.length - 1] + '</small></div>' +
       '<div><span>Estimate</span><b>' + esc(est.range) + '</b><small>' + esc(est.dates) + '</small></div>' +
       '<div class="hot"><span>Retest</span><b>' + fmtDate(rt) + '</b><small>then every 4 weeks</small></div></div>';
-    h += '<h2>Focus session &mdash; in this order</h2><table class="pv-stack"><tr><th>#</th><th>Exercise</th><th>Dose</th><th>Rest</th><th>Cue</th></tr>' +
+    h += '<h2>Focus session &mdash; ' + p.stack.length + ' stretches, in this order</h2>' + (p.warm && p.warm.length ? '<p class="pv-rules"><b>Warm-up 3&ndash;5 min:</b> ' + p.warm.map(function (it) { return it.e.n; }).join(' and ') + ', one easy set each.</p>' : '') + '<table class="pv-stack"><tr><th>#</th><th>Exercise</th><th>Dose</th><th>Rest</th><th>Cue</th></tr>' +
       p.stack.map(function (it, i) {
         var e = it.e, m = F.METHODS[e.m];
         return '<tr><td>' + (i + 1) + '</td><td><b>' + e.n + '</b><br><small>' + m.label + ' &middot; ' + it.role + '</small></td><td>' + dose(e, p.level) + '</td><td>' + m.rest + '</td><td>' + e.cue + '</td></tr>';
@@ -462,7 +488,12 @@
     });
     y += 2 * r + 52 * sc;
     // stack
-    ctx.fillStyle = INK; f('700', 40); ctx.fillText('Focus session, in order', M, y); y += 58 * sc;
+    ctx.fillStyle = INK; f('700', 40); ctx.fillText('Focus session: ' + p.stack.length + ' stretches, in order', M, y); y += 54 * sc;
+    if (p.warm && p.warm.length) {
+      f('400', 27); ctx.fillStyle = MUTED;
+      wrap(ctx, 'Warm-up 3\u20135 min: ' + p.warm.map(function (it) { return txt(it.e.n); }).join(' and '), W - 2 * M).forEach(function (l) { ctx.fillText(l, M, y); y += 34 * sc; });
+      y += 14 * sc;
+    }
     p.stack.forEach(function (it, i) {
       var e = it.e, m = F.METHODS[e.m];
       f('700', 34); ctx.fillStyle = INK;
