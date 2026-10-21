@@ -12,16 +12,19 @@
   var SKILL_COLOR = { pike: '#d79921', pancake: '#d65d0e', middle: '#cc241d', front: '#b16286', bridge: '#458588', flexion: '#689d6a', extension: '#98971a', squat: '#a0522d' };
   var MCOLOR = { static: '#458588', pir: '#b16286', loaded: '#cc241d', iso: '#689d6a', isoreps: '#689d6a', active: '#98971a', strength: '#d65d0e',
     dynamic: '#d79921', ballistic: '#d65d0e', nerve: '#b16286', soft: '#928374', cars: '#d79921', technique: '#458588' };
+  var T = function (pts) { return '<polygon points="' + pts + '" fill="%C" stroke-linejoin="round"/>'; };
+  var H = function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="4" fill="%C" stroke="none"/>'; };
   var ICON = {
-    pike: '<line x1="5" y1="31" x2="35" y2="31"/><line x1="7" y1="29" x2="27" y2="21"/><circle cx="31" cy="20" r="3.4"/><line x1="15" y1="25" x2="32" y2="29"/>',
-    pancake: '<line x1="20" y1="30" x2="3" y2="35"/><line x1="20" y1="30" x2="37" y2="35"/><line x1="20" y1="30" x2="20" y2="20"/><circle cx="20" cy="16" r="3.4"/><line x1="20" y1="23" x2="9" y2="30"/><line x1="20" y1="23" x2="31" y2="30"/>',
-    middle: '<line x1="2" y1="33" x2="38" y2="33"/><line x1="20" y1="33" x2="20" y2="15"/><circle cx="20" cy="10.5" r="3.4"/><line x1="20" y1="20" x2="9" y2="15"/><line x1="20" y1="20" x2="31" y2="15"/>',
-    front: '<line x1="3" y1="33" x2="37" y2="33"/><line x1="20" y1="33" x2="21" y2="15"/><circle cx="21.5" cy="10.5" r="3.4"/><line x1="21" y1="19" x2="16" y2="7"/><line x1="21" y1="19" x2="26" y2="7"/>',
-    bridge: '<path d="M6 35 C6 12 34 12 34 35" fill="none"/><circle cx="9" cy="28" r="3.2"/>',
-    flexion: '<line x1="20" y1="20" x2="20" y2="31"/><line x1="20" y1="31" x2="16" y2="38"/><line x1="20" y1="31" x2="24" y2="38"/><circle cx="20" cy="13" r="3.4"/><line x1="20" y1="19" x2="16" y2="3"/><line x1="20" y1="19" x2="24" y2="3"/>',
-    extension: '<line x1="18" y1="17" x2="18" y2="30"/><line x1="18" y1="30" x2="15" y2="38"/><line x1="18" y1="30" x2="21" y2="38"/><circle cx="18" cy="10" r="3.4"/><line x1="18" y1="17" x2="30" y2="24"/><line x1="18" y1="18" x2="31" y2="27"/>',
-    squat: '<line x1="13" y1="30" x2="9" y2="37"/><line x1="13" y1="30" x2="24" y2="27"/><line x1="24" y1="27" x2="25" y2="37"/><line x1="13" y1="30" x2="20" y2="15"/><circle cx="21" cy="10" r="3.4"/><line x1="19" y1="19" x2="30" y2="21"/>'
+    pike: '<line x1="5" y1="32" x2="36" y2="32"/>' + T('7,30 22,18 27,25') + H(31, 19) + '<line x1="25" y1="22" x2="34" y2="30"/>',
+    pancake: '<line x1="20" y1="31" x2="3" y2="36"/><line x1="20" y1="31" x2="37" y2="36"/>' + T('20,31 11,21 29,21') + H(20, 15) + '<line x1="12" y1="22" x2="7" y2="31"/><line x1="28" y1="22" x2="33" y2="31"/>',
+    middle: '<line x1="2" y1="34" x2="38" y2="34"/>' + T('20,33 12,16 28,16') + H(20, 10) + '<line x1="13" y1="17" x2="5" y2="11"/><line x1="27" y1="17" x2="35" y2="11"/>',
+    front: '<line x1="3" y1="34" x2="37" y2="34"/>' + T('20,33 15,16 26,16') + H(21, 10) + '<line x1="16" y1="17" x2="11" y2="4"/><line x1="25" y1="17" x2="30" y2="4"/>',
+    bridge: '<line x1="6" y1="36" x2="11" y2="22"/>' + T('9,21 15,13 27,15') + '<polyline points="26,15 32,23 34,36" fill="none"/>' + H(13, 27),
+    flexion: T('13,15 27,15 20,29') + '<line x1="20" y1="28" x2="16" y2="38"/><line x1="20" y1="28" x2="24" y2="38"/>' + H(20, 9.5) + '<line x1="14" y1="15" x2="14" y2="2"/><line x1="26" y1="15" x2="26" y2="2"/>',
+    extension: T('13,14 23,14 18,29') + '<line x1="18" y1="28" x2="15" y2="38"/><line x1="18" y1="28" x2="21" y2="38"/>' + H(18, 8.5) + '<line x1="20" y1="15" x2="32" y2="26"/>',
+    squat: T('12,31 15,14 24,16') + H(21, 9.5) + '<polyline points="12,31 25,26 24,37" fill="none"/><line x1="12" y1="31" x2="9" y2="37"/><line x1="20" y1="17" x2="31" y2="22"/>'
   };
+  function icon(k) { return ICON[k].replace(/%C/g, SKILL_COLOR[k]); }
 
   /* ---------------- storage ---------------- */
   function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
@@ -113,7 +116,7 @@
     $('#skills').innerHTML = Object.keys(F.SKILLS).map(function (k) {
       var l = state.levels[k];
       return '<button type="button" class="skill' + (k === state.skill ? ' on' : '') + '" data-skill="' + k + '" style="--c:' + SKILL_COLOR[k] + '" aria-pressed="' + (k === state.skill) + '">' +
-        '<svg viewBox="0 0 40 40" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round" aria-hidden="true">' + ICON[k] + '</svg>' +
+        '<svg viewBox="0 0 40 40" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round" aria-hidden="true">' + icon(k) + '</svg>' +
         '<span>' + short(k) + '</span><small>' + (l == null ? 'not assessed' : 'level ' + l + '/' + (F.SKILLS[k].levels.length - 1)) + '</small></button>';
     }).join('');
   }
@@ -546,7 +549,7 @@
     if (!cardIcon || cardIcon.dataset.k !== k) {
       var im = new Image(); im.dataset.k = k;
       im.onload = function () { cardIcon = im; renderCard(); };
-      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="400" height="400" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round">' + ICON[k] + '</svg>');
+      im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="400" height="400" fill="none" stroke="' + SKILL_COLOR[k] + '" stroke-width="3" stroke-linecap="round">' + icon(k) + '</svg>');
       return;
     }
     var cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920;
