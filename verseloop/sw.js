@@ -1,9 +1,9 @@
 // Offline cache. App files: stale-while-revalidate (instant, updates in the
-// background). Audio clips: cache-first, and the whole book is prefetched
+// background). Audio clips: cache-first, and the open book is prefetched
 // once the page asks for it. Bump AUDIO when the clips are rebuilt.
-const SHELL = "shell-v7";
-const AUDIO = "audio-v4";
-const SHELL_FILES = ["./", "index.html", "app.js", "style.css", "data/1pe.json", "manifest.webmanifest", "icon.svg", "icon-192.png",
+const SHELL = "shell-v8";
+const AUDIO = "audio-v5";
+const SHELL_FILES = ["./", "index.html", "app.js", "style.css", "data/books.json", "manifest.webmanifest", "icon.svg", "icon-192.png",
   "fonts/ebgaramond-latin-normal.woff2", "fonts/ebgaramond-latin-italic.woff2", "fonts/ebgaramond-greek-normal.woff2"];
 
 self.addEventListener("install", (e) => {
@@ -41,18 +41,19 @@ self.addEventListener("fetch", (e) => {
 });
 
 self.addEventListener("message", (e) => {
-  if (e.data?.type === "prefetch-all") e.waitUntil(prefetchAll());
+  if (e.data?.type === "prefetch-book" && /^[a-z0-9]+$/.test(e.data.book)) e.waitUntil(prefetchBook(e.data.book));
 });
 
-async function prefetchAll() {
+async function prefetchBook(id) {
   const base = new URL("./", self.registration.scope);
-  const book = await (await fetch(new URL("data/1pe.json", base))).json();
+  const book = await (await fetch(new URL(`data/${id}.json`, base))).json();
   const urls = [];
+  const most = Math.max(...book.chapters.map((ch) => Math.max(ch.c, ch.verses.length)));
+  for (let n = 1; n <= most; n++) urls.push(`audio/num/${n}.mp3`);
+  for (const ms of [300, 800, 1600, 3000]) urls.push(`audio/s/${ms}.mp3`);
   for (const ch of book.chapters) {
-    for (const v of ch.verses) urls.push(`audio/1pe/v/${ch.c}-${v.v}.mp3`, `audio/1pe/a/${ch.c}-${v.v}.mp3`);
+    for (const v of ch.verses) urls.push(`audio/${id}/${ch.c}-${v.v}.mp3`);
   }
-  for (let n = 1; n <= 25; n++) urls.push(`audio/1pe/n/${n}.mp3`);
-  for (const ms of [300, 800, 1600, 3000]) urls.push(`audio/1pe/s/${ms}.mp3`);
   const cache = await caches.open(AUDIO);
   const todo = [];
   for (const u of urls) {

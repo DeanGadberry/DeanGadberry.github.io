@@ -52,8 +52,8 @@
     --surface: #1D1C18;
     --surface-2: #26241F;
     --brand: #8FB0C4;
-    --book-ink: #7FB0E6;
-    --book-soft: color-mix(in srgb, #7FB0E6 16%, transparent);
+    --book-ink: color-mix(in srgb, var(--book) 55%, white);
+    --book-soft: color-mix(in srgb, var(--book-ink) 16%, transparent);
     --shadow-card: 0 6px 24px rgb(0 0 0 / 0.5);
     --shadow-lift: 0 22px 44px rgb(0 0 0 / 0.6);
     color-scheme: dark;
@@ -119,10 +119,19 @@ a:hover { text-decoration: underline; }
 }
 
 .book-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
-.book-name {
-  margin: 0; font-size: 2rem; line-height: 1.1; font-weight: 700; color: var(--book-ink);
-  letter-spacing: 0.5px;
+.book-title { margin: 0; position: relative; display: inline-block; }
+.book-title::after {
+  content: ""; position: absolute; right: 0.2em; top: 50%; width: 0.38rem; height: 0.38rem; pointer-events: none;
+  border: solid var(--book-ink); border-width: 0 2.5px 2.5px 0; transform: translateY(-75%) rotate(45deg);
 }
+.book-name {
+  margin: 0; font: 700 2rem/1.1 var(--serif); color: var(--book-ink); letter-spacing: 0.5px;
+  appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 6px;
+  padding: 0 0.85em 0 0; cursor: pointer; max-width: 100%; field-sizing: content;
+}
+.book-name:focus-visible { outline: 2px solid var(--book-ink); outline-offset: 2px; }
+.book-name option { font-size: 1rem; color: var(--ink); background: var(--surface); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .book-meta { margin: 0; color: var(--muted); font-size: 0.98rem; }
 
 /* Segmented control (as in Aleph with Beth Offline). */

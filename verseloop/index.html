@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Verse Loop · 1 Peter</title>
-<meta name="description" content="Loop any run of verses in 1 Peter, read aloud by a human voice, again and again.">
+<title>Verse Loop</title>
+<meta name="description" content="Loop any run of verses, read aloud by a human voice, again and again: Ruth, Jonah, Mark, Romans, Ephesians, Hebrews, James, 1 Peter and Revelation.">
 <meta name="theme-color" content="#1C5D99" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#164b7c" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Verse Loop">
@@ -17,7 +17,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preload" href="fonts/ebgaramond-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="data/1pe.json" as="fetch" crossorigin>
+<link rel="preload" href="data/books.json" as="fetch" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -65,8 +65,8 @@
 <div class="layout">
   <section class="pane-controls" aria-label="Choose verses">
     <div class="book-line">
-      <h1 class="book-name">1 Peter</h1>
-      <p class="book-meta">King James Version · read by Willard Waggoner</p>
+      <h1 class="book-title"><label for="book" class="sr">Book</label><select id="book" class="book-name"></select></h1>
+      <p class="book-meta" id="bookMeta">King James Version · read by Willard Waggoner</p>
     </div>
 
     <nav class="segmented chapters" id="chapters" aria-label="Chapter"></nav>
@@ -146,10 +146,10 @@
   <strong>Willard Waggoner</strong>, © 1996 Praise Inc., shared free through ebibleradio.com
   (<a href="https://archive.org/details/kingjamesaudiobible">on the Internet Archive</a>)
   and used here for non-commercial purposes. Nothing is synthesized. The verses are cut from
-  his 1 Peter, and the chapter and verse numbers said before them from his chapter headings
-  in 2 Kings.</p>
-  <p>Text: King James Version, public domain. After your first visit the
-  whole book is kept on your device, so it plays offline.</p>
+  his reading of each book, and the chapter and verse numbers said before them from his
+  chapter headings in Isaiah (with “seventy” from Luke 10:17).</p>
+  <p>Text: King James Version, public domain. After you open a book, the
+  whole of it is kept on your device, so it plays offline.</p>
   <p class="verse-cite">“For precept must be upon precept, precept upon precept; line upon line, line upon line; here a little, and there a little.” Isaiah 28:10</p>
 </footer>
 

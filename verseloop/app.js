@@ -19,12 +19,14 @@ const els = {
   segbar: $("segbar"), trim: $("trim"), track: $("trimTrack"), fill: $("trimFill"),
   lo: $("trimLo"), hi: $("trimHi"), handleLo: $("handleLo"), handleHi: $("handleHi"),
   ticks: $("trimTicks"), readout: $("trimReadout"), viewToggle: $("viewToggle"),
+  book: $("book"), bookMeta: $("bookMeta"),
   save: $("save"), saveLen: $("saveLen"), saveNote: $("saveNote"),
 };
 
 const settings = loadSettings();
 const state = {
-  book: null,          // data/1pe.json
+  books: null,         // data/books.json: the index of books
+  book: null,          // data/{id}.json: the book on screen
   shown: 1,            // chapter on screen
   range: null,         // {from: [c, v], to: [c, v]}
   anchor: null,        // first tap of a tap-tap selection
@@ -41,10 +43,17 @@ if (navigator.audioSession) navigator.audioSession.type = "playback"; // ignore 
 
 // ------------------------------------------------------------------ data
 
-const bookReady = fetch("data/1pe.json").then((r) => r.json()).then((b) => {
-  state.book = b;
-  return b;
-});
+const indexReady = fetch("data/books.json").then((r) => r.json()).then((x) => (state.books = x));
+const bookData = new Map(); // id -> Promise<book>
+function loadBook(id) {
+  if (!bookData.has(id)) {
+    const p = fetch(`data/${id}.json`).then((r) => { if (!r.ok) throw new Error(id); return r.json(); });
+    p.catch(() => bookData.delete(id));
+    bookData.set(id, p);
+  }
+  return bookData.get(id);
+}
+const bookInfo = (id) => state.books.books.find((b) => b.id === id);
 
 const verseKey = (c, v) => c * 1000 + v;
 function verseList(range) {
@@ -62,10 +71,24 @@ const verseText = (c, v) => chapter(c).verses.find((x) => x.v === v).text;
 
 // ------------------------------------------------------------------ reference parsing
 
-const BOOK_RE = /^\s*(?:(?:1|i|1st|first)\s*(?:peter|pet|pe|pt|p)\.?)\s*/i;
+// Book names as people type them: "Romans", "rom", "1 Pet", "First Peter", "Rev".
+const BOOK_NAMES = [
+  ["rut", /^ru(?:th|t)?\b/i], ["jon", /^jon(?:ah)?\b|^jnh\b/i], ["mar", /^m(?:ar)?k\b|^mark\b|^mrk\b/i],
+  ["rom", /^ro(?:m|mans)?\b/i], ["eph", /^eph(?:es(?:ians)?)?\b/i], ["heb", /^heb(?:rews)?\b/i],
+  ["jam", /^ja(?:s|m|mes)?\b|^jms\b/i], ["1pe", /^(?:1|i|1st|first)\s*p(?:e|et|t|eter)?\b/i],
+  ["rev", /^rev(?:elation)?\b|^re\b/i],
+];
+function splitBook(input) {
+  const t = input.trim();
+  for (const [id, re] of BOOK_NAMES) {
+    const m = t.match(re);
+    if (m) return [id, t.slice(m[0].length).replace(/^[.\s]+/, "")];
+  }
+  return [null, t];
+}
 
 export function parseRef(input, book) {
-  const s = input.replace(BOOK_RE, "").replace(/[–—]/g, "-").replace(/\s+/g, "").replace(/\./g, ":");
+  const s = input.replace(/[–—]/g, "-").replace(/\s+/g, "").replace(/\./g, ":");
   if (!s) return null;
   const m = s.match(/^(\d+)(?::(\d+))?(?:-(\d+)(?::(\d+))?)?$/);
   if (!m) throw new Error("Try something like 2:3-5, 1:22-2:3 or 3");
@@ -85,8 +108,8 @@ export function parseRef(input, book) {
   }
   for (const [c, v] of [from, to]) {
     const n = lastVerse(book, c);
-    if (!n) throw new Error(`1 Peter has 5 chapters`);
-    if (v < 1 || v > n) throw new Error(`1 Peter ${c} has ${n} verses`);
+    if (!n) throw new Error(`${book.book} has ${book.chapters.length} chapter${book.chapters.length > 1 ? "s" : ""}`);
+    if (v < 1 || v > n) throw new Error(`${book.book} ${c} has ${n} verses`);
   }
   if (verseKey(...to) < verseKey(...from)) [from, to] = [to, from];
   return { from, to };
@@ -95,7 +118,7 @@ function lastVerse(book, c) {
   const ch = book.chapters.find((x) => x.c === c);
   return ch ? ch.verses[ch.verses.length - 1].v : 0;
 }
-function fmtRange(r, book = "1 Peter ") {
+function fmtRange(r, book = `${state.book.book} `) {
   const [c1, v1] = r.from, [c2, v2] = r.to;
   if (c1 === c2 && v1 === v2) return `${book}${c1}:${v1}`;
   if (c1 === c2) return `${book}${c1}:${v1}–${v2}`;
@@ -134,9 +157,22 @@ function trim(x) {
   return x.subarray(Math.max(0, a - 32), Math.min(x.length, b + 32));
 }
 
-const annUrl = (c, v) =>
-  settings.announce === "full" ? `audio/1pe/a/${c}-${v}.mp3`
-  : settings.announce === "verse" ? `audio/1pe/n/${v}.mp3` : null;
+// Before each verse he says just its numbers, chapter then verse ("two ...
+// three"), or the verse number alone: one shared set of number clips.
+const numberUrl = (n) => `audio/num/${n}.mp3`;
+const verseUrl = (c, v) => `audio/${state.book.id}/${c}-${v}.mp3`;
+const introNumbers = (c, v) =>
+  settings.announce === "full" ? [c, v] : settings.announce === "verse" ? [v] : [];
+async function intro(c, v) {
+  const nums = introNumbers(c, v);
+  if (!nums.length) return null;
+  const clips = await Promise.all(nums.map((n) => clip(numberUrl(n))));
+  const gap = Math.round(state.books.number_gap * SR);
+  const out = new Float32Array(clips.reduce((t, x) => t + x.length, 0) + gap * (clips.length - 1));
+  let pos = 0;
+  clips.forEach((x, i) => { out.set(x, pos); pos += x.length + (i < clips.length - 1 ? gap : 0); });
+  return out;
+}
 
 async function render() {
   const id = ++state.renderId;
@@ -145,10 +181,7 @@ async function render() {
   const verses = verseList(range);
   setStatus("Loading…");
   els.play.disabled = true;
-  const parts = await Promise.all(verses.map((vv) => Promise.all([
-    annUrl(vv.c, vv.v) ? clip(annUrl(vv.c, vv.v)) : null,
-    clip(`audio/1pe/v/${vv.c}-${vv.v}.mp3`),
-  ])));
+  const parts = await Promise.all(verses.map((vv) => Promise.all([intro(vv.c, vv.v), clip(verseUrl(vv.c, vv.v))])));
   if (id !== state.renderId) return; // a newer selection won
 
   const gap = Math.round(+settings.gap * SR), annGap = Math.round(ANN_GAP * SR);
@@ -289,7 +322,7 @@ function updateMediaSession() {
   if (!("mediaSession" in navigator) || !state.range) return;
   navigator.mediaSession.metadata = new MediaMetadata({
     title: fmtRange(state.range),
-    artist: `${state.book.reader} · LibriVox`,
+    artist: state.book.reader,
     album: "Verse Loop",
     artwork: [{ src: "icon-192.png", sizes: "192x192", type: "image/png" },
               { src: "icon-512.png", sizes: "512x512", type: "image/png" }],
@@ -373,7 +406,7 @@ function rawClip(url) {
   }
   return rawClips.get(url);
 }
-const silenceUrl = (sec) => `audio/1pe/s/${Math.round(sec * 1000)}.mp3`;
+const silenceUrl = (sec) => `audio/s/${Math.round(sec * 1000)}.mp3`;
 
 async function saveLoop() {
   const r = state.range;
@@ -384,16 +417,15 @@ async function saveLoop() {
   try {
     const pass = [];
     for (const vv of verseList(r)) {
-      const ann = annUrl(vv.c, vv.v);
-      if (ann) pass.push(ann, silenceUrl(ANN_GAP));
-      pass.push(`audio/1pe/v/${vv.c}-${vv.v}.mp3`, silenceUrl(+settings.gap));
+      introNumbers(vv.c, vv.v).forEach((n, i, all) => pass.push(numberUrl(n), silenceUrl(i < all.length - 1 ? 0.3 : ANN_GAP)));
+      pass.push(verseUrl(vv.c, vv.v), silenceUrl(+settings.gap));
     }
     const parts = await Promise.all(pass.map(rawClip));
     const repeats = Math.max(1, Math.round((minutes * 60) / state.total));
     const blob = new Blob(Array.from({ length: repeats }, () => parts).flat(), { type: "audio/mpeg" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `1 Peter ${shortRange(r).replace(/:/g, ".")} - ${minutes < 60 ? `${minutes} min` : "1 hour"} loop.mp3`;
+    a.download = `${state.book.book} ${shortRange(r).replace(/:/g, ".")} - ${minutes < 60 ? `${minutes} min` : "1 hour"} loop.mp3`;
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 60000);
     els.saveNote.textContent = `Saved: ${repeats} times through, ${fmtTime(repeats * state.total)}, ${(blob.size / 1e6).toFixed(1)} MB.`;
@@ -443,7 +475,7 @@ function setRange(range, { autoplay = false } = {}) {
   els.label.textContent = fmtRange(range);
   els.ref.value = shortRange(range);
   els.err.hidden = true;
-  history.replaceState(null, "", `#${shortRange(range)}`);
+  history.replaceState(null, "", `#${state.book.id}${shortRange(range)}`);
   // Show just the chosen verses, except mid-way through a tap-tap choice.
   state.view = state.anchor ? "chapter" : "range";
   renderText();
@@ -496,17 +528,18 @@ els.text.addEventListener("keydown", (e) => {
 els.form.addEventListener("submit", (e) => {
   e.preventDefault();
   els.ref.blur();
-  try {
-    const r = parseRef(els.ref.value, state.book);
+  const [id, rest] = splitBook(els.ref.value);
+  (id && id !== state.book.id ? openBook(id) : Promise.resolve()).then(() => {
+    const r = parseRef(rest, state.book);
     if (!r) return;
     state.anchor = null;
     state.shown = r.from[0];
     setRange(r, { autoplay: true });
     showChapter(r.from[0]);
-  } catch (err) {
+  }).catch((err) => {
     els.err.textContent = err.message;
     els.err.hidden = false;
-  }
+  });
 });
 
 // ------------------------------------------------------------------ Alpha/Omega range slider
@@ -662,38 +695,77 @@ function escapeHtml(s) { return s.replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<
 // in canonical order, with this book marked.
 const CANON = [["#4C6A7D", 5], ["#8E244D", 12], ["#B85C00", 5], ["#2E6B66", 5], ["#526E2D", 12],
                ["#AE3434", 4], ["#A67C52", 1], ["#1C5D99", 13], ["#1C5D99", 8], ["#6B2E8F", 1]];
-const THIS_BOOK = 60; // 1 Peter, 60th of 66
-{
+function paintCanon(canon) {
   let n = 0;
   $("canon").innerHTML = CANON.flatMap(([color, count]) => Array.from({ length: count }, () =>
-    `<i style="background:${color}"${++n === THIS_BOOK ? ' class="here"' : ""}></i>`)).join("");
+    `<i style="background:${color}"${++n === canon ? ' class="here"' : ""}></i>`)).join("");
+}
+
+// ------------------------------------------------------------------ books
+// Each book takes its Chi Rho Cards section colour (bible_palette.py): the
+// masthead, the slider, the playing verse and the player all follow it.
+
+async function openBook(id, initial = null) {
+  const book = await loadBook(id);
+  audio.pause();
+  state.book = book;
+  state.range = null; state.anchor = null; state.timeline = []; state.view = "chapter";
+  els.play.disabled = true;
+  els.label.textContent = "Choose a range of verses";
+  setStatus("");
+  els.segbar.innerHTML = "";
+  const info = bookInfo(id);
+  document.documentElement.style.setProperty("--book", info.color);
+  document.querySelector('meta[name="theme-color"][media*="light"]')?.setAttribute("content", info.color);
+  document.title = `Verse Loop · ${book.book}`;
+  els.book.value = id;
+  els.bookMeta.textContent = `King James Version · read by ${book.reader}`;
+  paintCanon(info.canon);
+  els.chapters.innerHTML = book.chapters.map((ch) => `<button type="button" data-c="${ch.c}">${ch.c}</button>`).join("");
+  state.shown = initial ? initial.from[0] : 1;
+  if (initial) setRange(initial);
+  else history.replaceState(null, "", `#${id}`);
+  showChapter(state.shown);
+  prefetchBook(id);
+}
+
+// The address keeps the book and passage: #rom8:28-30 (a bare #2:3-5 is 1 Peter).
+function fromHash() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const m = h.match(/^([a-z0-9]{3})(.*)$/i);
+  const id = m && bookInfo(m[1].toLowerCase()) ? m[1].toLowerCase() : "1pe";
+  return [id, m && id === m[1].toLowerCase() ? m[2] : h];
 }
 
 // ------------------------------------------------------------------ boot
 
 animateLogo();
-bookReady.then((book) => {
-  els.chapters.innerHTML = book.chapters.map((ch) => `<button type="button" data-c="${ch.c}">${ch.c}</button>`).join("");
+indexReady.then(async (index) => {
+  els.book.innerHTML = index.books.map((b) => `<option value="${b.id}">${b.name}</option>`).join("");
+  els.book.addEventListener("change", () => openBook(els.book.value));
   els.chapters.addEventListener("click", (e) => {
     const b = e.target.closest("button");
     if (b) { state.view = "chapter"; showChapter(+b.dataset.c); }
   });
   syncSettingsUI();
   setupTrim();
+  const [id, ref] = fromHash();
+  const book = await loadBook(id);
   let initial = null;
-  try { initial = parseRef(decodeURIComponent(location.hash.slice(1)), book); } catch {}
-  state.shown = initial ? initial.from[0] : 1;
-  if (initial) setRange(initial);
-  showChapter(state.shown);
+  try { initial = parseRef(ref, book); } catch {}
+  await openBook(id, initial);
 });
 
-if ("serviceWorker" in navigator) {
-  addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").then(() => navigator.serviceWorker.ready).then((reg) => {
-      // Fill the offline cache with the rest of the book once things are idle.
-      const go = () => reg.active?.postMessage({ type: "prefetch-all" });
-      if (navigator.connection?.saveData) return;
-      ("requestIdleCallback" in window) ? requestIdleCallback(go, { timeout: 4000 }) : setTimeout(go, 2000);
-    });
+// Fill the offline cache with the book on screen once things are idle.
+let swReady = null;
+function prefetchBook(id) {
+  if (!swReady || navigator.connection?.saveData) return;
+  swReady.then((reg) => {
+    const go = () => reg.active?.postMessage({ type: "prefetch-book", book: id });
+    ("requestIdleCallback" in window) ? requestIdleCallback(go, { timeout: 4000 }) : setTimeout(go, 2000);
   });
+}
+if ("serviceWorker" in navigator) {
+  swReady = navigator.serviceWorker.register("sw.js").then(() => navigator.serviceWorker.ready);
+  swReady.then(() => state.book && prefetchBook(state.book.id));
 }

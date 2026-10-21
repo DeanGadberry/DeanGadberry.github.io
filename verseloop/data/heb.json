@@ -1,0 +1,2801 @@
+{
+ "book": "Hebrews",
+ "id": "heb",
+ "translation": "King James Version",
+ "reader": "Willard Waggoner",
+ "credit": "Audio: read by Willard Waggoner, (c) 1996 Praise Inc., via ebibleradio.com, used for non-commercial purposes. Text: King James Version, public domain.",
+ "chapters": [
+  {
+   "c": 1,
+   "verses": [
+    {
+     "v": 1,
+     "text": "God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets,",
+     "dur": 6.38,
+     "src": [
+      7.45,
+      13.83
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Hath in these last days spoken unto us by [his] Son, whom he hath appointed heir of all things, by whom also he made the worlds;",
+     "dur": 9.15,
+     "src": [
+      14.56,
+      23.71
+     ]
+    },
+    {
+     "v": 3,
+     "text": "Who being the brightness of [his] glory, and the express image of his person, and upholding all things by the word of his power, when he had by himself purged our sins, sat down on the right hand of the Majesty on high;",
+     "dur": 14.27,
+     "src": [
+      24.06,
+      38.33
+     ]
+    },
+    {
+     "v": 4,
+     "text": "Being made so much better than the angels, as he hath by inheritance obtained a more excellent name than they.",
+     "dur": 6.96,
+     "src": [
+      38.8,
+      45.76
+     ]
+    },
+    {
+     "v": 5,
+     "text": "For unto which of the angels said he at any time, Thou art my Son, this day have I begotten thee? And again, I will be to him a Father, and he shall be to me a Son?",
+     "dur": 11.56,
+     "src": [
+      46.82,
+      58.38
+     ]
+    },
+    {
+     "v": 6,
+     "text": "And again, when he bringeth in the firstbegotten into the world, he saith, And let all the angels of God worship him.",
+     "dur": 7.39,
+     "src": [
+      59.04,
+      66.43
+     ]
+    },
+    {
+     "v": 7,
+     "text": "And of the angels he saith, Who maketh his angels spirits, and his ministers a flame of fire.",
+     "dur": 6.09,
+     "src": [
+      67.0,
+      73.09
+     ]
+    },
+    {
+     "v": 8,
+     "text": "But unto the Son [he saith], Thy throne, O God, [is] for ever and ever: a sceptre of righteousness [is] the sceptre of thy kingdom.",
+     "dur": 9.09,
+     "src": [
+      73.8,
+      82.89
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Thou hast loved righteousness, and hated iniquity; therefore God, [even] thy God, hath anointed thee with the oil of gladness above thy fellows.",
+     "dur": 9.19,
+     "src": [
+      83.48,
+      92.67
+     ]
+    },
+    {
+     "v": 10,
+     "text": "And, Thou, Lord, in the beginning hast laid the foundation of the earth; and the heavens are the works of thine hands:",
+     "dur": 7.38,
+     "src": [
+      93.04,
+      100.42
+     ]
+    },
+    {
+     "v": 11,
+     "text": "They shall perish; but thou remainest; and they all shall wax old as doth a garment;",
+     "dur": 6.06,
+     "src": [
+      100.82,
+      106.88
+     ]
+    },
+    {
+     "v": 12,
+     "text": "And as a vesture shalt thou fold them up, and they shall be changed: but thou art the same, and thy years shall not fail.",
+     "dur": 8.68,
+     "src": [
+      107.08,
+      115.76
+     ]
+    },
+    {
+     "v": 13,
+     "text": "But to which of the angels said he at any time, Sit on my right hand, until I make thine enemies thy footstool?",
+     "dur": 7.04,
+     "src": [
+      116.52,
+      123.56
+     ]
+    },
+    {
+     "v": 14,
+     "text": "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?",
+     "dur": 6.57,
+     "src": [
+      124.2,
+      130.77
+     ]
+    }
+   ]
+  },
+  {
+   "c": 2,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Therefore we ought to give the more earnest heed to the things which we have heard, lest at any time we should let [them] slip.",
+     "dur": 7.58,
+     "src": [
+      3.57,
+      11.15
+     ]
+    },
+    {
+     "v": 2,
+     "text": "For if the word spoken by angels was stedfast, and every transgression and disobedience received a just recompence of reward;",
+     "dur": 8.74,
+     "src": [
+      12.1,
+      20.84
+     ]
+    },
+    {
+     "v": 3,
+     "text": "How shall we escape, if we neglect so great salvation; which at the first began to be spoken by the Lord, and was confirmed unto us by them that heard [him];",
+     "dur": 10.59,
+     "src": [
+      21.54,
+      32.13
+     ]
+    },
+    {
+     "v": 4,
+     "text": "God also bearing [them] witness, both with signs and wonders, and with divers miracles, and gifts of the Holy Ghost, according to his own will?",
+     "dur": 8.98,
+     "src": [
+      32.77,
+      41.75
+     ]
+    },
+    {
+     "v": 5,
+     "text": "For unto the angels hath he not put in subjection the world to come, whereof we speak.",
+     "dur": 4.84,
+     "src": [
+      42.74,
+      47.58
+     ]
+    },
+    {
+     "v": 6,
+     "text": "But one in a certain place testified, saying, What is man, that thou art mindful of him? or the son of man, that thou visitest him?",
+     "dur": 9.34,
+     "src": [
+      48.5,
+      57.84
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Thou madest him a little lower than the angels; thou crownedst him with glory and honour, and didst set him over the works of thy hands:",
+     "dur": 9.39,
+     "src": [
+      58.28,
+      67.67
+     ]
+    },
+    {
+     "v": 8,
+     "text": "Thou hast put all things in subjection under his feet. For in that he put all in subjection under him, he left nothing [that is] not put under him. But now we see not yet all things put under him.",
+     "dur": 13.19,
+     "src": [
+      68.11,
+      81.3
+     ]
+    },
+    {
+     "v": 9,
+     "text": "But we see Jesus, who was made a little lower than the angels for the suffering of death, crowned with glory and honour; that he by the grace of God should taste death for every man.",
+     "dur": 12.36,
+     "src": [
+      81.72,
+      94.08
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For it became him, for whom [are] all things, and by whom [are] all things, in bringing many sons unto glory, to make the captain of their salvation perfect through sufferings.",
+     "dur": 11.17,
+     "src": [
+      94.62,
+      105.79
+     ]
+    },
+    {
+     "v": 11,
+     "text": "For both he that sanctifieth and they who are sanctified [are] all of one: for which cause he is not ashamed to call them brethren,",
+     "dur": 8.15,
+     "src": [
+      106.46,
+      114.61
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Saying, I will declare thy name unto my brethren, in the midst of the church will I sing praise unto thee.",
+     "dur": 6.94,
+     "src": [
+      114.86,
+      121.8
+     ]
+    },
+    {
+     "v": 13,
+     "text": "And again, I will put my trust in him. And again, Behold I and the children which God hath given me.",
+     "dur": 7.82,
+     "src": [
+      122.18,
+      130.0
+     ]
+    },
+    {
+     "v": 14,
+     "text": "Forasmuch then as the children are partakers of flesh and blood, he also himself likewise took part of the same; that through death he might destroy him that had the power of death, that is, the devil;",
+     "dur": 13.03,
+     "src": [
+      130.35,
+      143.38
+     ]
+    },
+    {
+     "v": 15,
+     "text": "And deliver them who through fear of death were all their lifetime subject to bondage.",
+     "dur": 5.84,
+     "src": [
+      143.68,
+      149.52
+     ]
+    },
+    {
+     "v": 16,
+     "text": "For verily he took not on [him the nature of] angels; but he took on [him] the seed of Abraham.",
+     "dur": 6.22,
+     "src": [
+      149.98,
+      156.2
+     ]
+    },
+    {
+     "v": 17,
+     "text": "Wherefore in all things it behoved him to be made like unto [his] brethren, that he might be a merciful and faithful high priest in things [pertaining] to God, to make reconciliation for the sins of the people.",
+     "dur": 12.79,
+     "src": [
+      156.51,
+      169.3
+     ]
+    },
+    {
+     "v": 18,
+     "text": "For in that he himself hath suffered being tempted, he is able to succour them that are tempted.",
+     "dur": 6.8,
+     "src": [
+      169.92,
+      176.72
+     ]
+    }
+   ]
+  },
+  {
+   "c": 3,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Wherefore, holy brethren, partakers of the heavenly calling, consider the Apostle and High Priest of our profession, Christ Jesus;",
+     "dur": 9.19,
+     "src": [
+      3.91,
+      13.1
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Who was faithful to him that appointed him, as also Moses [was faithful] in all his house.",
+     "dur": 6.43,
+     "src": [
+      13.59,
+      20.02
+     ]
+    },
+    {
+     "v": 3,
+     "text": "For this [man] was counted worthy of more glory than Moses, inasmuch as he who hath builded the house hath more honour than the house.",
+     "dur": 9.25,
+     "src": [
+      20.89,
+      30.14
+     ]
+    },
+    {
+     "v": 4,
+     "text": "For every house is builded by some [man]; but he that built all things [is] God.",
+     "dur": 5.67,
+     "src": [
+      30.94,
+      36.61
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And Moses verily [was] faithful in all his house, as a servant, for a testimony of those things which were to be spoken after;",
+     "dur": 8.38,
+     "src": [
+      37.47,
+      45.85
+     ]
+    },
+    {
+     "v": 6,
+     "text": "But Christ as a son over his own house; whose house are we, if we hold fast the confidence and the rejoicing of the hope firm unto the end.",
+     "dur": 9.74,
+     "src": [
+      46.64,
+      56.38
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Wherefore (as the Holy Ghost saith, To day if ye will hear his voice,",
+     "dur": 5.1,
+     "src": [
+      57.08,
+      62.18
+     ]
+    },
+    {
+     "v": 8,
+     "text": "Harden not your hearts, as in the provocation, in the day of temptation in the wilderness:",
+     "dur": 5.75,
+     "src": [
+      62.18,
+      67.93
+     ]
+    },
+    {
+     "v": 9,
+     "text": "When your fathers tempted me, proved me, and saw my works forty years.",
+     "dur": 4.51,
+     "src": [
+      68.13,
+      72.64
+     ]
+    },
+    {
+     "v": 10,
+     "text": "Wherefore I was grieved with that generation, and said, They do alway err in [their] heart; and they have not known my ways.",
+     "dur": 8.77,
+     "src": [
+      72.84,
+      81.61
+     ]
+    },
+    {
+     "v": 11,
+     "text": "So I sware in my wrath, They shall not enter into my rest.)",
+     "dur": 3.77,
+     "src": [
+      81.98,
+      85.75
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Take heed, brethren, lest there be in any of you an evil heart of unbelief, in departing from the living God.",
+     "dur": 7.06,
+     "src": [
+      86.42,
+      93.48
+     ]
+    },
+    {
+     "v": 13,
+     "text": "But exhort one another daily, while it is called To day; lest any of you be hardened through the deceitfulness of sin.",
+     "dur": 8.5,
+     "src": [
+      94.28,
+      102.78
+     ]
+    },
+    {
+     "v": 14,
+     "text": "For we are made partakers of Christ, if we hold the beginning of our confidence stedfast unto the end;",
+     "dur": 6.71,
+     "src": [
+      103.36,
+      110.07
+     ]
+    },
+    {
+     "v": 15,
+     "text": "While it is said, To day if ye will hear his voice, harden not your hearts, as in the provocation.",
+     "dur": 6.33,
+     "src": [
+      110.29,
+      116.62
+     ]
+    },
+    {
+     "v": 16,
+     "text": "For some, when they had heard, did provoke: howbeit not all that came out of Egypt by Moses.",
+     "dur": 6.92,
+     "src": [
+      117.08,
+      124.0
+     ]
+    },
+    {
+     "v": 17,
+     "text": "But with whom was he grieved forty years? [was it] not with them that had sinned, whose carcases fell in the wilderness?",
+     "dur": 7.49,
+     "src": [
+      124.82,
+      132.31
+     ]
+    },
+    {
+     "v": 18,
+     "text": "And to whom sware he that they should not enter into his rest, but to them that believed not?",
+     "dur": 6.01,
+     "src": [
+      132.96,
+      138.97
+     ]
+    },
+    {
+     "v": 19,
+     "text": "So we see that they could not enter in because of unbelief.",
+     "dur": 4.45,
+     "src": [
+      139.96,
+      144.41
+     ]
+    }
+   ]
+  },
+  {
+   "c": 4,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Let us therefore fear, lest, a promise being left [us] of entering into his rest, any of you should seem to come short of it.",
+     "dur": 7.97,
+     "src": [
+      4.14,
+      12.11
+     ]
+    },
+    {
+     "v": 2,
+     "text": "For unto us was the gospel preached, as well as unto them: but the word preached did not profit them, not being mixed with faith in them that heard [it].",
+     "dur": 9.29,
+     "src": [
+      13.02,
+      22.31
+     ]
+    },
+    {
+     "v": 3,
+     "text": "For we which have believed do enter into rest, as he said, As I have sworn in my wrath, if they shall enter into my rest: although the works were finished from the foundation of the world.",
+     "dur": 11.68,
+     "src": [
+      23.05,
+      34.73
+     ]
+    },
+    {
+     "v": 4,
+     "text": "For he spake in a certain place of the seventh [day] on this wise, And God did rest the seventh day from all his works.",
+     "dur": 7.33,
+     "src": [
+      35.58,
+      42.91
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And in this [place] again, If they shall enter into my rest.",
+     "dur": 3.9,
+     "src": [
+      43.5,
+      47.4
+     ]
+    },
+    {
+     "v": 6,
+     "text": "Seeing therefore it remaineth that some must enter therein, and they to whom it was first preached entered not in because of unbelief:",
+     "dur": 7.3,
+     "src": [
+      48.12,
+      55.42
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Again, he limiteth a certain day, saying in David, To day, after so long a time; as it is said, To day if ye will hear his voice, harden not your hearts.",
+     "dur": 10.25,
+     "src": [
+      55.96,
+      66.21
+     ]
+    },
+    {
+     "v": 8,
+     "text": "For if Jesus had given them rest, then would he not afterward have spoken of another day.",
+     "dur": 5.52,
+     "src": [
+      67.12,
+      72.64
+     ]
+    },
+    {
+     "v": 9,
+     "text": "There remaineth therefore a rest to the people of God.",
+     "dur": 3.45,
+     "src": [
+      73.46,
+      76.91
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For he that is entered into his rest, he also hath ceased from his own works, as God [did] from his.",
+     "dur": 6.67,
+     "src": [
+      77.48,
+      84.15
+     ]
+    },
+    {
+     "v": 11,
+     "text": "Let us labour therefore to enter into that rest, lest any man fall after the same example of unbelief.",
+     "dur": 7.26,
+     "src": [
+      84.68,
+      91.94
+     ]
+    },
+    {
+     "v": 12,
+     "text": "For the word of God [is] quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and [is] a discerner of the thoughts and intents of the heart.",
+     "dur": 14.46,
+     "src": [
+      92.62,
+      107.08
+     ]
+    },
+    {
+     "v": 13,
+     "text": "Neither is there any creature that is not manifest in his sight: but all things [are] naked and opened unto the eyes of him with whom we have to do.",
+     "dur": 9.04,
+     "src": [
+      107.94,
+      116.98
+     ]
+    },
+    {
+     "v": 14,
+     "text": "Seeing then that we have a great high priest, that is passed into the heavens, Jesus the Son of God, let us hold fast [our] profession.",
+     "dur": 8.47,
+     "src": [
+      117.66,
+      126.13
+     ]
+    },
+    {
+     "v": 15,
+     "text": "For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as [we are, yet] without sin.",
+     "dur": 10.13,
+     "src": [
+      126.56,
+      136.69
+     ]
+    },
+    {
+     "v": 16,
+     "text": "Let us therefore come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need.",
+     "dur": 8.71,
+     "src": [
+      137.26,
+      145.97
+     ]
+    }
+   ]
+  },
+  {
+   "c": 5,
+   "verses": [
+    {
+     "v": 1,
+     "text": "For every high priest taken from among men is ordained for men in things [pertaining] to God, that he may offer both gifts and sacrifices for sins:",
+     "dur": 11.06,
+     "src": [
+      3.19,
+      14.25
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Who can have compassion on the ignorant, and on them that are out of the way; for that he himself also is compassed with infirmity.",
+     "dur": 8.22,
+     "src": [
+      14.72,
+      22.94
+     ]
+    },
+    {
+     "v": 3,
+     "text": "And by reason hereof he ought, as for the people, so also for himself, to offer for sins.",
+     "dur": 6.6,
+     "src": [
+      23.88,
+      30.48
+     ]
+    },
+    {
+     "v": 4,
+     "text": "And no man taketh this honour unto himself, but he that is called of God, as [was] Aaron.",
+     "dur": 6.68,
+     "src": [
+      31.06,
+      37.74
+     ]
+    },
+    {
+     "v": 5,
+     "text": "So also Christ glorified not himself to be made an high priest; but he that said unto him, Thou art my Son, to day have I begotten thee.",
+     "dur": 9.94,
+     "src": [
+      38.39,
+      48.33
+     ]
+    },
+    {
+     "v": 6,
+     "text": "As he saith also in another [place], Thou [art] a priest for ever after the order of Melchisedec.",
+     "dur": 6.16,
+     "src": [
+      49.08,
+      55.24
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Who in the days of his flesh, when he had offered up prayers and supplications with strong crying and tears unto him that was able to save him from death, and was heard in that he feared;",
+     "dur": 11.61,
+     "src": [
+      55.68,
+      67.29
+     ]
+    },
+    {
+     "v": 8,
+     "text": "Though he were a Son, yet learned he obedience by the things which he suffered;",
+     "dur": 5.17,
+     "src": [
+      67.66,
+      72.83
+     ]
+    },
+    {
+     "v": 9,
+     "text": "And being made perfect, he became the author of eternal salvation unto all them that obey him;",
+     "dur": 6.17,
+     "src": [
+      73.28,
+      79.45
+     ]
+    },
+    {
+     "v": 10,
+     "text": "Called of God an high priest after the order of Melchisedec.",
+     "dur": 3.59,
+     "src": [
+      79.82,
+      83.41
+     ]
+    },
+    {
+     "v": 11,
+     "text": "Of whom we have many things to say, and hard to be uttered, seeing ye are dull of hearing.",
+     "dur": 5.62,
+     "src": [
+      84.0,
+      89.62
+     ]
+    },
+    {
+     "v": 12,
+     "text": "For when for the time ye ought to be teachers, ye have need that one teach you again which [be] the first principles of the oracles of God; and are become such as have need of milk, and not of strong meat.",
+     "dur": 12.87,
+     "src": [
+      90.32,
+      103.19
+     ]
+    },
+    {
+     "v": 13,
+     "text": "For every one that useth milk [is] unskilful in the word of righteousness: for he is a babe.",
+     "dur": 6.07,
+     "src": [
+      103.8,
+      109.87
+     ]
+    },
+    {
+     "v": 14,
+     "text": "But strong meat belongeth to them that are of full age, [even] those who by reason of use have their senses exercised to discern both good and evil.",
+     "dur": 11.7,
+     "src": [
+      110.4,
+      122.1
+     ]
+    }
+   ]
+  },
+  {
+   "c": 6,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Therefore leaving the principles of the doctrine of Christ, let us go on unto perfection; not laying again the foundation of repentance from dead works, and of faith toward God,",
+     "dur": 11.89,
+     "src": [
+      3.74,
+      15.63
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Of the doctrine of baptisms, and of laying on of hands, and of resurrection of the dead, and of eternal judgment.",
+     "dur": 6.57,
+     "src": [
+      15.96,
+      22.53
+     ]
+    },
+    {
+     "v": 3,
+     "text": "And this will we do, if God permit.",
+     "dur": 2.54,
+     "src": [
+      23.42,
+      25.96
+     ]
+    },
+    {
+     "v": 4,
+     "text": "For [it is] impossible for those who were once enlightened, and have tasted of the heavenly gift, and were made partakers of the Holy Ghost,",
+     "dur": 7.48,
+     "src": [
+      26.87,
+      34.35
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And have tasted the good word of God, and the powers of the world to come,",
+     "dur": 3.93,
+     "src": [
+      34.61,
+      38.54
+     ]
+    },
+    {
+     "v": 6,
+     "text": "If they shall fall away, to renew them again unto repentance; seeing they crucify to themselves the Son of God afresh, and put [him] to an open shame.",
+     "dur": 9.96,
+     "src": [
+      39.09,
+      49.05
+     ]
+    },
+    {
+     "v": 7,
+     "text": "For the earth which drinketh in the rain that cometh oft upon it, and bringeth forth herbs meet for them by whom it is dressed, receiveth blessing from God:",
+     "dur": 9.21,
+     "src": [
+      50.1,
+      59.31
+     ]
+    },
+    {
+     "v": 8,
+     "text": "But that which beareth thorns and briers [is] rejected, and [is] nigh unto cursing; whose end [is] to be burned.",
+     "dur": 7.89,
+     "src": [
+      59.99,
+      67.88
+     ]
+    },
+    {
+     "v": 9,
+     "text": "But, beloved, we are persuaded better things of you, and things that accompany salvation, though we thus speak.",
+     "dur": 7.5,
+     "src": [
+      68.7,
+      76.2
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For God [is] not unrighteous to forget your work and labour of love, which ye have shewed toward his name, in that ye have ministered to the saints, and do minister.",
+     "dur": 10.45,
+     "src": [
+      77.02,
+      87.47
+     ]
+    },
+    {
+     "v": 11,
+     "text": "And we desire that every one of you do shew the same diligence to the full assurance of hope unto the end:",
+     "dur": 6.28,
+     "src": [
+      88.26,
+      94.54
+     ]
+    },
+    {
+     "v": 12,
+     "text": "That ye be not slothful, but followers of them who through faith and patience inherit the promises.",
+     "dur": 6.39,
+     "src": [
+      94.96,
+      101.35
+     ]
+    },
+    {
+     "v": 13,
+     "text": "For when God made promise to Abraham, because he could swear by no greater, he sware by himself,",
+     "dur": 6.21,
+     "src": [
+      102.2,
+      108.41
+     ]
+    },
+    {
+     "v": 14,
+     "text": "Saying, Surely blessing I will bless thee, and multiplying I will multiply thee.",
+     "dur": 6.72,
+     "src": [
+      108.41,
+      115.13
+     ]
+    },
+    {
+     "v": 15,
+     "text": "And so, after he had patiently endured, he obtained the promise.",
+     "dur": 3.99,
+     "src": [
+      115.94,
+      119.93
+     ]
+    },
+    {
+     "v": 16,
+     "text": "For men verily swear by the greater: and an oath for confirmation [is] to them an end of all strife.",
+     "dur": 6.74,
+     "src": [
+      120.36,
+      127.1
+     ]
+    },
+    {
+     "v": 17,
+     "text": "Where in God, willing more abundantly to shew unto the heirs of promise the immutability of his counsel, confirmed [it] by an oath:",
+     "dur": 8.27,
+     "src": [
+      127.64,
+      135.91
+     ]
+    },
+    {
+     "v": 18,
+     "text": "That by two immutable things, in which [it was] impossible for God to lie, we might have a strong consolation, who have fled for refuge to lay hold upon the hope set before us:",
+     "dur": 11.28,
+     "src": [
+      136.24,
+      147.52
+     ]
+    },
+    {
+     "v": 19,
+     "text": "Which [hope] we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil;",
+     "dur": 8.57,
+     "src": [
+      147.86,
+      156.43
+     ]
+    },
+    {
+     "v": 20,
+     "text": "Whither the forerunner is for us entered, [even] Jesus, made an high priest for ever after the order of Melchisedec.",
+     "dur": 7.83,
+     "src": [
+      156.62,
+      164.45
+     ]
+    }
+   ]
+  },
+  {
+   "c": 7,
+   "verses": [
+    {
+     "v": 1,
+     "text": "For this Melchisedec, king of Salem, priest of the most high God, who met Abraham returning from the slaughter of the kings, and blessed him;",
+     "dur": 8.59,
+     "src": [
+      3.25,
+      11.84
+     ]
+    },
+    {
+     "v": 2,
+     "text": "To whom also Abraham gave a tenth part of all; first being by interpretation King of righteousness, and after that also King of Salem, which is, King of peace;",
+     "dur": 11.45,
+     "src": [
+      12.42,
+      23.87
+     ]
+    },
+    {
+     "v": 3,
+     "text": "Without father, without mother, without descent, having neither beginning of days, nor end of life; but made like unto the Son of God; abideth a priest continually.",
+     "dur": 11.88,
+     "src": [
+      24.26,
+      36.14
+     ]
+    },
+    {
+     "v": 4,
+     "text": "Now consider how great this man [was], unto whom even the patriarch Abraham gave the tenth of the spoils.",
+     "dur": 6.26,
+     "src": [
+      37.21,
+      43.47
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And verily they that are of the sons of Levi, who receive the office of the priesthood, have a commandment to take tithes of the people according to the law, that is, of their brethren, though they come out of the loins of Abraham:",
+     "dur": 14.14,
+     "src": [
+      44.43,
+      58.57
+     ]
+    },
+    {
+     "v": 6,
+     "text": "But he whose descent is not counted from them received tithes of Abraham, and blessed him that had the promises.",
+     "dur": 7.38,
+     "src": [
+      59.2,
+      66.58
+     ]
+    },
+    {
+     "v": 7,
+     "text": "And without all contradiction the less is blessed of the better.",
+     "dur": 3.79,
+     "src": [
+      67.46,
+      71.25
+     ]
+    },
+    {
+     "v": 8,
+     "text": "And here men that die receive tithes; but there he [receiveth them], of whom it is witnessed that he liveth.",
+     "dur": 7.67,
+     "src": [
+      72.1,
+      79.77
+     ]
+    },
+    {
+     "v": 9,
+     "text": "And as I may so say, Levi also, who receiveth tithes, payed tithes in Abraham.",
+     "dur": 6.54,
+     "src": [
+      80.54,
+      87.08
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For he was yet in the loins of his father, when Melchisedec met him.",
+     "dur": 3.94,
+     "src": [
+      87.5,
+      91.44
+     ]
+    },
+    {
+     "v": 11,
+     "text": "If therefore perfection were by the Levitical priesthood, (for under it the people received the law,) what further need [was there] that another priest should rise after the order of Melchisedec, and not be called after the order of Aaron?",
+     "dur": 14.24,
+     "src": [
+      92.58,
+      106.82
+     ]
+    },
+    {
+     "v": 12,
+     "text": "For the priesthood being changed, there is made of necessity a change also of the law.",
+     "dur": 5.66,
+     "src": [
+      107.52,
+      113.18
+     ]
+    },
+    {
+     "v": 13,
+     "text": "For he of whom these things are spoken pertaineth to another tribe, of which no man gave attendance at the altar.",
+     "dur": 7.22,
+     "src": [
+      113.74,
+      120.96
+     ]
+    },
+    {
+     "v": 14,
+     "text": "For [it is] evident that our Lord sprang out of Juda; of which tribe Moses spake nothing concerning priesthood.",
+     "dur": 7.27,
+     "src": [
+      121.46,
+      128.73
+     ]
+    },
+    {
+     "v": 15,
+     "text": "And it is yet far more evident: for that after the similitude of Melchisedec there ariseth another priest,",
+     "dur": 6.65,
+     "src": [
+      129.48,
+      136.13
+     ]
+    },
+    {
+     "v": 16,
+     "text": "Who is made, not after the law of a carnal commandment, but after the power of an endless life.",
+     "dur": 6.41,
+     "src": [
+      136.13,
+      142.54
+     ]
+    },
+    {
+     "v": 17,
+     "text": "For he testifieth, Thou [art] a priest for ever after the order of Melchisedec.",
+     "dur": 5.69,
+     "src": [
+      143.1,
+      148.79
+     ]
+    },
+    {
+     "v": 18,
+     "text": "For there is verily a disannulling of the commandment going before for the weakness and unprofitableness thereof.",
+     "dur": 6.72,
+     "src": [
+      149.3,
+      156.02
+     ]
+    },
+    {
+     "v": 19,
+     "text": "For the law made nothing perfect, but the bringing in of a better hope [did]; by the which we draw nigh unto God.",
+     "dur": 7.64,
+     "src": [
+      156.44,
+      164.08
+     ]
+    },
+    {
+     "v": 20,
+     "text": "And inasmuch as not without an oath [he was made priest]:",
+     "dur": 3.78,
+     "src": [
+      164.66,
+      168.44
+     ]
+    },
+    {
+     "v": 21,
+     "text": "(For those priests were made without an oath; but this with an oath by him that said unto him, The Lord sware and will not repent, Thou [art] a priest for ever after the order of Melchisedec:)",
+     "dur": 13.315,
+     "src": [
+      168.465,
+      181.78
+     ]
+    },
+    {
+     "v": 22,
+     "text": "By so much was Jesus made a surety of a better testament.",
+     "dur": 4.34,
+     "src": [
+      181.9,
+      186.24
+     ]
+    },
+    {
+     "v": 23,
+     "text": "And they truly were many priests, because they were not suffered to continue by reason of death:",
+     "dur": 6.3,
+     "src": [
+      186.68,
+      192.98
+     ]
+    },
+    {
+     "v": 24,
+     "text": "But this [man], because he continueth ever, hath an unchangeable priesthood.",
+     "dur": 5.72,
+     "src": [
+      193.28,
+      199.0
+     ]
+    },
+    {
+     "v": 25,
+     "text": "Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them.",
+     "dur": 8.05,
+     "src": [
+      199.46,
+      207.51
+     ]
+    },
+    {
+     "v": 26,
+     "text": "For such an high priest became us, [who is] holy, harmless, undefiled, separate from sinners, and made higher than the heavens;",
+     "dur": 8.48,
+     "src": [
+      208.28,
+      216.76
+     ]
+    },
+    {
+     "v": 27,
+     "text": "Who needeth not daily, as those high priests, to offer up sacrifice, first for his own sins, and then for the people’s: for this he did once, when he offered up himself.",
+     "dur": 11.1,
+     "src": [
+      216.88,
+      227.98
+     ]
+    },
+    {
+     "v": 28,
+     "text": "For the law maketh men high priests which have infirmity; but the word of the oath, which was since the law, [maketh] the Son, who is consecrated for evermore.",
+     "dur": 10.48,
+     "src": [
+      228.66,
+      239.14
+     ]
+    }
+   ]
+  },
+  {
+   "c": 8,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Now of the things which we have spoken [this is] the sum: We have such an high priest, who is set on the right hand of the throne of the Majesty in the heavens;",
+     "dur": 11.13,
+     "src": [
+      3.31,
+      14.44
+     ]
+    },
+    {
+     "v": 2,
+     "text": "A minister of the sanctuary, and of the true tabernacle, which the Lord pitched, and not man.",
+     "dur": 6.06,
+     "src": [
+      15.03,
+      21.09
+     ]
+    },
+    {
+     "v": 3,
+     "text": "For every high priest is ordained to offer gifts and sacrifices: wherefore [it is] of necessity that this man have somewhat also to offer.",
+     "dur": 9.2,
+     "src": [
+      22.1,
+      31.3
+     ]
+    },
+    {
+     "v": 4,
+     "text": "For if he were on earth, he should not be a priest, seeing that there are priests that offer gifts according to the law:",
+     "dur": 6.98,
+     "src": [
+      32.12,
+      39.1
+     ]
+    },
+    {
+     "v": 5,
+     "text": "Who serve unto the example and shadow of heavenly things, as Moses was admonished of God when he was about to make the tabernacle: for, See, saith he, [that] thou make all things according to the pattern shewed to thee in the mount.",
+     "dur": 14.52,
+     "src": [
+      39.62,
+      54.14
+     ]
+    },
+    {
+     "v": 6,
+     "text": "But now hath he obtained a more excellent ministry, by how much also he is the mediator of a better covenant, which was established upon better promises.",
+     "dur": 10.03,
+     "src": [
+      55.17,
+      65.2
+     ]
+    },
+    {
+     "v": 7,
+     "text": "For if that first [covenant] had been faultless, then should no place have been sought for the second.",
+     "dur": 6.01,
+     "src": [
+      65.83,
+      71.84
+     ]
+    },
+    {
+     "v": 8,
+     "text": "For finding fault with them, he saith, Behold, the days come, saith the Lord, when I will make a new covenant with the house of Israel and with the house of Judah:",
+     "dur": 9.53,
+     "src": [
+      72.44,
+      81.97
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Not according to the covenant that I made with their fathers in the day when I took them by the hand to lead them out of the land of Egypt; because they continued not in my covenant, and I regarded them not, saith the Lord.",
+     "dur": 13.61,
+     "src": [
+      82.64,
+      96.25
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For this [is] the covenant that I will make with the house of Israel after those days, saith the Lord; I will put my laws into their mind, and write them in their hearts: and I will be to them a God, and they shall be to me a people:",
+     "dur": 14.91,
+     "src": [
+      96.82,
+      111.73
+     ]
+    },
+    {
+     "v": 11,
+     "text": "And they shall not teach every man his neighbour, and every man his brother, saying, Know the Lord: for all shall know me, from the least to the greatest.",
+     "dur": 9.94,
+     "src": [
+      112.02,
+      121.96
+     ]
+    },
+    {
+     "v": 12,
+     "text": "For I will be merciful to their unrighteousness, and their sins and their iniquities will I remember no more.",
+     "dur": 6.87,
+     "src": [
+      122.15,
+      129.02
+     ]
+    },
+    {
+     "v": 13,
+     "text": "In that he saith, A new [covenant], he hath made the first old. Now that which decayeth and waxeth old [is] ready to vanish away.",
+     "dur": 9.63,
+     "src": [
+      129.57,
+      139.2
+     ]
+    }
+   ]
+  },
+  {
+   "c": 9,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Then verily the first [covenant] had also ordinances of divine service, and a worldly sanctuary.",
+     "dur": 6.41,
+     "src": [
+      3.01,
+      9.42
+     ]
+    },
+    {
+     "v": 2,
+     "text": "For there was a tabernacle made; the first, wherein [was] the candlestick, and the table, and the shewbread; which is called the sanctuary.",
+     "dur": 8.2,
+     "src": [
+      10.22,
+      18.42
+     ]
+    },
+    {
+     "v": 3,
+     "text": "And after the second veil, the tabernacle which is called the Holiest of all;",
+     "dur": 4.95,
+     "src": [
+      19.33,
+      24.28
+     ]
+    },
+    {
+     "v": 4,
+     "text": "Which had the golden censer, and the ark of the covenant overlaid round about with gold, wherein [was] the golden pot that had manna, and Aaron’s rod that budded, and the tables of the covenant;",
+     "dur": 11.39,
+     "src": [
+      24.74,
+      36.13
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And over it the cherubims of glory shadowing the mercyseat; of which we can not now speak particularly.",
+     "dur": 6.6,
+     "src": [
+      36.86,
+      43.46
+     ]
+    },
+    {
+     "v": 6,
+     "text": "Now when these things were thus ordained, the priests went always into the first tabernacle, accomplishing the service [of God].",
+     "dur": 7.91,
+     "src": [
+      44.74,
+      52.65
+     ]
+    },
+    {
+     "v": 7,
+     "text": "But into the second [went] the high priest alone once every year, not without blood, which he offered for himself, and [for] the errors of the people:",
+     "dur": 9.94,
+     "src": [
+      52.9,
+      62.84
+     ]
+    },
+    {
+     "v": 8,
+     "text": "The Holy Ghost this signifying, that the way into the holiest of all was not yet made manifest, while as the first tabernacle was yet standing:",
+     "dur": 10.21,
+     "src": [
+      63.44,
+      73.65
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Which [was] a figure for the time then present, in which were offered both gifts and sacrifices, that could not make him that did the service perfect, as pertaining to the conscience;",
+     "dur": 10.85,
+     "src": [
+      74.08,
+      84.93
+     ]
+    },
+    {
+     "v": 10,
+     "text": "[Which stood] only in meats and drinks, and divers washings, and carnal ordinances, imposed [on them] until the time of reformation.",
+     "dur": 8.7,
+     "src": [
+      85.64,
+      94.34
+     ]
+    },
+    {
+     "v": 11,
+     "text": "But Christ being come an high priest of good things to come, by a greater and more perfect tabernacle, not made with hands, that is to say, not of this building;",
+     "dur": 10.86,
+     "src": [
+      95.36,
+      106.22
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Neither by the blood of goats and calves, but by his own blood he entered in once into the holy place, having obtained eternal redemption [for us].",
+     "dur": 10.74,
+     "src": [
+      106.6,
+      117.34
+     ]
+    },
+    {
+     "v": 13,
+     "text": "For if the blood of bulls and of goats, and the ashes of an heifer sprinkling the unclean, sanctifieth to the purifying of the flesh:",
+     "dur": 8.23,
+     "src": [
+      117.96,
+      126.19
+     ]
+    },
+    {
+     "v": 14,
+     "text": "How much more shall the blood of Christ, who through the eternal Spirit offered himself without spot to God, purge your conscience from dead works to serve the living God?",
+     "dur": 11.26,
+     "src": [
+      126.78,
+      138.04
+     ]
+    },
+    {
+     "v": 15,
+     "text": "And for this cause he is the mediator of the new testament, that by means of death, for the redemption of the transgressions [that were] under the first testament, they which are called might receive the promise of eternal inheritance.",
+     "dur": 14.81,
+     "src": [
+      139.02,
+      153.83
+     ]
+    },
+    {
+     "v": 16,
+     "text": "For where a testament [is], there must also of necessity be the death of the testator.",
+     "dur": 6.1,
+     "src": [
+      154.78,
+      160.88
+     ]
+    },
+    {
+     "v": 17,
+     "text": "For a testament [is] of force after men are dead: otherwise it is of no strength at all while the testator liveth.",
+     "dur": 8.25,
+     "src": [
+      161.34,
+      169.59
+     ]
+    },
+    {
+     "v": 18,
+     "text": "Whereupon neither the first [testament] was dedicated without blood.",
+     "dur": 4.46,
+     "src": [
+      170.14,
+      174.6
+     ]
+    },
+    {
+     "v": 19,
+     "text": "For when Moses had spoken every precept to all the people according to the law, he took the blood of calves and of goats, with water, and scarlet wool, and hyssop, and sprinkled both the book, and all the people,",
+     "dur": 13.75,
+     "src": [
+      175.28,
+      189.03
+     ]
+    },
+    {
+     "v": 20,
+     "text": "Saying, This [is] the blood of the testament which God hath enjoined unto you.",
+     "dur": 5.43,
+     "src": [
+      189.03,
+      194.46
+     ]
+    },
+    {
+     "v": 21,
+     "text": "Moreover he sprinkled with blood both the tabernacle, and all the vessels of the ministry.",
+     "dur": 6.06,
+     "src": [
+      195.0,
+      201.06
+     ]
+    },
+    {
+     "v": 22,
+     "text": "And almost all things are by the law purged with blood; and without shedding of blood is no remission.",
+     "dur": 8.48,
+     "src": [
+      201.58,
+      210.06
+     ]
+    },
+    {
+     "v": 23,
+     "text": "[It was] therefore necessary that the patterns of things in the heavens should be purified with these; but the heavenly things themselves with better sacrifices than these.",
+     "dur": 10.9,
+     "src": [
+      210.68,
+      221.58
+     ]
+    },
+    {
+     "v": 24,
+     "text": "For Christ is not entered into the holy places made with hands, [which are] the figures of the true; but into heaven itself, now to appear in the presence of God for us:",
+     "dur": 12.22,
+     "src": [
+      221.94,
+      234.16
+     ]
+    },
+    {
+     "v": 25,
+     "text": "Nor yet that he should offer himself often, as the high priest entereth into the holy place every year with blood of others;",
+     "dur": 8.44,
+     "src": [
+      234.36,
+      242.8
+     ]
+    },
+    {
+     "v": 26,
+     "text": "For then must he often have suffered since the foundation of the world: but now once in the end of the world hath he appeared to put away sin by the sacrifice of himself.",
+     "dur": 11.38,
+     "src": [
+      242.86,
+      254.24
+     ]
+    },
+    {
+     "v": 27,
+     "text": "And as it is appointed unto men once to die, but after this the judgment:",
+     "dur": 4.9,
+     "src": [
+      255.08,
+      259.98
+     ]
+    },
+    {
+     "v": 28,
+     "text": "So Christ was once offered to bear the sins of many; and unto them that look for him shall he appear the second time without sin unto salvation.",
+     "dur": 11.32,
+     "src": [
+      260.18,
+      271.5
+     ]
+    }
+   ]
+  },
+  {
+   "c": 10,
+   "verses": [
+    {
+     "v": 1,
+     "text": "For the law having a shadow of good things to come, [and] not the very image of the things, can never with those sacrifices which they offered year by year continually make the comers thereunto perfect.",
+     "dur": 13.04,
+     "src": [
+      3.85,
+      16.89
+     ]
+    },
+    {
+     "v": 2,
+     "text": "For then would they not have ceased to be offered? because that the worshippers once purged should have had no more conscience of sins.",
+     "dur": 8.0,
+     "src": [
+      17.99,
+      25.99
+     ]
+    },
+    {
+     "v": 3,
+     "text": "But in those [sacrifices there is] a remembrance again [made] of sins every year.",
+     "dur": 4.67,
+     "src": [
+      27.0,
+      31.67
+     ]
+    },
+    {
+     "v": 4,
+     "text": "For [it is] not possible that the blood of bulls and of goats should take away sins.",
+     "dur": 4.61,
+     "src": [
+      32.45,
+      37.06
+     ]
+    },
+    {
+     "v": 5,
+     "text": "Wherefore when he cometh into the world, he saith, Sacrifice and offering thou wouldest not, but a body hast thou prepared me:",
+     "dur": 8.64,
+     "src": [
+      37.74,
+      46.38
+     ]
+    },
+    {
+     "v": 6,
+     "text": "In burnt offerings and [sacrifices] for sin thou hast had no pleasure.",
+     "dur": 4.69,
+     "src": [
+      46.96,
+      51.65
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Then said I, Lo, I come (in the volume of the book it is written of me,) to do thy will, O God.",
+     "dur": 7.13,
+     "src": [
+      52.4,
+      59.53
+     ]
+    },
+    {
+     "v": 8,
+     "text": "Above when he said, Sacrifice and offering and burnt offerings and [offering] for sin thou wouldest not, neither hadst pleasure [therein]; which are offered by the law;",
+     "dur": 10.3,
+     "src": [
+      60.74,
+      71.04
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Then said he, Lo, I come to do thy will, O God. He taketh away the first, that he may establish the second.",
+     "dur": 8.58,
+     "src": [
+      71.64,
+      80.22
+     ]
+    },
+    {
+     "v": 10,
+     "text": "By the which will we are sanctified through the offering of the body of Jesus Christ once [for all].",
+     "dur": 6.16,
+     "src": [
+      80.34,
+      86.5
+     ]
+    },
+    {
+     "v": 11,
+     "text": "And every priest standeth daily ministering and offering oftentimes the same sacrifices, which can never take away sins:",
+     "dur": 7.83,
+     "src": [
+      87.54,
+      95.37
+     ]
+    },
+    {
+     "v": 12,
+     "text": "But this man, after he had offered one sacrifice for sins for ever, sat down on the right hand of God;",
+     "dur": 6.96,
+     "src": [
+      95.9,
+      102.86
+     ]
+    },
+    {
+     "v": 13,
+     "text": "From henceforth expecting till his enemies be made his footstool.",
+     "dur": 4.23,
+     "src": [
+      102.86,
+      107.09
+     ]
+    },
+    {
+     "v": 14,
+     "text": "For by one offering he hath perfected for ever them that are sanctified.",
+     "dur": 4.73,
+     "src": [
+      108.02,
+      112.75
+     ]
+    },
+    {
+     "v": 15,
+     "text": "[Whereof] the Holy Ghost also is a witness to us: for after that he had said before,",
+     "dur": 5.84,
+     "src": [
+      113.5,
+      119.34
+     ]
+    },
+    {
+     "v": 16,
+     "text": "This [is] the covenant that I will make with them after those days, saith the Lord, I will put my laws into their hearts, and in their minds will I write them;",
+     "dur": 8.98,
+     "src": [
+      119.34,
+      128.32
+     ]
+    },
+    {
+     "v": 17,
+     "text": "And their sins and iniquities will I remember no more.",
+     "dur": 3.58,
+     "src": [
+      128.48,
+      132.06
+     ]
+    },
+    {
+     "v": 18,
+     "text": "Now where remission of these [is, there is] no more offering for sin.",
+     "dur": 4.36,
+     "src": [
+      133.1,
+      137.46
+     ]
+    },
+    {
+     "v": 19,
+     "text": "Having therefore, brethren, boldness to enter into the holiest by the blood of Jesus,",
+     "dur": 5.21,
+     "src": [
+      138.26,
+      143.47
+     ]
+    },
+    {
+     "v": 20,
+     "text": "By a new and living way, which he hath consecrated for us, through the veil, that is to say, his flesh;",
+     "dur": 6.52,
+     "src": [
+      143.51,
+      150.03
+     ]
+    },
+    {
+     "v": 21,
+     "text": "And [having] an high priest over the house of God;",
+     "dur": 3.06,
+     "src": [
+      150.41,
+      153.47
+     ]
+    },
+    {
+     "v": 22,
+     "text": "Let us draw near with a true heart in full assurance of faith, having our hearts sprinkled from an evil conscience, and our bodies washed with pure water.",
+     "dur": 9.62,
+     "src": [
+      153.85,
+      163.47
+     ]
+    },
+    {
+     "v": 23,
+     "text": "Let us hold fast the profession of [our] faith without wavering; (for he [is] faithful that promised;)",
+     "dur": 6.44,
+     "src": [
+      163.78,
+      170.22
+     ]
+    },
+    {
+     "v": 24,
+     "text": "And let us consider one another to provoke unto love and to good works:",
+     "dur": 4.22,
+     "src": [
+      170.3,
+      174.52
+     ]
+    },
+    {
+     "v": 25,
+     "text": "Not forsaking the assembling of ourselves together, as the manner of some [is]; but exhorting [one another]: and so much the more, as ye see the day approaching.",
+     "dur": 10.49,
+     "src": [
+      174.92,
+      185.41
+     ]
+    },
+    {
+     "v": 26,
+     "text": "For if we sin wilfully after that we have received the knowledge of the truth, there remaineth no more sacrifice for sins,",
+     "dur": 7.93,
+     "src": [
+      186.08,
+      194.01
+     ]
+    },
+    {
+     "v": 27,
+     "text": "But a certain fearful looking for of judgment and fiery indignation, which shall devour the adversaries.",
+     "dur": 6.73,
+     "src": [
+      194.01,
+      200.74
+     ]
+    },
+    {
+     "v": 28,
+     "text": "He that despised Moses’ law died without mercy under two or three witnesses:",
+     "dur": 5.61,
+     "src": [
+      201.11,
+      206.72
+     ]
+    },
+    {
+     "v": 29,
+     "text": "Of how much sorer punishment, suppose ye, shall he be thought worthy, who hath trodden under foot the Son of God, and hath counted the blood of the covenant, wherewith he was sanctified, an unholy thing, and hath done despite unto the Spirit of grace?",
+     "dur": 16.64,
+     "src": [
+      207.04,
+      223.68
+     ]
+    },
+    {
+     "v": 30,
+     "text": "For we know him that hath said, Vengeance [belongeth] unto me, I will recompense, saith the Lord. And again, The Lord shall judge his people.",
+     "dur": 10.58,
+     "src": [
+      224.3,
+      234.88
+     ]
+    },
+    {
+     "v": 31,
+     "text": "[It is] a fearful thing to fall into the hands of the living God.",
+     "dur": 3.96,
+     "src": [
+      235.54,
+      239.5
+     ]
+    },
+    {
+     "v": 32,
+     "text": "But call to remembrance the former days, in which, after ye were illuminated, ye endured a great fight of afflictions;",
+     "dur": 7.68,
+     "src": [
+      240.1,
+      247.78
+     ]
+    },
+    {
+     "v": 33,
+     "text": "Partly, whilst ye were made a gazingstock both by reproaches and afflictions; and partly, whilst ye became companions of them that were so used.",
+     "dur": 9.41,
+     "src": [
+      247.85,
+      257.26
+     ]
+    },
+    {
+     "v": 34,
+     "text": "For ye had compassion of me in my bonds, and took joyfully the spoiling of your goods, knowing in yourselves that ye have in heaven a better and an enduring substance.",
+     "dur": 11.15,
+     "src": [
+      257.76,
+      268.91
+     ]
+    },
+    {
+     "v": 35,
+     "text": "Cast not away therefore your confidence, which hath great recompence of reward.",
+     "dur": 4.92,
+     "src": [
+      269.52,
+      274.44
+     ]
+    },
+    {
+     "v": 36,
+     "text": "For ye have need of patience, that, after ye have done the will of God, ye might receive the promise.",
+     "dur": 6.1,
+     "src": [
+      274.8,
+      280.9
+     ]
+    },
+    {
+     "v": 37,
+     "text": "For yet a little while, and he that shall come will come, and will not tarry.",
+     "dur": 4.55,
+     "src": [
+      281.33,
+      285.88
+     ]
+    },
+    {
+     "v": 38,
+     "text": "Now the just shall live by faith: but if [any man] draw back, my soul shall have no pleasure in him.",
+     "dur": 7.11,
+     "src": [
+      286.71,
+      293.82
+     ]
+    },
+    {
+     "v": 39,
+     "text": "But we are not of them who draw back unto perdition; but of them that believe to the saving of the soul.",
+     "dur": 6.89,
+     "src": [
+      294.37,
+      301.26
+     ]
+    }
+   ]
+  },
+  {
+   "c": 11,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Now faith is the substance of things hoped for, the evidence of things not seen.",
+     "dur": 6.12,
+     "src": [
+      3.37,
+      9.49
+     ]
+    },
+    {
+     "v": 2,
+     "text": "For by it the elders obtained a good report.",
+     "dur": 2.95,
+     "src": [
+      10.24,
+      13.19
+     ]
+    },
+    {
+     "v": 3,
+     "text": "Through faith we understand that the worlds were framed by the word of God, so that things which are seen were not made of things which do appear.",
+     "dur": 8.76,
+     "src": [
+      13.99,
+      22.75
+     ]
+    },
+    {
+     "v": 4,
+     "text": "By faith Abel offered unto God a more excellent sacrifice than Cain, by which he obtained witness that he was righteous, God testifying of his gifts: and by it he being dead yet speaketh.",
+     "dur": 13.18,
+     "src": [
+      23.7,
+      36.88
+     ]
+    },
+    {
+     "v": 5,
+     "text": "By faith Enoch was translated that he should not see death; and was not found, because God had translated him: for before his translation he had this testimony, that he pleased God.",
+     "dur": 13.37,
+     "src": [
+      37.78,
+      51.15
+     ]
+    },
+    {
+     "v": 6,
+     "text": "But without faith [it is] impossible to please [him]: for he that cometh to God must believe that he is, and [that] he is a rewarder of them that diligently seek him.",
+     "dur": 11.13,
+     "src": [
+      52.39,
+      63.52
+     ]
+    },
+    {
+     "v": 7,
+     "text": "By faith Noah, being warned of God of things not seen as yet, moved with fear, prepared an ark to the saving of his house; by the which he condemned the world, and became heir of the righteousness which is by faith.",
+     "dur": 14.43,
+     "src": [
+      64.22,
+      78.65
+     ]
+    },
+    {
+     "v": 8,
+     "text": "By faith Abraham, when he was called to go out into a place which he should after receive for an inheritance, obeyed; and he went out, not knowing whither he went.",
+     "dur": 10.41,
+     "src": [
+      79.58,
+      89.99
+     ]
+    },
+    {
+     "v": 9,
+     "text": "By faith he sojourned in the land of promise, as [in] a strange country, dwelling in tabernacles with Isaac and Jacob, the heirs with him of the same promise:",
+     "dur": 9.85,
+     "src": [
+      90.82,
+      100.67
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For he looked for a city which hath foundations, whose builder and maker [is] God.",
+     "dur": 4.54,
+     "src": [
+      101.2,
+      105.74
+     ]
+    },
+    {
+     "v": 11,
+     "text": "Through faith also Sara herself received strength to conceive seed, and was delivered of a child when she was past age, because she judged him faithful who had promised.",
+     "dur": 10.54,
+     "src": [
+      106.62,
+      117.16
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Therefore sprang there even of one, and him as good as dead, [so many] as the stars of the sky in multitude, and as the sand which is by the sea shore innumerable.",
+     "dur": 10.73,
+     "src": [
+      118.04,
+      128.77
+     ]
+    },
+    {
+     "v": 13,
+     "text": "These all died in faith, not having received the promises, but having seen them afar off, and were persuaded of [them], and embraced [them], and confessed that they were strangers and pilgrims on the earth.",
+     "dur": 13.34,
+     "src": [
+      129.68,
+      143.02
+     ]
+    },
+    {
+     "v": 14,
+     "text": "For they that say such things declare plainly that they seek a country.",
+     "dur": 4.66,
+     "src": [
+      143.1,
+      147.76
+     ]
+    },
+    {
+     "v": 15,
+     "text": "And truly, if they had been mindful of that [country] from whence they came out, they might have had opportunity to have returned.",
+     "dur": 7.66,
+     "src": [
+      148.24,
+      155.9
+     ]
+    },
+    {
+     "v": 16,
+     "text": "But now they desire a better [country], that is, an heavenly: wherefore God is not ashamed to be called their God: for he hath prepared for them a city.",
+     "dur": 10.42,
+     "src": [
+      156.26,
+      166.68
+     ]
+    },
+    {
+     "v": 17,
+     "text": "By faith Abraham, when he was tried, offered up Isaac: and he that had received the promises offered up his only begotten [son],",
+     "dur": 8.14,
+     "src": [
+      167.56,
+      175.7
+     ]
+    },
+    {
+     "v": 18,
+     "text": "Of whom it was said, That in Isaac shall thy seed be called:",
+     "dur": 4.86,
+     "src": [
+      175.7,
+      180.56
+     ]
+    },
+    {
+     "v": 19,
+     "text": "Accounting that God [was] able to raise [him] up, even from the dead; from whence also he received him in a figure.",
+     "dur": 7.42,
+     "src": [
+      180.74,
+      188.16
+     ]
+    },
+    {
+     "v": 20,
+     "text": "By faith Isaac blessed Jacob and Esau concerning things to come.",
+     "dur": 4.14,
+     "src": [
+      188.82,
+      192.96
+     ]
+    },
+    {
+     "v": 21,
+     "text": "By faith Jacob, when he was a dying, blessed both the sons of Joseph; and worshipped, [leaning] upon the top of his staff.",
+     "dur": 8.62,
+     "src": [
+      194.02,
+      202.64
+     ]
+    },
+    {
+     "v": 22,
+     "text": "By faith Joseph, when he died, made mention of the departing of the children of Israel; and gave commandment concerning his bones.",
+     "dur": 8.62,
+     "src": [
+      203.08,
+      211.7
+     ]
+    },
+    {
+     "v": 23,
+     "text": "By faith Moses, when he was born, was hid three months of his parents, because they saw [he was] a proper child; and they were not afraid of the king’s commandment.",
+     "dur": 9.92,
+     "src": [
+      212.26,
+      222.18
+     ]
+    },
+    {
+     "v": 24,
+     "text": "By faith Moses, when he was come to years, refused to be called the son of Pharaoh’s daughter;",
+     "dur": 5.88,
+     "src": [
+      223.1,
+      228.98
+     ]
+    },
+    {
+     "v": 25,
+     "text": "Choosing rather to suffer affliction with the people of God, than to enjoy the pleasures of sin for a season;",
+     "dur": 7.19,
+     "src": [
+      229.41,
+      236.6
+     ]
+    },
+    {
+     "v": 26,
+     "text": "Esteeming the reproach of Christ greater riches than the treasures in Egypt: for he had respect unto the recompence of the reward.",
+     "dur": 8.32,
+     "src": [
+      236.8,
+      245.12
+     ]
+    },
+    {
+     "v": 27,
+     "text": "By faith he forsook Egypt, not fearing the wrath of the king: for he endured, as seeing him who is invisible.",
+     "dur": 7.56,
+     "src": [
+      245.7,
+      253.26
+     ]
+    },
+    {
+     "v": 28,
+     "text": "Through faith he kept the passover, and the sprinkling of blood, lest he that destroyed the firstborn should touch them.",
+     "dur": 8.06,
+     "src": [
+      253.66,
+      261.72
+     ]
+    },
+    {
+     "v": 29,
+     "text": "By faith they passed through the Red sea as by dry [land]: which the Egyptians assaying to do were drowned.",
+     "dur": 8.0,
+     "src": [
+      262.44,
+      270.44
+     ]
+    },
+    {
+     "v": 30,
+     "text": "By faith the walls of Jericho fell down, after they were compassed about seven days.",
+     "dur": 5.44,
+     "src": [
+      270.86,
+      276.3
+     ]
+    },
+    {
+     "v": 31,
+     "text": "By faith the harlot Rahab perished not with them that believed not, when she had received the spies with peace.",
+     "dur": 6.89,
+     "src": [
+      276.78,
+      283.67
+     ]
+    },
+    {
+     "v": 32,
+     "text": "And what shall I more say? for the time would fail me to tell of Gedeon, and [of] Barak, and [of] Samson, and [of] Jephthae; [of] David also, and Samuel, and [of] the prophets:",
+     "dur": 12.26,
+     "src": [
+      284.62,
+      296.88
+     ]
+    },
+    {
+     "v": 33,
+     "text": "Who through faith subdued kingdoms, wrought righteousness, obtained promises, stopped the mouths of lions,",
+     "dur": 7.53,
+     "src": [
+      297.31,
+      304.84
+     ]
+    },
+    {
+     "v": 34,
+     "text": "Quenched the violence of fire, escaped the edge of the sword, out of weakness were made strong, waxed valiant in fight, turned to flight the armies of the aliens.",
+     "dur": 10.6,
+     "src": [
+      305.02,
+      315.62
+     ]
+    },
+    {
+     "v": 35,
+     "text": "Women received their dead raised to life again: and others were tortured, not accepting deliverance; that they might obtain a better resurrection:",
+     "dur": 9.025,
+     "src": [
+      315.795,
+      324.82
+     ]
+    },
+    {
+     "v": 36,
+     "text": "And others had trial of [cruel] mockings and scourgings, yea, moreover of bonds and imprisonment:",
+     "dur": 7.41,
+     "src": [
+      325.25,
+      332.66
+     ]
+    },
+    {
+     "v": 37,
+     "text": "They were stoned, they were sawn asunder, were tempted, were slain with the sword: they wandered about in sheepskins and goatskins; being destitute, afflicted, tormented;",
+     "dur": 11.285,
+     "src": [
+      333.075,
+      344.36
+     ]
+    },
+    {
+     "v": 38,
+     "text": "(Of whom the world was not worthy:) they wandered in deserts, and [in] mountains, and [in] dens and caves of the earth.",
+     "dur": 7.66,
+     "src": [
+      344.48,
+      352.14
+     ]
+    },
+    {
+     "v": 39,
+     "text": "And these all, having obtained a good report through faith, received not the promise:",
+     "dur": 5.54,
+     "src": [
+      352.86,
+      358.4
+     ]
+    },
+    {
+     "v": 40,
+     "text": "God having provided some better thing for us, that they without us should not be made perfect.",
+     "dur": 7.27,
+     "src": [
+      358.48,
+      365.75
+     ]
+    }
+   ]
+  },
+  {
+   "c": 12,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset [us], and let us run with patience the race that is set before us,",
+     "dur": 15.28,
+     "src": [
+      4.01,
+      19.29
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Looking unto Jesus the author and finisher of [our] faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God.",
+     "dur": 13.75,
+     "src": [
+      19.48,
+      33.23
+     ]
+    },
+    {
+     "v": 3,
+     "text": "For consider him that endured such contradiction of sinners against himself, lest ye be wearied and faint in your minds.",
+     "dur": 8.11,
+     "src": [
+      34.16,
+      42.27
+     ]
+    },
+    {
+     "v": 4,
+     "text": "Ye have not yet resisted unto blood, striving against sin.",
+     "dur": 4.02,
+     "src": [
+      43.18,
+      47.2
+     ]
+    },
+    {
+     "v": 5,
+     "text": "And ye have forgotten the exhortation which speaketh unto you as unto children, My son, despise not thou the chastening of the Lord, nor faint when thou art rebuked of him:",
+     "dur": 11.13,
+     "src": [
+      48.12,
+      59.25
+     ]
+    },
+    {
+     "v": 6,
+     "text": "For whom the Lord loveth he chasteneth, and scourgeth every son whom he receiveth.",
+     "dur": 5.29,
+     "src": [
+      59.86,
+      65.15
+     ]
+    },
+    {
+     "v": 7,
+     "text": "If ye endure chastening, God dealeth with you as with sons; for what son is he whom the father chasteneth not?",
+     "dur": 8.36,
+     "src": [
+      65.98,
+      74.34
+     ]
+    },
+    {
+     "v": 8,
+     "text": "But if ye be without chastisement, whereof all are partakers, then are ye bastards, and not sons.",
+     "dur": 7.06,
+     "src": [
+      75.32,
+      82.38
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Furthermore we have had fathers of our flesh which corrected [us], and we gave [them] reverence: shall we not much rather be in subjection unto the Father of spirits, and live?",
+     "dur": 10.91,
+     "src": [
+      83.0,
+      93.91
+     ]
+    },
+    {
+     "v": 10,
+     "text": "For they verily for a few days chastened [us] after their own pleasure; but he for [our] profit, that [we] might be partakers of his holiness.",
+     "dur": 9.43,
+     "src": [
+      94.7,
+      104.13
+     ]
+    },
+    {
+     "v": 11,
+     "text": "Now no chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness unto them which are exercised thereby.",
+     "dur": 11.53,
+     "src": [
+      105.04,
+      116.57
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Wherefore lift up the hands which hang down, and the feeble knees;",
+     "dur": 3.99,
+     "src": [
+      117.56,
+      121.55
+     ]
+    },
+    {
+     "v": 13,
+     "text": "And make straight paths for your feet, lest that which is lame be turned out of the way; but let it rather be healed.",
+     "dur": 7.82,
+     "src": [
+      121.75,
+      129.57
+     ]
+    },
+    {
+     "v": 14,
+     "text": "Follow peace with all [men], and holiness, without which no man shall see the Lord:",
+     "dur": 4.99,
+     "src": [
+      130.32,
+      135.31
+     ]
+    },
+    {
+     "v": 15,
+     "text": "Looking diligently lest any man fail of the grace of God; lest any root of bitterness springing up trouble [you], and thereby many be defiled;",
+     "dur": 9.01,
+     "src": [
+      135.78,
+      144.79
+     ]
+    },
+    {
+     "v": 16,
+     "text": "Lest there [be] any fornicator, or profane person, as Esau, who for one morsel of meat sold his birthright.",
+     "dur": 8.09,
+     "src": [
+      145.12,
+      153.21
+     ]
+    },
+    {
+     "v": 17,
+     "text": "For ye know how that afterward, when he would have inherited the blessing, he was rejected: for he found no place of repentance, though he sought it carefully with tears.",
+     "dur": 11.2,
+     "src": [
+      153.46,
+      164.66
+     ]
+    },
+    {
+     "v": 18,
+     "text": "For ye are not come unto the mount that might be touched, and that burned with fire, nor unto blackness, and darkness, and tempest,",
+     "dur": 7.69,
+     "src": [
+      165.16,
+      172.85
+     ]
+    },
+    {
+     "v": 19,
+     "text": "And the sound of a trumpet, and the voice of words; which [voice] they that heard intreated that the word should not be spoken to them any more:",
+     "dur": 8.7,
+     "src": [
+      173.2,
+      181.9
+     ]
+    },
+    {
+     "v": 20,
+     "text": "(For they could not endure that which was commanded, And if so much as a beast touch the mountain, it shall be stoned, or thrust through with a dart:",
+     "dur": 8.5,
+     "src": [
+      182.32,
+      190.82
+     ]
+    },
+    {
+     "v": 21,
+     "text": "And so terrible was the sight, [that] Moses said, I exceedingly fear and quake:)",
+     "dur": 5.89,
+     "src": [
+      191.2,
+      197.09
+     ]
+    },
+    {
+     "v": 22,
+     "text": "But ye are come unto mount Sion, and unto the city of the living God, the heavenly Jerusalem, and to an innumerable company of angels,",
+     "dur": 9.88,
+     "src": [
+      197.96,
+      207.84
+     ]
+    },
+    {
+     "v": 23,
+     "text": "To the general assembly and church of the firstborn, which are written in heaven, and to God the Judge of all, and to the spirits of just men made perfect,",
+     "dur": 8.86,
+     "src": [
+      207.87,
+      216.73
+     ]
+    },
+    {
+     "v": 24,
+     "text": "And to Jesus the mediator of the new covenant, and to the blood of sprinkling, that speaketh better things than [that of] Abel.",
+     "dur": 7.7,
+     "src": [
+      217.28,
+      224.98
+     ]
+    },
+    {
+     "v": 25,
+     "text": "See that ye refuse not him that speaketh. For if they escaped not who refused him that spake on earth, much more [shall not] we [escape], if we turn away from him that [speaketh] from heaven:",
+     "dur": 12.82,
+     "src": [
+      225.82,
+      238.64
+     ]
+    },
+    {
+     "v": 26,
+     "text": "Whose voice then shook the earth: but now he hath promised, saying, Yet once more I shake not the earth only, but also heaven.",
+     "dur": 9.94,
+     "src": [
+      238.84,
+      248.78
+     ]
+    },
+    {
+     "v": 27,
+     "text": "And this [word], Yet once more, signifieth the removing of those things that are shaken, as of things that are made, that those things which cannot be shaken may remain.",
+     "dur": 12.12,
+     "src": [
+      249.16,
+      261.28
+     ]
+    },
+    {
+     "v": 28,
+     "text": "Wherefore we receiving a kingdom which cannot be moved, let us have grace, whereby we may serve God acceptably with reverence and godly fear:",
+     "dur": 9.57,
+     "src": [
+      261.7,
+      271.27
+     ]
+    },
+    {
+     "v": 29,
+     "text": "For our God [is] a consuming fire.",
+     "dur": 3.2,
+     "src": [
+      271.76,
+      274.96
+     ]
+    }
+   ]
+  },
+  {
+   "c": 13,
+   "verses": [
+    {
+     "v": 1,
+     "text": "Let brotherly love continue.",
+     "dur": 2.33,
+     "src": [
+      3.76,
+      6.09
+     ]
+    },
+    {
+     "v": 2,
+     "text": "Be not forgetful to entertain strangers: for thereby some have entertained angels unawares.",
+     "dur": 6.53,
+     "src": [
+      6.96,
+      13.49
+     ]
+    },
+    {
+     "v": 3,
+     "text": "Remember them that are in bonds, as bound with them; [and] them which suffer adversity, as being yourselves also in the body.",
+     "dur": 7.96,
+     "src": [
+      14.42,
+      22.38
+     ]
+    },
+    {
+     "v": 4,
+     "text": "Marriage [is] honourable in all, and the bed undefiled: but whoremongers and adulterers God will judge.",
+     "dur": 7.64,
+     "src": [
+      23.66,
+      31.3
+     ]
+    },
+    {
+     "v": 5,
+     "text": "[Let your] conversation [be] without covetousness; [and be] content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.",
+     "dur": 10.54,
+     "src": [
+      32.29,
+      42.83
+     ]
+    },
+    {
+     "v": 6,
+     "text": "So that we may boldly say, The Lord [is] my helper, and I will not fear what man shall do unto me.",
+     "dur": 6.69,
+     "src": [
+      43.48,
+      50.17
+     ]
+    },
+    {
+     "v": 7,
+     "text": "Remember them which have the rule over you, who have spoken unto you the word of God: whose faith follow, considering the end of [their] conversation.",
+     "dur": 9.32,
+     "src": [
+      51.28,
+      60.6
+     ]
+    },
+    {
+     "v": 8,
+     "text": "Jesus Christ the same yesterday, and to day, and for ever.",
+     "dur": 4.79,
+     "src": [
+      61.42,
+      66.21
+     ]
+    },
+    {
+     "v": 9,
+     "text": "Be not carried about with divers and strange doctrines. For [it is] a good thing that the heart be established with grace; not with meats, which have not profited them that have been occupied therein.",
+     "dur": 14.25,
+     "src": [
+      67.42,
+      81.67
+     ]
+    },
+    {
+     "v": 10,
+     "text": "We have an altar, whereof they have no right to eat which serve the tabernacle.",
+     "dur": 4.99,
+     "src": [
+      82.68,
+      87.67
+     ]
+    },
+    {
+     "v": 11,
+     "text": "For the bodies of those beasts, whose blood is brought into the sanctuary by the high priest for sin, are burned without the camp.",
+     "dur": 8.46,
+     "src": [
+      88.36,
+      96.82
+     ]
+    },
+    {
+     "v": 12,
+     "text": "Wherefore Jesus also, that he might sanctify the people with his own blood, suffered without the gate.",
+     "dur": 7.77,
+     "src": [
+      97.5,
+      105.27
+     ]
+    },
+    {
+     "v": 13,
+     "text": "Let us go forth therefore unto him without the camp, bearing his reproach.",
+     "dur": 4.87,
+     "src": [
+      106.12,
+      110.99
+     ]
+    },
+    {
+     "v": 14,
+     "text": "For here have we no continuing city, but we seek one to come.",
+     "dur": 5.43,
+     "src": [
+      111.76,
+      117.19
+     ]
+    },
+    {
+     "v": 15,
+     "text": "By him therefore let us offer the sacrifice of praise to God continually, that is, the fruit of [our] lips giving thanks to his name.",
+     "dur": 8.87,
+     "src": [
+      117.96,
+      126.83
+     ]
+    },
+    {
+     "v": 16,
+     "text": "But to do good and to communicate forget not: for with such sacrifices God is well pleased.",
+     "dur": 7.55,
+     "src": [
+      127.86,
+      135.41
+     ]
+    },
+    {
+     "v": 17,
+     "text": "Obey them that have the rule over you, and submit yourselves: for they watch for your souls, as they that must give account, that they may do it with joy, and not with grief: for that [is] unprofitable for you.",
+     "dur": 14.06,
+     "src": [
+      136.16,
+      150.22
+     ]
+    },
+    {
+     "v": 18,
+     "text": "Pray for us: for we trust we have a good conscience, in all things willing to live honestly.",
+     "dur": 6.21,
+     "src": [
+      150.91,
+      157.12
+     ]
+    },
+    {
+     "v": 19,
+     "text": "But I beseech [you] the rather to do this, that I may be restored to you the sooner.",
+     "dur": 6.36,
+     "src": [
+      158.05,
+      164.41
+     ]
+    },
+    {
+     "v": 20,
+     "text": "Now the God of peace, that brought again from the dead our Lord Jesus, that great shepherd of the sheep, through the blood of the everlasting covenant,",
+     "dur": 9.05,
+     "src": [
+      165.39,
+      174.44
+     ]
+    },
+    {
+     "v": 21,
+     "text": "Make you perfect in every good work to do his will, working in you that which is wellpleasing in his sight, through Jesus Christ; to whom [be] glory for ever and ever. Amen.",
+     "dur": 14.14,
+     "src": [
+      174.55,
+      188.69
+     ]
+    },
+    {
+     "v": 22,
+     "text": "And I beseech you, brethren, suffer the word of exhortation: for I have written a letter unto you in few words.",
+     "dur": 7.71,
+     "src": [
+      189.48,
+      197.19
+     ]
+    },
+    {
+     "v": 23,
+     "text": "Know ye that [our] brother Timothy is set at liberty; with whom, if he come shortly, I will see you.",
+     "dur": 7.05,
+     "src": [
+      197.83,
+      204.88
+     ]
+    },
+    {
+     "v": 24,
+     "text": "Salute all them that have the rule over you, and all the saints. They of Italy salute you.",
+     "dur": 6.87,
+     "src": [
+      205.67,
+      212.54
+     ]
+    },
+    {
+     "v": 25,
+     "text": "Grace [be] with you all. Amen.",
+     "dur": 3.068,
+     "src": [
+      213.33,
+      216.6
+     ]
+    }
+   ]
+  }
+ ]
+}

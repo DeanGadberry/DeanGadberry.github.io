@@ -1,0 +1,170 @@
+{
+ "reader": "Willard Waggoner",
+ "credit": "Audio: read by Willard Waggoner, (c) 1996 Praise Inc., via ebibleradio.com, used for non-commercial purposes. Text: King James Version, public domain.",
+ "number_gap": 0.32,
+ "books": [
+  {
+   "id": "rut",
+   "name": "Ruth",
+   "color": "#8E244D",
+   "canon": 8,
+   "verses": [
+    22,
+    23,
+    18,
+    22
+   ]
+  },
+  {
+   "id": "jon",
+   "name": "Jonah",
+   "color": "#526E2D",
+   "canon": 32,
+   "verses": [
+    17,
+    10,
+    10,
+    11
+   ]
+  },
+  {
+   "id": "mar",
+   "name": "Mark",
+   "color": "#AE3434",
+   "canon": 41,
+   "verses": [
+    45,
+    28,
+    35,
+    41,
+    43,
+    56,
+    37,
+    38,
+    50,
+    52,
+    33,
+    44,
+    37,
+    72,
+    47,
+    20
+   ]
+  },
+  {
+   "id": "rom",
+   "name": "Romans",
+   "color": "#1C5D99",
+   "canon": 45,
+   "verses": [
+    32,
+    29,
+    31,
+    25,
+    21,
+    23,
+    25,
+    39,
+    33,
+    21,
+    36,
+    21,
+    14,
+    23,
+    33,
+    27
+   ]
+  },
+  {
+   "id": "eph",
+   "name": "Ephesians",
+   "color": "#1C5D99",
+   "canon": 49,
+   "verses": [
+    23,
+    22,
+    21,
+    32,
+    33,
+    24
+   ]
+  },
+  {
+   "id": "heb",
+   "name": "Hebrews",
+   "color": "#1C5D99",
+   "canon": 58,
+   "verses": [
+    14,
+    18,
+    19,
+    16,
+    14,
+    20,
+    28,
+    13,
+    28,
+    39,
+    40,
+    29,
+    25
+   ]
+  },
+  {
+   "id": "jam",
+   "name": "James",
+   "color": "#1C5D99",
+   "canon": 59,
+   "verses": [
+    27,
+    26,
+    18,
+    17,
+    20
+   ]
+  },
+  {
+   "id": "1pe",
+   "name": "1 Peter",
+   "color": "#1C5D99",
+   "canon": 60,
+   "verses": [
+    25,
+    25,
+    22,
+    19,
+    14
+   ]
+  },
+  {
+   "id": "rev",
+   "name": "Revelation",
+   "color": "#6B2E8F",
+   "canon": 66,
+   "verses": [
+    20,
+    29,
+    22,
+    11,
+    14,
+    17,
+    17,
+    13,
+    21,
+    11,
+    19,
+    17,
+    18,
+    20,
+    8,
+    21,
+    18,
+    24,
+    21,
+    15,
+    27,
+    21
+   ]
+  }
+ ]
+}
