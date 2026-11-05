@@ -36,6 +36,19 @@ No setup, no build step, nothing to learn — just copy-paste.
 That's the whole task. The page already has all the styling it needs —
 don't touch the `<style>` block, don't add CSS or JS for this.
 
+## Parent pages only — no child links
+
+One entry per feature, pointing at its top-level/parent page, and that's
+it. If what you're adding has sub-pages underneath it (e.g. a hub page
+with a few linked child pages, or a list page whose items each open their
+own page), only the parent/hub goes on the back page. Don't add separate
+entries for each child — the parent page's own navigation is how you reach
+those, and the back page would turn into a dumping ground otherwise.
+
+Example: adding a "Vitality" hub with four linked sub-pages (strength,
+flexibility, nutrition, energy) gets exactly one line on the back page,
+for `../vitality` — not five.
+
 ## Don't
 
 - Don't link `/backpage` from anywhere (the homepage nav, another page,
